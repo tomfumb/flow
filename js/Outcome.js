@@ -1,30 +1,29 @@
-Flow.Outcome = function(title, id) {
+Flow.Outcome = Backbone.Model.extend({
 	
-	this.index = this.INDEX_UNINITIALISED;
+	constructor: function(attributes) {
+		
+		switch(true) {
+			case (typeof attributes.id !== 'undefined'):
+				this.id = attributes.id;
+				break;
+			case (typeof attributes.id === 'undefined' && typeof attributes.title === 'string' && attributes.title.length > 0):
+				this.id = Flow.Util.getIdFromText(attributes.title);
+				break;
+			default:
+				this.id = Flow.Util.generateId();
+				Flow.Log.log(Flow.Log.logLevels.WARNING, 'Outcome created without title, id: ' + this.id);
+				break;
+		}
+		
+		this.title = attributes.title;
+		this.description = attributes.description;
+		this.url = attributes.url;
+		
+		this.precedingAnswers = [];
+	},
 	
-	switch(true) {
-		case (typeof id !== 'undefined'):
-			this.id = id;
-			break;
-		case (typeof id === 'undefined' && typeof title === 'string' && title.length > 0):
-			this.id = Flow.Util.getIdFromText(title);
-			break;
-		default:
-			this.id = Flow.Util.generateId();
-			Flow.Log.log(Flow.Log.logLevels.WARNING, 'Outcome created without title, id: ' + this.id);
-			break;
+	identifierTypes: {
+		ID: 'id',
+		TITLE: 'title'
 	}
-	
-	this.title = title;
-	this.description = title;
-	this.url = undefined;
-	
-	this.precedingAnswers = [];
-};
-
-Flow.Outcome.prototype.identifierTypes = {
-	ID: 'id',
-	TITLE: 'title'
-};
-
-Flow.Outcome.prototype.INDEX_UNINITIALISED = -1;
+});

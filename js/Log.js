@@ -29,8 +29,14 @@ Flow.Log = {
 					}
 				}
 			}
-			
-			console.log('[' + currentLogLevelName + ' ' + (new Date()).getTime() + ']: ' + message);
+				
+			var toLog = '[' + currentLogLevelName + ' ' + (new Date()).getTime() + ']: ' + message;
+			if(currentLogLevel === this.logLevels.ERROR) {
+				console.error(toLog);
+			}
+			else {
+				console.log(toLog);
+			}
 			
 			// option to submit message to server log at a later date if logToServer
 		}

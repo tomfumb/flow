@@ -1,13 +1,4 @@
-Flow.AnswerCollection = {
+Flow.AnswerCollection = new (Backbone.Collection.extend({
 
-	count: 0,
-	answers: {},
-	
-	addAnswer: function(answer) {
-		this.answers[answer.id] = answer;
-	},
-	
-	asArray: function() {
-		return _.toArray(this.answers);
-	}
-};
+	model: Flow.Answer
+}));

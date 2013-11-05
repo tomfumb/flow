@@ -10,14 +10,5 @@ Flow.Util = {
 			var r = Math.random() * 16|0, v = c == 'x' ? r : (r&0x3|0x8);
 			return v.toString(16);
 		});
-	},
-	
-	idAlreadyExists: function(id, collection) {
-	
-		var found = _.find(collection, function(value, key) {
-			return (key == id);
-		});
-		
-		return !!found;
 	}
 };

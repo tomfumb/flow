@@ -1,46 +1,46 @@
-Flow.Question = function(title, id) {
+Flow.Question = Backbone.Model.extend({
 	
-	this.index = this.INDEX_UNINITIALISED;
-	
-	switch(true) {
-		case (typeof id !== 'undefined'):
-			this.id = id;
-			break;
-		case (typeof id === 'undefined' && typeof title === 'string' && title.length > 0):
-			this.id = Flow.Util.getIdFromText(title);
-			break;
-		default:
-			this.id = Flow.Util.generateId();
-			Flow.Log.log(Flow.Log.logLevels.WARNING, 'Question created without title, id: ' + this.id);
-			break;
-	}
-	
-	this.title = title;
-	this.content = title;
-	
-	this.answers = [];
-	this.precedingAnswers = [];
-	
-	this.selectedAnswer = undefined;
-};
+	constructor: function(attributes) {
+		
+		this.index = this.INDEX_UNINITIALISED;
+		
+		switch(true) {
+			case (typeof attributes.id !== 'undefined'):
+				this.id = attributes.id;
+				break;
+			case (typeof attributes.id === 'undefined' && typeof attributes.title === 'string' && attributes.title.length > 0):
+				this.id = Flow.Util.getIdFromText(attributes.title);
+				break;
+			default:
+				this.id = Flow.Util.generateId();
+				Flow.Log.log(Flow.Log.logLevels.WARNING, 'Question created without title, id: ' + this.id);
+				break;
+		}
+		
+		this.title = attributes.title;
+		this.content = attributes.content;
+		
+		this.answers = [];
+		this.precedingAnswers = [];
+		
+		this.selectedAnswer = undefined;
+	},
 
-Flow.Question.prototype.addAnswer = function(text, value) {
+	addAnswer: function(answer) {
 	
-	var answer = new Flow.Answer(text, value);
-	answer.question = this;
-	this.answers.push(answer);
-	
-	return answer;
-};
+		answer.question = this;
+		this.answers.push(answer);
+	},
 
-Flow.Question.prototype.identifierTypes = {
-	ID: 'id',
-	TITLE: 'title'
-};
+	identifierTypes: {
+		ID: 'id',
+		TITLE: 'title'
+	},
 
-Flow.Question.prototype.nextTypes = {
-	QUESTION: 'question',
-	OUTCOME: 'outcome'
-};
+	nextTypes: {
+		QUESTION: 'question',
+		OUTCOME: 'outcome'
+	},
 
-Flow.Question.prototype.INDEX_UNINITIALISED = -1;
+	INDEX_UNINITIALISED: -1
+});
