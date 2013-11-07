@@ -1,4 +1,33 @@
 Flow.MainView = Backbone.View.extend({
 	
-	// register for QuestionManager's reset event. How??? The event binding will probably have to come from flow-init to avoid overriding the constructor
+	isFirstQuestion: true,
+	
+	constructor: function(model) {
+	
+		Backbone.View.prototype.constructor({model: model});
+		
+		this.listenToOnce(this.getQuestions(), 'reset', _.bind(this.onQuestionsReset, this));
+		this.on('nextQuestionAvailable', _.bind(this.onNextQuestionAvailable, this));
+	},
+	
+	onQuestionsReset: function() {
+		$('#flow_start').removeAttr('disabled').on('click', _.bind(this.onStartClicked, this));
+	},
+	
+	onStartClicked: function(event) {
+		
+		event.preventDefault();
+		this.getQuestions().readyForFirstQuestion();
+	},
+	
+	getQuestions: function() {
+		return this.model.get('Questions');
+	},
+	
+	onNextQuestionAvailable: function(data) {
+		
+		debugger;
+		
+		this.isFirstQuestion = false;
+	}
 });

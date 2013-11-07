@@ -12,6 +12,9 @@ Flow.OutcomeManager = new (Backbone.Collection.extend({
 			outcome.description = outcomeProperties.description;
 			outcome.url = outcomeProperties.url;
 		}, this);
+		
+		// overriding reset function means crucial event doesn't get thrown
+		this.trigger('reset', this);
 	},
 
 	getByTitle: function(title) {

@@ -63,9 +63,16 @@ Flow.QuestionManager = new (Backbone.Collection.extend({
 			
 			answer.next = next;
 		}, this);
+		
+		// overriding reset function means crucial event doesn't get thrown
+		this.trigger('reset');
 	},
 
 	getByTitle: function(title) {
 		return this.get(Flow.Util.getIdFromText(title));
+	},
+	
+	readyForFirstQuestion: function() {
+		this.trigger('nextQuestionAvailable', this.get(0));
 	}
 }));
