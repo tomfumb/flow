@@ -3,6 +3,7 @@ Flow.Question = Backbone.Model.extend({
 	initialize: function() {
 		this.set('answers', []);
 		this.set('precedingAnswers', []);
+		this.set('selectedAnswer', undefined);
 	},
 
 	addAnswer: function(answer) {

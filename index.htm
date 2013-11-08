@@ -1,21 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>		
+	<head>
+		<link href="css/flow.css" rel="stylesheet" type="text/css" />
 	</head>
 	<body>
-		
-		<h3>Intro Text</h3>
-		<p>Here will be some introduction text and a start button that is initially disabled</p>
-		<button id="flow_start" disabled="disabled">Start</button>
-		
-		
-		
+		<div id="flow_intro">
+			<h3>Intro Text</h3>
+			<p>Here will be some introduction text and a start button that is initially disabled</p>
+			<button id="flow_start" disabled="disabled">Start</button>
+		</div>
+		<div id="flow_body">
+			<p>this is where all the questions are going to go...</p>
+		</div>
 		<script type="text/javascript" src="js/lib/jquery-1.10.2.min.js"></script>
 		<script type="text/javascript" src="js/lib/underscore-1.5.2-min.js"></script>
 		<script type="text/javascript" src="js/lib/backbone-1.1.0-min.js"></script></script>
 		<script type="text/javascript" src="js/Flow.js"></script>
 		<script type="text/javascript" src="js/Log.js"></script>
 		<script type="text/javascript" src="js/Util.js"></script>
+		<script type="text/javascript" src="js/IntroView.js"></script>
 		<script type="text/javascript" src="js/MainView.js"></script>
 		<script type="text/javascript" src="js/Outcome.js"></script>
 		<script type="text/javascript" src="js/OutcomeManager.js"></script>
