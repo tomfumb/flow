@@ -17,8 +17,8 @@ Flow.QuestionManager = new (Backbone.Collection.extend({
 	
 		_.each(data.questions, function(questionProperties) {
 			
-			question = this.add({title: questionProperties.title, id: questionProperties.id});
-			question.content = questionProperties.content;
+			question = this.add(this.ensureIdAvailable(questionProperties.title, questionProperties.id));
+			question.set('content', questionProperties.content);
 			
 			_.each(questionProperties.answers.options, createAnswers);
 		}, this);
@@ -58,7 +58,7 @@ Flow.QuestionManager = new (Backbone.Collection.extend({
 			}
 					
 			if(next) {
-				next.precedingAnswers.push(answer);
+				next.addPrecedingAnswer(answer);
 			}
 			
 			answer.next = next;
@@ -67,12 +67,17 @@ Flow.QuestionManager = new (Backbone.Collection.extend({
 		// overriding reset function means crucial event doesn't get thrown
 		this.trigger('reset');
 	},
-
+	
+	ensureIdAvailable: function(title, id) {
+		id = (typeof id === 'undefined' ? Flow.Util.getIdFromText(title) : id);
+		return {title: title, id: id};
+	},
+	
 	getByTitle: function(title) {
 		return this.get(Flow.Util.getIdFromText(title));
 	},
 	
 	readyForFirstQuestion: function() {
-		this.trigger('nextQuestionAvailable', this.get(0));
+		this.trigger('nextQuestionAvailable', this.at(0));
 	}
 }));
