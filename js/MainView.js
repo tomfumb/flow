@@ -8,8 +8,10 @@ Flow.MainView = Backbone.View.extend({
 		var outcomes = this.getOutcomes();
 		
 		questions.on('nextQuestionAvailable', _.bind(this.onNextQuestionAvailable, this));
-		questions.on('change:selectedAnswer', _.bind(this.onQuestionAnswered, this));
+		questions.on('downstreamQuestionsReset', _.bind(this.onDownstreamQuestionsReset, this));
+		
 		outcomes.on('availableOutcomesUpdated', _.bind(this.onAvailableOutcomesUpdated, this));
+		outcomes.on('outcomeReached', _.bind(this.onOutcomeReached, this));
 	},
 	
 	render: function() {
@@ -26,11 +28,6 @@ Flow.MainView = Backbone.View.extend({
 			this.render();
 			this.hadFirstQuestion = true;
 		}
-		
-		//
-		// show question
-		//
-	
 	},
 	
 	onAvailableOutcomesUpdated: function(availableOutcomes) {
@@ -38,9 +35,24 @@ Flow.MainView = Backbone.View.extend({
 		debugger;
 	},
 	
-	onQuestionAnswered: function(question, answer) {
+	onAnswerSelected: function(answer) {
+		
+		var answers = this.getAnswers();
+		if(typeof answer === 'string') {
+			answer = answers.get(answer);
+		}
+		
+		var questions = this.getQuestions();
+		questions.setAnswer(answer);
+		this.getOutcomes().checkAvailableOutcomes(questions);
+	},
 	
-		this.getOutcomes().checkAvailableOutcomes(this.getQuestions());
+	onDownstreamQuestionsReset: function() {
+		
+		debugger;
+	},
+	
+	onOutcomeReached: function() {
 		
 		debugger;
 	},
@@ -51,5 +63,9 @@ Flow.MainView = Backbone.View.extend({
 	
 	getOutcomes: function() {
 		return this.model.get('Outcomes');
+	},
+	
+	getAnswers: function() {
+		return this.model.get('Answers');
 	}
 });

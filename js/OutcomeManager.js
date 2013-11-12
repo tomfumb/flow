@@ -29,20 +29,19 @@ Flow.OutcomeManager = new (Backbone.Collection.extend({
 	checkAvailableOutcomes: function(questions) {
 	
 		var changed = false;
-		var localAvailableOutcomes = [];
+		var localAvailableOutcomeIdsObj = {};
+		var localAvailableOutcomeIdsArr = [];
 		
-		_.each(this.models, function(outcome) {
-		
-			// logic to determine if an outcome is still available, based on answered questions
-			
-			if(true) {
-				localAvailableOutcomes.push(outcome.id);
-			}
-			
+		_.each(questions.models, function(question) {
+			this.getOutcomeIdsFromQuestion(question, localAvailableOutcomeIdsObj);
 		}, this);
 		
-		if(this.availableOutcomes && this.availableOutcomes.length) {
-			if(localAvailableOutcomes.join('') !== this.availableOutcomes.join('')) {
+		_.each(localAvailableOutcomeIdsObj, function(key, value) {
+			localAvailableOutcomeIdsArr.push(this.get(key));
+		}, this);
+		
+		if(this.availableOutcomes) {
+			if(localAvailableOutcomeIdsArr.join('') !== this.availableOutcomes.join('')) {
 				changed = true;
 			}
 		}
@@ -50,9 +49,17 @@ Flow.OutcomeManager = new (Backbone.Collection.extend({
 			changed = true;
 		}
 		
+		
+		
+		// seem to be having issues here - possible that this function is being called too many times (by what?)
+		// seems that outcomes array is not being correctly populated as
+		// event handler is seeing id: undefined
+		
+		
+		
 		if(changed) {
 		
-			this.availableOutcomes = localAvailableOutcomes;
+			this.availableOutcomes = localAvailableOutcomeIdsArr;
 			var outcomes = [];
 			
 			_.each(this.availableOutcomes, function(outcomeId) {
@@ -61,5 +68,64 @@ Flow.OutcomeManager = new (Backbone.Collection.extend({
 			
 			this.trigger('availableOutcomesUpdated', outcomes);
 		}
+	},
+	
+	getOutcomeIdsFromQuestion: function(question, outcomeIds) {
+		
+		var selectedAnswer = question.get('selectedAnswer'), answers = [];
+		if(selectedAnswer) {
+			answers.push(selectedAnswer);
+		}
+		else {
+			_.each(question.get('answers'), function(answer) {
+				answers.push(answer);
+			});
+		}
+	
+		_.each(answers, function(answer) {
+			if(answer.get('nextInfo').nextType === 'outcome') {
+				outcomeIds[answer.get('next').id] = true;
+			}
+			else if (answer.get('nextInfo').nextType === 'question') {
+				this.getOutcomeIdsFromQuestion(answer.get('next'), outcomeIds);
+			}
+		}, this);
+	},
+	
+	getPathForOutcome: function(outcome) {
+		
+		if(typeof outcome === 'string') {
+			outcome = this.get(outcome);
+		}
+		
+		var answersToOutcome = outcome.get('precedingAnswers'), levelsFromOutcome = [];
+		this.addQuestionsToOutcomePath(answersToOutcome, levelsFromOutcome);
+		
+		return levelsFromOutcome;
+	},
+	
+	addQuestionsToOutcomePath: function(answersToOutcome, levelsFromOutcome) {
+		
+		var thisLevelIndex = levelsFromOutcome.length;
+		levelsFromOutcome.push({});
+		var question;
+		_.each(answersToOutcome, function(answerToOutcome) {
+		
+			question = {};
+			
+			$.extend(true, question, answerToOutcome.question);
+			
+			if(!levelsFromOutcome[thisLevelIndex].hasOwnProperty(question.id)) {
+				question.resetAnswers();
+				levelsFromOutcome[thisLevelIndex][question.id] = question;
+			}
+			
+			question.addAnswer(answerToOutcome);
+			
+			var precedingAnswers = question.get('precedingAnswers');
+			if(precedingAnswers.length) {
+				this.addQuestionsToOutcomePath(precedingAnswers, levelsFromOutcome);
+			}
+		}, this);
 	}
 }));

@@ -1,21 +1,21 @@
 Flow.Answer = Backbone.Model.extend({
 	
-	constructor: function(attributes) {
-	
-		this.text = attributes.text;
-		this.value = (typeof attributes.value === 'undefined' ? attributes.text : attributes.value);
-		this.id = Flow.Util.generateId();
-		
-		this.nextInfo = undefined;
-		this.next = undefined;
+	initialize: function() {
+		if(typeof this.get('value') === 'undefined') {
+			this.set('value', this.get('text'));
+		}
 	},
 	
 	setNextInfo: function(nextType, identifierType, identifier) {
 		
-		this.nextInfo = {
+		this.set('nextInfo', {
 			nextType: nextType,
 			identifierType: identifierType,
 			identifier: identifier
-		}
+		});
+	},
+	
+	setSelected: function() {
+		this.get('question').set('selectedAnswer', this);	
 	}
 });

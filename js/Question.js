@@ -1,14 +1,17 @@
 Flow.Question = Backbone.Model.extend({
 	
 	initialize: function() {
-		this.set('answers', []);
+		this.resetAnswers();
 		this.set('precedingAnswers', []);
-		this.set('selectedAnswer', undefined);
 	},
 
 	addAnswer: function(answer) {
-		answer.question = this;
+		answer.set('question', this);
 		this.get('answers').push(answer);
+	},
+	
+	resetAnswers: function() {
+		this.set('answers', []);
 	},
 	
 	addPrecedingAnswer: function(answer) {

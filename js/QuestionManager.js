@@ -4,12 +4,12 @@ Flow.QuestionManager = new (Backbone.Collection.extend({
 	
 	reset: function(data, AnswerCollection, OutcomeManager) {
 		
-		var questionProperties, question, answerProperties, answer, next;
+		var questionProperties, question, answerProperties, answer, next, nextInfo;
 	
 		// create the answers iterator function as a literal outside the questions loop, to avoid re-defining the function
 		var createAnswers = function(answerProperties) {
 			
-			answer = AnswerCollection.add({text: answerProperties.text, value: answerProperties.value});
+			answer = AnswerCollection.add({id: Flow.Util.generateId(), text: answerProperties.text, value: answerProperties.value});
 			answer.setNextInfo(answerProperties.next.nextType, answerProperties.next.identifierType, answerProperties.next.identifier);
 			
 			question.addAnswer(answer);
@@ -26,27 +26,27 @@ Flow.QuestionManager = new (Backbone.Collection.extend({
 		_.each(AnswerCollection.toArray(), function(answer) {
 		
 			next = undefined;
-				
-			switch(answer.nextInfo.nextType) {
+			nextInfo = answer.get('nextInfo');
+			switch(nextInfo.nextType) {
 				case Flow.Question.prototype.nextTypes.OUTCOME:
-					switch(answer.nextInfo.identifierType) {
+					switch(nextInfo.identifierType) {
 						case Flow.Outcome.prototype.identifierTypes.TITLE:
-							next = OutcomeManager.getByTitle(answer.nextInfo.identifier);
+							next = OutcomeManager.getByTitle(nextInfo.identifier);
 							break;
 						case Flow.Outcome.prototype.identifierTypes.ID:
-							next = OutcomeManager.get(answer.nextInfo.identifier);
+							next = OutcomeManager.get(nextInfo.identifier);
 							break;
 						default:
 							break;
 					}
 					break;
 				case Flow.Question.prototype.nextTypes.QUESTION:
-					switch(answer.nextInfo.identifierType) {
+					switch(nextInfo.identifierType) {
 						case Flow.Question.prototype.identifierTypes.TITLE:
-							next = this.getByTitle(answer.nextInfo.identifier);
+							next = this.getByTitle(nextInfo.identifier);
 							break;
 						case Flow.Question.prototype.identifierTypes.ID:
-							next = this.get(answer.nextInfo.identifier);
+							next = this.get(nextInfo.identifier);
 							break;
 						default:
 							break;
@@ -61,7 +61,7 @@ Flow.QuestionManager = new (Backbone.Collection.extend({
 				next.addPrecedingAnswer(answer);
 			}
 			
-			answer.next = next;
+			answer.set('next', next);
 		}, this);
 		
 		// overriding reset function means crucial event doesn't get thrown
@@ -79,5 +79,44 @@ Flow.QuestionManager = new (Backbone.Collection.extend({
 	
 	readyForFirstQuestion: function() {
 		this.trigger('nextQuestionAvailable', this.at(0));
+	},
+	
+	setAnswer: function(answer) {
+		
+		answer.setSelected();
+		
+		// reset any downstream questions in case the user has back-tracked
+		var list = [], changed = false;
+		this.getFollowingAnsweredQuestions(answer, list);
+		_.each(list, function(question) {
+			question.set('selectedAnswer', undefined);
+			changed = true;
+		});
+		
+		if(changed) {
+			this.trigger('downstreamQuestionsReset');
+		}
+		
+		switch(answer.get('nextInfo').nextType) {
+			case Flow.Question.prototype.nextTypes.QUESTION:
+				this.trigger('nextQuestionAvailable', answer.get('next'));
+				break;
+			case Flow.Question.prototype.nextTypes.OUTCOME:
+				this.trigger('outcomeReached', answer.get('next'));
+				break;
+		}
+	},
+	
+	getFollowingAnsweredQuestions: function(answer, list) {
+		
+		var next, selectedAnswer;
+		if(answer.get('nextInfo').nextType === Flow.Question.prototype.nextTypes.QUESTION) {
+			next = answer.get('next');
+			selectedAnswer = next.get('selectedAnswer');
+			if(typeof selectedAnswer !== 'undefined') {
+				list.push(next);
+				this.getFollowingAnsweredQuestions(selectedAnswer, list);
+			}
+		}
 	}
 }));
