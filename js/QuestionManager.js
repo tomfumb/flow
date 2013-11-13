@@ -3,7 +3,8 @@ Flow.QuestionManager = new (Backbone.Collection.extend({
 	model: Flow.Question,
 	
 	reset: function(data, AnswerCollection, OutcomeManager) {
-		
+
+		Flow.Log.debug('QuestionManager.reset');		
 		var questionProperties, question, answerProperties, answer, next, nextInfo;
 	
 		// create the answers iterator function as a literal outside the questions loop, to avoid re-defining the function
@@ -65,6 +66,7 @@ Flow.QuestionManager = new (Backbone.Collection.extend({
 		}, this);
 		
 		// overriding reset function means crucial event doesn't get thrown
+		Flow.Log.debug('OutcomeManager triggering reset');	
 		this.trigger('reset');
 	},
 	
@@ -78,12 +80,18 @@ Flow.QuestionManager = new (Backbone.Collection.extend({
 	},
 	
 	readyForFirstQuestion: function() {
+		
+		Flow.Log.debug('QuestionManager triggering nextQuestionAvailable');		
 		this.trigger('nextQuestionAvailable', this.at(0));
 	},
 	
 	setAnswer: function(answer) {
 		
+		Flow.Log.debug('QuestionManager.setAnswer');		
 		answer.setSelected();
+		
+		Flow.Log.debug('QuestionManager triggering questionAnswered');		
+		this.trigger('questionAnswered', answer.get('question'), answer);
 		
 		// reset any downstream questions in case the user has back-tracked
 		var list = [], changed = false;
@@ -94,21 +102,24 @@ Flow.QuestionManager = new (Backbone.Collection.extend({
 		});
 		
 		if(changed) {
+			Flow.Log.debug('QuestionManager triggering downstreamQuestionsReset');		
 			this.trigger('downstreamQuestionsReset');
 		}
 		
 		switch(answer.get('nextInfo').nextType) {
 			case Flow.Question.prototype.nextTypes.QUESTION:
+				Flow.Log.debug('QuestionManager triggering nextQuestionAvailable');		
 				this.trigger('nextQuestionAvailable', answer.get('next'));
 				break;
 			case Flow.Question.prototype.nextTypes.OUTCOME:
+				Flow.Log.debug('QuestionManager triggering outcomeReached');		
 				this.trigger('outcomeReached', answer.get('next'));
 				break;
 		}
 	},
 	
 	getFollowingAnsweredQuestions: function(answer, list) {
-		
+			
 		var next, selectedAnswer;
 		if(answer.get('nextInfo').nextType === Flow.Question.prototype.nextTypes.QUESTION) {
 			next = answer.get('next');

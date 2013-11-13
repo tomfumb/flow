@@ -8,8 +8,26 @@ Flow.Log = {
 	},
 	
 	logLevel: undefined,
+	lastLogTime: undefined,
 	
 	defaultLogLevel: 4,
+	logGapInterval: 200,
+	
+	debug: function(message) {
+		this.log(this.logLevels.DEBUG, message, false);
+	},
+	
+	info: function(message) {
+		this.log(this.logLevels.INFO, message, false);
+	},
+	
+	warning: function(message) {
+		this.log(this.logLevels.WARNING, message, false);
+	},
+	
+	error: function(message) {
+		this.log(this.logLevels.ERROR, message, true);
+	},
 	
 	log: function(level, message, logToServer) {
 		
@@ -30,13 +48,20 @@ Flow.Log = {
 				}
 			}
 				
-			var toLog = '[' + currentLogLevelName + ' ' + (new Date()).getTime() + ']: ' + message;
+			var now = (new Date()).getTime();
+			var toLog = '[' + currentLogLevelName + ' ' + now + ']: ' + message;
+			
 			if(currentLogLevel === this.logLevels.ERROR) {
 				console.error(toLog);
 			}
 			else {
+				if(this.lastLogTime && (now - this.lastLogTime) >= this.logGapInterval) {
+					console.log('');
+				}
 				console.log(toLog);
 			}
+			
+			this.lastLogTime = now;
 			
 			// option to submit message to server log at a later date if logToServer
 		}

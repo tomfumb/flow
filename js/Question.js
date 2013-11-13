@@ -11,6 +11,7 @@ Flow.Question = Backbone.Model.extend({
 	},
 	
 	resetAnswers: function() {
+		Flow.Log.debug('Question.resetAnswers (' + this.get('id') + ')');	
 		this.set('answers', []);
 	},
 	

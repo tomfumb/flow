@@ -4,6 +4,7 @@ Flow.OutcomeManager = new (Backbone.Collection.extend({
 	
 	reset: function(data) {
 		
+		Flow.Log.debug('OutcomeManager.reset');		
 		var outcomeProperties, outcome;
 		
 		_.each(data.outcomes, function(outcomeProperties) {
@@ -14,6 +15,7 @@ Flow.OutcomeManager = new (Backbone.Collection.extend({
 		}, this);
 		
 		// overriding reset function means crucial event doesn't get thrown
+		Flow.Log.debug('OutcomeManager triggering reset');	
 		this.trigger('reset');
 	},
 	
@@ -28,7 +30,8 @@ Flow.OutcomeManager = new (Backbone.Collection.extend({
 	
 	checkAvailableOutcomes: function(questions) {
 	
-		var changed = false;
+		Flow.Log.debug('OutcomeManager.checkAvailableOutcomes');	
+		var changed = true;
 		var localAvailableOutcomeIdsObj = {};
 		var localAvailableOutcomeIdsArr = [];
 		
@@ -36,26 +39,15 @@ Flow.OutcomeManager = new (Backbone.Collection.extend({
 			this.getOutcomeIdsFromQuestion(question, localAvailableOutcomeIdsObj);
 		}, this);
 		
-		_.each(localAvailableOutcomeIdsObj, function(key, value) {
-			localAvailableOutcomeIdsArr.push(this.get(key));
+		_.each(localAvailableOutcomeIdsObj, function(value, key) {
+			localAvailableOutcomeIdsArr.push(key);
 		}, this);
 		
 		if(this.availableOutcomes) {
-			if(localAvailableOutcomeIdsArr.join('') !== this.availableOutcomes.join('')) {
-				changed = true;
+			if(localAvailableOutcomeIdsArr.join('') === this.availableOutcomes.join('')) {
+				changed = false;
 			}
-		}
-		else {
-			changed = true;
-		}
-		
-		
-		
-		// seem to be having issues here - possible that this function is being called too many times (by what?)
-		// seems that outcomes array is not being correctly populated as
-		// event handler is seeing id: undefined
-		
-		
+		}	
 		
 		if(changed) {
 		
@@ -66,7 +58,11 @@ Flow.OutcomeManager = new (Backbone.Collection.extend({
 				outcomes.push(this.get(outcomeId));
 			}, this);
 			
+			Flow.Log.debug('OutcomeManager triggering availableOutcomesUpdated');	
 			this.trigger('availableOutcomesUpdated', outcomes);
+		}
+		else {
+			Flow.Log.debug('OutcomeManager not triggering availableOutcomesUpdated');	
 		}
 	},
 	
@@ -94,6 +90,7 @@ Flow.OutcomeManager = new (Backbone.Collection.extend({
 	
 	getPathForOutcome: function(outcome) {
 		
+		Flow.Log.debug('OutcomeManager.getPathForOutcome');	
 		if(typeof outcome === 'string') {
 			outcome = this.get(outcome);
 		}
