@@ -18,6 +18,9 @@ Flow.MainView = Backbone.View.extend({
 	render: function() {
 		Flow.Log.debug('MainView.render');
 		this.$el.show();
+		
+		this.content = new Flow.ContentView({model: this.model});
+		
 		this.getOutcomes().checkAvailableOutcomes(this.getQuestions());
 	},
 	
@@ -29,6 +32,8 @@ Flow.MainView = Backbone.View.extend({
 		}
 	
 		Flow.Log.debug('MainView.onNextQuestionAvailable');
+		
+		this.content.showQuestion(question);
 	},
 	
 	onAvailableOutcomesUpdated: function(availableOutcomes) {
