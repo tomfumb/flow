@@ -48,12 +48,22 @@ Flow.ContentView = Backbone.View.extend({
 			)
 		);
 		
-		this.$el.find('#answers_' + question.get('id') + ' .answer').click(function() {
-			alert('answer selected');
-		});
+		this.$el.find('#answers_' + question.get('id') + ' .answer').click(_.bind(function(event) {
+			this.onAnswerSelected(event);
+		}, this));
 		
-		this.$el.find('#answers_' + question.get('id') + ' .multi_answer_select').change(function() {
-			alert('answer selected');
-		});
+		this.$el.find('#answers_' + question.get('id') + ' .multi_answer_select').change(_.bind(function(event) {
+			this.onAnswerSelected(event);
+		}, this));
+	},
+	
+	onAnswerSelected: function(event) {
+		
+		// not sure what to do here
+		// event could come from two different handlers that could be div or child click (requiring parent find) or select list
+		// might make sense to have two functions here, or
+		// maybe handler functions should trigger jquery events with the answer's ID already determined
+		
+		debugger;
 	}
 });
