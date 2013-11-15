@@ -18,6 +18,7 @@ Flow.MainView = Backbone.View.extend({
 	render: function() {
 		Flow.Log.debug('MainView.render');
 		this.$el.show();
+		this.getOutcomes().checkAvailableOutcomes(this.getQuestions());
 	},
 	
 	onNextQuestionAvailable: function(question) {
@@ -28,19 +29,6 @@ Flow.MainView = Backbone.View.extend({
 		}
 	
 		Flow.Log.debug('MainView.onNextQuestionAvailable');
-		
-		
-		
-		// issue here
-		// checkAvailableOutcomes is called here AND onAnswerSelected
-		// makes sense to only have onAnswerSelected call checkAvailableOutcomes, as answers affect outcomes
-		// however onNextQuestionAvailable is called when the questions first become available
-		// this is the MainView's first opportunity to display the outcomes. Need to find an alternative
-		// for the first outcome display before removing this call
-		
-		
-		
-		this.getOutcomes().checkAvailableOutcomes(this.getQuestions());
 	},
 	
 	onAvailableOutcomesUpdated: function(availableOutcomes) {

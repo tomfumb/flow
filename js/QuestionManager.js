@@ -66,7 +66,7 @@ Flow.QuestionManager = new (Backbone.Collection.extend({
 		}, this);
 		
 		// overriding reset function means crucial event doesn't get thrown
-		Flow.Log.debug('OutcomeManager triggering reset');	
+		Flow.Log.debug('QuestionManager triggering reset');	
 		this.trigger('reset');
 	},
 	
