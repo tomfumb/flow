@@ -19,7 +19,8 @@ Flow.MainView = Backbone.View.extend({
 		Flow.Log.debug('MainView.render');
 		this.$el.show();
 		
-		this.content = new Flow.ContentView({model: this.model});
+		this.content = new Flow.ContentView();
+		this.content.onAnswerSelected = _.bind(this.onAnswerSelected, this);
 		
 		this.getOutcomes().checkAvailableOutcomes(this.getQuestions());
 	},
@@ -36,17 +37,15 @@ Flow.MainView = Backbone.View.extend({
 		this.content.showQuestion(question);
 	},
 	
-	onAvailableOutcomesUpdated: function(availableOutcomes) {
-		Flow.Log.debug('MainView.onAvailableOutcomesUpdated (' + availableOutcomes.length + ')');
+	onAvailableOutcomesUpdated: function(outcomes, availableCount) {
+		Flow.Log.debug('MainView.onAvailableOutcomesUpdated (' + availableCount + ' available)');
 	},
 	
-	onAnswerSelected: function(answer) {
+	onAnswerSelected: function(id) {
 		
-		Flow.Log.debug('MainView.onAnswerSelected');
-		var answers = this.getAnswers();
-		if(typeof answer === 'string') {
-			answer = answers.get(answer);
-		}
+		Flow.Log.debug('MainView.onAnswerSelected (' + id + ')');
+		var answer, answers = this.getAnswers();
+		answer = answers.get(id);
 		
 		var questions = this.getQuestions();
 		questions.setAnswer(answer);
@@ -57,7 +56,7 @@ Flow.MainView = Backbone.View.extend({
 		Flow.Log.debug('MainView.onDownstreamQuestionsReset');
 	},
 	
-	onOutcomeReached: function() {
+	onOutcomeReached: function(outcome) {
 		Flow.Log.debug('MainView.onOutcomeReached');
 	},
 	

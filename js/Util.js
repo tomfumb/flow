@@ -1,7 +1,15 @@
 Flow.Util = {
 
 	getIdFromText: function(text) {
-		return text.toLowerCase().replace(/[^a-z]+/g, '_');
+		
+		var specialChar = '_';
+		
+		// handle text starting with a number
+		if(text.match(/^\d/)) {
+			text = specialChar + text;
+		}
+		
+		return text.toLowerCase().replace(/[^a-z0-9]+/g, specialChar);
 	},
 	
 	// using http://stackoverflow.com/a/2117523/519575

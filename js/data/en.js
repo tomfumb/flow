@@ -1,59 +1,161 @@
 Flow.config = {
 	questions: [{
-		title: 'Select your country',
-		content: 'Which country are you from?',
+		title: 'Question 1',
+		content: 'Body of question 1',
 		answers: {
-			type: 'ddl',
 			options: [{
-				text: 'Anywhere except Iraq',
-				value: undefined,
+				text: 'Answer 1.1',
 				next: {
 					nextType: 'question',
 					identifierType: 'title',
-					identifier: 'where would you like to go on holiday?'
+					identifier: 'Question 2.1'
 				}
 			},{
-				text: 'Iraq',
-				value: 'oh dear...',
+				text: 'Answer 1.2',
+				next: {
+					nextType: 'question',
+					identifierType: 'title',
+					identifier: 'Question 2.2'
+				}
+			},{
+				text: 'Answer 1.3',
 				next: {
 					nextType: 'outcome',
 					identifierType: 'title',
-					identifier: 'you\'re fucked'
+					identifier: 'Outcome 1'
 				}
 			}]
 		}
 	},
 	{
-		title: 'where would you like to go on holiday?',
-		content: 'You\'ll be rolling in cash after this case!',
+		title: 'Question 2.1',
+		content: 'Body of question 2.1',
 		answers: {
-			type: 'box',
 			options: [{
-				text: 'Morocco',
-				value: 'Morocco',
+				text: 'Answer 2.1.1',
 				next: {
-					nextType: 'outcome',
+					nextType: 'question',
 					identifierType: 'title',
-					identifier: 'You\'re going on holiday!'
+					identifier: 'Question 3.1'
 				}
 			},{
-				text: 'Chile',
-				value: 'Chile',
+				text: 'Answer 2.1.2',
+				next: {
+					nextType: 'question',
+					identifierType: 'title',
+					identifier: 'Question 3.2'
+				}
+			}]
+		}
+	},
+	{
+		title: 'Question 2.2',
+		content: 'Body of question 2.2',
+		answers: {
+			options: [{
+				text: 'Answer 2.2.1',
+				next: {
+					nextType: 'question',
+					identifierType: 'title',
+					identifier: 'Question 3.3'
+				}
+			},{
+				text: 'Answer 2.2.2',
 				next: {
 					nextType: 'outcome',
 					identifierType: 'title',
-					identifier: 'You\'re going on holiday!'
+					identifier: 'Outcome 2'
+				}
+			}]
+		}
+	},
+	{
+		title: 'Question 3.1',
+		content: 'Body of question 3.1',
+		answers: {
+			options: [{
+				text: 'Answer 3.1.1',
+				next: {
+					nextType: 'outcome',
+					identifierType: 'title',
+					identifier: 'Outcome 3'
+				}
+			},{
+				text: 'Answer 3.1.2',
+				next: {
+					nextType: 'outcome',
+					identifierType: 'title',
+					identifier: 'Outcome 4'
+				}
+			}]
+		}
+	},
+	{
+		title: 'Question 3.2',
+		content: 'Body of question 3.2',
+		answers: {
+			options: [{
+				text: 'Answer 3.2.1',
+				next: {
+					nextType: 'outcome',
+					identifierType: 'title',
+					identifier: 'Outcome 5'
+				}
+			},{
+				text: 'Answer 3.2.2',
+				next: {
+					nextType: 'outcome',
+					identifierType: 'title',
+					identifier: 'Outcome 6'
+				}
+			}]
+		}
+	},
+	{
+		title: 'Question 3.3',
+		content: 'Body of question 3.3',
+		answers: {
+			options: [{
+				text: 'Answer 3.3.1',
+				next: {
+					nextType: 'outcome',
+					identifierType: 'title',
+					identifier: 'Outcome 1'
+				}
+			},{
+				text: 'Answer 3.3.2',
+				next: {
+					nextType: 'outcome',
+					identifierType: 'title',
+					identifier: 'Outcome 2'
+				}
+			},{
+				text: 'Answer 3.3.3',
+				next: {
+					nextType: 'outcome',
+					identifierType: 'title',
+					identifier: 'Outcome 2'
 				}
 			}]
 		}
 	}],
 	outcomes: [{
-		title: 'You\'re fucked',
-		description: 'No seriously, you\'re fucked...',
-		url: 'https://www.google.ca/search?q=you\'re+fucked&oq=you\'re+fucked&aqs=chrome..69i57j69i60l3j69i61j69i59.1430j0j4&sourceid=chrome&ie=UTF-8'
+		title: 'Outcome 1',
+		description: 'This is the first outcome'
 	},{
-		title: 'You\'re going on holiday!',
-		description: 'WOOOO YEAHHHHH',
-		url: 'http://thehypnotherapyteam.files.wordpress.com/2011/08/holiday.jpg'
+		title: 'Outcome 2',
+		description: 'This is the second outcome'
+	},{
+		title: 'Outcome 3',
+		description: 'This is the third outcome'
+	},{
+		title: 'Outcome 4',
+		description: 'This is the fourth outcome'
+	},{
+		title: 'Outcome 5',
+		description: 'This is the fifth outcome'
+	},{
+		title: 'Outcome 6',
+		description: 'This is the sixth outcome'
 	}]
 }

@@ -33,16 +33,13 @@ Flow.OutcomeManager = new (Backbone.Collection.extend({
 		Flow.Log.debug('OutcomeManager.checkAvailableOutcomes');	
 		var changed = true;
 		var localAvailableOutcomeIdsObj = {};
-		var localAvailableOutcomeIdsArr = [];
+		var localAvailableOutcomeIdsArr;
 		
 		_.each(questions.models, function(question) {
 			this.getOutcomeIdsFromQuestion(question, localAvailableOutcomeIdsObj);
 		}, this);
 		
-		_.each(localAvailableOutcomeIdsObj, function(value, key) {
-			localAvailableOutcomeIdsArr.push(key);
-		}, this);
-		
+		localAvailableOutcomeIdsArr = _.keys(localAvailableOutcomeIdsObj);
 		if(this.availableOutcomes) {
 			if(localAvailableOutcomeIdsArr.join('') === this.availableOutcomes.join('')) {
 				changed = false;
@@ -52,14 +49,18 @@ Flow.OutcomeManager = new (Backbone.Collection.extend({
 		if(changed) {
 		
 			this.availableOutcomes = localAvailableOutcomeIdsArr;
-			var outcomes = [];
+			var outcomes = [], id;
 			
-			_.each(this.availableOutcomes, function(outcomeId) {
-				outcomes.push(this.get(outcomeId));
+			_.each(this.models, function(outcome) {
+				
+				id = outcome.get('id');
+				outcome.set('available', (localAvailableOutcomeIdsObj.hasOwnProperty(id)));
+				
+				outcomes.push(outcome);
 			}, this);
 			
 			Flow.Log.debug('OutcomeManager triggering availableOutcomesUpdated');	
-			this.trigger('availableOutcomesUpdated', outcomes);
+			this.trigger('availableOutcomesUpdated', outcomes, this.availableOutcomes.length);
 		}
 		else {
 			Flow.Log.debug('OutcomeManager not triggering availableOutcomesUpdated');	

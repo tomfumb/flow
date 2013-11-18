@@ -1,6 +1,12 @@
 Flow.ContentView = Backbone.View.extend({
 
 	el: '#flow_content',
+	model: undefined,	// all this view's data is passed by main view. This is a skin component only and doesn't interact with the rest of the app
+	
+	answerDisplayTypes: {
+		SELECT: 'select',
+		DIV: 'div'
+	},
 	
 	answerThreshold: 5,
 	
@@ -25,6 +31,7 @@ Flow.ContentView = Backbone.View.extend({
 	template_many: [
 		'<div id="answers_<%= question.get("id") %>">',
 		'	<select class="multi_answer_select">',
+		'		<option value="">Please Select...</option>',
 		'		<% _.each(answers, function(answer) { %>',
 		'			<option type="text" value="<%= answer.get("id") %>"><%= answer.get("text") %></option>',
 		'		<% }); %>',
@@ -36,34 +43,53 @@ Flow.ContentView = Backbone.View.extend({
 		
 		Flow.Log.debug('ContentView.showQuestion (' + question.get('id') + ')');
 		
-		var template = this.template_base + (question.get('answers').length > this.answerThreshold ? this.template_many : this.template_few);
+		var selectListAnswers = question.get('answers').length > this.answerThreshold;
 		
-		this.$el.html(
-			_.template(
-				template,
-				{
-					question: question,
-					answers: question.get('answers')
-				}
-			)
-		);
+		var template = this.template_base + (selectListAnswers ? this.template_many : this.template_few);
+		this.$el.html(_.template(
+			template, {
+				question: question,
+				answers: question.get('answers')
+			}
+		));
 		
-		this.$el.find('#answers_' + question.get('id') + ' .answer').click(_.bind(function(event) {
-			this.onAnswerSelected(event);
-		}, this));
-		
-		this.$el.find('#answers_' + question.get('id') + ' .multi_answer_select').change(_.bind(function(event) {
-			this.onAnswerSelected(event);
-		}, this));
+		if(selectListAnswers) {
+			this.$el.find('#answers_' + question.get('id') + ' .multi_answer_select').change(_.bind(function(event) {
+				this.onAnswerSelected(this.getIdFromEvent(event, this.answerDisplayTypes.SELECT));
+			}, this));
+		}
+		else {
+			this.$el.find('#answers_' + question.get('id') + ' .answer').click(_.bind(function(event) {
+				this.onAnswerSelected(this.getIdFromEvent(event, this.answerDisplayTypes.DIV));
+			}, this));
+		}
 	},
 	
-	onAnswerSelected: function(event) {
+	getIdFromEvent: function(event, answerDisplayType) {
+
+		var jqTarget;
+		switch(answerDisplayType) {
+			
+			case this.answerDisplayTypes.SELECT:
+				return event.target.value;
+			case this.answerDisplayTypes.DIV:
+				jqTarget = $(event.target);
+				if(!jqTarget.hasClass('answer')) {
+					jqTarget = jqTarget.parents('div.answer');
+				}
+				return jqTarget.attr('id').replace(/^answer_/, '');
+			default:
+				Flow.Log.error('Unknown answer display type from selected answer: ' + answerDisplayType);
+				return;
+		}
+	},
+	
+	onAnswerSelected: function(id) {
+		// this function will be overwritten when this view is instantiated by MainView, in order to keep it as dumb and simple as possible - it won't listen for events
+		Flow.Log.error('ContentView.onAnswerSelected has not been overwritten by MainView');
+	},
+	
+	showOutcome: function(outcome) {
 		
-		// not sure what to do here
-		// event could come from two different handlers that could be div or child click (requiring parent find) or select list
-		// might make sense to have two functions here, or
-		// maybe handler functions should trigger jquery events with the answer's ID already determined
-		
-		debugger;
 	}
 });
