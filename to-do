@@ -1,3 +1,4 @@
+- Answers must be able to link to multiple outcomes
 - QuestionView and OutcomeView should be used for templating. Up to theme designer's discretion how they interact with ContentView or if they're even used. App only requires ContentView and has no visibility thereafter.
 	- ContentView could supply models to QuestionView and then watch for 'set' event on selectedAnswer.
 		- This would mean changing how MainView.setSelectedAnswer (nm?) currently works - it could do a silent set or only set if not already set (preferable)

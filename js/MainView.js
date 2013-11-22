@@ -10,17 +10,19 @@ Flow.MainView = Backbone.View.extend({
 		
 		questions.on('nextQuestionAvailable', _.bind(this.onNextQuestionAvailable, this));
 		questions.on('downstreamQuestionsReset', _.bind(this.onDownstreamQuestionsReset, this));
+		questions.on('outcomesReached', _.bind(this.onOutcomesReached, this));
 		
 		outcomes.on('availableOutcomesUpdated', _.bind(this.onAvailableOutcomesUpdated, this));
-		outcomes.on('outcomeReached', _.bind(this.onOutcomeReached, this));
+		
+		questions.on('change:selectedAnswer', _.bind(this.onAnswerSelected, this));
 	},
 	
 	render: function() {
+		
 		Flow.Log.debug('MainView.render');
 		this.$el.show();
 		
-		this.content = new Flow.ContentView();
-		this.content.onAnswerSelected = _.bind(this.onAnswerSelected, this);
+		this.content = new Flow.Theme.ContentView();
 		
 		this.getOutcomes().checkAvailableOutcomes(this.getQuestions());
 	},
@@ -41,14 +43,21 @@ Flow.MainView = Backbone.View.extend({
 		Flow.Log.debug('MainView.onAvailableOutcomesUpdated (' + availableCount + ' available)');
 	},
 	
-	onAnswerSelected: function(id) {
+	onAnswerSelected: function(question) {
 		
-		Flow.Log.debug('MainView.onAnswerSelected (' + id + ')');
-		var answer, answers = this.getAnswers();
-		answer = answers.get(id);
+		Flow.Log.debug('MainView.onAnswerSelected (Question ' + question.get('id') + ')');
 		
+		var answer = question.get('selectedAnswer');
 		var questions = this.getQuestions();
+		
+		var logMessage = 'MainView.onAnswerSelected (Question ' + question.get('id') + ')';
+		if(answer) {
+			logMessage += '(Answer: ' + answer.get('id');
+		}
+		Flow.Log.debug(logMessage);
+		
 		questions.setAnswer(answer);
+		
 		this.getOutcomes().checkAvailableOutcomes(questions);
 	},
 	
@@ -56,8 +65,11 @@ Flow.MainView = Backbone.View.extend({
 		Flow.Log.debug('MainView.onDownstreamQuestionsReset');
 	},
 	
-	onOutcomeReached: function(outcome) {
-		Flow.Log.debug('MainView.onOutcomeReached');
+	onOutcomesReached: function(outcomes) {
+		
+		Flow.Log.debug('MainView.onOutcomesReached (' + outcomes.length + ' outcomes)');
+		
+		this.content.showOutcomes(outcomes);
 	},
 	
 	getQuestions: function() {

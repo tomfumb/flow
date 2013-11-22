@@ -8,7 +8,7 @@ Flow.PrintView = Backbone.View.extend({
 		
 		questions.on('questionAnswered', _.bind(this.onQuestionAnswered, this));
 		questions.on('downstreamQuestionsReset', _.bind(this.onDownstreamQuestionsReset, this));
-		outcomes.on('outcomeReached', _.bind(this.onOutcomeReached, this));
+		outcomes.on('outcomesReached', _.bind(this.onOutcomesReached, this));
 	},
 	
 	onQuestionAnswered: function(question, answer) {
@@ -19,7 +19,7 @@ Flow.PrintView = Backbone.View.extend({
 		Flow.Log.debug('PrintView.onDownstreamQuestionsReset');
 	},
 	
-	onOutcomeReached: function(outcome) {
-		Flow.Log.debug('PrintView.onOutcomeReached');
+	onOutcomesReached: function(outcome) {
+		Flow.Log.debug('PrintView.onOutcomesReached');
 	}
 });

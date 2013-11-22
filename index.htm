@@ -1,22 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link href="css/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+		<link href="css/lib/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css" />
+		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!--[if lt IE 9]>
+		  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+		  <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+		<![endif]-->
 		<link href="css/flow.css" rel="stylesheet" type="text/css" />
 		<link href="css/themes/h-slides/theme.css" rel="stylesheet" type="text/css" />
 	</head>
 	<body>
-		<div id="flow_intro">
-			<h3>Intro Text</h3>
-			<p>Here will be some introduction text and a start button that is initially disabled</p>
-			<button id="flow_start" disabled="disabled">Start</button>
+		<div class="navbar navbar-inverse navbar-static-top" role="navigation">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+						<span class="sr-only">Toggle header</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="#">CCIJ Flow</a>
+				</div>
+				<div class="collapse navbar-collapse">
+					<ul class="nav navbar-nav">
+						<li class="active"><a href="#">Home</a></li>
+						<li><a href="#about">About</a></li>
+					</ul>
+				</div>
+			</div>
 		</div>
-		<div id="flow_body">
-			<div id="flow_content" />
+		<div class="container">
+			<div id="flow_intro">
+				<h3>Intro Text</h3>
+				<p>Here will be some introduction text and a start button that is initially disabled</p>
+				<button id="flow_start" disabled="disabled">Start</button>
+			</div>
+			<div id="flow_body">
+				<div id="flow_content">
+					
+					
+					
+					
+					
+					
+					
+					
+					<div id="flow_content_questions">
+				</div>
+			</div>
+			<div id="flow_print" />
 		</div>
-		<div id="flow_print" />
 		<script type="text/javascript" src="js/lib/jquery-1.10.2.min.js"></script>
 		<script type="text/javascript" src="js/lib/underscore-1.5.2-min.js"></script>
-		<script type="text/javascript" src="js/lib/backbone-1.1.0-min.js"></script></script>
+		<script type="text/javascript" src="js/lib/backbone-1.1.0-min.js"></script>
+		<script type="text/javascript" src="js/lib/bootstrap.min.js"></script>
 		<script type="text/javascript" src="js/Flow.js"></script>
 		<script type="text/javascript" src="js/Log.js"></script>
 		<script type="text/javascript" src="js/Util.js"></script>

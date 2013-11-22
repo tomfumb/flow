@@ -1,1 +1,3 @@
-window.Flow = {};
+window.Flow = {
+	Theme: {}
+};

@@ -87,8 +87,7 @@ Flow.QuestionManager = new (Backbone.Collection.extend({
 	
 	setAnswer: function(answer) {
 		
-		Flow.Log.debug('QuestionManager.setAnswer');		
-		answer.setSelected();
+		Flow.Log.debug('QuestionManager.setAnswer');
 		
 		Flow.Log.debug('QuestionManager triggering questionAnswered');		
 		this.trigger('questionAnswered', answer.get('question'), answer);
@@ -112,8 +111,8 @@ Flow.QuestionManager = new (Backbone.Collection.extend({
 				this.trigger('nextQuestionAvailable', answer.get('next'));
 				break;
 			case Flow.Question.prototype.nextTypes.OUTCOME:
-				Flow.Log.debug('QuestionManager triggering outcomeReached');		
-				this.trigger('outcomeReached', answer.get('next'));
+				Flow.Log.debug('QuestionManager triggering outcomesReached');		
+				this.trigger('outcomesReached', [answer.get('next')]);
 				break;
 		}
 	},
