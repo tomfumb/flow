@@ -1,8 +1,8 @@
 - Answers must be able to link to multiple outcomes
-- QuestionView and OutcomeView should be used for templating. Up to theme designer's discretion how they interact with ContentView or if they're even used. App only requires ContentView and has no visibility thereafter.
-	- ContentView could supply models to QuestionView and then watch for 'set' event on selectedAnswer.
-		- This would mean changing how MainView.setSelectedAnswer (nm?) currently works - it could do a silent set or only set if not already set (preferable)
-		- Or maybe the entire answer setting process could be triggered by the model's 'set' event and there would be no need for MainView to overwrite ContentView's onAnswerSelected
+- Bootstrap carousel only requires one carousel-inner element, not one per item
+	- Carousel issue: get markup, duplicate to have two questions, hard-code in index.htm and see if same error occurs. If not, problem most likely due to only having one item.
+	- If problems occur due to dynamically adding items then create 2 items up-front, cycle between them, and update their content whenever required. This approach not ideal but may be required 
+	- Consider putting all carousel-related markup into a view's render function, keeping index.htm theme-free
 - It should already be possible to go back through answered questions and choose different answers. Should display which answer was already selected and provide forward option if downstream answers not wiped
 - Should be showing available outcomes already too
 - Use history api to make browser's back button work like previous question button

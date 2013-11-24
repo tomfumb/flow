@@ -6,18 +6,40 @@ Flow.Theme.ContentView = Backbone.View.extend({
 	questions: [],
 	outcomes: [],
 	
-	showQuestion: function(question) {
+	render: function() {
 		
-		Flow.Log.debug('ContentView.showQuestion (' + question.get('id') + ')');
+		Flow.Log.debug('ContentView.render');
+		this.$el.append([
+			'<div id="flow_carousel" class="carousel slide" data-ride="carousel">',
+			'	<div id="flow_content_questions" class="carousel-inner"></div>',
+			'</div>'
+			].join('')
+		);
+	},
+	
+	addQuestion: function(question) {
+		
+		Flow.Log.debug('ContentView.showQuestion (' + question.get('id') + '), first: ' + (this.hadFirst ? 'false' : 'true'));
 		
 		var questionElId = 'question_container_' + question.get('id');
-		var questionEl = $('<div id="' + questionElId + '"/>');
+		var questionEl = $('<div id="' + questionElId + '" style="border: 1px solid green;"></div>');
 		
-		this.$el.html(questionEl);
+		this.$el.find('#flow_content_questions').append(questionEl);
 		
-		var questionView = new Flow.Theme.QuestionView({el: '#' + questionElId, model: question});
-		questionView.render();
+		var questionView = new Flow.Theme.QuestionView({el: '#' + questionElId, model: question, });
+		questionView.render(!this.hadFirst);
 		this.questions.push(questionView);
+		
+		if(!this.hadFirst) {
+			this.hadFirst = true;
+			this.$carouselEl = this.$el.find('#flow_carousel').carousel({
+				pause: true,
+				interval: false
+			});
+		}
+		else {
+			this.$carouselEl.carousel('next');
+		}
 	},
 	
 	showOutcomes: function(outcomes) {

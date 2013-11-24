@@ -13,7 +13,7 @@ $(function() {
 	});
 	
 	new Flow.IntroView({model: Flow.QuestionManager, el: '#flow_intro'});
-	window.debug = new Flow.MainView({model: combinedModel, el: '#flow_body'});
+	new Flow.MainView({model: combinedModel, el: '#flow_body'});
 	new Flow.PrintView({model: combinedModel, el: '#flow_print'});
 	
 	Flow.OutcomeManager.reset(Flow.config);
