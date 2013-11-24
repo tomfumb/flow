@@ -8,7 +8,7 @@ Flow.Theme.QuestionView = Backbone.View.extend({
 	},
 	
 	template_base: [
-		'<div style="height: 400px; width: 100%; background-color: green; border: 1px solid red;">&nbsp;</div>',
+		'<div style="height: 400px; width: 100%; background-color: green;">&nbsp;</div>',
 		'<div class="container">',
 		'	<div class="carousel-caption">',
 		'		<div id="question_<%= question.get("id") %>">',

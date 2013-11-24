@@ -1,3 +1,7 @@
 div.answer {
 	cursor: pointer;
 }
+
+.flow-carousel-navigation {
+	visibility: hidden;
+}

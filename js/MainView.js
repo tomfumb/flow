@@ -46,8 +46,6 @@ Flow.MainView = Backbone.View.extend({
 	
 	onAnswerSelected: function(question) {
 		
-		Flow.Log.debug('MainView.onAnswerSelected (Question ' + question.get('id') + ')');
-		
 		var answer = question.get('selectedAnswer');
 		var questions = this.getQuestions();
 		

@@ -1,8 +1,6 @@
 - Answers must be able to link to multiple outcomes
-- Bootstrap carousel only requires one carousel-inner element, not one per item
-	- Carousel issue: get markup, duplicate to have two questions, hard-code in index.htm and see if same error occurs. If not, problem most likely due to only having one item.
-	- If problems occur due to dynamically adding items then create 2 items up-front, cycle between them, and update their content whenever required. This approach not ideal but may be required 
-	- Consider putting all carousel-related markup into a view's render function, keeping index.htm theme-free
+- carousel events for slide and slid need to control the availability of navigation buttons
+- Need carousel content height to be something other than fixed pixel height
 - It should already be possible to go back through answered questions and choose different answers. Should display which answer was already selected and provide forward option if downstream answers not wiped
 - Should be showing available outcomes already too
 - Use history api to make browser's back button work like previous question button
