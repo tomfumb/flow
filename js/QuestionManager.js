@@ -93,12 +93,18 @@ Flow.QuestionManager = new (Backbone.Collection.extend({
 		this.trigger('questionAnswered', answer.get('question'), answer);
 		
 		// reset any downstream questions in case the user has back-tracked
-		var list = [], changed = false;
-		this.getFollowingAnsweredQuestions(answer, list);
-		_.each(list, function(question) {
-			question.set('selectedAnswer', undefined);
-			changed = true;
-		});
+		var previousAnswer = answer.get('question').previous('selectedAnswer');
+		if(previousAnswer) {
+			
+			var list = [], changed = false;
+			this.getFollowingAnsweredQuestions(previousAnswer, list);
+			_.each(list, function(question) {
+				question.unset('selectedAnswer', {silent: true});
+				changed = true;
+			});
+			
+			this.trigger('answerChanged', answer.get('question'));
+		}
 		
 		if(changed) {
 			Flow.Log.debug('QuestionManager triggering downstreamQuestionsReset');		

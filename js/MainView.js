@@ -9,6 +9,7 @@ Flow.MainView = Backbone.View.extend({
 		var outcomes = this.getOutcomes();
 		
 		questions.on('nextQuestionAvailable', _.bind(this.onNextQuestionAvailable, this));
+		questions.on('answerChanged', _.bind(this.onAnswerChanged, this));
 		questions.on('downstreamQuestionsReset', _.bind(this.onDownstreamQuestionsReset, this));
 		questions.on('outcomesReached', _.bind(this.onOutcomesReached, this));
 		
@@ -58,6 +59,13 @@ Flow.MainView = Backbone.View.extend({
 		questions.setAnswer(answer);
 		
 		this.getOutcomes().checkAvailableOutcomes(questions);
+	},
+	
+	onAnswerChanged: function(question) {
+		
+		Flow.Log.debug('MainView.onAnwerChanged');
+		
+		this.content.answerChanged(question);
 	},
 	
 	onDownstreamQuestionsReset: function() {

@@ -134,6 +134,27 @@ Flow.Theme.ContentView = Backbone.View.extend({
 		}
 	},
 	
+	answerChanged: function(question) {
+		
+		var questionId = question.get('id');
+		
+		Flow.Log.debug('ContentView.answerChanged (' + questionId + ')');
+		
+		this.outcomes = [];
+		var changedIndex = -1;
+		
+		_.each(this.questions, function(entry, index) {
+		
+			if(entry.id === questionId) {
+				changedIndex = index;
+			}
+		});
+		
+		if(changedIndex > -1 && changedIndex < (this.questions.length - 1)) {
+			this.questions = this.questions.slice(0, changedIndex + 1);
+		}
+	},
+	
 	showOutcomes: function(outcomes) {
 		
 		Flow.Log.debug('ContentView.showOutcomes');

@@ -1,3 +1,8 @@
+BUGS
+- if changing answer to one that leads to an outcome something goes wrong
+	- log shows onOutcomesReached but UI slides to a question
+	- *** because although I slice the array and remove the following views I never remove the content from the DOM
+
 - Answers must be able to link to multiple outcomes
 - carousel events for slide and slid need to control the availability of navigation buttons
 - Need carousel content height to be something other than fixed pixel height
