@@ -3,6 +3,8 @@ BUGS
 	- log shows onOutcomesReached but UI slides to a question
 	- *** because although I slice the array and remove the following views I never remove the content from the DOM
 
+- PrintView needs to handle answerChanged same as MainView
+- Consider having contentView handle questions and outcomes in the same way - logic is getting ugly around whether or not to show the Back button
 - Answers must be able to link to multiple outcomes
 - carousel events for slide and slid need to control the availability of navigation buttons
 - Need carousel content height to be something other than fixed pixel height
