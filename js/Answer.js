@@ -16,6 +16,7 @@ Flow.Answer = Backbone.Model.extend({
 	},
 	
 	setSelected: function() {
+		this.get('question').unset('selectedAnswer', {silent: true});
 		this.get('question').set('selectedAnswer', this);	
 	}
 });

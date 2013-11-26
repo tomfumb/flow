@@ -1,13 +1,9 @@
-BUGS
-- if changing answer to one that leads to an outcome something goes wrong
-	- log shows onOutcomesReached but UI slides to a question
-	- *** because although I slice the array and remove the following views I never remove the content from the DOM
-
 - PrintView needs to handle answerChanged same as MainView
-- Consider having contentView handle questions and outcomes in the same way - logic is getting ugly around whether or not to show the Back button
+- Questions should show which answer was selected
+- If answering question with select list should transition after a slight delay during which the select list and navigation buttons are disabled
 - Answers must be able to link to multiple outcomes
 - carousel events for slide and slid need to control the availability of navigation buttons
 - Need carousel content height to be something other than fixed pixel height
-- It should already be possible to go back through answered questions and choose different answers. Should display which answer was already selected and provide forward option if downstream answers not wiped
 - Should be showing available outcomes already too
 - Use history api to make browser's back button work like previous question button
+- http://getbootstrap.com/getting-started/#browsers

@@ -13,6 +13,7 @@ Flow.Theme.ContentView = Backbone.View.extend({
 			'<div id="flow_carousel" class="carousel slide" data-ride="carousel">',
 			'	<div id="flow_content_items" class="carousel-inner"></div>',
 			'</div>',
+			'<div id="flow_outcomes"></div>',
 			'<div id="flow_carousel_navigation">',
 			'	<div id="flow_carousel_navigation_back" class="flow-carousel-navigation">&lt;</div>',
 			'	<div id="flow_carousel_navigation_forward" class="flow-carousel-navigation">&gt;</div>',
@@ -30,7 +31,7 @@ Flow.Theme.ContentView = Backbone.View.extend({
 		
 		Flow.Log.debug('ContentView.addQuestion (' + questionId + '), first: ' + (this.hadFirst ? 'false' : 'true'));
 		
-		var questionElId = 'question_container_' + questionId;
+		var questionElId = this.getQuestionContainerId(question);
 		var questionEl = $('<div id="' + questionElId + '" style="border: 1px solid green;"></div>');
 		
 		this.$el.find('#flow_content_items').append(questionEl);
@@ -48,6 +49,10 @@ Flow.Theme.ContentView = Backbone.View.extend({
 		}
 		
 		this.showQuestion(questionId);
+	},
+	
+	getQuestionContainerId: function(question) {
+		return 'question_container_' + question.get('id');
 	},
 	
 	showQuestion: function(questionId) {
@@ -151,6 +156,13 @@ Flow.Theme.ContentView = Backbone.View.extend({
 		});
 		
 		if(changedIndex > -1 && changedIndex < (this.questions.length - 1)) {
+		
+			// remove previously-answered question views from the carousel
+			_.each(this.questions.slice(changedIndex + 1), function(entry) {
+				this.$el.find('#' + this.getQuestionContainerId(entry.view.model)).remove();
+			}, this);
+			
+			// remove previously-answered question entries from this view's array (used for forward / back navigation)
 			this.questions = this.questions.slice(0, changedIndex + 1);
 		}
 	},
@@ -170,14 +182,13 @@ Flow.Theme.ContentView = Backbone.View.extend({
 			var outcomeElId = 'outcome_container_' + outcome.get('id');
 			var outcomeEl = $('<div id="' + outcomeElId + '" style="border: 1px solid blue"></div>');
 		
-			this.$el.find('#flow_content_items').append(outcomeEl);
+			this.$el.find('#flow_outcomes').html(outcomeEl);
 			
 			this.outcomes.push(new Flow.Theme.OutcomeView({el: '#' + outcomeElId, model: outcome}));
 		}, this);
 		
 		_.each(this.outcomes, function(outcomeView) {
 			outcomeView.render();
-			this.$carouselEl.carousel('next');
 		}, this);
 		
 		_.each(this.questions, function(entry) {

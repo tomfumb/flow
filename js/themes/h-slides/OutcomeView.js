@@ -1,12 +1,17 @@
 Flow.Theme.OutcomeView = Backbone.View.extend({
 
 	template: [
-		'<div style="height: 400px; width: 100%; background-color: blue;">&nbsp;</div>',
-		'<div class="container">',
-		'	<div class="carousel-caption">',
-		'		<div id="outcome_<%= outcome.get("id") %>">',
-		'			<h4><%= outcome.get("title") %></h4>',
-		'			<p><%= outcome.get("description") %></p>',
+		'<div class="modal fade" id="flow_outcome_modal" tabindex="-1" role="dialog" aria-labelledby="flow_outcome_modal_label" aria-hidden="true">',
+		'	<div class="modal-dialog">',
+		'		<div class="modal-content">',
+		'			<div class="modal-header">',
+		'				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>',
+		'				<h4 class="modal-title" id="flow_outcome_modal_label"><%= outcome.get("title") %></h4>',
+		'			</div>',
+		'			<div class="modal-body"><%= outcome.get("description") %></div>',
+		'			<div class="modal-footer">',
+		'				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>',
+		'			</div>',
 		'		</div>',
 		'	</div>',
 		'</div>'
@@ -23,5 +28,7 @@ Flow.Theme.OutcomeView = Backbone.View.extend({
 				outcome: this.model
 			}
 		));
+		
+		this.$el.find('#flow_outcome_modal').modal();
 	}
 });
