@@ -5,6 +5,7 @@ Flow.Theme.ContentView = Backbone.View.extend({
 	
 	questions: [],
 	outcomes: [],
+	outcomePreviews: [],
 	
 	render: function() {
 		
@@ -15,8 +16,11 @@ Flow.Theme.ContentView = Backbone.View.extend({
 			'</div>',
 			'<div id="flow_outcomes"></div>',
 			'<div id="flow_carousel_navigation">',
-			'	<div id="flow_carousel_navigation_back" class="flow-carousel-navigation">&lt;</div>',
-			'	<div id="flow_carousel_navigation_forward" class="flow-carousel-navigation">&gt;</div>',
+			'	<div id="flow_carousel_navigation_back" class="flow-carousel-navigation"><span class="glyphicon glyphicon-chevron-left"></span></div>',
+			'	<div id="flow_carousel_navigation_forward" class="flow-carousel-navigation"><span class="glyphicon glyphicon-chevron-right"></span></div>',
+			'</div>',
+			'<div class="container">',
+			'	<div class="row" id="flow_outcome_previews"></div>',
 			'</div>'
 			].join('')
 		);
@@ -32,7 +36,7 @@ Flow.Theme.ContentView = Backbone.View.extend({
 		Flow.Log.debug('ContentView.addQuestion (' + questionId + '), first: ' + (this.hadFirst ? 'false' : 'true'));
 		
 		var questionElId = this.getQuestionContainerId(question);
-		var questionEl = $('<div id="' + questionElId + '" style="border: 1px solid green;"></div>');
+		var questionEl = $('<div id="' + questionElId + '" class="question-container"></div>');
 		
 		this.$el.find('#flow_content_items').append(questionEl);
 		
@@ -180,7 +184,7 @@ Flow.Theme.ContentView = Backbone.View.extend({
 		_.each(outcomes, function(outcome) {
 		
 			var outcomeElId = 'outcome_container_' + outcome.get('id');
-			var outcomeEl = $('<div id="' + outcomeElId + '" style="border: 1px solid blue"></div>');
+			var outcomeEl = $('<div id="' + outcomeElId + '"></div>');
 		
 			this.$el.find('#flow_outcomes').html(outcomeEl);
 			
@@ -194,5 +198,51 @@ Flow.Theme.ContentView = Backbone.View.extend({
 		_.each(this.questions, function(entry) {
 			entry.active = false;
 		});
+	},
+	
+	showAvailableOutcomes: function(outcomes) {
+		
+		var classesToUse;
+		switch(true) {
+			case (outcomes.length <= 3):
+				classesToUse = 'col-4 col-xs-4 col-sm-4 col-md-4 col-lg-4';
+				break;
+			case (outcomes.length <= 6):
+				classesToUse = 'col-2 col-xs-2 col-sm-2 col-md-2 col-lg-2';
+				break;
+			default:
+				classesToUse = 'col-1 col-xs-1 col-sm-1 col-md-1 col-lg-1';
+				break;
+		}
+		
+		Flow.Log.debug('ContentView.showAvailableOutcomes');
+		
+		var containerEl = $('#flow_outcome_previews')
+		
+		var outcomeId, outcomePreviewView, outcomePreviewContainerId, outcomePreviewContainerEl;
+		
+		if(!this.outcomePreviews.length) {
+			_.each(outcomes, function(outcome) {
+				
+				outcomeId = outcome.get('id');
+				
+				outcomePreviewContainerId = 'outcome_preview_container_' + outcomeId;
+				outcomePreviewContainerEl = $('<div id="' + outcomePreviewContainerId + '" class="' + classesToUse + '"></div>');
+				containerEl.append(outcomePreviewContainerEl);
+				
+				outcomePreviewView = new Flow.Theme.OutcomePreviewView({el: '#' + outcomePreviewContainerId, model: outcome});
+				outcomePreviewView.render();
+				this.outcomePreviews.push({id: outcomeId, view: outcomePreviewView, available: false});
+			}, this);
+		}
+		
+		
+		//
+		// available property should be watched by views so that their class can change in response to this
+		// is this possible? will the views' models keep up with the outcome object?
+		// testing required
+		//
+		
+		
 	}
 });

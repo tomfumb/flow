@@ -1,7 +1,7 @@
 Flow.config = {
 	questions: [{
 		title: 'Question 1',
-		content: 'Body of question 1',
+		content: 'Body of question 1. This is where the question\'s description will show.',
 		answers: {
 			options: [{
 				text: 'Answer 1.1',
@@ -29,7 +29,7 @@ Flow.config = {
 	},
 	{
 		title: 'Question 2.1',
-		content: 'Body of question 2.1',
+		content: 'Body of question 2.1. This is where the question\'s description will show.',
 		answers: {
 			options: [{
 				text: 'Answer 2.1.1',
@@ -50,7 +50,7 @@ Flow.config = {
 	},
 	{
 		title: 'Question 2.2',
-		content: 'Body of question 2.2',
+		content: 'Body of question 2.2. This is where the question\'s description will show.',
 		answers: {
 			options: [{
 				text: 'Answer 2.2.1',
@@ -71,7 +71,7 @@ Flow.config = {
 	},
 	{
 		title: 'Question 3.1',
-		content: 'Body of question 3.1',
+		content: 'Body of question 3.1. This is where the question\'s description will show.',
 		answers: {
 			options: [{
 				text: 'Answer 3.1.1',
@@ -92,7 +92,7 @@ Flow.config = {
 	},
 	{
 		title: 'Question 3.2',
-		content: 'Body of question 3.2',
+		content: 'Body of question 3.2. This is where the question\'s description will show.',
 		answers: {
 			options: [{
 				text: 'Answer 3.2.1',
@@ -113,7 +113,7 @@ Flow.config = {
 	},
 	{
 		title: 'Question 3.3',
-		content: 'Body of question 3.3',
+		content: 'Body of question 3.3. This is where the question\'s description will show.',
 		answers: {
 			options: [{
 				text: 'Answer 3.3.1',
@@ -141,21 +141,21 @@ Flow.config = {
 	}],
 	outcomes: [{
 		title: 'Outcome 1',
-		description: 'This is the first outcome'
+		description: 'This is the first outcome. A full description of the option will be shown here.'
 	},{
 		title: 'Outcome 2',
-		description: 'This is the second outcome'
+		description: 'This is the second outcome. A full description of the option will be shown here.'
 	},{
 		title: 'Outcome 3',
-		description: 'This is the third outcome'
+		description: 'This is the third outcome. A full description of the option will be shown here.'
 	},{
 		title: 'Outcome 4',
-		description: 'This is the fourth outcome'
+		description: 'This is the fourth outcome. A full description of the option will be shown here.'
 	},{
 		title: 'Outcome 5',
-		description: 'This is the fifth outcome'
+		description: 'This is the fifth outcome. A full description of the option will be shown here.'
 	},{
 		title: 'Outcome 6',
-		description: 'This is the sixth outcome'
+		description: 'This is the sixth outcome. A full description of the option will be shown here.'
 	}]
 }

@@ -1,6 +1,6 @@
 Flow.Theme.QuestionView = Backbone.View.extend({
 	
-	answerThreshold: 5,
+	answerThreshold: 2,
 	
 	answerDisplayTypes: {
 		SELECT: 'select',
@@ -8,28 +8,27 @@ Flow.Theme.QuestionView = Backbone.View.extend({
 	},
 	
 	template_base: [
-		'<div style="height: 400px; width: 100%; background-color: green;">&nbsp;</div>',
+		'<div style="height: 200px; width: 100%; background-color: #dddddd">&nbsp;</div>',
 		'<div class="container">',
 		'	<div class="carousel-caption">',
-		'		<div id="question_<%= question.get("id") %>">',
+		'		<div id="question_<%= question.get("id") %>" class="question">',
 		'			<h4><%= question.get("title") %></h4>',
 		'			<p><%= question.get("content") %></p>',
 		'		</div>'
 	].join(''),
 	
 	template_few: [
-		'		<div id="answers_<%= question.get("id") %>">',
+		'		<div id="answers_<%= question.get("id") %>" class="answers">',
 		'			<% _.each(answers, function(answer) { %>',
 		'				<div class="answer" id="answer_<%= answer.get("id") %>">',
 		'					<h5><%= answer.get("text") %></h5>',
-		'					<p><%= answer.get("value") %></p>',
 		'				</div>',
 		'			<% }); %>',
 		'		</div>'
 	].join(''),
 	
 	template_many: [
-		'		<div id="answers_<%= question.get("id") %>">',
+		'		<div id="answers_<%= question.get("id") %>" class="answers">',
 		'			<select class="multi_answer_select">',
 		'				<option value="">Please Select...</option>',
 		'				<% _.each(answers, function(answer) { %>',

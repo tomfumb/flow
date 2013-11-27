@@ -5,3 +5,26 @@ div.answer {
 .flow-carousel-navigation {
 	visibility: hidden;
 }
+
+.question {
+	text-align: left;
+	color: black;
+}
+
+.answers {
+	padding: 20px 0 0 10px;
+	text-align: left;
+	color: black;
+}
+
+.outcome-preview {
+	cursor: pointer;
+}
+
+.outcome-preview-unavailable {
+	background-color: gray;
+}
+
+.outcome-preview-available {
+	background-color: white;
+}

@@ -42,7 +42,10 @@ Flow.MainView = Backbone.View.extend({
 	},
 	
 	onAvailableOutcomesUpdated: function(outcomes, availableCount) {
+		
 		Flow.Log.debug('MainView.onAvailableOutcomesUpdated (' + availableCount + ' available)');
+		
+		this.content.showAvailableOutcomes(outcomes);
 	},
 	
 	onAnswerSelected: function(question) {
