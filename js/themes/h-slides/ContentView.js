@@ -1,7 +1,6 @@
 Flow.Theme.ContentView = Backbone.View.extend({
 
 	el: '#flow_content',
-	model: undefined,	// all this view's data is passed by main view. This is a skin component only and doesn't interact with the rest of the app
 	
 	questions: [],
 	outcomes: [],
@@ -25,38 +24,64 @@ Flow.Theme.ContentView = Backbone.View.extend({
 			].join('')
 		);
 		
+		
+		// logic required to check if the next question to the left or right is available before
+		// visibility of left / right buttons can be updated
+		
 		this.$el.find('#flow_carousel_navigation_back').click(_.bind(this.onBackSelected, this));
 		this.$el.find('#flow_carousel_navigation_forward').click(_.bind(this.onForwardSelected, this));
 	},
 	
-	addQuestion: function(question) {
+	addQuestions: function(questions) {
 		
-		var questionId = question.get('id');
+		Flow.Log.debug('ContentView.addQuestions');
 		
-		Flow.Log.debug('ContentView.addQuestion (' + questionId + '), first: ' + (this.hadFirst ? 'false' : 'true'));
+		_.each(questions, function(question) {
 		
-		var questionElId = this.getQuestionContainerId(question);
-		var questionEl = $('<div id="' + questionElId + '" class="question-container"></div>');
+			var questionId = question.get('id');
+			
+			Flow.Log.debug('ContentView.addQuestion (' + questionId + '), first: ' + (this.hadFirst ? 'false' : 'true'));
+			
+			var questionElId = this.getQuestionContainerId(questionId);
+			var questionEl = $('<div id="' + questionElId + '" class="question-container"></div>');
+			
+			this.$el.find('#flow_content_items').append(questionEl);
+			
+			var questionView = new Flow.Theme.QuestionView({el: '#' + questionElId, model: question});
+			questionView.render(!this.hadFirst);
+			this.questions.push({id: questionId, view: questionView, active: !this.hadFirst});
+			
+			if(!this.hadFirst) {
+				this.hadFirst = true;
+				this.$carouselEl = this.$el.find('#flow_carousel').carousel({
+					pause: true,
+					interval: false
+				});
+			}
+		}, this);
 		
-		this.$el.find('#flow_content_items').append(questionEl);
 		
-		var questionView = new Flow.Theme.QuestionView({el: '#' + questionElId, model: question, });
-		questionView.render(!this.hadFirst);
-		this.questions.push({id: questionId, view: questionView, active: !this.hadFirst});
+		// add all markup here
 		
-		if(!this.hadFirst) {
-			this.hadFirst = true;
-			this.$carouselEl = this.$el.find('#flow_carousel').carousel({
-				pause: true,
-				interval: false
-			});
-		}
 		
-		this.showQuestion(questionId);
 	},
 	
-	getQuestionContainerId: function(question) {
-		return 'question_container_' + question.get('id');
+	showFirstQuestion: function() {
+		
+		Flow.Log.debug('ContentView.showFirstQuestion');
+			
+		Flow.Log.error('This should simply slide the carousel to the first slide. addQuestions should add all the required markup in one go');
+	},
+	
+	addOutcomes: function(outcomes) {
+		
+		
+		// add to display and listend to change:available 
+		
+	},
+	
+	getQuestionContainerId: function(questionId) {
+		return 'question_container_' + questionId;
 	},
 	
 	showQuestion: function(questionId) {

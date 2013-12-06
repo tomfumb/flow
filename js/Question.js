@@ -1,31 +1,17 @@
 Flow.Question = Backbone.Model.extend({
 	
-	initialize: function() {
-		this.resetAnswers();
-		this.set('precedingAnswers', []);
-	},
-
-	addAnswer: function(answer) {
-		answer.set('question', this);
-		this.get('answers').push(answer);
-	},
+	hasAnswer: function(requiredAnswer) {
 	
-	resetAnswers: function() {
-		Flow.Log.debug('Question.resetAnswers (' + this.get('id') + ')');	
-		this.set('answers', []);
-	},
-	
-	addPrecedingAnswer: function(answer) {
-		this.get('precedingAnswers').push(answer);
-	},
-
-	identifierTypes: {
-		ID: 'id',
-		TITLE: 'title'
-	},
-
-	nextTypes: {
-		QUESTION: 'question',
-		OUTCOME: 'outcome'
+		// first check that the answer is actually available within the question. If not there is a problem
+		var found = _.find(this.get('answers'), function(answer) {
+			return requiredAnswer == answer;
+		});
+		
+		if(!found) {
+			Flow.Log.error('Question "' + this.get('id') + '" checked for answer but answer "' + requiredAnswer + '" not available');
+			return;
+		}
+		
+		return(requiredAnswer == this.get('selectedAnswer'));
 	}
 });

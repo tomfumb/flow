@@ -8,14 +8,13 @@ $(function() {
 	var combinedModel = new Backbone.Model();
 	combinedModel.set({
 		Outcomes: Flow.OutcomeManager,
-		Questions: Flow.QuestionManager,
-		Answers: Flow.AnswerCollection
+		Questions: Flow.QuestionManager
 	});
 	
 	new Flow.IntroView({model: Flow.QuestionManager, el: '#flow_intro'});
 	new Flow.MainView({model: combinedModel, el: '#flow_body'});
 	new Flow.PrintView({model: combinedModel, el: '#flow_print'});
 	
-	Flow.OutcomeManager.reset(Flow.config);
-	Flow.QuestionManager.reset(Flow.config, Flow.AnswerCollection, Flow.OutcomeManager);
+	Flow.OutcomeManager.reset(Flow.config.outcomes);
+	Flow.QuestionManager.reset(Flow.config.questions);
 });

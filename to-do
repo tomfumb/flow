@@ -1,22 +1,10 @@
-BUGS
-- need to look at what's wrong with fwd / back logic. UI can follow impossible flows. Takes a few forward and back moves to reproduce. Probably easier to look at the code than try to trace the log.
-	- might be easier to figure out if selected answer is marked
-	- Availability of fwd / back buttons may not be tied to answerChanged event and clearing future views
-- ** should refactor removal of future answers to something like this:
-	- separate fn to get index of any question / view / carousel item
-	- can carousel handle availability of left/right buttons on its own??? (should do)
-		- can it handle swipe actions? Back / fwd should permit this
-	- separate function clearFutureQuestions manages both the array and carousel DOM elements
-	- items in questions array have reference to their container DOM element
-- outcomes do not seem to be correctly identified as available / unavailable. After answering 1st question all were flagged as available
-
+- when a question or outcome's visibility / availability is dependent on certain answer/s being selected the inspect function should also verify that those answers are available and log an error if not
+- can it handle swipe actions? Back / fwd should permit this
 - determine if OutcomePreviewView models keep up with available attribute and if so use in event handler
-- PrintView needs to handle answerChanged same as MainView
 - Questions should show which answer was selected
 - http://blog.jetstrap.com/2013/08/bootstrap-3-grids-explained/ - buttons will screw up at col-1, needs fixing for small screens
 - If answering question with select list should transition after a slight delay during which the select list and navigation buttons are disabled
 - what happens with large numbers of outcomes?
-- Answers must be able to link to multiple outcomes
 - carousel events for slide and slid need to control the availability of navigation buttons
 - Need carousel content height to be something other than fixed pixel height
 - Carousel navigation buttons should be in left / right floating DIVs and added by the ContentView - can't be controlled by QuestionView as this immediately slides out of view
