@@ -3,7 +3,7 @@ Flow.config = {
 		id: '1',
 		title: 'Question 1',
 		content: 'Body of question 1. This is where the question\'s description will show.',
-		answers: ['answer 1', 'answre 2', 'answer 3', 'answer 4', 'answer 5', 'answer 6'],
+		answers: ['answer 1', 'answer 2', 'answer 3', 'answer 4', 'answer 5', 'answer 6'],
 		answerType: 'multi-select'
 	},
 	{

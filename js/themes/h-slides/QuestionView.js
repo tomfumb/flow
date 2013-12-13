@@ -1,10 +1,11 @@
 Flow.Theme.QuestionView = Backbone.View.extend({
 	
-	answerThreshold: 5,
+	singleAnswerThreshold: 5,
 	
 	answerDisplayTypes: {
-		SELECT: 'select',
-		DIV: 'div'
+		EL_CLICK: 'el_click',
+		LIST_SELECT: 'list_select',
+		CHECK_BUTTON_CLICK: 'check_button_click'
 	},
 	
 	template_base: [
@@ -17,7 +18,7 @@ Flow.Theme.QuestionView = Backbone.View.extend({
 		'		</div>'
 	].join(''),
 	
-	template_few: [
+	template_single_few: [
 		'		<div id="answers_<%= question.get("id") %>" class="answers">',
 		'			<% _.each(answers, function(answer, index) { %>',
 		'				<div class="answer" id="answer_<%= index %>">',
@@ -27,14 +28,24 @@ Flow.Theme.QuestionView = Backbone.View.extend({
 		'		</div>'
 	].join(''),
 	
-	template_many: [
+	template_single_many: [
 		'		<div id="answers_<%= question.get("id") %>" class="answers">',
 		'			<select class="multi_answer_select">',
 		'				<option value="">Please Select...</option>',
 		'				<% _.each(answers, function(answer, index) { %>',
-		'					<option type="text" value="<%= index %>"><%= answer %></option>',
+		'					<option type="text" value="<%= answer %>"><%= answer %></option>',
 		'				<% }); %>',
 		'			</select>',
+		'		</div>'
+	].join(''),
+	
+	template_multi: [
+		'		<div id="answers_<%= question.get("id") %>" class="answers">',
+		'			<% _.each(answers, function(answer, index) { %>',
+		'				<input type="checkbox" id="q<%= question.get("id") %>_a_<%= index %>" /> <%= answer %><br />',
+		'			<% }); %>',
+		'			<br />',
+		'			<button class="continue">Continue</button>',
 		'		</div>'
 	].join(''),
 	
@@ -54,9 +65,28 @@ Flow.Theme.QuestionView = Backbone.View.extend({
 			this.$el.addClass('active');
 		}
 		
-		var selectListAnswers = this.model.get('answers').length > this.answerThreshold;
+		var bodyTemplate, answerStyle;
+		switch(this.model.get('answerType')) {
+			case 'single-select':
+				if(this.model.get('answers').length > this.singleAnswerThreshold) {
+					bodyTemplate = this.template_single_many;
+					answerStyle = this.answerDisplayTypes.LIST_SELECT;
+				}
+				else {
+					bodyTemplate = this.template_single_few;
+					answerStyle = this.answerDisplayTypes.EL_CLICK;
+				}
+				break;
+			case 'multi-select':
+				bodyTemplate = this.template_multi;
+				answerStyle = this.answerDisplayTypes.CHECK_BUTTON_CLICK;
+				break;
+			default:
+				Flow.Log.error('Unknown answerType provided: ' + this.model.get('answerType'));
+				return;
+		}
 		
-		var template = this.template_base + (selectListAnswers ? this.template_many : this.template_few) + this.template_end;
+		var template = this.template_base + bodyTemplate + this.template_end;
 		this.$el.html(_.template(
 			template, {
 				question: this.model,
@@ -64,48 +94,52 @@ Flow.Theme.QuestionView = Backbone.View.extend({
 			}
 		));
 		
-		if(selectListAnswers) {
-			this.$el.find('#answers_' + this.model.get('id') + ' .multi_answer_select').change(_.bind(function(event) {
-				this.onAnswerSelected(this.getIdFromEvent(event, this.answerDisplayTypes.SELECT));
-			}, this));
-		}
-		else {
-			this.$el.find('#answers_' + this.model.get('id') + ' .answer').click(_.bind(function(event) {
-				this.onAnswerSelected(this.getIdFromEvent(event, this.answerDisplayTypes.DIV));
-			}, this));
-		}
-	},
-	
-	getIdFromEvent: function(event, answerDisplayType) {
-
-		var jqTarget;
-		switch(answerDisplayType) {
+		switch(answerStyle) {
 			
-			case this.answerDisplayTypes.SELECT:
-				return event.target.value;
-			case this.answerDisplayTypes.DIV:
-				jqTarget = $(event.target);
-				if(!jqTarget.hasClass('answer')) {
-					jqTarget = jqTarget.parents('div.answer');
-				}
-				return jqTarget.attr('id').replace(/^answer_/, '');
+			case this.answerDisplayTypes.EL_CLICK:
+			
+				this.$el.find('#answers_' + this.model.get('id') + ' .answer').click(_.bind(function(event) {
+					
+					var jqTarget = $(event.target);
+					if(!jqTarget.hasClass('answer')) {
+						jqTarget = jqTarget.parents('div.answer');
+					}
+					
+					this.onAnswersSelected([jqTarget.find('h5').html()]);
+				}, this));
+				break;
+			case this.answerDisplayTypes.LIST_SELECT:
+			
+				this.$el.find('#answers_' + this.model.get('id') + ' .multi_answer_select').change(_.bind(function(event) {
+					this.onAnswersSelected([event.target.value]);
+				}, this));
+				break;
+			case this.answerDisplayTypes.CHECK_BUTTON_CLICK:
+			
+				this.$el.find('#answers_' + this.model.get('id') + ' button.continue').click(_.bind(function(event) {
+					
+					event.preventDefault();
+					var answers = [];
+					var checkedAnswers = $(event.target).parents('div.answers').find('input:checked');
+					
+					_.each(checkedAnswers, function(checkbox) {
+						var answerIndex = checkbox.id.replace(/q(\d+)_a_/, '');
+						answers.push(this.model.get('answers')[answerIndex]);
+					}, this);
+					
+					this.onAnswersSelected(answers);
+				}, this));
+				break;
 			default:
-				Flow.Log.error('Unknown answer display type from selected answer: ' + answerDisplayType);
+				Flow.Log.error('Unknown answerStyle provided: ' + answerStyle);
 				return;
 		}
 	},
 	
-	onAnswerSelected: function(id) {
+	onAnswersSelected: function(answers) {
 		
-		Flow.Log.debug('QuestionView.onAnswerSelected(' + id + ')');
+		Flow.Log.debug('QuestionView.onAnswerSelected(' + answers.join(', ') + ')');
 		
-		var answers = this.model.get('answers');
-		var answer = _.find(answers, function(answer) {
-			return (answer.get('id') === id);
-		}, this);
-		
-		if(answer) {
-			answer.setSelected();
-		}
+		this.model.set('selectedAnswers', answers);
 	}
 });

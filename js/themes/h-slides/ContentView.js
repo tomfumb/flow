@@ -20,7 +20,8 @@ Flow.Theme.ContentView = Backbone.View.extend({
 			'</div>',
 			'<div class="container">',
 			'	<div class="row" id="flow_outcome_previews"></div>',
-			'</div>'
+			'</div>',
+			'<div id="flow_scratch"></div>'
 			].join('')
 		);
 		
@@ -36,7 +37,11 @@ Flow.Theme.ContentView = Backbone.View.extend({
 		
 		Flow.Log.debug('ContentView.addQuestions');
 		
+		var scratch = this.$el.find('#flow_scratch');
+		
 		_.each(questions, function(question) {
+			
+			question.on('change:selectedAnswers', this.onAnswersSelected, this);
 		
 			var questionId = question.get('id');
 			
@@ -45,7 +50,7 @@ Flow.Theme.ContentView = Backbone.View.extend({
 			var questionElId = this.getQuestionContainerId(questionId);
 			var questionEl = $('<div id="' + questionElId + '" class="question-container"></div>');
 			
-			this.$el.find('#flow_content_items').append(questionEl);
+			scratch.append(questionEl);
 			
 			var questionView = new Flow.Theme.QuestionView({el: '#' + questionElId, model: question});
 			questionView.render(!this.hadFirst);
@@ -53,24 +58,26 @@ Flow.Theme.ContentView = Backbone.View.extend({
 			
 			if(!this.hadFirst) {
 				this.hadFirst = true;
-				this.$carouselEl = this.$el.find('#flow_carousel').carousel({
-					pause: true,
-					interval: false
-				});
 			}
 		}, this);
 		
-		
-		// add all markup here
-		
-		
+		this.$el.find('#flow_content_items').append(scratch.html());
+		scratch.html('');
 	},
 	
 	showFirstQuestion: function() {
 		
 		Flow.Log.debug('ContentView.showFirstQuestion');
-			
-		Flow.Log.error('This should simply slide the carousel to the first slide. addQuestions should add all the required markup in one go');
+		
+		// first question is actually already shown by this point but it does not yet have the ability to move to the next question. Carousel initialisation is required for that
+		this.$carouselEl = this.$el.find('#flow_carousel').carousel({
+			pause: true,
+			interval: false
+		});
+	},
+	
+	onAnswersSelected: function(a, b, c) {
+		var d = 0;
 	},
 	
 	addOutcomes: function(outcomes) {
@@ -84,7 +91,7 @@ Flow.Theme.ContentView = Backbone.View.extend({
 		return 'question_container_' + questionId;
 	},
 	
-	showQuestion: function(questionId) {
+	showQuestion_old: function(questionId) {
 		
 		Flow.Log.debug('ContentView.showQuestion (' + questionId + ')');
 		
@@ -125,75 +132,10 @@ Flow.Theme.ContentView = Backbone.View.extend({
 	
 	onBackSelected: function(event) {
 		
-		Flow.Log.debug('ContentView.onBackSelected');
-		
-		if(event && event.preventDefault) {
-			event.preventDefault();
-		}
-		
-		var currentIndex = -1;
-		_.each(this.questions, function(entry, index) {
-			if(entry.active) {
-				currentIndex = index;
-			}
-		});
-		
-		if(currentIndex > 0) {
-			this.showQuestion(this.questions[currentIndex - 1].id);
-		}
-		
-		if(currentIndex < 0) {
-			// this means no questions are showing. Interpret as meaning an outcome is shown
-			this.showQuestion(this.questions[this.questions.length - 1].id);
-		}
 	},
 	
 	onForwardSelected: function(event) {
 		
-		Flow.Log.debug('ContentView.onForwardSelected');
-		
-		if(event && event.preventDefault) {
-			event.preventDefault();
-		}
-		
-		var currentIndex = -1;
-		_.each(this.questions, function(entry, index) {
-			if(entry.active) {
-				currentIndex = index;
-			}
-		});
-		
-		if(currentIndex > -1 && currentIndex < (this.questions.length - 1)) {
-			this.showQuestion(this.questions[currentIndex + 1].id);
-		}
-	},
-	
-	answerChanged: function(question) {
-		
-		var questionId = question.get('id');
-		
-		Flow.Log.debug('ContentView.answerChanged (' + questionId + ')');
-		
-		this.outcomes = [];
-		var changedIndex = -1;
-		
-		_.each(this.questions, function(entry, index) {
-		
-			if(entry.id === questionId) {
-				changedIndex = index;
-			}
-		});
-		
-		if(changedIndex > -1 && changedIndex < (this.questions.length - 1)) {
-		
-			// remove previously-answered question views from the carousel
-			_.each(this.questions.slice(changedIndex + 1), function(entry) {
-				this.$el.find('#' + this.getQuestionContainerId(entry.view.model)).remove();
-			}, this);
-			
-			// remove previously-answered question entries from this view's array (used for forward / back navigation)
-			this.questions = this.questions.slice(0, changedIndex + 1);
-		}
 	},
 	
 	showOutcomes: function(outcomes) {
