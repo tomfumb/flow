@@ -14,10 +14,37 @@ Flow.QuestionManager = new (Backbone.Collection.extend({
 				}
 			}
 		}, this);
+		
+		this.on('reset', _.bind(this.onReset, this));
+	},
+	
+	onReset: function() {
+		_.each(this.models, function(model) {
+			model.set('available', true);
+		});
 	},
 	
 	readyForFirstQuestion: function() {
 		Flow.Log.debug('QuestionManager triggering start');		
 		this.trigger('start');
+	},
+	
+	checkAvailableQuestions: function() {
+		
+		Flow.Log.debug('QuestionManager.checkAvailableQuestions');
+		
+		this.indexedQuestions = this.indexedQuestions || _.indexBy(this.models, function(question) {
+			return question.get('id');
+		});
+	
+		_.each(this.models, function(question) {
+			
+			var condition = question.get('condition');
+			if(typeof condition === 'function') {
+				var available = condition.apply(this, [this.indexedQuestions]);
+				Flow.Log.info('Setting question ' + question.get('id') + ' available to ' + available);
+				question.set('available', available);
+			}
+		}, this);
 	}
 }));

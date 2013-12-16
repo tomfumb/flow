@@ -25,18 +25,17 @@ Flow.OutcomeManager = new (Backbone.Collection.extend({
 		
 		Flow.Log.debug('OutcomeManager.checkAvailableOutcomes');
 		
-		_.each(this.models, function(model) {
+		var indexedQuestions = _.indexBy(questions, function(question) {
+			return question.get('id');
+		});
+		
+		_.each(this.models, function(outcome) {
 			
-			var condition = model.get('condition'), depends = model.get('depends');
-			if(condition && depends) {
-				
-				var argument = _.indexBy(questions.models, function(question) {
-					return question.get('id');
-				});
-				
-				var available = condition.apply(this, [argument]);
-				
-				model.set('available', available);
+			var condition = outcome.get('condition');
+			if(typeof condition === 'function') {
+				var available = condition.apply(this, [indexedQuestions]);
+				Flow.Log.info('Setting outcome ' + outcome.get('title') + ' available to ' + available);
+				outcome.set('available', available);
 			}
 		}, this);
 	}

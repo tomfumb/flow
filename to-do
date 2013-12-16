@@ -1,3 +1,4 @@
+- for multi-select questions with checkboxes - update answersSelected every time a box is checked and 'Continue' button is just another forward navigation button
 - when a question or outcome's visibility / availability is dependent on certain answer/s being selected the inspect function should also verify that those answers are available and log an error if not
 - can it handle swipe actions? Back / fwd should permit this
 - determine if OutcomePreviewView models keep up with available attribute and if so use in event handler
@@ -10,3 +11,4 @@
 - Carousel navigation buttons should be in left / right floating DIVs and added by the ContentView - can't be controlled by QuestionView as this immediately slides out of view
 - Use history api to make browser's back button work like previous question button
 - http://getbootstrap.com/getting-started/#browsers
+- if possible to move fwd and back through questions regardless of what's answered the UI should show which questions have been passed unanswered

@@ -12,7 +12,7 @@ Flow.Question = Backbone.Model.extend({
 			return;
 		}
 		
-		var selected = _.find(this.get('selectedAnswers'), function(answer) {
+		var selected = !!_.find(this.get('selectedAnswers'), function(answer) {
 			return requiredAnswer == answer;
 		});
 		

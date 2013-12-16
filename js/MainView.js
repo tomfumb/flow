@@ -8,7 +8,7 @@ Flow.MainView = Backbone.View.extend({
 		this.outcomes = this.model.get('Outcomes');
 		
 		this.questions.listenToOnce(this.questions, 'start', _.bind(this.onStart, this));
-		this.questions.on('change:selectedAnswer', _.bind(this.onAnswerSelected, this));
+		this.questions.on('change:selectedAnswers', _.bind(this.onAnswersSelected, this));
 	},
 	
 	render: function() {
@@ -19,7 +19,7 @@ Flow.MainView = Backbone.View.extend({
 		this.content = new Flow.Theme.ContentView();
 		this.content.render();
 		
-		this.outcomes.checkAvailableOutcomes(this.questions);
+		this.outcomes.checkAvailableOutcomes(this.questions.models);
 		this.content.addOutcomes(this.outcomes.models);
 	},
 	
@@ -32,20 +32,16 @@ Flow.MainView = Backbone.View.extend({
 		this.content.showFirstQuestion();
 	},
 	
-	onAnswerSelected: function(question) {
+	onAnswersSelected: function(answeredQuestion, answers) {
 		
-		var answer = question.get('selectedAnswer');
+		// execute any condition functions that determine if questions are now available or unavailable
+		this.questions.checkAvailableQuestions();
+		this.outcomes.checkAvailableOutcomes(this.questions.models);
 		
-		var logMessage = 'MainView.onAnswerSelected (Question ' + question.get('id') + ')';
-		if(answer) {
-			logMessage += '(Answer: ' + answer;
-		}
-		
-		Flow.Log.debug(logMessage);
+		this.content.showNextQuestion();
 		
 		
-		// check if a different answer was previously selected - necessary?
-		
+		// at this point consider assessing which questions have been left unanswered and visibly make sure the user is aware of this
 		
 	}
 });

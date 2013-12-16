@@ -19,7 +19,6 @@ Flow.config = {
 		content: 'Body of question 2b This is where the question\'s description will show.',
 		answers: ['answer 1', 'answer 2', 'answer 3', 'answer 4', 'answer 5', 'answer 6', 'answer 7', 'answer 8'],
 		answerType: 'single-select',
-		depends: ['1', '2a'],
 		condition: function(questions) {
 			return(questions['1'].hasAnswer('answer 3') && questions['2a'].hasAnswer('answer 1'));
 		}
@@ -34,14 +33,12 @@ Flow.config = {
 	outcomes: [{
 		title: 'Outcome 1',
 		description: 'This is the first outcome. A full description of the option will be shown here.',
-		depends: ['2b'],
 		condition: function(questions) {
 			return (questions['2b'].hasAnswer('answer 3') || questions['2b'].hasAnswer('answer 4'));
 		}
 	},{
 		title: 'Outcome 2',
 		description: 'This is the second outcome. A full description of the option will be shown here.',
-		depends: ['1', '3'],
 		condition: function(questions) {
 			return !questions['1'].hasAnswer('answer 6');
 		}

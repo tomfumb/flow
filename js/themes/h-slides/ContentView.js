@@ -40,8 +40,6 @@ Flow.Theme.ContentView = Backbone.View.extend({
 		var scratch = this.$el.find('#flow_scratch');
 		
 		_.each(questions, function(question) {
-			
-			question.on('change:selectedAnswers', this.onAnswersSelected, this);
 		
 			var questionId = question.get('id');
 			
@@ -61,8 +59,7 @@ Flow.Theme.ContentView = Backbone.View.extend({
 			}
 		}, this);
 		
-		this.$el.find('#flow_content_items').append(scratch.html());
-		scratch.html('');
+		this.$el.find('#flow_content_items').append(scratch.find('div.question-container'));
 	},
 	
 	showFirstQuestion: function() {
@@ -74,10 +71,168 @@ Flow.Theme.ContentView = Backbone.View.extend({
 			pause: true,
 			interval: false
 		});
+		
+		// ensure navigation buttons aren't available during carousel movement
+		this.$carouselEl.on('slide.bs.carousel', _.bind(this.onSlideStart, this));
+		this.$carouselEl.on('slid.bs.carousel', _.bind(this.onSlideStop, this));
+		
+		this.$el.find('#flow_carousel_navigation_forward').css('visibility', 'visible');
 	},
 	
-	onAnswersSelected: function(a, b, c) {
-		var d = 0;
+	showNextQuestion: function() {
+		
+		Flow.Log.debug('ContentView.showNextQuestion');
+			
+		var nextIndex = this.getIndexOfNextAvailableQuestion();
+		
+		if(nextIndex > -1) {
+			
+			Flow.Log.debug('Advancing to ' + nextIndex);
+			
+			_.each(this.questions, function(entry, index) {
+				entry.active = (index === nextIndex);
+			}, this);
+			
+			this.$carouselEl.carousel(nextIndex);
+			
+			if(this.getIndexOfNextAvailableQuestion() === -1) {
+				this.$el.find('#flow_carousel_navigation_forward').css('visibility', 'hidden');
+			}
+			
+			this.$el.find('#flow_carousel_navigation_back').css('visibility', 'visible');
+		}
+		else {
+			
+			Flow.Log.debug('No more questions available');
+			
+			// how to notify rest of the application that the end of all the questions has been reached?
+			// just not do anything?
+			
+		}
+	},
+	
+	showPreviousQuestion: function() {
+		
+		Flow.Log.debug('ContentView.showPreviousQuestion');
+			
+		var prevIndex = this.getIndexOfPreviousAvailableQuestion();
+		
+		if(prevIndex > -1) {
+			
+			Flow.Log.debug('Reverting to ' + prevIndex);
+			
+			_.each(this.questions, function(entry, index) {
+				entry.active = (index === prevIndex);
+			}, this);
+			
+			this.$carouselEl.carousel(prevIndex);
+			
+			if(this.getIndexOfPreviousAvailableQuestion() === -1) {
+				this.$el.find('#flow_carousel_navigation_back').css('visibility', 'hidden');
+			}
+			
+			this.$el.find('#flow_carousel_navigation_forward').css('visibility', 'visible');
+		}
+		else {
+			Flow.Log.debug('No previous questions available');
+		}
+	},
+	
+	getIndexOfNextAvailableQuestion: function() {
+		
+		Flow.Log.debug('ContentView.getIndexOfNextAvailableQuestion');
+		
+		var nextIndex = -1, activeIndex = -1;
+		_.each(this.questions, function(entry, index) {
+			if(entry.active) {
+				activeIndex = index;
+			}
+		}, this);
+		
+		if(activeIndex < 0) {
+			Flow.Log.error('Unable to find currently active view index');
+			return nextIndex;
+		}
+		
+		Flow.Log.debug('ActiveIndex: ' + activeIndex);
+		
+		if(activeIndex === (this.questions.length - 1)) {
+			Flow.Log.info('Reached end of available questions (index: ' + activeIndex + ')');
+			return nextIndex;
+		}
+		
+		_.each(this.questions, function(entry, index) {
+			
+			// only pay attention to questions after the current and only accept the index of the first following available question
+			if(index > activeIndex && nextIndex === -1) {
+				
+				var model = entry.view.model, id;
+				id = model.get('id');
+				if(model.get('available')) {
+					
+					Flow.Log.debug('Next available question: ' + id);
+					nextIndex = index;
+				}
+				else {
+					Flow.Log.debug('Next question not available (' + id + ')');
+				}
+			}
+		}, this);
+		
+		return nextIndex;
+	},
+	
+	getIndexOfPreviousAvailableQuestion: function() {
+		
+		Flow.Log.debug('ContentView.getIndexOfPreviousAvailableQuestion');
+		
+		var prevIndex = -1, activeIndex = -1;
+		_.each(this.questions, function(entry, index) {
+			if(entry.active) {
+				activeIndex = index;
+			}
+		}, this);
+		
+		if(activeIndex < 0) {
+			Flow.Log.error('Unable to find currently active view index');
+			return prevIndex;
+		}
+		
+		Flow.Log.debug('ActiveIndex: ' + activeIndex);
+		
+		if(activeIndex === 0) {
+			Flow.Log.info('Reached beginning of available questions (index: ' + activeIndex + ')');
+			return prevIndex;
+		}
+		
+		var index;
+		for(index = (this.questions.length - 1); index >= 0; index--) {
+		
+			// only pay attention to questions before the current and only accept the index of the first preceding available question
+			if(index < activeIndex && prevIndex === -1) {
+				
+				var model = this.questions[index].view.model;
+				var id = model.get('id');
+				if(model.get('available')) {
+					
+					Flow.Log.debug('Previous available question: ' + id);
+					prevIndex = index;
+				}
+				else {
+					Flow.Log.debug('Previous question not available (' + id + ')');
+				}
+			}
+		}
+		
+		return prevIndex;
+	},
+	
+	onSlideStart: function() {
+		this.$el.find('div.flow-carousel-navigation').prop('disabled', true);
+	},
+	
+	onSlideStop: function() {
+		this.$el.find('div.flow-carousel-navigation').prop('disabled', false);
 	},
 	
 	addOutcomes: function(outcomes) {
@@ -91,51 +246,12 @@ Flow.Theme.ContentView = Backbone.View.extend({
 		return 'question_container_' + questionId;
 	},
 	
-	showQuestion_old: function(questionId) {
-		
-		Flow.Log.debug('ContentView.showQuestion (' + questionId + ')');
-		
-		var viewIndex = -1;
-		
-		_.each(this.questions, function(entry, index) {
-			if(entry.id === questionId) {
-				viewIndex = index;
-				entry.active = true;
-			}
-			else {
-				entry.active = false;
-			}
-		});
-		
-		if(viewIndex > -1) {
-			this.$carouselEl.carousel(viewIndex);
-		}
-		else {
-			Flow.Log.error('Unable to find question ' + questionId + ' to show in Flow.ContentView');
-			return;
-		}
-		
-		if(viewIndex > 0) {
-			this.$el.find('#flow_carousel_navigation_back').css('visibility', 'visible');
-		}
-		else {
-			this.$el.find('#flow_carousel_navigation_back').css('visibility', 'hidden');
-		}
-		
-		if(viewIndex !== (this.questions.length - 1)) {
-			this.$el.find('#flow_carousel_navigation_forward').css('visibility', 'visible');
-		}
-		else {
-			this.$el.find('#flow_carousel_navigation_forward').css('visibility', 'hidden');
-		}
-	},
-	
 	onBackSelected: function(event) {
-		
+		this.showPreviousQuestion();
 	},
 	
 	onForwardSelected: function(event) {
-		
+		this.showNextQuestion();
 	},
 	
 	showOutcomes: function(outcomes) {
