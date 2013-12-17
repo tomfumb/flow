@@ -3,8 +3,6 @@ Flow.Theme.ContentView = Backbone.View.extend({
 	el: '#flow_content',
 	
 	questions: [],
-	outcomes: [],
-	outcomePreviews: [],
 	
 	render: function() {
 		
@@ -12,8 +10,8 @@ Flow.Theme.ContentView = Backbone.View.extend({
 		this.$el.append([
 			'<div id="flow_carousel" class="carousel slide" data-ride="carousel">',
 			'	<div id="flow_carousel_navigation">',
-			'		<div id="flow_carousel_navigation_back" class="flow-carousel-navigation"><span class="glyphicon glyphicon-chevron-left"></span></div>',
-			'		<div id="flow_carousel_navigation_forward" class="flow-carousel-navigation"><span class="glyphicon glyphicon-chevron-right"></span></div>',
+			'		<div id="flow_carousel_navigation_back" class="flow-carousel-navigation clickable"><span class="glyphicon glyphicon-chevron-left"></span></div>',
+			'		<div id="flow_carousel_navigation_forward" class="flow-carousel-navigation clickable"><span class="glyphicon glyphicon-chevron-right"></span></div>',
 			'	</div>',
 			'	<div id="flow_content_items" class="carousel-inner"></div>',
 			'</div>',
@@ -233,46 +231,10 @@ Flow.Theme.ContentView = Backbone.View.extend({
 	
 	addOutcomes: function(outcomes) {
 		
-		
-		
-		/*
-		 * 
-		 * !!! Outcome previews should be row & column icons within a user-expandable area on screen. Clicking on an icon shows more info about it
-		 * 
-		 */
-		
-		return;
-	
 		Flow.Log.debug('ContentView.addOutcomes');
 		
-		var classesToUse;
-		switch(true) {
-		  case (outcomes.length <= 3):
-			classesToUse = 'col-4 col-xs-4 col-sm-4 col-md-4 col-lg-4';
-			break;
-		  case (outcomes.length <= 6):
-			classesToUse = 'col-2 col-xs-2 col-sm-2 col-md-2 col-lg-2';
-			break;
-		  default:
-			classesToUse = 'col-1 col-xs-1 col-sm-1 col-md-1 col-lg-1';
-			break;
-		}
-	
-		var containerEl = $('#flow_outcome_previews')
-	
-		var outcomeId, outcomePreviewView, outcomePreviewContainerId, outcomePreviewContainerEl;
-	
-		_.each(outcomes, function(outcome, index) {
-		
-			outcomePreviewContainerId = 'outcome_preview_container_' + index;
-			outcomePreviewContainerEl = $('<div id="' + outcomePreviewContainerId + '" class="' + classesToUse + '"></div>');
-			containerEl.append(outcomePreviewContainerEl);
-		
-			outcomePreviewView = new Flow.Theme.OutcomePreviewView({el: '#' + outcomePreviewContainerId, model: outcome});
-			outcomePreviewView.render();
-			
-			this.outcomePreviews.push({id: outcomeId, view: outcomePreviewView});
-		}, this);
+		this.outcomeManager = new Flow.Theme.OutcomeManagerView({model: outcomes});
+		this.outcomeManager.render();
 	},
 	
 	getQuestionContainerId: function(questionId) {

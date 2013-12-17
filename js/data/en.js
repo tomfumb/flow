@@ -44,6 +44,9 @@ Flow.config = {
 		}
 	},{
 		title: 'Outcome 3',
-		description: 'This is the third outcome. A full description of the option will be shown here.'
+		description: 'This is the third outcome. A full description of the option will be shown here.',
+		condition: function(questions) {
+			return true;
+		}
 	}]
 }

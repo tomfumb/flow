@@ -21,7 +21,7 @@ Flow.Theme.QuestionView = Backbone.View.extend({
 	template_single_few: [
 		'		<div id="answers_<%= question.get("id") %>" class="answers">',
 		'			<% _.each(answers, function(answer, index) { %>',
-		'				<div class="answer" id="answer_<%= index %>">',
+		'				<div class="answer clickable" id="answer_<%= index %>">',
 		'					<div class="answer-pad"></div>',
 		'					<div class="answer-content"><%= answer %></div>',
 		'					<div class="clearer"></div>',

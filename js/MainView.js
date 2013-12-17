@@ -20,7 +20,7 @@ Flow.MainView = Backbone.View.extend({
 		this.content.render();
 		
 		this.outcomes.checkAvailableOutcomes(this.questions.models);
-		this.content.addOutcomes(this.outcomes.models);
+		this.content.addOutcomes(this.outcomes);
 	},
 	
 	onStart: function() {

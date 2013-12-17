@@ -1,10 +1,5 @@
-div.answer {
-	cursor: pointer;
-}
-
 .flow-carousel-navigation {
 	visibility: hidden;
-	cursor: pointer;
 	position: relative;
 	top: 20px;
 	z-index: 1;
@@ -50,10 +45,6 @@ div.answer {
 
 .selected-answer-pad {
 	background: url('img/tick-20x20.png') no-repeat;
-}
-
-.outcome-preview {
-	cursor: pointer;
 }
 
 .outcome-preview-unavailable {
