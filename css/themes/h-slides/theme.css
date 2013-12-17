@@ -4,6 +4,22 @@ div.answer {
 
 .flow-carousel-navigation {
 	visibility: hidden;
+	cursor: pointer;
+	position: relative;
+	top: 20px;
+	z-index: 1;
+}
+
+#flow_carousel_navigation_back {
+	float: left;
+}
+
+#flow_carousel_navigation_forward {
+	float: right;
+}
+
+#flow_outcomes {
+	clear: both;
 }
 
 .question {
@@ -17,6 +33,25 @@ div.answer {
 	color: black;
 }
 
+.answer {
+	height: 24px;
+}
+
+.answer-content {
+	float: left;
+	font-weight: bold;
+}
+
+.answer-pad {
+	float: left;
+	width: 24px;
+	padding: 2px;
+}
+
+.selected-answer-pad {
+	background: url('img/tick-20x20.png') no-repeat;
+}
+
 .outcome-preview {
 	cursor: pointer;
 }
@@ -26,5 +61,5 @@ div.answer {
 }
 
 .outcome-preview-available {
-	background-color: white;
+	background-color: green;
 }

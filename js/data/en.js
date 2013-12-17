@@ -20,7 +20,7 @@ Flow.config = {
 		answers: ['answer 1', 'answer 2', 'answer 3', 'answer 4', 'answer 5', 'answer 6', 'answer 7', 'answer 8'],
 		answerType: 'single-select',
 		condition: function(questions) {
-			return(questions['1'].hasAnswer('answer 3') && questions['2a'].hasAnswer('answer 1'));
+			return(questions['2a'].hasAnswer('answer 1'));
 		}
 	},
 	{

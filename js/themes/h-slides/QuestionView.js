@@ -5,7 +5,7 @@ Flow.Theme.QuestionView = Backbone.View.extend({
 	answerDisplayTypes: {
 		EL_CLICK: 'el_click',
 		LIST_SELECT: 'list_select',
-		CHECK_BUTTON_CLICK: 'check_button_click'
+		CHECKBOXES: 'check_button_click'
 	},
 	
 	template_base: [
@@ -22,7 +22,9 @@ Flow.Theme.QuestionView = Backbone.View.extend({
 		'		<div id="answers_<%= question.get("id") %>" class="answers">',
 		'			<% _.each(answers, function(answer, index) { %>',
 		'				<div class="answer" id="answer_<%= index %>">',
-		'					<h5><%= answer %></h5>',
+		'					<div class="answer-pad"></div>',
+		'					<div class="answer-content"><%= answer %></div>',
+		'					<div class="clearer"></div>',
 		'				</div>',
 		'			<% }); %>',
 		'		</div>'
@@ -104,8 +106,11 @@ Flow.Theme.QuestionView = Backbone.View.extend({
 					if(!jqTarget.hasClass('answer')) {
 						jqTarget = jqTarget.parents('div.answer');
 					}
+
+					this.$el.find('div.selected-answer-pad').removeClass('selected-answer-pad');
+					jqTarget.addClass('selected-answer-pad');
 					
-					this.onAnswersSelected([jqTarget.find('h5').html()]);
+					this.onAnswersSelected([jqTarget.find('div.answer-content').html()]);
 				}, this));
 				break;
 			case this.answerDisplayTypes.LIST_SELECT:

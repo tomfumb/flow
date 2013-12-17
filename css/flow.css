@@ -9,3 +9,7 @@
 #flow_scratch {
 	display: none;
 }
+
+.clearer { 
+	clear: both;
+}
