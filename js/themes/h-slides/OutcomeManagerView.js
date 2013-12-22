@@ -15,12 +15,15 @@ Flow.Theme.OutcomeManagerView = Backbone.View.extend({
 		'				<h4 class="modal-title" id="flow_outcome_modal_label">Outcomes</h4>',
 		'			</div>',
 		'			<div class="modal-body" id="flow_outcome_modal_body">',
-		'				<div id="flow_outcomes_available" class="row outcome-availability-container">',
-		'					<h4>Available</h4>',
+		'				<div id="flow_outcome_listing">',
+		'					<div id="flow_outcomes_available" class="row outcome-availability-container">',
+		'						<h4>Available</h4>',
+		'					</div>',
+		'					<div id="flow_outcomes_unavailable" class="row outcome-availability-container">',
+		'						<h4>Unavailable</h4>',
+		'					</div>',
 		'				</div>',
-		'				<div id="flow_outcomes_unavailable" class="row outcome-availability-container">',
-		'					<h4>Unavailable</h4>',
-		'				</div>',
+		'				<div id="flow_outcome_details"></div>',
 		'			</div>',
 		'			<div class="modal-footer">',
 		'				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>',
@@ -88,7 +91,6 @@ Flow.Theme.OutcomeManagerView = Backbone.View.extend({
 	showOutcomesInModal: function() {
 	
 		var modal = this.$el.find('#flow_outcome_modal');
-		var modalBody = modal.find('#flow_outcome_modal_body');
 		
 		if(!this.availableContainer) {
 			this.availableContainer = $('#flow_outcomes_available');

@@ -17,6 +17,10 @@
 	clear: both;
 }
 
+#flow_outcome_details {
+	display: none;
+}
+
 .question {
 	text-align: left;
 	color: black;
@@ -61,10 +65,9 @@
 
 .outcome-preview-unavailable {
 	z-index: 2;
-	background-color: gray;
-	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
-	filter: alpha(opacity=50);
-	opacity: 0.5;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
+	filter: alpha(opacity=30);
+	opacity: 0.3;
 }
 
 .outcome-preview-available {

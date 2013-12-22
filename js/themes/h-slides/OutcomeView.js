@@ -1,7 +1,7 @@
 Flow.Theme.OutcomeView = Backbone.View.extend({
 
 	template: [
-		'<img src="<%= image %>" height="75px" width="75px" title="<%= title %>" alt="<%= title %>" class="clickable" />',
+		'<img src="<%= image %>" height="75px" width="75px" title="<%= title %><%= availability %>" alt="<%= title %>" class="clickable" />',
 		'<br />',
 		'<h5 class="clickable"><%= title %></h5>'
 	].join(''),
@@ -14,7 +14,8 @@ Flow.Theme.OutcomeView = Backbone.View.extend({
 		this.$el.html(_.template(
 			this.template, {
 				title: title,
-				image: image
+				image: image,
+				availability: (this.model.get('available') ? '' : ' (unavailable)')
 			}
 		));
 		
