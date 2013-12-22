@@ -33,18 +33,21 @@ Flow.config = {
 	outcomes: [{
 		title: 'Outcome 1',
 		description: 'This is the first outcome. A full description of the option will be shown here.',
+		image: 'images/crazy-scales.jpg',
 		condition: function(questions) {
 			return (questions['2b'].hasAnswer('answer 3') || questions['2b'].hasAnswer('answer 4'));
 		}
 	},{
 		title: 'Outcome 2',
 		description: 'This is the second outcome. A full description of the option will be shown here.',
+		image: 'images/icca.jpg',
 		condition: function(questions) {
 			return !questions['1'].hasAnswer('answer 6');
 		}
 	},{
 		title: 'Outcome 3',
 		description: 'This is the third outcome. A full description of the option will be shown here.',
+		image: 'images/leaves.jpg',
 		condition: function(questions) {
 			return true;
 		}

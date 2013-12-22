@@ -6,3 +6,4 @@
 - Use history api to make browser's back button work like previous question button
 - http://getbootstrap.com/getting-started/#browsers
 - if possible to move fwd and back through questions regardless of what's answered the UI should show which questions have been passed unanswered
+- checkbox answers text should check textbox

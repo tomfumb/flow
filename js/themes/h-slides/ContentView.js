@@ -2,26 +2,25 @@ Flow.Theme.ContentView = Backbone.View.extend({
 
 	el: '#flow_content',
 	
+	template: [
+		'<div id="flow_carousel" class="carousel slide" data-ride="carousel">',
+		'	<div id="flow_carousel_navigation">',
+		'		<div id="flow_carousel_navigation_back" class="flow-carousel-navigation clickable"><span class="glyphicon glyphicon-chevron-left"></span></div>',
+		'		<div id="flow_carousel_navigation_forward" class="flow-carousel-navigation clickable"><span class="glyphicon glyphicon-chevron-right"></span></div>',
+		'	</div>',
+		'	<div id="flow_content_items" class="carousel-inner"></div>',
+		'</div>',
+		'<div id="flow_outcomes" class="container"></div>',
+		'<div id="flow_scratch"></div>'
+	].join(''),
+		
+	
 	questions: [],
 	
 	render: function() {
 		
 		Flow.Log.debug('ContentView.render');
-		this.$el.append([
-			'<div id="flow_carousel" class="carousel slide" data-ride="carousel">',
-			'	<div id="flow_carousel_navigation">',
-			'		<div id="flow_carousel_navigation_back" class="flow-carousel-navigation clickable"><span class="glyphicon glyphicon-chevron-left"></span></div>',
-			'		<div id="flow_carousel_navigation_forward" class="flow-carousel-navigation clickable"><span class="glyphicon glyphicon-chevron-right"></span></div>',
-			'	</div>',
-			'	<div id="flow_content_items" class="carousel-inner"></div>',
-			'</div>',
-			'<div id="flow_outcomes"></div>',
-			'<div class="container">',
-			'	<div class="row" id="flow_outcome_previews"></div>',
-			'</div>',
-			'<div id="flow_scratch"></div>'
-			].join('')
-		);
+		this.$el.append(this.template);
 		
 		this.$el.find('#flow_carousel_navigation_back').click(_.bind(this.onBackSelected, this));
 		this.$el.find('#flow_carousel_navigation_forward').click(_.bind(this.onForwardSelected, this));
@@ -247,34 +246,5 @@ Flow.Theme.ContentView = Backbone.View.extend({
 	
 	onForwardSelected: function(event) {
 		this.showNextQuestion();
-	},
-	
-	showOutcomes: function(outcomes) {
-		
-		Flow.Log.debug('ContentView.showOutcomes');
-		
-		if(outcomes.length > 1) {
-			Flow.Log.error('Multiple outcomes not yet imlemented');
-			return;
-		}
-		
-		this.outcomes = [];
-		_.each(outcomes, function(outcome) {
-		
-			var outcomeElId = 'outcome_container_' + outcome.get('id');
-			var outcomeEl = $('<div id="' + outcomeElId + '"></div>');
-		
-			this.$el.find('#flow_outcomes').html(outcomeEl);
-			
-			this.outcomes.push(new Flow.Theme.OutcomeView({el: '#' + outcomeElId, model: outcome}));
-		}, this);
-		
-		_.each(this.outcomes, function(outcomeView) {
-			outcomeView.render();
-		}, this);
-		
-		_.each(this.questions, function(entry) {
-			entry.active = false;
-		});
 	}
 });

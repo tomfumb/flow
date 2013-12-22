@@ -47,10 +47,26 @@
 	background: url('img/tick-20x20.png') no-repeat;
 }
 
+.outcome-container {
+	
+}
+
+.outcome-availability-container {
+	margin-bottom: 15px;
+}
+
+.outcome-preview-container img {
+	z-index: 1;
+}
+
 .outcome-preview-unavailable {
+	z-index: 2;
 	background-color: gray;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+	filter: alpha(opacity=50);
+	opacity: 0.5;
 }
 
 .outcome-preview-available {
-	background-color: green;
+	
 }
