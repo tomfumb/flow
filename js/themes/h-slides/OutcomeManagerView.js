@@ -7,7 +7,7 @@ Flow.Theme.OutcomeManagerView = Backbone.View.extend({
 		'	<h5 id="flow_outcome_count_report" class="clickable">Outcomes: <%= availableCount %> available of <%= totalCount %> total</h5>',
 		'</div>',
 		'<div class="row" id="flow_outcome_preview"></div>',
-		'<div class="modal fade" id="flow_outcome_modal" tabindex="-1" role="dialog" aria-labelledby="flow_outcome_modal_label" aria-hidden="true">',
+		'<div class="modal" id="flow_outcome_modal" tabindex="-1" role="dialog" aria-labelledby="flow_outcome_modal_label" aria-hidden="true">',
 		'	<div class="modal-dialog">',
 		'		<div class="modal-content">',
 		'			<div class="modal-header">',
@@ -23,7 +23,12 @@ Flow.Theme.OutcomeManagerView = Backbone.View.extend({
 		'						<h4>Unavailable</h4>',
 		'					</div>',
 		'				</div>',
-		'				<div id="flow_outcome_details"></div>',
+		'				<div id="flow_outcome_details">',
+		'					<h5 id="flow_outcome_listing_return" class="clickable">Back to listing</h5>',
+		'					<img id="flow_outcome_details_image" width="75px" height="75px" />',
+		'					<h4 id="flow_outcome_details_title"></h4>',
+		'					<div id="flow_outcome_details_description"></div>',
+		'				</div>',
 		'			</div>',
 		'			<div class="modal-footer">',
 		'				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>',
@@ -51,13 +56,19 @@ Flow.Theme.OutcomeManagerView = Backbone.View.extend({
 				totalCount: totalCount
 			}
 		));
-		
-		this.previewContainer = this.$el.find('#flow_outcome_preview');
-		
-		this.updatePreviews();
 			
 		this.model.on('change:available', _.bind(this.onOutcomesUpdated, this));
 		this.$el.find('#flow_outcome_count_report').click(_.bind(this.onCountReportClicked, this));
+		this.$el.find('#flow_outcome_listing_return').click(_.bind(this.onListingReturnClicked, this));
+		
+		this.previewContainer = this.$el.find('#flow_outcome_preview');
+		this.modal = this.$el.find('#flow_outcome_modal');
+		this.outcomeListPane = this.$el.find('#flow_outcome_listing');
+		this.outcomeDetailsPane = this.$el.find('#flow_outcome_details');
+		this.availableContainer = this.$el.find('#flow_outcomes_available');
+		this.unavailableContainer = this.$el.find('#flow_outcomes_unavailable');
+		
+		this.updatePreviews();
 	},
 	
 	onOutcomesUpdated: function() {
@@ -77,6 +88,8 @@ Flow.Theme.OutcomeManagerView = Backbone.View.extend({
 			this.previewContainer.append(outcomeEl);
 				
 			var view = new Flow.Theme.OutcomeView({ model: model, el: '#' + outcomeElId });
+			
+			view.onOutcomeSelected = _.bind(this.onOutcomeSelected, this);
 			view.render();
 		}, this);
 	},
@@ -89,17 +102,17 @@ Flow.Theme.OutcomeManagerView = Backbone.View.extend({
 	},
 	
 	showOutcomesInModal: function() {
+		
+		this.renderOutcomesInModal();
+		
+		this.outcomeListPane.show();
+		this.outcomeDetailsPane.hide();
+		
+		this.modal.modal();
+	},
 	
-		var modal = this.$el.find('#flow_outcome_modal');
-		
-		if(!this.availableContainer) {
-			this.availableContainer = $('#flow_outcomes_available');
-		}
-		
-		if(!this.unavailableContainer) {
-			this.unavailableContainer = $('#flow_outcomes_unavailable');
-		}
-		
+	renderOutcomesInModal: function() {
+			
 		this.availableContainer.find('div.outcome-container').remove();
 		this.unavailableContainer.find('div.outcome-container').remove();
 		
@@ -116,16 +129,17 @@ Flow.Theme.OutcomeManagerView = Backbone.View.extend({
 			}
 				
 			var view = new Flow.Theme.OutcomeView({ model: model, el: '#' + outcomeElId });
+			
+			view.onOutcomeSelected = _.bind(this.onOutcomeSelected, this);
 			view.render();
 			
 		}, this);
-		
-		modal.modal();
 	},
 	
 	sort: function() {
 		
-		var models = $.extend(true, [], this.model.models);
+		// sort a shallow copy of the models array - don't affect Backbone's model ordering but reference the same model objects to support model events
+		var models = this.model.models.slice();
 		
 		// first sort alphabetically
 		models.sort(function(a, b) {
@@ -140,6 +154,7 @@ Flow.Theme.OutcomeManagerView = Backbone.View.extend({
 			return 1;
 		});
 		
+		// then sort by availability
 		var availableModels = [], unavailableModels = [];
 		_.each(models, function(model) {
 		
@@ -152,5 +167,47 @@ Flow.Theme.OutcomeManagerView = Backbone.View.extend({
 		});
 		
 		return availableModels.concat(unavailableModels);
+	},
+	
+	onOutcomeSelected: function(outcome) {
+	
+		var modalData = this.modal.data('bs.modal');
+		var modalShowing = (modalData ? modalData.isShown : false);
+		
+		var image = (outcome.get('image') || 'images/place-holder.png');
+		
+		$('#flow_outcome_details_image').attr('src', image);
+		$('#flow_outcome_details_title').html(outcome.get('title'));
+		$('#flow_outcome_details_description').html(outcome.get('description'));
+		
+		if(modalShowing) {
+			
+			if(this.outcomeListPane.is(':visible')) {
+				this.outcomeListPane.fadeOut(200, _.bind(function() {
+					this.outcomeDetailsPane.fadeIn(200);
+				}, this));
+			}
+			// else do nothing
+		}
+		else {
+			this.outcomeListPane.hide();
+			this.outcomeDetailsPane.show();
+			
+			this.modal.modal();
+		}
+	},
+	
+	onListingReturnClicked: function(event) {
+	
+		event.preventDefault();
+		
+		// outcomes may not previously been rendered in the modal window, so make sure something will be shown
+		if(!this.modal.find('div.outcome-container').length) {
+			this.renderOutcomesInModal();
+		}
+		
+		this.outcomeDetailsPane.fadeOut(200, _.bind(function() {
+			this.outcomeListPane.fadeIn(200);
+		}, this));
 	}
 });

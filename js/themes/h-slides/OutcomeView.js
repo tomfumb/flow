@@ -19,11 +19,14 @@ Flow.Theme.OutcomeView = Backbone.View.extend({
 			}
 		));
 		
-		this.$el.find('.clickable').click(function(event) {
+		this.$el.find('.clickable').click(_.bind(function(event) {
 				
 			event.preventDefault();
-			
-			Flow.Log.debug('outcome view clicked');
-		});
+			this.onOutcomeSelected(this.model);
+		}, this));
+	},
+	
+	onOutcomeSelected: function(outcome) {
+		Flow.Log.warn('OutcomeView.onOutcomeSelected has not been overridden');
 	}
 });

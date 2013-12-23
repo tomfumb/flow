@@ -1,3 +1,11 @@
+.clickable {
+	color: #0000ff;
+}
+
+.clickable:hover {
+	color: #9900ff;
+}
+
 .flow-carousel-navigation {
 	visibility: hidden;
 	position: relative;
@@ -72,4 +80,20 @@
 
 .outcome-preview-available {
 	
+}
+
+#flow_outcome_details {
+	display: none;
+}
+
+#flow_outcome_details_image {
+	float: left;
+}
+
+#flow_outcome_details_title {
+	float: right;
+}
+
+#flow_outcome_details_description {
+	clear: both;
 }
