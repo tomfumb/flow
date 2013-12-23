@@ -101,6 +101,10 @@ Flow.Theme.ContentView = Backbone.View.extend({
 			// how to notify rest of the application that the end of all the questions has been reached?
 			// just not do anything?
 			
+			// force display of available / unavailable outcomes now that the user has completed all questions
+			if(this.outcomeManager) {
+				this.outcomeManager.showOutcomesInModal();
+			}
 		}
 	},
 	
