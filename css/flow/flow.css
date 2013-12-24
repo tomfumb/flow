@@ -1,3 +1,37 @@
+#ccij_header {
+	height: 64px;
+	text-align: center;
+	background: url('../../images/ccij-header-bg.jpg');
+	background-repeat: repeat-x;
+	overflow: hidden;
+}
+
+#ccij_outcomes {
+	display: none;
+}
+
+.ccij-outcome {
+	margin-top: 25px;
+}
+
+.ccij-outcome img {
+	float: left;
+}
+
+.ccij-outcome .outcome-title {
+	float: left;
+	margin-left: 10px;
+}
+
+.ccij-outcome div.outcome-description {
+	padding-top: 10px;
+	clear: both;
+}
+
+#flow {
+
+}
+
 #flow_body {
 	display: none;
 }

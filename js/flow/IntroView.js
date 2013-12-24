@@ -1,5 +1,17 @@
 Flow.IntroView = Backbone.View.extend({
 	
+	template: [
+		'<div class="container">',
+		'	<h3>Intro Text</h3>',
+		'	<p>Here will be some introduction text and a start button that is initially disabled</p>',
+		'	<button id="flow_start" disabled="disabled">Start</button>',
+		'</div>'
+	].join(''),
+	
+	render: function() {
+		this.$el.html(_.template(this.template));
+	},
+	
 	initialize: function() {
 		
 		Flow.Log.debug('initialising IntroView');

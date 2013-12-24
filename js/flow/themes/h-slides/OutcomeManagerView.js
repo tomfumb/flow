@@ -24,7 +24,7 @@ Flow.Theme.OutcomeManagerView = Backbone.View.extend({
 		'					</div>',
 		'				</div>',
 		'				<div id="flow_outcome_details">',
-		'					<h5 id="flow_outcome_listing_return" class="clickable">Back to listing</h5>',
+		'					<h5 id="flow_outcome_listing_return" class="clickable clickable-colour">Back to listing</h5>',
 		'					<img id="flow_outcome_details_image" width="75px" height="75px" />',
 		'					<h4 id="flow_outcome_details_title"></h4>',
 		'					<div id="flow_outcome_details_description"></div>',

@@ -3,7 +3,7 @@ Flow.Theme.OutcomeView = Backbone.View.extend({
 	template: [
 		'<img src="<%= image %>" height="75px" width="75px" title="<%= title %><%= availability %>" alt="<%= title %>" class="clickable" />',
 		'<br />',
-		'<h5 class="clickable"><%= title %></h5>'
+		'<h5 class="clickable clickable-colour"><%= title %></h5>'
 	].join(''),
 
 	render: function() {

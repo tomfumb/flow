@@ -13,6 +13,11 @@
 		<link href="css/flow/themes/h-slides/theme.css" rel="stylesheet" type="text/css" />
 	</head>
 	<body>
+		<div id="ccij_header">
+			<img src="images/ccij-logo-e.jpg" alt="CCIJ English Logo" width="175px" height="64px" />
+			<img src="images/ccij-name.jpg" alt="CCIJ Name Image" width="249px" height="64px" />
+			<img src="images/ccij-logo-f.jpg" alt="CCIJ French Logo" width="175px" height="64px" />
+		</div>
 		<div class="navbar navbar-inverse navbar-static-top" role="navigation">
 			<div class="container">
 				<div class="navbar-header">
@@ -22,31 +27,76 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="#">CCIJ Flow</a>
+					<a class="navbar-brand" href="http://ccij.ca/">CCIJ</a>
 				</div>
 				<div class="collapse navbar-collapse">
 					<ul class="nav navbar-nav">
-						<li class="active"><a href="#">Home</a></li>
-						<li><a href="#about">About</a></li>
+						<li class="active" id="ccij_home_nav"><a href="#">Home</a></li>
+						<li><a href="#stories" id="ccij_stories_nav">Stories</a></li>
+						<li><a href="#remedies" id="ccij_remedies_nav">Remedies</a></li>
+						<li><a href="#assess" id="ccij_assess_nav">Assess</a></li>
 					</ul>
 				</div>
 			</div>
 		</div>
-		<div id="flow_intro">
-			<div class="container">
-				<h3>Intro Text</h3>
-				<p>Here will be some introduction text and a start button that is initially disabled</p>
-				<button id="flow_start" disabled="disabled">Start</button>
+		<div id="ccij_main">
+			<div id="ccij_intro" class="main-focus">
+				<div class="container">
+					<div class="row">
+						<div id="ccij_stories_entry" class="entry-point col-4 col-sm-4 col-md-4 col-lg-4">
+							<h2>Stories</h2>
+							<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p>
+						</div>
+						<div id="ccij_remedies_entry" class="entry-point col-4 col-sm-4 col-md-4 col-lg-4">
+							<h2>Remedies</h2>
+							<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p>
+						</div>
+						<div id="ccij_assess_entry" class="entry-point col-4 col-sm-4 col-md-4 col-lg-4">
+							<h2>Assess your options</h2>
+							<p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="ccij_outcomes" class="main-focus">
+				<div class="container">
+					<div id="ccij_outcome_1" class="ccij-outcome">
+						<img src="images/crazy-scales.jpg" width="75px" height="75px" />
+						<h4 class="outcome-title">Remedy 1</h4>
+						<div class="outcome-description">This is the first remedy. A full description of the option will be shown here.</div>
+					</div>
+					<div id="ccij_outcome_2" class="ccij-outcome">
+						<img src="images/icca.jpg" width="75px" height="75px" />
+						<h4 class="outcome-title">Remedy 2</h4>
+						<div class="outcome-description">This is the second remedy. A full description of the option will be shown here.</div>
+					</div>
+					<div id="ccij_outcome_3" class="ccij-outcome">
+						<img src="images/leaves.jpg" width="75px" height="75px" />
+						<h4 class="outcome-title">Remedy 3</h4>
+						<div class="outcome-description">This is the third remedy. A full description of the option will be shown here.</div>
+					</div>
+				</div>
+			</div>
+			<div id="flow" class="main-focus">
+				<div id="flow_intro"></div>
+				<div id="flow_body">
+					<div id="flow_content"></div>
+				</div>
 			</div>
 		</div>
-		<div id="flow_body">
-			<div id="flow_content"></div>
-		</div>
+		<hr />
+		<footer>
+			<div class="container">
+				<p>&copy; CCIJ <span id="ccij_copy_year">????</span></p>
+			</div>
+		</footer>
 		<div id="flow_print"></div>
 		<script type="text/javascript" src="js/lib/jquery-1.10.2.min.js"></script>
 		<script type="text/javascript" src="js/lib/underscore-1.5.2-min.js"></script>
 		<script type="text/javascript" src="js/lib/backbone-1.1.0-min.js"></script>
 		<script type="text/javascript" src="js/lib/bootstrap.min.js"></script>
+		<script type="text/javascript" src="js/CCIJ.js"></script>
+		<script type="text/javascript" src="js/MainView.js"></script>
 		<script type="text/javascript" src="js/flow/Flow.js"></script>
 		<script type="text/javascript" src="js/flow/Log.js"></script>
 		<script type="text/javascript" src="js/flow/Util.js"></script>
@@ -62,6 +112,6 @@
 		<script type="text/javascript" src="js/flow/themes/h-slides/OutcomeView.js"></script>
 		<script type="text/javascript" src="js/flow/themes/h-slides/OutcomeManagerView.js"></script>
 		<script type="text/javascript" src="js/flow/data/en.js"></script>
-		<script type="text/javascript" src="js/flow/flow-init.js"></script>
+		<script type="text/javascript" src="js/init.js"></script>
 	</body>
 </html>
