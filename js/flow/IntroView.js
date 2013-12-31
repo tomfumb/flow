@@ -4,7 +4,7 @@ Flow.IntroView = Backbone.View.extend({
 		'<div class="container">',
 		'	<h3>Intro Text</h3>',
 		'	<p>Here will be some introduction text and a start button that is initially disabled</p>',
-		'	<button id="flow_start" disabled="disabled">Start</button>',
+		'	<button id="flow_start" type="button" class="btn btn-default" disabled="disabled">Start</button>',
 		'</div>'
 	].join(''),
 	

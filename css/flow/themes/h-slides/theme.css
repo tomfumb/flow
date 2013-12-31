@@ -21,6 +21,23 @@
 	float: right;
 }
 
+.question-container-background {
+	height: 300px;
+	width: 100%;
+	background-color: #dddddd;
+}
+
+/* overriding default Bootstrap Carousel styles so that questions are always shown within question background (above) */
+.carousel-caption {
+	top: 0; 
+	height: 300px;
+	overflow: auto;
+	width: 100%;
+	right: 0;
+	left: 0;
+	padding: 0 20px 0 20px;
+}
+
 #flow_outcomes {
 	clear: both;
 }

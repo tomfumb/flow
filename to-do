@@ -1,3 +1,4 @@
+- start flow, select 5 and 6 in question 1, click outcome then back to listing - listing now up to date with available outcomes
 - for multi-select questions with checkboxes - update answersSelected every time a box is checked and 'Continue' button is just another forward navigation button. 'Continue' should only be available if there is a following question. Requires a change to MainView.onAnswersSelected to make sure we don't move to the next question if this is just a checkbox update
 - when a question or outcome's visibility / availability is dependent on certain answer/s being selected the inspect function should also verify that those answers are available and log an error if not
 - can it handle swipe actions? Back / fwd should permit this
