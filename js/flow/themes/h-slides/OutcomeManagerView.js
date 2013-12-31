@@ -4,7 +4,9 @@ Flow.Theme.OutcomeManagerView = Backbone.View.extend({
 	
 	template: [
 		'<div class="row">',
-		'	<h5 id="flow_outcome_count_report" class="clickable">Outcomes: <%= availableCount %> available of <%= totalCount %> total</h5>',
+		'	<div class="col-12 col-sm-12 col-md-12 col-lg-12">',
+		'		<h5 id="flow_outcome_count_report" class="clickable">Outcomes: <%= availableCount %> available of <%= totalCount %> total</h5>',
+		'	</div>',
 		'</div>',
 		'<div class="row" id="flow_outcome_preview"></div>',
 		'<div class="modal" id="flow_outcome_modal" tabindex="-1" role="dialog" aria-labelledby="flow_outcome_modal_label" aria-hidden="true">',

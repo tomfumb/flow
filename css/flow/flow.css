@@ -6,11 +6,6 @@
 	overflow: hidden;
 }
 
-/* overriding Bootstrap navbar style to better conserve space */
-.navbar {
-	margin-bottom: 0;
-}
-
 #ccij_outcomes {
 	display: none;
 }
