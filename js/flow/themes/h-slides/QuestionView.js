@@ -43,7 +43,7 @@ Flow.Theme.QuestionView = Backbone.View.extend({
 	
 	template_multi: [
 		'		<div id="answers_<%= question.get("id") %>" class="answers">',
-		'			<div class="container">',
+		'			<div class="container" style="width: 100%">',
 		'				<div class="row">',
 		'					<% _.each(answers, function(answer, index) { %>',
 		'						<div class="col-xs-2 col-sm-3 col-md-12 col-lg-12">',
