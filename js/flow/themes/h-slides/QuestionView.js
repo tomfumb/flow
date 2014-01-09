@@ -123,7 +123,7 @@ Flow.Theme.QuestionView = Backbone.View.extend({
 			case this.answerDisplayTypes.LIST_SELECT:
 			
 				this.$el.find('#answers_' + this.model.get('id') + ' .multi_answer_select').change(_.bind(function(event) {
-					this.onAnswersSelected([event.target.value]);
+					this.onAnswersSelected(event.target.value ? [event.target.value] : []);
 				}, this));
 				break;
 			case this.answerDisplayTypes.CHECK_BUTTON_CLICK:

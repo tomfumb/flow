@@ -1,9 +1,10 @@
-- start flow, select 5 and 6 in question 1, click outcome then back to listing - listing now up to date with available outcomes
+- flow_outcome_count_report element never updates with outcome availability
+- start flow, select 5 and 6 in question 1, click outcome then back to listing - listing not up to date with available outcomes
 - for multi-select questions with checkboxes - update answersSelected every time a box is checked and 'Continue' button is just another forward navigation button. 'Continue' should only be available if there is a following question. Requires a change to MainView.onAnswersSelected to make sure we don't move to the next question if this is just a checkbox update
 - when a question or outcome's visibility / availability is dependent on certain answer/s being selected the inspect function should also verify that those answers are available and log an error if not
 - can it handle swipe actions? Back / fwd should permit this
 - http://blog.jetstrap.com/2013/08/bootstrap-3-grids-explained/ - buttons will screw up at col-1, needs fixing for small screens
-- Need carousel content height to be something other than fixed pixel height
+- Need carousel content height to be something other than fixed pixel height / orrrrr... http://stackoverflow.com/questions/20272972/height-of-bootstraps-cauousel-not-responsive - can this be made to work?
 - Use history api to make browser's back button work like previous question button
 - http://getbootstrap.com/getting-started/#browsers
 - if possible to move fwd and back through questions regardless of what's answered the UI should show which questions have been passed unanswered

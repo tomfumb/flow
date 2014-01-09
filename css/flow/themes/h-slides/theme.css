@@ -123,3 +123,27 @@
 #flow_outcome_details_description {
 	clear: both;
 }
+
+#flow_outcome_modal_unanswered_count {
+	display: none;
+}
+
+.summary-question {
+	padding-left: 5px;
+}
+
+.summary-current {
+	text-decoration: underline;
+}
+
+.summary-answered {
+	color: green;
+}
+
+.summary-unanswered {
+	color: orange;
+}
+
+.summary-unavailable {
+	color: gray;
+}

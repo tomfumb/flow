@@ -17,6 +17,7 @@ Flow.Theme.OutcomeManagerView = Backbone.View.extend({
 		'				<h4 class="modal-title" id="flow_outcome_modal_label">Outcomes</h4>',
 		'			</div>',
 		'			<div class="modal-body" id="flow_outcome_modal_body">',
+		'				<div id="flow_outcome_modal_unanswered_count"></div>',
 		'				<div id="flow_outcome_listing">',
 		'					<div id="flow_outcomes_available" class="row outcome-availability-container">',
 		'						<h4>Available</h4>',
@@ -103,12 +104,19 @@ Flow.Theme.OutcomeManagerView = Backbone.View.extend({
 		this.showOutcomesInModal();
 	},
 	
-	showOutcomesInModal: function() {
+	showOutcomesInModal: function(unansweredQuestions) {
 		
 		this.renderOutcomesInModal();
 		
 		this.outcomeListPane.show();
 		this.outcomeDetailsPane.hide();
+		
+		if(unansweredQuestions) {
+			this.$el.find('#flow_outcome_modal_unanswered_count').show().html(unansweredQuestions + ' questions are unanswered. See question numbers <span class="summary-unanswered">like this</span> above question area.');
+		}
+		else {
+			this.$el.find('#flow_outcome_modal_unanswered_count').hide();
+		}
 		
 		this.modal.modal();
 	},

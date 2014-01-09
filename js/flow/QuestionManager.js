@@ -19,9 +19,22 @@ Flow.QuestionManager = new (Backbone.Collection.extend({
 	},
 	
 	onReset: function() {
-		_.each(this.models, function(model) {
-			model.set('available', true);
+		
+		this.indexedQuestions = _.indexBy(this.models, function(question) {
+			return question.get('id');
 		});
+		
+		_.each(this.models, function(model) {
+			
+			var condition = model.get('condition');
+			
+			if(typeof condition === 'function') {
+				model.set('available', condition.apply(this, [this.indexedQuestions]));
+			}
+			else {
+				model.set('available', true);
+			}
+		}, this);
 	},
 	
 	readyForFirstQuestion: function() {
@@ -32,10 +45,6 @@ Flow.QuestionManager = new (Backbone.Collection.extend({
 	checkAvailableQuestions: function() {
 		
 		Flow.Log.debug('QuestionManager.checkAvailableQuestions');
-		
-		this.indexedQuestions = this.indexedQuestions || _.indexBy(this.models, function(question) {
-			return question.get('id');
-		});
 	
 		_.each(this.models, function(question) {
 			

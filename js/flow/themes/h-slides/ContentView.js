@@ -3,6 +3,11 @@ Flow.Theme.ContentView = Backbone.View.extend({
 	el: '#flow_content',
 	
 	template: [
+		'<div class="container">',
+		'	<div class="row">',
+		'		<div id="flow_question_summary" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-12">Questions:</div>',
+		'	</div>',
+		'</div>',
 		'<div id="flow_carousel" class="carousel slide" data-ride="carousel">',
 		'	<div id="flow_carousel_navigation">',
 		'		<div id="flow_carousel_navigation_back" class="flow-carousel-navigation clickable"><span class="glyphicon glyphicon-chevron-left"></span></div>',
@@ -31,6 +36,7 @@ Flow.Theme.ContentView = Backbone.View.extend({
 		Flow.Log.debug('ContentView.addQuestions');
 		
 		var scratch = this.$el.find('#flow_scratch');
+		var summary = this.$el.find('#flow_question_summary');
 		
 		_.each(questions, function(question) {
 		
@@ -42,6 +48,16 @@ Flow.Theme.ContentView = Backbone.View.extend({
 			var questionEl = $('<div id="' + questionElId + '" class="question-container"></div>');
 			
 			scratch.append(questionEl);
+			
+			var summaryClass = (question.get('available') ? 'clickable' : 'summary-unavailable');
+			var summaryQuestionElId = this.getSummaryQuestionId(questionId);
+			var summaryQuestionEl = $('<span id="' + summaryQuestionElId + '" class="summary-question summary-unanswered ' + summaryClass + (this.hadFirst ? ' ' : ' summary-current') + '">' + questionId + '</span>');
+			
+			summary.append(summaryQuestionEl);
+			summaryQuestionEl.click(_.bind(this.onSummaryQuestionClicked, this));
+			
+			question.on('change:available', _.bind(this.onQuestionAvailabilityChanged, this));
+			question.on('change:selectedAnswers', _.bind(this.onAnswersSelected, this));
 			
 			var questionView = new Flow.Theme.QuestionView({el: '#' + questionElId, model: question});
 			questionView.render(!this.hadFirst);
@@ -88,22 +104,20 @@ Flow.Theme.ContentView = Backbone.View.extend({
 			
 			this.$carouselEl.carousel(nextIndex);
 			
-			if(this.getIndexOfNextAvailableQuestion() === -1) {
-				this.$el.find('#flow_carousel_navigation_forward').css('visibility', 'hidden');
-			}
-			
-			this.$el.find('#flow_carousel_navigation_back').css('visibility', 'visible');
+			this.checkNavigationOptions();
 		}
 		else {
 			
 			Flow.Log.debug('No more questions available');
+			
+			var unansweredQuestions = this.$el.find('.summary-unanswered').not('.summary-unavailable').length;
 			
 			// how to notify rest of the application that the end of all the questions has been reached?
 			// just not do anything?
 			
 			// force display of available / unavailable outcomes now that the user has completed all questions
 			if(this.outcomeManager) {
-				this.outcomeManager.showOutcomesInModal();
+				this.outcomeManager.showOutcomesInModal(unansweredQuestions);
 			}
 		}
 	},
@@ -124,14 +138,27 @@ Flow.Theme.ContentView = Backbone.View.extend({
 			
 			this.$carouselEl.carousel(prevIndex);
 			
-			if(this.getIndexOfPreviousAvailableQuestion() === -1) {
-				this.$el.find('#flow_carousel_navigation_back').css('visibility', 'hidden');
-			}
-			
-			this.$el.find('#flow_carousel_navigation_forward').css('visibility', 'visible');
+			this.checkNavigationOptions();
 		}
 		else {
 			Flow.Log.debug('No previous questions available');
+		}
+	},
+	
+	checkNavigationOptions: function() {
+		
+		if(this.getIndexOfPreviousAvailableQuestion() === -1) {
+			this.$el.find('#flow_carousel_navigation_back').css('visibility', 'hidden');
+		}
+		else {
+			this.$el.find('#flow_carousel_navigation_back').css('visibility', 'visible');
+		}
+		
+		if(this.getIndexOfNextAvailableQuestion() === -1) {
+			this.$el.find('#flow_carousel_navigation_forward').css('visibility', 'hidden');
+		}
+		else {
+			this.$el.find('#flow_carousel_navigation_forward').css('visibility', 'visible');
 		}
 	},
 	
@@ -228,8 +255,67 @@ Flow.Theme.ContentView = Backbone.View.extend({
 		this.$el.find('div.flow-carousel-navigation').prop('disabled', true);
 	},
 	
-	onSlideStop: function() {
+	onSlideStop: function(event) {
+		
+		var activeQuestionElId = $(event.target).find('.active').attr('id');
+		var questionId = this.getQuestionIdFromContainerId(activeQuestionElId);
+		var summaryEl = this.$el.find('#' + this.getSummaryQuestionId(questionId));
+		
+		this.$el.find('.summary-question').removeClass('summary-current');
+		summaryEl.addClass('summary-current');
+		
 		this.$el.find('div.flow-carousel-navigation').prop('disabled', false);
+	},
+	
+	onQuestionAvailabilityChanged: function(question) {
+		
+		var summaryEl = this.$el.find('#' + this.getSummaryQuestionId(question.get('id')));
+		var available = question.get('available');
+		
+		if(available) {
+			summaryEl.removeClass('summary-unavailable').addClass('clickable').addClass('clickable');
+		}
+		else {
+			summaryEl.removeClass('clickable').removeClass('clickable').addClass('summary-unavailable');
+		}
+	},
+	
+	onSummaryQuestionClicked: function(event) {
+		
+		var summaryQuestionEl = $(event.target);
+		if(!summaryQuestionEl.hasClass('summary-unavailable')) {
+			
+			var questionId = this.getQuestionIdFromSummaryElementId(summaryQuestionEl.attr('id'));
+			
+			var requestedIndex = -1;
+			_.each(this.questions, function(entry, index) {
+				if(entry.id == questionId) {
+					requestedIndex = index;
+					entry.active = true;
+				}
+				else {
+					entry.active = false;
+				}
+			});
+			
+			if(requestedIndex > -1) {
+				this.$carouselEl.carousel(requestedIndex);
+				this.checkNavigationOptions();
+			}
+		}
+	},
+	
+	onAnswersSelected: function(answeredQuestion, answers) {
+		
+		var summaryEl = this.$el.find('#' + this.getSummaryQuestionId(answeredQuestion.get('id')));
+		var answered = (answeredQuestion.get('selectedAnswers').length > 0);
+		
+		if(answered) {
+			summaryEl.removeClass('summary-unanswered').addClass('summary-answered');
+		}
+		else {
+			summaryEl.removeClass('summary-answered').addClass('summary-unanswered');
+		}
 	},
 	
 	addOutcomes: function(outcomes) {
@@ -242,6 +328,18 @@ Flow.Theme.ContentView = Backbone.View.extend({
 	
 	getQuestionContainerId: function(questionId) {
 		return 'question_container_' + questionId;
+	},
+	
+	getQuestionIdFromContainerId: function(containerId) {
+		return containerId.replace(/question_container_/, '');
+	},
+	
+	getSummaryQuestionId: function(questionId) {
+		return 'summary_question_' + questionId;
+	},
+	
+	getQuestionIdFromSummaryElementId: function(summaryElementId) {
+		return summaryElementId.replace(/summary_question_/, '');
 	},
 	
 	onBackSelected: function(event) {
