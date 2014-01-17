@@ -5,7 +5,7 @@ Flow.Theme.OutcomeManagerView = Backbone.View.extend({
 	template: [
 		'<div class="row">',
 		'	<div class="col-12 col-sm-12 col-md-12 col-lg-12">',
-		'		<h5 id="flow_outcome_count_report" class="clickable">Outcomes: <%= availableCount %> available of <%= totalCount %> total</h5>',
+		'		<h5 id="flow_outcome_count_report" class="clickable">Outcomes: <span id="flow_outcome_count_available_number"><%= availableCount %></span> available of <%= totalCount %> total</h5>',
 		'	</div>',
 		'</div>',
 		'<div class="row" id="flow_outcome_preview"></div>',
@@ -82,9 +82,17 @@ Flow.Theme.OutcomeManagerView = Backbone.View.extend({
 		
 		this.previewContainer.html('');
 		
+		var availableCount = 0, available;
+		
 		_.each(this.sort(), function(model, index) {
 		
-			var availabilityClass = (model.get('available') ? 'outcome-preview-available' : 'outcome-preview-unavailable');
+			available = model.get('available');
+			
+			if(available) {
+				availableCount++;
+			}
+		
+			var availabilityClass = (available ? 'outcome-preview-available' : 'outcome-preview-unavailable');
 			var outcomeElId = 'flow_outcome_preview_' + index;
 			var outcomeEl = $('<div id="' + outcomeElId + '" class="outcome-preview-container col-3 col-xs-3 col-sm-3 col-md-3 col-lg-3 ' + availabilityClass + '"></div>');
 			
@@ -95,6 +103,8 @@ Flow.Theme.OutcomeManagerView = Backbone.View.extend({
 			view.onOutcomeSelected = _.bind(this.onOutcomeSelected, this);
 			view.render();
 		}, this);
+		
+		this.$el.find('#flow_outcome_count_available_number').html(availableCount);
 	},
 	
 	onCountReportClicked: function() {

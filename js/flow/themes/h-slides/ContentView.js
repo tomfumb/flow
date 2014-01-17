@@ -56,8 +56,8 @@ Flow.Theme.ContentView = Backbone.View.extend({
 			summary.append(summaryQuestionEl);
 			summaryQuestionEl.click(_.bind(this.onSummaryQuestionClicked, this));
 			
-			question.on('change:available', _.bind(this.onQuestionAvailabilityChanged, this));
 			question.on('change:selectedAnswers', _.bind(this.onAnswersSelected, this));
+			question.on('change:available', _.bind(this.onQuestionAvailabilityChanged, this));
 			
 			var questionView = new Flow.Theme.QuestionView({el: '#' + questionElId, model: question});
 			questionView.render(!this.hadFirst);
@@ -86,6 +86,8 @@ Flow.Theme.ContentView = Backbone.View.extend({
 		this.$carouselEl.on('slid.bs.carousel', _.bind(this.onSlideStop, this));
 		
 		this.$el.find('#flow_carousel_navigation_forward').css('visibility', 'visible');
+		
+		// update modal with all questions unanswered / unavailable
 	},
 	
 	showNextQuestion: function() {
@@ -269,6 +271,8 @@ Flow.Theme.ContentView = Backbone.View.extend({
 	
 	onQuestionAvailabilityChanged: function(question) {
 		
+		Flow.Log.debug('question availability changed');
+		
 		var summaryEl = this.$el.find('#' + this.getSummaryQuestionId(question.get('id')));
 		var available = question.get('available');
 		
@@ -278,6 +282,8 @@ Flow.Theme.ContentView = Backbone.View.extend({
 		else {
 			summaryEl.removeClass('clickable').removeClass('clickable').addClass('summary-unavailable');
 		}
+		
+		// update modal with list of remaining questions
 	},
 	
 	onSummaryQuestionClicked: function(event) {
@@ -307,6 +313,8 @@ Flow.Theme.ContentView = Backbone.View.extend({
 	
 	onAnswersSelected: function(answeredQuestion, answers) {
 		
+		Flow.Log.debug('answers selected');
+		
 		var summaryEl = this.$el.find('#' + this.getSummaryQuestionId(answeredQuestion.get('id')));
 		var answered = (answeredQuestion.get('selectedAnswers').length > 0);
 		
@@ -316,6 +324,8 @@ Flow.Theme.ContentView = Backbone.View.extend({
 		else {
 			summaryEl.removeClass('summary-answered').addClass('summary-unanswered');
 		}
+		
+		// update modal with list of remaining questions
 	},
 	
 	addOutcomes: function(outcomes) {
