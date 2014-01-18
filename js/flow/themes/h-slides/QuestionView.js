@@ -47,7 +47,7 @@ Flow.Theme.QuestionView = Backbone.View.extend({
 		'				<div class="row">',
 		'					<% _.each(answers, function(answer, index) { %>',
 		'						<div class="col-xs-2 col-sm-3 col-md-12 col-lg-12">',
-		'							<input type="checkbox" id="q<%= question.get("id") %>_a_<%= index %>" /> <%= answer %>',
+		'							<input type="checkbox" id="q<%= question.get("id") %>_a_<%= index %>" /> <span class="answer-checkbox-text clickable"><%= answer %></span>',
 		'						</div>',
 		'					<% }); %>',
 		'				</div>',
@@ -127,6 +127,10 @@ Flow.Theme.QuestionView = Backbone.View.extend({
 				}, this));
 				break;
 			case this.answerDisplayTypes.CHECK_BUTTON_CLICK:
+			
+				this.$el.find('span.answer-checkbox-text').click(function(event) {
+					$(this).parent().find('input[type=checkbox]').click();
+				});
 			
 				this.$el.find('#answers_' + this.model.get('id') + ' button.continue').click(_.bind(function(event) {
 					
