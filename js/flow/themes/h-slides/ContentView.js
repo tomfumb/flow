@@ -38,6 +38,8 @@ Flow.Theme.ContentView = Backbone.View.extend({
 		var scratch = this.$el.find('#flow_scratch');
 		var summary = this.$el.find('#flow_question_summary');
 		
+		var availableCount = 0;
+		
 		_.each(questions, function(question) {
 		
 			var questionId = question.get('id');
@@ -63,12 +65,19 @@ Flow.Theme.ContentView = Backbone.View.extend({
 			questionView.render(!this.hadFirst);
 			this.questions.push({id: questionId, view: questionView, active: !this.hadFirst});
 			
+			if(question.get('available')) {
+				availableCount++;
+			}
+			
 			if(!this.hadFirst) {
 				this.hadFirst = true;
 			}
 		}, this);
 		
 		this.$el.find('#flow_content_items').append(scratch.find('div.question-container'));
+		
+		// update modal with all questions unanswered / unavailable
+		this.outcomeManager.unansweredQuestions = availableCount;
 	},
 	
 	showFirstQuestion: function() {
@@ -86,8 +95,6 @@ Flow.Theme.ContentView = Backbone.View.extend({
 		this.$carouselEl.on('slid.bs.carousel', _.bind(this.onSlideStop, this));
 		
 		this.$el.find('#flow_carousel_navigation_forward').css('visibility', 'visible');
-		
-		// update modal with all questions unanswered / unavailable
 	},
 	
 	showNextQuestion: function() {
@@ -112,14 +119,12 @@ Flow.Theme.ContentView = Backbone.View.extend({
 			
 			Flow.Log.debug('No more questions available');
 			
-			var unansweredQuestions = this.$el.find('.summary-unanswered').not('.summary-unavailable').length;
-			
 			// how to notify rest of the application that the end of all the questions has been reached?
 			// just not do anything?
 			
 			// force display of available / unavailable outcomes now that the user has completed all questions
 			if(this.outcomeManager) {
-				this.outcomeManager.showOutcomesInModal(unansweredQuestions);
+				this.outcomeManager.showOutcomesInModal();
 			}
 		}
 	},
@@ -284,6 +289,7 @@ Flow.Theme.ContentView = Backbone.View.extend({
 		}
 		
 		// update modal with list of remaining questions
+		this.outcomeManager.unansweredQuestions = this.countUnansweredQuestions(question.collection.models);
 	},
 	
 	onSummaryQuestionClicked: function(event) {
@@ -326,6 +332,22 @@ Flow.Theme.ContentView = Backbone.View.extend({
 		}
 		
 		// update modal with list of remaining questions
+		this.outcomeManager.unansweredQuestions = this.countUnansweredQuestions(answeredQuestion.collection.models);
+	},
+	
+	countUnansweredQuestions: function(questions) {
+
+		var unansweredCount = 0;
+		_.each(questions, function(question) {
+			if(question.get('available')) {
+				var selectedAnswers = question.get('selectedAnswers');
+				if(!(selectedAnswers && selectedAnswers.length)) {
+					unansweredCount++;
+				}
+			}
+		});
+		
+		return unansweredCount;
 	},
 	
 	addOutcomes: function(outcomes) {
