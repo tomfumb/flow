@@ -39,19 +39,19 @@ Flow.Log = {
 		
 		if(currentLogLevel >= level) {
 			
-			currentLogLevelName = 'unknown';
+			logLevelName = 'unknown';
 			for(eachLevel in this.logLevels) {
 				if(this.logLevels.hasOwnProperty(eachLevel)) {
-					if(this.logLevels[eachLevel] === currentLogLevel) {
-						currentLogLevelName = eachLevel;
+					if(this.logLevels[eachLevel] === level) {
+						levelName = eachLevel;
 					}
 				}
 			}
 				
 			var now = (new Date()).getTime();
-			var toLog = '[' + currentLogLevelName + ' ' + now + ']: ' + message;
+			var toLog = '[' + levelName + ' ' + now + ']: ' + message;
 			
-			if(currentLogLevel === this.logLevels.ERROR) {
+			if(level === this.logLevels.ERROR) {
 				console.error(toLog);
 			}
 			else {

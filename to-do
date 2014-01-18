@@ -7,6 +7,5 @@
 - http://blog.jetstrap.com/2013/08/bootstrap-3-grids-explained/ - buttons will screw up at col-1, needs fixing for small screens
 - Need carousel content height to be something other than fixed pixel height / orrrrr... http://stackoverflow.com/questions/20272972/height-of-bootstraps-cauousel-not-responsive - can this be made to work?
 - http://getbootstrap.com/getting-started/#browsers
-- checkbox answers text should check checkbox when clicked
 - error logging function doesn't log as error??
 - perhaps flow.css should just be ccij.css?

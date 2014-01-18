@@ -51,3 +51,7 @@
 .clearer { 
 	clear: both;
 }
+
+.spacer-10 {
+	margin: 10px 0 10px 0;
+}

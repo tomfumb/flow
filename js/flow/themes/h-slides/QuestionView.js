@@ -51,7 +51,7 @@ Flow.Theme.QuestionView = Backbone.View.extend({
 		'						</div>',
 		'					<% }); %>',
 		'				</div>',
-		'				<div class="row">',
+		'				<div class="row spacer-10">',
 		'					<button class="continue btn btn-default" type="button">Continue</button>',
 		'				</div>',
 		'			</div>',

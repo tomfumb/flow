@@ -4,7 +4,7 @@ Flow.IntroView = Backbone.View.extend({
 		'<div class="container">',
 		'	<h3>Intro Text</h3>',
 		'	<p>This will contain a disclaimer about how users may not get foolproof results from the assess tool and are strongly advised to discuss their case with a CCIJ lawyer. Legal cases should not be based on the outcome of this test.</p>',
-		'	<button id="flow_start" type="button" class="btn btn-default" disabled="disabled">Start</button>',
+		'	<button id="flow_start" type="button" class="btn btn-default" disabled="disabled">I understand</button>',
 		'</div>'
 	].join(''),
 	
