@@ -12,6 +12,16 @@ CCIJ.MainView = Backbone.View.extend({
 		$('#ccij_home_nav').click(_.bind(this.onHomeSelected, this));
 		
 		this.intro.find('.entry-point').addClass('clickable');
+		
+		// will be replaced when Backbone router has been setup
+		this.changeActiveNavTab('ccij_home_nav');
+	},
+	
+	changeActiveNavTab: function(id) {
+		
+		var navbar = $('#ccij_navbar');
+		navbar.find('li.active').removeClass('active');
+		$('#' + id).parents('li').addClass('active');
 	},
 	
 	onHomeSelected: function(event) {
@@ -20,6 +30,8 @@ CCIJ.MainView = Backbone.View.extend({
 		
 		this.focuses.hide();
 		this.intro.show();
+		
+		this.changeActiveNavTab('ccij_home_nav');
 	},
 	
 	onRemediesSelected: function(event) {
@@ -28,6 +40,8 @@ CCIJ.MainView = Backbone.View.extend({
 		
 		this.focuses.hide();
 		this.$el.find('#ccij_outcomes').show();
+		
+		this.changeActiveNavTab('ccij_remedies_nav');
 	},
 	
 	onAssessSelected: function(event) {
@@ -37,6 +51,8 @@ CCIJ.MainView = Backbone.View.extend({
 		this.focuses.hide();
 		this.flowSelected();
 		this.$el.find('#flow').show();
+		
+		this.changeActiveNavTab('ccij_assess_nav');
 	},
 	
 	flowSelected: function() {
