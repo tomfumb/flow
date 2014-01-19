@@ -61,7 +61,7 @@
 }
 
 .answers {
-	padding: 20px 0 0 0;
+	padding: 5px 0 0 0;
 	text-align: left;
 	color: black;
 }
@@ -146,4 +146,13 @@
 
 .summary-unavailable {
 	color: gray;
+}
+
+.minor-info {
+	font-size: small;
+	color: gray;
+}
+
+.carousel-caption {
+	text-shadow: none;
 }

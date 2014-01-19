@@ -122,7 +122,10 @@ Flow.Theme.OutcomeManagerView = Backbone.View.extend({
 		this.outcomeDetailsPane.hide();
 		
 		if(this.unansweredQuestions > 0) {
-			this.$el.find('#flow_outcome_modal_unanswered_count').show().html(this.unansweredQuestions + ' questions are unanswered. See question numbers <span class="summary-unanswered">like this</span> above question area.');
+			
+			var questionPluralPart = (this.unansweredQuestions > 1 ? 's are' : ' is');
+			
+			this.$el.find('#flow_outcome_modal_unanswered_count').show().html(this.unansweredQuestions + ' question' + questionPluralPart + ' unanswered. See question numbers <span class="summary-unanswered">like this</span> above question area.');
 		}
 		else {
 			this.$el.find('#flow_outcome_modal_unanswered_count').hide();

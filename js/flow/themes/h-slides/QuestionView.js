@@ -45,6 +45,9 @@ Flow.Theme.QuestionView = Backbone.View.extend({
 		'		<div id="answers_<%= question.get("id") %>" class="answers">',
 		'			<div class="container" style="width: 100%">',
 		'				<div class="row">',
+		'					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 minor-info">Check all that apply</div>',
+		'				</div>',
+		'				<div class="row">',
 		'					<% _.each(answers, function(answer, index) { %>',
 		'						<div class="col-xs-2 col-sm-3 col-md-12 col-lg-12">',
 		'							<input type="checkbox" id="q<%= question.get("id") %>_a_<%= index %>" /> <span class="answer-checkbox-text clickable"><%= answer %></span>',
@@ -52,7 +55,7 @@ Flow.Theme.QuestionView = Backbone.View.extend({
 		'					<% }); %>',
 		'				</div>',
 		'				<div class="row spacer-10">',
-		'					<button class="continue btn btn-default" type="button">Continue</button>',
+		'					<button class="continue btn btn-default" type="button">Done</button>',
 		'				</div>',
 		'			</div>',
 		'		</div>'
@@ -118,12 +121,24 @@ Flow.Theme.QuestionView = Backbone.View.extend({
 					jqTarget.addClass('selected-answer-pad');
 					
 					this.onAnswersSelected([jqTarget.find('div.answer-content').html()]);
+					
+					window.setTimeout(function(context) {
+						return function() {
+							context.onQuestionAnswered();
+						};
+					}(this), 300);
 				}, this));
 				break;
 			case this.answerDisplayTypes.LIST_SELECT:
 			
 				this.$el.find('#answers_' + this.model.get('id') + ' .multi_answer_select').change(_.bind(function(event) {
 					this.onAnswersSelected(event.target.value ? [event.target.value] : []);
+					
+					window.setTimeout(function(context) {
+						return function() {
+							context.onQuestionAnswered();
+						};
+					}(this), 300);
 				}, this));
 				break;
 			case this.answerDisplayTypes.CHECK_BUTTON_CLICK:
@@ -131,13 +146,11 @@ Flow.Theme.QuestionView = Backbone.View.extend({
 				this.$el.find('span.answer-checkbox-text').click(function(event) {
 					$(this).parent().find('input[type=checkbox]').click();
 				});
-			
-				this.$el.find('#answers_' + this.model.get('id') + ' button.continue').click(_.bind(function(event) {
 					
-					event.preventDefault();
+				this.$el.find('div.answers').find('input[type=checkbox]').change(_.bind(function(event) {
+					
 					var answers = [];
 					var checkedAnswers = $(event.target).parents('div.answers').find('input:checked');
-					
 					_.each(checkedAnswers, function(checkbox) {
 						var answerIndex = checkbox.id.replace(/q(\d+)_a_/, '');
 						answers.push(this.model.get('answers')[answerIndex]);
@@ -145,6 +158,11 @@ Flow.Theme.QuestionView = Backbone.View.extend({
 					
 					this.onAnswersSelected(answers);
 				}, this));
+
+				this.$el.find('#answers_' + this.model.get('id') + ' button.continue').click(_.bind(function(event) {
+					this.onQuestionAnswered();
+				}, this));
+				
 				break;
 			default:
 				Flow.Log.error('Unknown answerStyle provided: ' + answerStyle);
@@ -157,5 +175,12 @@ Flow.Theme.QuestionView = Backbone.View.extend({
 		Flow.Log.debug('QuestionView.onAnswerSelected(' + answers.join(', ') + ')');
 		
 		this.model.set('selectedAnswers', answers);
+	},
+	
+	onQuestionAnswered: function() {
+		
+		Flow.Log.debug('Question answered: ' + this.model.get('id'));
+		
+		this.model.set('questionAnswered', (new Date()).getTime());
 	}
 });

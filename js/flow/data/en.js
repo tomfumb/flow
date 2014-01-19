@@ -10,7 +10,7 @@ Flow.config.questions = [{
 	id: '1',
 	title: 'Question 1',
 	content: 'Body of question 1. This is where the question\'s description will show.',
-	answers: ['answer 1', 'answer 2', 'answer 3', 'answer 4', 'answer 5'],
+	answers: ['answer 1', 'answer 2', 'answer 3', 'answer 4'],
 	answerType: 'multi-select'
 },
 {
@@ -50,7 +50,7 @@ Flow.config.outcomes = [{
 	description: Flow.config.selectors.outcome2.find('.outcome-description').html(),
 	image: Flow.config.selectors.outcome2.find('img').attr('src'),
 	condition: function(questions) {
-		return !questions['1'].hasAnswer('answer 5');
+		return !questions['1'].hasAnswer('answer 4');
 	}
 },{
 	title: Flow.config.selectors.outcome3.find('.outcome-title').html(),

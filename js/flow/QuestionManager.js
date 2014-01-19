@@ -51,7 +51,7 @@ Flow.QuestionManager = new (Backbone.Collection.extend({
 			var condition = question.get('condition');
 			if(typeof condition === 'function') {
 				var available = condition.apply(this, [this.indexedQuestions]);
-				Flow.Log.info('Setting question ' + question.get('id') + ' available to ' + available);
+				Flow.Log.info('QuestionManager.checkAvailableQuestions Setting question ' + question.get('id') + ' available to ' + available);
 				question.set('available', available);
 			}
 		}, this);

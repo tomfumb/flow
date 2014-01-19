@@ -9,6 +9,7 @@ Flow.MainView = Backbone.View.extend({
 		
 		this.questions.listenToOnce(this.questions, 'start', _.bind(this.onStart, this));
 		this.questions.on('change:selectedAnswers', _.bind(this.onAnswersSelected, this));
+		this.questions.on('change:questionAnswered', _.bind(this.onQuestionAnswered, this));
 	},
 	
 	render: function() {
@@ -37,11 +38,9 @@ Flow.MainView = Backbone.View.extend({
 		// execute any condition functions that determine if questions are now available or unavailable
 		this.questions.checkAvailableQuestions();
 		this.outcomes.checkAvailableOutcomes(this.questions.models);
-		
+	},
+	
+	onQuestionAnswered: function(answeredQuestion) {
 		this.content.showNextQuestion();
-		
-		
-		// at this point consider assessing which questions have been left unanswered and visibly make sure the user is aware of this
-		
 	}
 });

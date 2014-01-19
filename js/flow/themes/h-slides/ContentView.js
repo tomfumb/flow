@@ -319,7 +319,7 @@ Flow.Theme.ContentView = Backbone.View.extend({
 	
 	onAnswersSelected: function(answeredQuestion, answers) {
 		
-		Flow.Log.debug('answers selected');
+		Flow.Log.debug('ContentView.onAnswersSelected');
 		
 		var summaryEl = this.$el.find('#' + this.getSummaryQuestionId(answeredQuestion.get('id')));
 		var answered = (answeredQuestion.get('selectedAnswers').length > 0);

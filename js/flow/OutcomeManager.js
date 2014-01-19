@@ -23,8 +23,6 @@ Flow.OutcomeManager = new (Backbone.Collection.extend({
 	
 	checkAvailableOutcomes: function(questions) {
 		
-		Flow.Log.debug('OutcomeManager.checkAvailableOutcomes');
-		
 		var indexedQuestions = _.indexBy(questions, function(question) {
 			return question.get('id');
 		});
@@ -34,7 +32,7 @@ Flow.OutcomeManager = new (Backbone.Collection.extend({
 			var condition = outcome.get('condition');
 			if(typeof condition === 'function') {
 				var available = condition.apply(this, [indexedQuestions]);
-				Flow.Log.info('Setting outcome ' + outcome.get('title') + ' available to ' + available);
+				Flow.Log.info('OutcomeManager.checkAvailableOutcomes Setting outcome ' + outcome.get('title') + ' available to ' + available);
 				outcome.set('available', available);
 			}
 		}, this);
