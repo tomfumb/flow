@@ -23,7 +23,6 @@
 
 #flow_carousel_navigation_back {
 	float: left;
-	left: 0;
 }
 
 #flow_carousel_navigation_forward {
@@ -33,7 +32,6 @@
 
 .question-container-background {
 	height: 300px;
-	width: 100%;
 	background-color: #f3f3f3;
 }
 
