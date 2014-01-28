@@ -1,3 +1,5 @@
+- calendar widget required
+- question text can spill over question area, due to question-container padding
 - some scenario where question summary links can be repeated and clicking the duplicates messes things up
 - what happens if last question is conditional and the last available question makes it available - do the navigation buttons recognise this or act as if there are no more questions?
 - set up routing with history API - handle page loading with hash location and question / area navigation history
@@ -9,3 +11,5 @@
 - consider stacking or hiding stacked for remedies
 - 320px for phone
 - replace many instances of col- classes with single approach where possible
+- style drop-down menus
+- vertical overflow bar briefly showing in some carousel transitions

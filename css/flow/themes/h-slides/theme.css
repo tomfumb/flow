@@ -42,12 +42,14 @@
 */
 /* overriding default Bootstrap Carousel styles so that questions are always shown within question background (above) */
 .carousel-caption {
+	overflow: hidden;
 	position: inherit;
 	top: 0; 
 	/*height: 300px;*/
 	overflow: auto;
-	right: 30px;
-	left: 30px;
+	padding-right: 30px;
+	padding-left: 30px;
+	left: 0;
 	z-index: 1;
 	padding-top: 0;
 	padding-bottom: 0;
@@ -55,6 +57,7 @@
 
 .question-container {
 	height: 300px;
+	overflow: hidden;
 }
 
 #flow_outcomes {

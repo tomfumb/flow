@@ -404,9 +404,10 @@ Flow.Theme.ContentView = Backbone.View.extend({
 			}
 		});
 		
-		activeEl.stop(true);
-		
 		var navigationEls = this.$el.find('.flow-carousel-navigation');
+		
+		activeEl.stop(true);
+		navigationEls.stop(true);
 		
 		var elHeight = activeEl.find('.carousel-caption').height();
 		if(elHeight % 2 != 0) {

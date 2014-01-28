@@ -9,8 +9,7 @@ Flow.Theme.QuestionView = Backbone.View.extend({
 	},
 	
 	template_base: [
-		/*'<div class="question-container-background">&nbsp;</div>',*/
-		'<div class="container">',
+		/*'<div class="container">',*/
 		'		<div class="carousel-caption">',
 		'			<div id="question_<%= question.get("id") %>" class="question">',
 		'				<h4><%= question.get("title") %></h4>',
@@ -63,7 +62,7 @@ Flow.Theme.QuestionView = Backbone.View.extend({
 	
 	template_end: [
 		'	</div>',
-		'</div>'
+		/*'</div>'*/
 	].join(''),
 	
 	render: function(isActive) {
