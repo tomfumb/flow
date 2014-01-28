@@ -2,14 +2,10 @@
 - what happens if last question is conditional and the last available question makes it available - do the navigation buttons recognise this or act as if there are no more questions?
 - set up routing with history API - handle page loading with hash location and question / area navigation history
 - can it handle swipe actions? Back / fwd should permit this
-- http://blog.jetstrap.com/2013/08/bootstrap-3-grids-explained/ - buttons will screw up at col-1, needs fixing for small screens
-- Need carousel content height to be something other than fixed pixel height / orrrrr... http://stackoverflow.com/questions/20272972/height-of-bootstraps-cauousel-not-responsive - can this be made to work?
 - http://getbootstrap.com/getting-started/#browsers
 - tip buttons near key functionality explaining what's going on
 - some sort of guide-through for new users (cookies?)
 - separate remedies into available and unavailable
 - consider stacking or hiding stacked for remedies
 - 320px for phone
-- stack all answers, no side spread
-- try and get uniform side padding on larger screen
-- adjust carousel height based on question content. Animate to new size to prevent jumping. Before animate happens ensure overflow is hidden so that content is revealed nicely. Combine with listen for window.resize to accommodate changing content height. Resize of carousel content should have argument for animate or not, so not animating when responding to window.resize
+- replace many instances of col- classes with single approach where possible

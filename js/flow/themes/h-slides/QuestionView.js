@@ -9,7 +9,7 @@ Flow.Theme.QuestionView = Backbone.View.extend({
 	},
 	
 	template_base: [
-		'<div class="question-container-background">&nbsp;</div>',
+		/*'<div class="question-container-background">&nbsp;</div>',*/
 		'<div class="container">',
 		'		<div class="carousel-caption">',
 		'			<div id="question_<%= question.get("id") %>" class="question">',
@@ -49,7 +49,7 @@ Flow.Theme.QuestionView = Backbone.View.extend({
 		'					</div>',
 		'					<div class="row">',
 		'						<% _.each(answers, function(answer, index) { %>',
-		'							<div class="col-xs-2 col-sm-3 col-md-12 col-lg-12">',
+		'							<div class="col-xs-12 col-sm-12 col-md-3 col-lg-2">',
 		'								<input type="checkbox" id="q<%= question.get("id") %>_a_<%= index %>" /> <span class="answer-checkbox-text clickable"><%= answer %></span>',
 		'							</div>',
 		'						<% }); %>',

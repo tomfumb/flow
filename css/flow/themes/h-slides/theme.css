@@ -23,6 +23,7 @@
 
 #flow_carousel_navigation_back {
 	float: left;
+	left: 0;
 }
 
 #flow_carousel_navigation_forward {
@@ -30,19 +31,30 @@
 	right: 0;
 }
 
+#flow_content_items {
+	background-color: #f3f3f3;
+}
+/*
 .question-container-background {
 	height: 300px;
 	background-color: #f3f3f3;
 }
-
+*/
 /* overriding default Bootstrap Carousel styles so that questions are always shown within question background (above) */
 .carousel-caption {
+	position: inherit;
 	top: 0; 
-	height: 300px;
+	/*height: 300px;*/
 	overflow: auto;
 	right: 30px;
 	left: 30px;
 	z-index: 1;
+	padding-top: 0;
+	padding-bottom: 0;
+}
+
+.question-container {
+	height: 300px;
 }
 
 #flow_outcomes {

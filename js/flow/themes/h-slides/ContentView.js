@@ -33,6 +33,8 @@ Flow.Theme.ContentView = Backbone.View.extend({
 		
 		this.$el.find('#flow_carousel_navigation_back').click(_.bind(this.onBackSelected, this));
 		this.$el.find('#flow_carousel_navigation_forward').click(_.bind(this.onForwardSelected, this));
+		
+		$(window).resize(_.bind(this.onWindowResize, this));
 	},
 	
 	addQuestions: function(questions) {
@@ -93,6 +95,8 @@ Flow.Theme.ContentView = Backbone.View.extend({
 			pause: true,
 			interval: false
 		});
+		
+		this.resizeQuestionContainers(false);
 		
 		// ensure navigation buttons aren't available during carousel movement
 		this.$carouselEl.on('slide.bs.carousel', _.bind(this.onSlideStart, this));
@@ -276,6 +280,8 @@ Flow.Theme.ContentView = Backbone.View.extend({
 		summaryEl.addClass('summary-current');
 		
 		this.$el.find('div.flow-carousel-navigation').prop('disabled', false);
+		
+		this.resizeQuestionContainers(true);
 	},
 	
 	onQuestionAvailabilityChanged: function(question) {
@@ -384,5 +390,48 @@ Flow.Theme.ContentView = Backbone.View.extend({
 	
 	onForwardSelected: function(event) {
 		this.showNextQuestion();
+	},
+	
+	resizeQuestionContainers: function(animate) {
+		
+		var activeEl, inactiveEls = [];
+		_.each(this.questions, function(entry) {
+			if(entry.active) {
+				activeEl = entry.view.$el;
+			}
+			else {
+				inactiveEls.push(entry.view.$el);
+			}
+		});
+		
+		activeEl.stop(true);
+		
+		var navigationEls = this.$el.find('.flow-carousel-navigation');
+		
+		var elHeight = activeEl.find('.carousel-caption').height();
+		if(elHeight % 2 != 0) {
+			elHeight += 1;
+		}
+		
+		var elHeightProperty = (elHeight + 20) + 'px';
+		var navPaddingProperty = (elHeight > 0 ? Math.round(elHeight / 2) : 0) + 'px';
+		
+		if(animate) {
+			var animateSpeed = 180;
+			activeEl.animate({'height': elHeightProperty}, animateSpeed);
+			navigationEls.animate({'padding-top': navPaddingProperty, 'padding-bottom': navPaddingProperty}, animateSpeed);
+		}
+		else {
+			activeEl.height(elHeightProperty);
+			navigationEls.css('padding-top', navPaddingProperty).css('padding-bottom', navPaddingProperty);
+		}
+		
+		_.each(inactiveEls, function(inactiveEl) {
+			inactiveEl.height(elHeightProperty);
+		});
+	},
+	
+	onWindowResize: function(event) {
+		this.resizeQuestionContainers(false);
 	}
 });
