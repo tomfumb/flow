@@ -1,4 +1,5 @@
-- calendar widget required
+- calendar implementation needs finishing, must answer following questions (next line)
+- how does calendar interact with 'has answer' functionality? new validation function required. Will the answer be selectable if it's not an option?
 - question text can spill over question area, due to question-container padding
 - some scenario where question summary links can be repeated and clicking the duplicates messes things up
 - what happens if last question is conditional and the last available question makes it available - do the navigation buttons recognise this or act as if there are no more questions?

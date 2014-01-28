@@ -121,16 +121,6 @@ Flow.Theme.OutcomeManagerView = Backbone.View.extend({
 		this.outcomeListPane.show();
 		this.outcomeDetailsPane.hide();
 		
-		if(this.unansweredQuestions > 0) {
-			
-			var questionPluralPart = (this.unansweredQuestions > 1 ? 's are' : ' is');
-			
-			this.$el.find('#flow_outcome_modal_unanswered_count').show().html(this.unansweredQuestions + ' question' + questionPluralPart + ' unanswered. See question numbers <span class="summary-unanswered">like this</span> above question area.');
-		}
-		else {
-			this.$el.find('#flow_outcome_modal_unanswered_count').hide();
-		}
-		
 		this.modal.modal();
 	},
 	
@@ -157,6 +147,16 @@ Flow.Theme.OutcomeManagerView = Backbone.View.extend({
 			view.render();
 			
 		}, this);
+		
+		if(this.unansweredQuestions > 0) {
+			
+			var questionPluralPart = (this.unansweredQuestions > 1 ? 's are' : ' is');
+			
+			this.$el.find('#flow_outcome_modal_unanswered_count').show().html(this.unansweredQuestions + ' question' + questionPluralPart + ' unanswered. See question numbers <span class="summary-unanswered">like this</span> above question area.');
+		}
+		else {
+			this.$el.find('#flow_outcome_modal_unanswered_count').hide();
+		}
 	},
 	
 	sort: function() {

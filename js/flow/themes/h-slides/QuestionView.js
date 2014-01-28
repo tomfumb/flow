@@ -5,64 +5,63 @@ Flow.Theme.QuestionView = Backbone.View.extend({
 	answerDisplayTypes: {
 		EL_CLICK: 'el_click',
 		LIST_SELECT: 'list_select',
-		CHECKBOXES: 'check_button_click'
+		CHECKBOXES: 'check_button_click',
+		SINGLE_DATE: 'single_date'
 	},
 	
 	template_base: [
-		/*'<div class="container">',*/
-		'		<div class="carousel-caption">',
-		'			<div id="question_<%= question.get("id") %>" class="question">',
-		'				<h4><%= question.get("title") %></h4>',
-		'				<p><%= question.get("content") %></p>',
-		'			</div>',
+		'<div class="carousel-caption">',
+		'	<div id="question_<%= question.get("id") %>" class="question">',
+		'		<h4><%= question.get("title") %></h4>',
+		'		<p><%= question.get("content") %></p>',
+		'	</div>',
+		'	<div id="answers_<%= question.get("id") %>" class="answers">',
 	].join(''),
 	
 	template_single_few: [
-		'			<div id="answers_<%= question.get("id") %>" class="answers">',
-		'				<% _.each(answers, function(answer, index) { %>',
-		'					<div class="answer clickable" id="answer_<%= index %>">',
-		'						<div class="answer-pad"></div>',
-		'						<div class="answer-content"><%= answer %></div>',
-		'						<div class="clearer"></div>',
-		'					</div>',
-		'				<% }); %>',
-		'			</div>'
+		'		<% _.each(answers, function(answer, index) { %>',
+		'			<div class="answer clickable" id="answer_<%= index %>">',
+		'				<div class="answer-pad"></div>',
+		'				<div class="answer-content"><%= answer %></div>',
+		'				<div class="clearer"></div>',
+		'			</div>',
+		'		<% }); %>',
 	].join(''),
 	
 	template_single_many: [
-		'			<div id="answers_<%= question.get("id") %>" class="answers">',
-		'				<select class="multi_answer_select">',
-		'					<option value="">Please Select...</option>',
-		'					<% _.each(answers, function(answer, index) { %>',
-		'						<option type="text" value="<%= answer %>"><%= answer %></option>',
-		'					<% }); %>',
-		'				</select>',
-		'			</div>'
+		'		<select class="multi_answer_select">',
+		'			<option value="">Please Select...</option>',
+		'			<% _.each(answers, function(answer, index) { %>',
+		'				<option type="text" value="<%= answer %>"><%= answer %></option>',
+		'			<% }); %>',
+		'		</select>',
 	].join(''),
 	
 	template_multi: [
-		'			<div id="answers_<%= question.get("id") %>" class="answers">',
-		'				<div class="container" style="width: 100%">',
-		'					<div class="row">',
-		'						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 minor-info">Check all that apply</div>',
+		'		<div class="container" style="width: 100%">',
+		'			<div class="row">',
+		'				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 minor-info">Check all that apply</div>',
+		'			</div>',
+		'			<div class="row">',
+		'				<% _.each(answers, function(answer, index) { %>',
+		'					<div class="col-xs-12 col-sm-12 col-md-3 col-lg-2">',
+		'						<input type="checkbox" id="q<%= question.get("id") %>_a_<%= index %>" /> <span class="answer-checkbox-text clickable"><%= answer %></span>',
 		'					</div>',
-		'					<div class="row">',
-		'						<% _.each(answers, function(answer, index) { %>',
-		'							<div class="col-xs-12 col-sm-12 col-md-3 col-lg-2">',
-		'								<input type="checkbox" id="q<%= question.get("id") %>_a_<%= index %>" /> <span class="answer-checkbox-text clickable"><%= answer %></span>',
-		'							</div>',
-		'						<% }); %>',
-		'					</div>',
-		'					<div class="row spacer-10">',
-		'					<button class="continue btn btn-default" type="button">Done</button>',
-		'					</div>',
-		'				</div>',
-		'			</div>'
+		'				<% }); %>',
+		'			</div>',
+		'			<div class="row spacer-10">',
+		'			<button class="continue btn btn-default" type="button">Done</button>',
+		'			</div>',
+		'		</div>',
+	].join(''),
+	
+	template_single_date: [
+		'		<input type="text" class="date-selector" />'
 	].join(''),
 	
 	template_end: [
 		'	</div>',
-		/*'</div>'*/
+		'</div>'
 	].join(''),
 	
 	render: function(isActive) {
@@ -91,6 +90,10 @@ Flow.Theme.QuestionView = Backbone.View.extend({
 			case 'multi-select':
 				bodyTemplate = this.template_multi;
 				answerStyle = this.answerDisplayTypes.CHECK_BUTTON_CLICK;
+				break;
+			case 'single-date':
+				bodyTemplate = this.template_single_date;
+				answerStyle = this.answerDisplayTypes.SINGLE_DATE;
 				break;
 			default:
 				Flow.Log.error('Unknown answerType provided: ' + this.model.get('answerType'));
@@ -161,6 +164,10 @@ Flow.Theme.QuestionView = Backbone.View.extend({
 				this.$el.find('#answers_' + this.model.get('id') + ' button.continue').click(_.bind(function(event) {
 					this.onQuestionAnswered();
 				}, this));
+				
+				break;
+			case this.answerDisplayTypes.SINGLE_DATE:
+				
 				
 				break;
 			default:
