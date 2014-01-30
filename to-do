@@ -3,14 +3,24 @@
 - observed one case where answeredQuestion in OutcomeManagerView became detached from collection? answeredQuestion.collection was undefined. need to understand how this is possible
 - some scenario where question summary links can be repeated and clicking the duplicates messes things up
 - what happens if last question is conditional and the last available question makes it available - do the navigation buttons recognise this or act as if there are no more questions?
+- notify each question view before it's shown - offer an opportunity to render any heavy-weight content that could slow down the site if all done at once on load. This event could be used to convert a regular select list into a fancy one
 - set up routing with history API - handle page loading with hash location and question / area navigation history
-- can it handle swipe actions? Back / fwd should permit this
+- handle swipe actions for question back / fwd
 - http://getbootstrap.com/getting-started/#browsers
 - tip buttons near key functionality explaining what's going on
 - some sort of guide-through for new users (cookies?)
 - separate remedies into available and unavailable
 - consider stacking or hiding stacked for remedies
-- 320px for phone
+- print view
+- emailing summary
 - replace many instances of col- classes with single approach where possible
 - style drop-down menus
 - vertical overflow bar briefly showing in some carousel transitions
+- check necessity of shims in index.htm
+- style question summaries better
+
+Meeting 2014/01/28
+- regardless of the device it needs to be really obvious to the user when the number of available options is updated, e.g. if count is not visible flash something in screen corner
+- might need to have stories easily-accessible from the assess part so that users can refer back to stories for reference
+- countries list needs to be agreed and not just forgotten about (current list is from US Dept. of State)
+- feedback mechanism required, emails a CCIJ address
