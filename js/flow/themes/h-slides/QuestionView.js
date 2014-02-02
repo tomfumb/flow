@@ -40,11 +40,11 @@ Flow.Theme.QuestionView = Backbone.View.extend({
 	template_multi: [
 		'		<div class="container" style="width: 100%">',
 		'			<div class="row">',
-		'				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 minor-info">Check all that apply</div>',
+		'				<div class="col-xs-24 col-sm-24 col-md-24 col-lg-24 minor-info">Check all that apply</div>',
 		'			</div>',
 		'			<div class="row">',
 		'				<% _.each(answers, function(answer, index) { %>',
-		'					<div class="col-xs-12 col-sm-12 col-md-3 col-lg-2">',
+		'					<div class="col-xs-24 col-sm-24 col-md-6 col-lg-4">',
 		'						<input type="checkbox" id="q<%= question.get("id") %>_a_<%= index %>" /> <span class="answer-checkbox-text clickable"><%= answer %></span>',
 		'					</div>',
 		'				<% }); %>',

@@ -4,7 +4,7 @@ Flow.Theme.OutcomeManagerView = Backbone.View.extend({
 	
 	template: [
 		'<div class="row">',
-		'	<div class="col-12 col-sm-12 col-md-12 col-lg-12">',
+		'	<div class="col-24 col-sm-24 col-md-24 col-lg-24">',
 		'		<h5 id="flow_outcome_count_report" class="clickable">Remedies: <span id="flow_outcome_count_available_number"><%= availableCount %></span> available of <%= totalCount %> total</h5>',
 		'	</div>',
 		'</div>',
@@ -39,6 +39,14 @@ Flow.Theme.OutcomeManagerView = Backbone.View.extend({
 		'		</div>',
 		'	</div>',
 		'</div>'
+	].join(''),
+	
+	outcome_preview_template: [
+		'<div id="<%= outcomeElId %>" class="outcome-preview-container col-6 col-xs-6 col-sm-6 col-md-6 col-lg-6 <%= availabilityClass %>"></div>'
+	].join(''),
+	
+	outcome_template: [
+		'<div id="<%= outcomeElId %>" class="outcome-container col-6 col-xs-6 col-sm-6 col-md-6 col-lg-6"></div>'
 	].join(''),
 	
 	render: function() {
@@ -94,7 +102,13 @@ Flow.Theme.OutcomeManagerView = Backbone.View.extend({
 		
 			var availabilityClass = (available ? 'outcome-preview-available' : 'outcome-preview-unavailable');
 			var outcomeElId = 'flow_outcome_preview_' + index;
-			var outcomeEl = $('<div id="' + outcomeElId + '" class="outcome-preview-container col-3 col-xs-3 col-sm-3 col-md-3 col-lg-3 ' + availabilityClass + '"></div>');
+			
+			var outcomeEl = $(_.template(
+				this.outcome_preview_template, {
+					outcomeElId: outcomeElId,
+					availabilityClass: availabilityClass
+				}
+			));
 			
 			this.previewContainer.append(outcomeEl);
 				
@@ -132,7 +146,12 @@ Flow.Theme.OutcomeManagerView = Backbone.View.extend({
 		_.each(this.sort(), function(model, index) {
 			
 			var outcomeElId = 'flow_outcome_' + index;
-			var outcomeEl = $('<div id="' + outcomeElId + '" class="outcome-container col-3 col-xs-3 col-sm-3 col-md-3 col-lg-3"></div>');
+			
+			var outcomeEl = $(_.template(
+				this.outcome_template, {
+					outcomeElId: outcomeElId
+				}
+			));
 			
 			if(model.get('available')) {
 				this.availableContainer.append(outcomeEl);
