@@ -6,6 +6,7 @@ Flow.Theme.ContentView = Backbone.View.extend({
 		'<div class="container">',
 		'	<div id="flow_question_summary" class="row"></div>',
 		'</div>',
+		'<div class="spacer-5"></div>',
 		'<div class="container">',
 		'	<div class="row">',
 		'		<div id="flow_carousel" class="carousel slide col-xs-24 col-sm-24 col-md-24 col-lg-24 col-24" data-ride="carousel">',

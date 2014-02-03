@@ -6,6 +6,10 @@
 	color: #9900ff;
 }
 
+#flow_carousel {
+	background-color: #f3f3f3;
+}
+
 .flow-carousel-navigation {
 	visibility: hidden;
 	position: absolute;
@@ -31,9 +35,11 @@
 	right: 0;
 }
 
+/*
 #flow_content_items {
 	background-color: #f3f3f3;
 }
+*/
 /*
 .question-container-background {
 	height: 300px;
@@ -139,26 +145,6 @@
 
 #flow_outcome_modal_unanswered_count {
 	display: none;
-}
-
-.summary-question {
-	padding-left: 5px;
-}
-
-.summary-current {
-	text-decoration: underline;
-}
-
-.summary-answered {
-	background-color: green;
-}
-
-.summary-unanswered {
-	background-color: orange;
-}
-
-.summary-unavailable {
-	background-color: gray;
 }
 
 .minor-info {
