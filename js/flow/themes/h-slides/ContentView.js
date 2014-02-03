@@ -308,7 +308,7 @@ Flow.Theme.ContentView = Backbone.View.extend({
 			}
 		}
 		
-		summaryEl.removeClass('btn-link btn-success').addClass('btn-primary');
+		summaryEl.removeClass('btn-default btn-success').addClass('btn-primary');
 		
 		this.$el.find('div.flow-carousel-navigation').prop('disabled', false);
 		
@@ -324,10 +324,16 @@ Flow.Theme.ContentView = Backbone.View.extend({
 		var available = question.get('available');
 		
 		if(available) {
-			summaryEl.removeClass('btn-unavailable').addClass('btn-default');
+			summaryEl.removeClass('btn-unavailable');
+			if(summaryEl.data('answered')) {
+				summaryEl.addClass('btn-success');
+			}
+			else {
+				summaryEl.addClass('btn-default');
+			}
 		}
 		else {
-			summaryEl.removeClass('btn-default').addClass('btn-unavailable');
+			summaryEl.removeClass('btn-default btn-success').addClass('btn-unavailable');
 		}
 		
 		// update modal with list of remaining questions
