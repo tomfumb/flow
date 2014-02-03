@@ -61,14 +61,14 @@ Flow.Theme.ContentView = Backbone.View.extend({
 			var summaryClass;
 			if(question.get('available')) {
 				if(this.hadFirst) {
-					summaryClass = 'btn-link';
+					summaryClass = 'btn-default';
 				}
 				else {
 					summaryClass = 'btn-primary';
 				}
 			}
 			else {
-				summaryClass = 'btn-default';
+				summaryClass = 'btn-unavailable';
 			}
 			
 			var summaryQuestionElId = this.getSummaryQuestionId(questionId);
@@ -303,7 +303,7 @@ Flow.Theme.ContentView = Backbone.View.extend({
 				previousPrimary.addClass('btn-success');
 			}
 			else {
-				previousPrimary.addClass('btn-link');
+				previousPrimary.addClass('btn-default');
 			}
 		}
 		
@@ -323,10 +323,10 @@ Flow.Theme.ContentView = Backbone.View.extend({
 		var available = question.get('available');
 		
 		if(available) {
-			summaryEl.removeClass('btn-link').addClass('btn-primary');
+			summaryEl.removeClass('btn-unavailable').addClass('btn-default');
 		}
 		else {
-			summaryEl.removeClass('btn-default').addClass('btn-link');
+			summaryEl.removeClass('btn-default').addClass('btn-unavailable');
 		}
 		
 		// update modal with list of remaining questions
@@ -336,7 +336,7 @@ Flow.Theme.ContentView = Backbone.View.extend({
 	onSummaryQuestionClicked: function(event) {
 		
 		var summaryQuestionEl = $(event.target);
-		if(!summaryQuestionEl.hasClass('btn-default')) {
+		if(!summaryQuestionEl.hasClass('btn-unavailable')) {
 			
 			var questionId = this.getQuestionIdFromSummaryElementId(summaryQuestionEl.attr('id'));
 			

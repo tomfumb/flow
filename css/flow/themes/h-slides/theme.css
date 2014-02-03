@@ -169,3 +169,13 @@
 .carousel-caption {
 	text-shadow: none;
 }
+
+.btn-unavailable {
+	background-color: transparent;
+	background-image: none;
+	cursor: default;
+}
+
+.btn-unavailable:focus {
+	outline: none;
+}
