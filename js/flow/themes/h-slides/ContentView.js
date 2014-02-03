@@ -4,9 +4,7 @@ Flow.Theme.ContentView = Backbone.View.extend({
 	
 	template: [
 		'<div class="container">',
-		'	<div class="row">',
-		'		<div id="flow_question_summary" class="col-xs-24 col-sm-24 col-md-24 col-lg-24 col-24">Questions:</div>',
-		'	</div>',
+		'	<div id="flow_question_summary" class="row"></div>',
 		'</div>',
 		'<div class="container">',
 		'	<div class="row">',
@@ -23,6 +21,9 @@ Flow.Theme.ContentView = Backbone.View.extend({
 		'<div id="flow_scratch"></div>'
 	].join(''),
 		
+	summary_template: [
+		'<button type="button" id="<%= summaryQuestionElId %>" class="btn <%= summaryClass %>"><%= questionId %></button>'
+	].join(''),
 	
 	questions: [],
 	
@@ -57,9 +58,28 @@ Flow.Theme.ContentView = Backbone.View.extend({
 			
 			scratch.append(questionEl);
 			
-			var summaryClass = (question.get('available') ? 'clickable' : 'summary-unavailable');
+			var summaryClass;
+			if(question.get('available')) {
+				if(this.hadFirst) {
+					summaryClass = 'btn-link';
+				}
+				else {
+					summaryClass = 'btn-primary';
+				}
+			}
+			else {
+				summaryClass = 'btn-default';
+			}
+			
 			var summaryQuestionElId = this.getSummaryQuestionId(questionId);
-			var summaryQuestionEl = $('<span id="' + summaryQuestionElId + '" class="summary-question summary-unanswered ' + summaryClass + (this.hadFirst ? ' ' : ' summary-current') + '">' + questionId + '</span>');
+			
+			var summaryQuestionEl = $(_.template(
+				this.summary_template, {
+					summaryQuestionElId: summaryQuestionElId,
+					summaryClass: summaryClass,
+					questionId: questionId
+				}
+			));
 			
 			summary.append(summaryQuestionEl);
 			summaryQuestionEl.click(_.bind(this.onSummaryQuestionClicked, this));
@@ -276,8 +296,18 @@ Flow.Theme.ContentView = Backbone.View.extend({
 		var questionId = this.getQuestionIdFromContainerId(activeQuestionElId);
 		var summaryEl = this.$el.find('#' + this.getSummaryQuestionId(questionId));
 		
-		this.$el.find('.summary-question').removeClass('summary-current');
-		summaryEl.addClass('summary-current');
+		var previousPrimary = this.$el.find('button.btn-primary');
+		if(previousPrimary) {
+			previousPrimary.removeClass('btn-primary');
+			if(previousPrimary.data('answered')) {
+				previousPrimary.addClass('btn-success');
+			}
+			else {
+				previousPrimary.addClass('btn-link');
+			}
+		}
+		
+		summaryEl.removeClass('btn-link btn-success').addClass('btn-primary');
 		
 		this.$el.find('div.flow-carousel-navigation').prop('disabled', false);
 		
@@ -286,16 +316,17 @@ Flow.Theme.ContentView = Backbone.View.extend({
 	
 	onQuestionAvailabilityChanged: function(question) {
 		
-		Flow.Log.debug('question availability changed');
+		var questionId = question.get('id');
+		Flow.Log.debug('question availability changed: ' + questionId);
 		
-		var summaryEl = this.$el.find('#' + this.getSummaryQuestionId(question.get('id')));
+		var summaryEl = this.$el.find('#' + this.getSummaryQuestionId(questionId));
 		var available = question.get('available');
 		
 		if(available) {
-			summaryEl.removeClass('summary-unavailable').addClass('clickable').addClass('clickable');
+			summaryEl.removeClass('btn-link').addClass('btn-primary');
 		}
 		else {
-			summaryEl.removeClass('clickable').removeClass('clickable').addClass('summary-unavailable');
+			summaryEl.removeClass('btn-default').addClass('btn-link');
 		}
 		
 		// update modal with list of remaining questions
@@ -305,7 +336,7 @@ Flow.Theme.ContentView = Backbone.View.extend({
 	onSummaryQuestionClicked: function(event) {
 		
 		var summaryQuestionEl = $(event.target);
-		if(!summaryQuestionEl.hasClass('summary-unavailable')) {
+		if(!summaryQuestionEl.hasClass('btn-default')) {
 			
 			var questionId = this.getQuestionIdFromSummaryElementId(summaryQuestionEl.attr('id'));
 			
@@ -335,10 +366,10 @@ Flow.Theme.ContentView = Backbone.View.extend({
 		var answered = (answeredQuestion.get('selectedAnswers').length > 0);
 		
 		if(answered) {
-			summaryEl.removeClass('summary-unanswered').addClass('summary-answered');
+			summaryEl.data('answered', true);
 		}
 		else {
-			summaryEl.removeClass('summary-answered').addClass('summary-unanswered');
+			summaryEl.data('answered', false);
 		}
 		
 		// update modal with list of remaining questions

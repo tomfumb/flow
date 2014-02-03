@@ -150,15 +150,15 @@
 }
 
 .summary-answered {
-	color: green;
+	background-color: green;
 }
 
 .summary-unanswered {
-	color: orange;
+	background-color: orange;
 }
 
 .summary-unavailable {
-	color: gray;
+	background-color: gray;
 }
 
 .minor-info {
