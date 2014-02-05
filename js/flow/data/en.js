@@ -115,7 +115,10 @@ Flow.config.questions = [{
 	title: 'In the country where the abuse(s) occurred, are the courts fair, independent and impartial, such that justice can be achieved there?',
 	content: 'Select an answer below.',
 	answers: Flow.config.lists.yesnounknown,
-	answerType: 'single-select'
+	answerType: 'single-select',
+	condition: function(questions) {
+		return(questions['13b'].hasAnswer('Afghanistan'));
+	}
 }];
 	
 Flow.config.outcomes = [{

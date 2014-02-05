@@ -1,9 +1,11 @@
 - calendar implementation needs finishing, must answer following questions (next line)
 - how does calendar interact with 'has answer' functionality? new validation function required. Will the answer be selectable if it's not an option?
+- when resizing container to fit summary height is not always correctly set - sometimes under or over shot. Possibly related to the briefly-displayed vertical scroll bar? Look for a pattern in this happening when the container gets larger or shorter relative to the previous slide
 - observed one case where answeredQuestion in OutcomeManagerView became detached from collection? answeredQuestion.collection was undefined. need to understand how this is possible
 - some scenario where question summary links can be repeated and clicking the duplicates messes things up
-- what happens if last question is conditional and the last available question makes it available - do the navigation buttons recognise this or act as if there are no more questions?
-- notify each question view before it's shown - offer an opportunity to render any heavy-weight content that could slow down the site if all done at once on load. This event could be used to convert a regular select list into a fancy one
+- if the last question is conditionally available, is answered, and then becomes unavailable it is still treated as an available question (summary highlights as active and quesion is shown).
+- Multiple consecutive conditional questions - if c is dependent on b and b dependent on a c should be unavailable when b is unavailable
+- question summary buttons not stacking neatly at 320
 - set up routing with history API - handle page loading with hash location and question / area navigation history
 - handle swipe actions for question back / fwd
 - http://getbootstrap.com/getting-started/#browsers
@@ -13,11 +15,9 @@
 - consider stacking or hiding stacked for remedies
 - print view
 - emailing summary
-- replace many instances of col- classes with single approach where possible
 - style drop-down menus
 - vertical overflow bar briefly showing in some carousel transitions
 - check necessity of shims in index.htm
-- style question summaries better
 
 Meeting 2014/01/28
 - regardless of the device it needs to be really obvious to the user when the number of available options is updated, e.g. if count is not visible flash something in screen corner

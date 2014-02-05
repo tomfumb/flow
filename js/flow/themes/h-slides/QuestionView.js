@@ -12,7 +12,8 @@ Flow.Theme.QuestionView = Backbone.View.extend({
 	template_base: [
 		'<div class="carousel-caption">',
 		'	<div id="question_<%= question.get("id") %>" class="question">',
-		'		<h4><%= question.get("title") %></h4>',
+		'		<h4>Question <%= question.get("id") %></h4>',
+		'		<p><%= question.get("title") %></p>',
 		'		<p><%= question.get("content") %></p>',
 		'	</div>',
 		'	<div id="answers_<%= question.get("id") %>" class="answers">',
@@ -61,6 +62,7 @@ Flow.Theme.QuestionView = Backbone.View.extend({
 	
 	template_end: [
 		'	</div>',
+		'	<hr />',
 		'</div>'
 	].join(''),
 	
@@ -188,5 +190,19 @@ Flow.Theme.QuestionView = Backbone.View.extend({
 		Flow.Log.debug('Question answered: ' + this.model.get('id'));
 		
 		this.model.set('questionAnswered', (new Date()).getTime());
+	},
+	
+	onBeforeShow: function() {
+		
+		Flow.Log.debug('QuestionView.onBeforeShow: ' + this.model.get('id'));
+		
+		if(!this.hadFirstShow) {
+			
+			var select = this.$el.find('select.multi_answer_select');
+			if(select.length && !select.hasClass('form-control')) {
+				select.addClass('form-control');
+			}
+			this.hadFirstShow = true;
+		}
 	}
 });

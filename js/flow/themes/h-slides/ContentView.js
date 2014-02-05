@@ -124,6 +124,8 @@ Flow.Theme.ContentView = Backbone.View.extend({
 		this.$carouselEl.on('slid.bs.carousel', _.bind(this.onSlideStop, this));
 		
 		this.$el.find('#flow_carousel_navigation_forward').css('visibility', 'visible');
+		
+		this.questions[0].view.onBeforeShow();
 	},
 	
 	showNextQuestion: function() {
@@ -137,7 +139,13 @@ Flow.Theme.ContentView = Backbone.View.extend({
 			Flow.Log.debug('Advancing to ' + nextIndex);
 			
 			_.each(this.questions, function(entry, index) {
-				entry.active = (index === nextIndex);
+				if(index === nextIndex) {
+					entry.active = true;
+					entry.view.onBeforeShow();
+				}
+				else {
+					entry.active = false;
+				}
 			}, this);
 			
 			this.$carouselEl.carousel(nextIndex);
@@ -169,7 +177,13 @@ Flow.Theme.ContentView = Backbone.View.extend({
 			Flow.Log.debug('Reverting to ' + prevIndex);
 			
 			_.each(this.questions, function(entry, index) {
-				entry.active = (index === prevIndex);
+				if(index === prevIndex) {
+					entry.active = true;
+					entry.view.onBeforeShow();
+				}
+				else {
+					entry.active = false;
+				}
 			}, this);
 			
 			this.$carouselEl.carousel(prevIndex);
@@ -347,11 +361,12 @@ Flow.Theme.ContentView = Backbone.View.extend({
 			
 			var questionId = this.getQuestionIdFromSummaryElementId(summaryQuestionEl.attr('id'));
 			
-			var requestedIndex = -1;
+			var requestedIndex = -1, requestedView;
 			_.each(this.questions, function(entry, index) {
 				if(entry.id == questionId) {
 					requestedIndex = index;
 					entry.active = true;
+					requestedView = entry.view;
 				}
 				else {
 					entry.active = false;
@@ -359,6 +374,7 @@ Flow.Theme.ContentView = Backbone.View.extend({
 			});
 			
 			if(requestedIndex > -1) {
+				requestedView.onBeforeShow();
 				this.$carouselEl.carousel(requestedIndex);
 				this.checkNavigationOptions();
 			}
