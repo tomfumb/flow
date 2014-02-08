@@ -1,4 +1,3 @@
-- update questions
 - update mechanisms
 
 - calendar implementation needs finishing, must answer following questions (next line)
@@ -11,7 +10,6 @@
 - if the last question is conditionally available, is answered, and then becomes unavailable it is still treated as an available question (summary highlights as active and quesion is shown).
 - Multiple consecutive conditional questions - if c is dependent on b and b dependent on a c should be unavailable when b is unavailable
 - test case - what happens if a second answer is given during slide transition, does it slide twice?
-- question summary buttons not stacking neatly at 320
 - set up routing with history API - handle page loading with hash location and question / area navigation history
 - handle swipe actions for question back / fwd
 - http://getbootstrap.com/getting-started/#browsers
@@ -23,6 +21,7 @@
 - emailing summary
 - vertical overflow bar briefly showing in some carousel transitions
 - check necessity of shims in index.htm
+- consider creating sprite for images, especially logos with fixed size
 
 Meeting 2014/01/28
 - regardless of the device it needs to be really obvious to the user when the number of available options is updated, e.g. if count is not visible flash something in screen corner

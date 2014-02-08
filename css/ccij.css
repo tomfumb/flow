@@ -59,3 +59,12 @@
 .spacer-5 {
 	margin: 5px 0 5px 0;
 }
+
+.outcome-abbreviation {
+	display: none;
+}
+
+.outcome-url {
+	display: none;
+}
+
