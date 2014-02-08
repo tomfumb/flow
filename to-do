@@ -1,10 +1,16 @@
+- update questions
+- update mechanisms
+
 - calendar implementation needs finishing, must answer following questions (next line)
 - how does calendar interact with 'has answer' functionality? new validation function required. Will the answer be selectable if it's not an option?
 - when resizing container to fit summary height is not always correctly set - sometimes under or over shot. Possibly related to the briefly-displayed vertical scroll bar? Look for a pattern in this happening when the container gets larger or shorter relative to the previous slide
 - observed one case where answeredQuestion in OutcomeManagerView became detached from collection? answeredQuestion.collection was undefined. need to understand how this is possible
 - some scenario where question summary links can be repeated and clicking the duplicates messes things up
+- for performance may be wise for mechanisms' conditions to use comma-separated question IDs as keys to distinct evaluations so that all questions involved in the availability of the condition are not evaluated each time an answer changes. Or something like that - anything that prevents the re-evaluation of everything could be good, but not a high priority concern right now
+- consider not automatically advancing the carousel if the user has explicitly requested a specific question, or if the following question is already answered - could get messy / confusing
 - if the last question is conditionally available, is answered, and then becomes unavailable it is still treated as an available question (summary highlights as active and quesion is shown).
 - Multiple consecutive conditional questions - if c is dependent on b and b dependent on a c should be unavailable when b is unavailable
+- test case - what happens if a second answer is given during slide transition, does it slide twice?
 - question summary buttons not stacking neatly at 320
 - set up routing with history API - handle page loading with hash location and question / area navigation history
 - handle swipe actions for question back / fwd
@@ -15,7 +21,6 @@
 - consider stacking or hiding stacked for remedies
 - print view
 - emailing summary
-- style drop-down menus
 - vertical overflow bar briefly showing in some carousel transitions
 - check necessity of shims in index.htm
 
@@ -24,3 +29,25 @@ Meeting 2014/01/28
 - might need to have stories easily-accessible from the assess part so that users can refer back to stories for reference
 - countries list needs to be agreed and not just forgotten about (current list is from US Dept. of State)
 - feedback mechanism required, emails a CCIJ address
+
+Mechanisms: 
+
+International Criminal Court (ICC)
+Extraordinary Chambers for Cambodia (ECCC) 
+War Crimes Chamber of the Court of Bosnia and Herzegovina
+Criminal Prosecution in Canada
+Civil lawsuit in Canada
+Immigration penalties in Canada
+U.N. Committee against Torture (CAT)
+U.N. Human Rights Committee
+U.N. Committee on the Elimination of Racial Discrimination (CERD)
+U.N. Committee on Elimination of Discrimination against Women (CEDAW)
+U.N. Committee on Enforced Disappearances (CED)
+U.N. Committee on Economic, Social and Cultural Rights (CESCR)
+U.N. Committee on the Rights of the Child (CRC)
+U.N. Working Group on Enforced Disappearances (WGEID)
+Inter-American Commission/Court of Human Rights  
+African Commission on Human and Peoples’ Rights 
+African Court on Human and Peoples' Rights
+Economic Community Of West African States (ECOWAS)
+European Court of Human Rights
