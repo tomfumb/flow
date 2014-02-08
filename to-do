@@ -19,6 +19,7 @@
 - consider stacking or hiding stacked for remedies
 - print view
 - emailing summary
+- look for a way to reduce redundancy in outcome configuration - really can't just loop over the div.with_class and find a way to attach the condition?
 - vertical overflow bar briefly showing in some carousel transitions
 - check necessity of shims in index.htm
 - consider creating sprite for images, especially logos with fixed size
