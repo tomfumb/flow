@@ -12,22 +12,21 @@ Flow.config = {
 
 Flow.config.questions = [{
 	id: '1',
-	title: 'In what country did the abuse(s) occur?',
-	content: 'Select a country from the drop-down menu below.',
+	content: 'In what country did the abuse(s) occur?',
+	explanations: ['Territorial jurisdiction/admissibility. To determine whether the victim\'s abuse would come within the mechanism\'s jurisdiction because it happened on a state party\'s territory or on the territory of a country covered by the mechanism.'],
 	answers: Flow.config.lists.countries,
 	answerType: 'single-select'
 },
 {
 	id: '2a',
-	title: 'Did people from any other country participate in the abuse(s)?',
-	content: 'Select an answer below.',
+	content: 'Did people from any other country participate in the abuse(s)?',
 	answers: Flow.config.lists.yesnounknown,
 	answerType: 'single-select'
 },
 {
 	id: '2b',
-	title: 'What country were the people from?',
-	content: 'Select a country from the drop-down menu below.',
+	content: 'What country were the people from?',
+	explanations: ['Territorial jurisdiction/admissibility. To determine whether the victim\'s abuse would come within the mechanism\'s jurisdiction because it was committed by the citizen of a state party or by a citizen of a country covered by the mechanism.'],
 	answers: Flow.config.lists.countries,
 	answerType: 'single-select',
 	condition: function(questions) {
@@ -36,89 +35,101 @@ Flow.config.questions = [{
 },
 {
 	id: '3',
-	title: 'What is the date on which the abuse(s) happened (if the abuses included detention or torture, when did the detention or torture end)?',
-	content: 'The following answers will soon be replaced by a calendar to pick a date.',
+	content: 'What is the date on which the abuse(s) happened (if the abuses included detention or torture, when did the detention or torture end)?',
+	explanations: ['Temporal jurisdiction/admissibility. To determine whether the victim\'s abuse would come within the mechanism\'s jurisdiction – i.e. either when the particular country signed on to the treaty/acceded to the mechanisms or when the treaty/mechanism came into force.'],
 	answers: ['2001/01/01', '2005/06/30', '2010/12/31'],
 	answerType: 'single-select'
 },
 {
 	id: '4',
-	title: 'Describe the abuse(s) committed against the victim',
-	content: 'Select the abuse(s) from the following options.',
-	answers: ['murder', 'beating', 'rape', 'incommunicado', 'detention'],
+	content: 'Describe the abuse(s) committed against the victim',
+	explanations: ['Subject matter jurisdiction/admissibility. To determine whether the victim\'s abuse constitutes a crime/violation that comes within the mechanism\'s subject matter jurisdiction.'],
+	answers: ['beating', 'bodily mutilation', 'burning', 'death threats', 'deprivation of medical care', 'electric shock', 'forced  stress positions', 'forced nudity', 'forced to watch abuse of other prisoners', 'incomunicado detention', 'kicking', 'kidnapping/disappearance', 'killing', 'mock execution', 'prolonged exposure to extreme cold or heat', 'prolonged food/water deprivation', 'prolonged sleep deprivation', 'punching', 'rape or other sexual assault', 'severe mental suffering', 'solitary confinement', 'suffocation', 'waterboarding'],
 	answerType: 'multi-select'
 },{
 	id: '5',
-	title: 'Did the abuse(s) take place during a war?',
-	content: 'Select an answer below.',
+	content: 'Did the abuse(s) take place during a war?',
+	explanations: ['Subject matter jurisdiction over War Crimes. To determine whether the victim\'s abuse constitutes a war crime such that it comes within the mechanism\'s subject matter jurisdiction.'],
 	answers: Flow.config.lists.yesnounknown,
 	answerType: 'single-select'
 },{
 	id: '6',
-	title: 'Were these kinds of abuses committed against many other people in the country at that time?',
-	content: 'Select an answer below.',
+	content: 'Were these kinds of abuses committed against many other people in the country at that time?',
+	explanations: ['Subject matter jurisdiction over Crimes Against Humanity. To determine whether the victim\'s abuse constitutes a crime against humanity such that it comes within the mechanism\'s subject matter jurisdiction.'],
 	answers: Flow.config.lists.yesnounknown,
 	answerType: 'single-select'
 },{
 	id: '7',
-	title: 'Was the victim targeted because of her/his race, ethnicity, religion or nationality?',
-	content: 'Select an answer below.',
+	content: 'Was the victim targeted because of her/his race, ethnicity, religion or nationality?',
+	explanations: ['Subject matter jurisdiction over Genocide. To determine whether the victim\'s abuse constitutes genocide such that it comes within the mechanism\'s subject matter jurisdiction.'],
 	answers: Flow.config.lists.yesnounknown,
 	answerType: 'single-select'
 },{
 	id: '8',
-	title: 'Who committed the abuse(s)?',
-	content: 'Select the abuser(s) from the following options.',
-	answers: ['soldier in government\'s army', 'police officer', 'soldier in rebel army', 'person in plainclothes'],
+	content: 'Who committed the abuse(s)?',
+	explanations: ['Subject matter jurisdiction over Torture. To determine whether the victim\'s abuse constitutes torture such that it comes within the mechanism\'s subject matter jurisdiction;', 'Immunity. To determine if the abuse was committed by a government actor such that there would be immunity in Canadian courts;', 'Territorial jurisdiction. To determine if the country  where the abuse happened is responsible because the perpetrator was a government actor or not responsible because the abuse was committed by a non-government actor (e.g. a rebel group).'],
+	answers: ['soldier in government\'s army', 'police officer', 'other government official', 'soldier in rebel army', 'person in plainclothes'],
 	answerType: 'multi-select'
 },{
 	id: '9',
-	title: 'Are any of the people responsible for the abuse(s) currently living in Canada?',
-	content: 'Select an answer below.',
+	content: 'Are any of the people responsible for the abuse(s) currently living in Canada?',
+	explanations: ['Territorial jurisdiction for action in Canada. To determine if a criminal UJ case or immigration penalty might be possible in Canada.'],
 	answers: Flow.config.lists.yesnounknown,
 	answerType: 'single-select'
 },{
 	id: '10',
-	title: 'Do any of the people responsible for the abuse(s) ever visit Canada?',
-	content: 'Select an answer below.',
+	content: 'Do any of the people responsible for the abuse(s) ever visit Canada?',
+	explanations: ['Territorial jurisdiction for action in Canada. To determine if a criminal UJ case or immigration penalty might be possible in Canada'],
 	answers: Flow.config.lists.yesnounknown,
 	answerType: 'single-select'
 },{
 	id: '11',
-	title: 'Do any of the people responsible for the abuse(s) ever travel outside the country where the abuse(s) happened?',
-	content: 'Select an answer below.',
+	content: 'Do any of the people responsible for the abuse(s) ever travel outside the country where the abuse(s) happened?',
 	answers: Flow.config.lists.yesnounknown,
 	answerType: 'single-select'
 },{
 	id: '12',
-	title: 'At the time of the abuse(s), was the victim a citizen of the country where the abuse(s) happened?',
-	content: 'Select an answer below.',
-	answers: Flow.config.lists.yesnounknown,
+	content: 'At the time of the abuse(s), what country was the victim a citizen of?',
+	answers: Flow.config.lists.countries,
 	answerType: 'single-select'
 },{
 	id: '13a',
-	title: 'At the time of the abuse(s), was the victim a citizen of any other country?',
-	content: 'Select an answer below.',
+	content: 'At the time of the abuse(s), was the victim a citizen of any other country?',
 	answers: Flow.config.lists.yesnounknown,
 	answerType: 'single-select'
 },{
 	id: '13b',
-	title: 'Of which other country was the victim a citizen at the time of the abuse(s)?',
-	content: 'Select a country from the drop-down menu below.',
+	content: 'Of which other country was the victim a citizen at the time of the abuse(s)?',
 	answers: Flow.config.lists.countries,
 	answerType: 'single-select',
 	condition: function(questions) {
 		return(questions['13a'].hasAnswer('yes'));
 	}
 },{
-	id: '14',
-	title: 'In the country where the abuse(s) occurred, are the courts fair, independent and impartial, such that justice can be achieved there?',
-	content: 'Select an answer below.',
+	id: '14a',
+	content: 'In your opinion, in the country where the abuse(s) occurred, are the courts fair, independent and impartial, such that justice can be achieved there?',
 	answers: Flow.config.lists.yesnounknown,
+	answerType: 'single-select'
+},{
+	id: '14b',
+	content: 'Did the victim or the victim\'s family try to bring a case or a complaint before the courts, the police or other authorities in the country where the abuses occurred?',
+	answers: Flow.config.lists.yesnounknown,
+	answerType: 'single-select'
+},{
+	id: '14c',
+	content: 'What was the result?',
+	explanations: ['Admissibility re exhaustion of domestic remedies. To determine whether the mechanism would reject the case based availability of remedies in country where the abuses happened.'],
+	answers: ['Investigation or prosecution still ongoing', 'No investigation', 'Inadequate investigation', 'A court held someone responsible', 'Someone was put on trial but was found not guilty'],
 	answerType: 'single-select',
 	condition: function(questions) {
-		return(questions['13b'].hasAnswer('Afghanistan'));
+		return(questions['14b'].hasAnswer('yes'));
 	}
+},{
+	id: '15',
+	content: 'Has the victim or the victim\'s family submitted a complaint to any other international court or body?',
+	explanations: ['Admissibility re deference to other bodies. To determine whether the mechanism would reject the case based a complaint before another international body.'],
+	answers: Flow.config.lists.yesnounknown,
+	answerType: 'single-select'
 }];
 	
 Flow.config.outcomes = [{

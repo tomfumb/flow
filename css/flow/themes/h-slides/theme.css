@@ -46,6 +46,7 @@
 	background-color: #f3f3f3;
 }
 */
+
 /* overriding default Bootstrap Carousel styles so that questions are always shown within question background (above) */
 .carousel-caption {
 	overflow: hidden;
@@ -64,6 +65,10 @@
 .question-container {
 	height: 300px;
 	overflow: hidden;
+}
+
+.question {
+	margin-bottom: 10px;
 }
 
 #flow_outcomes {
@@ -154,6 +159,21 @@
 
 .carousel-caption {
 	text-shadow: none;
+}
+
+.question-explanation-header {
+	color: #2d6ca2;
+}
+
+.question-explanation-content {
+	display: none;
+	border: 1px dashed #2d6ca2;
+	margin: 5px 0 5px 0;
+	padding: 5px;
+}
+
+.question-explanation-content ul {
+	list-style: square;
 }
 
 .btn-unavailable {

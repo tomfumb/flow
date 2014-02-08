@@ -89,7 +89,7 @@ Flow.Theme.ContentView = Backbone.View.extend({
 			question.on('change:available', _.bind(this.onQuestionAvailabilityChanged, this));
 			
 			var questionView = new Flow.Theme.QuestionView({el: '#' + questionElId, model: question});
-			questionView.render(!this.hadFirst);
+			questionView.render(!this.hadFirst, this);
 			this.questions.push({id: questionId, view: questionView, active: !this.hadFirst});
 			
 			if(question.get('available')) {
@@ -446,7 +446,7 @@ Flow.Theme.ContentView = Backbone.View.extend({
 		this.showNextQuestion();
 	},
 	
-	resizeQuestionContainers: function(animate) {
+	resizeQuestionContainers: function(animate, animateSpeed) {
 		
 		var activeEl, inactiveEls = [];
 		_.each(this.questions, function(entry) {
@@ -472,7 +472,7 @@ Flow.Theme.ContentView = Backbone.View.extend({
 		var navPaddingProperty = (elHeight > 0 ? Math.round(elHeight / 2) : 0) + 'px';
 		
 		if(animate) {
-			var animateSpeed = 180;
+			animateSpeed = (isNaN(animateSpeed) ? 180 : animateSpeed);
 			activeEl.animate({'height': elHeightProperty}, animateSpeed);
 			navigationEls.animate({'padding-top': navPaddingProperty, 'padding-bottom': navPaddingProperty}, animateSpeed);
 		}
@@ -488,5 +488,9 @@ Flow.Theme.ContentView = Backbone.View.extend({
 	
 	onWindowResize: function(event) {
 		this.resizeQuestionContainers(false);
+	},
+	
+	onChildContentResize: function() {
+		this.resizeQuestionContainers(true, 100);
 	}
 });

@@ -13,13 +13,28 @@ Flow.Theme.QuestionView = Backbone.View.extend({
 		'<div class="carousel-caption">',
 		'	<div id="question_<%= question.get("id") %>" class="question">',
 		'		<h4>Question <%= question.get("id") %></h4>',
-		'		<p><%= question.get("title") %></p>',
 		'		<p><%= question.get("content") %></p>',
+		'		<% if(explanations && explanations.length) { %>',
+		'		<div class="question-explanation">',
+		'			<div class="question-explanation-header clickable">',
+		'				<img src="images/emblem-notice.png" width="24" height="24" title="Why this question?" />',
+		'				Why this question?',
+		'			</div>',
+		'			<div class="question-explanation-content">',
+		'				<ul>',
+		'				<% _.each(explanations, function(explanation) { %> ',
+		'					<li><%= explanation %></li>',
+		'				<% }) %>',
+		'				</ul>',
+		'			</div>',
+		'		</div>',
+		'		<% } %>',
 		'	</div>',
 		'	<div id="answers_<%= question.get("id") %>" class="answers">',
 	].join(''),
 	
 	template_single_few: [
+		'		<p>Select an answer below.</p>',
 		'		<% _.each(answers, function(answer, index) { %>',
 		'			<div class="answer clickable" id="answer_<%= index %>">',
 		'				<div class="answer-pad"></div>',
@@ -30,6 +45,7 @@ Flow.Theme.QuestionView = Backbone.View.extend({
 	].join(''),
 	
 	template_single_many: [
+		'		<p>Select an answer from the drop-down menu below.</p>',
 		'		<select class="multi_answer_select">',
 		'			<option value="">Please Select...</option>',
 		'			<% _.each(answers, function(answer, index) { %>',
@@ -39,6 +55,7 @@ Flow.Theme.QuestionView = Backbone.View.extend({
 	].join(''),
 	
 	template_multi: [
+		'		<p>Select all that apply from the following options.</p>',
 		'		<div class="container" style="width: 100%">',
 		'			<div class="row">',
 		'				<div class="col-xs-24 col-sm-24 col-md-24 col-lg-24 minor-info">Check all that apply</div>',
@@ -66,11 +83,12 @@ Flow.Theme.QuestionView = Backbone.View.extend({
 		'</div>'
 	].join(''),
 	
-	render: function(isActive) {
+	render: function(isActive, container) {
 		
 		Flow.Log.debug('QuestionView.render');
 		
 		isActive = (typeof isActive === 'undefined' ? false : !!isActive);
+		this.container = container;
 		
 		this.$el.addClass('item');
 		if(isActive) {
@@ -106,9 +124,12 @@ Flow.Theme.QuestionView = Backbone.View.extend({
 		this.$el.html(_.template(
 			template, {
 				question: this.model,
-				answers: this.model.get('answers')
+				answers: this.model.get('answers'),
+				explanations: this.model.get('explanations')
 			}
 		));
+		
+		this.$el.find('div.question-explanation-header').click(_.bind(this.onQuestionExplanationHeaderClick, this));
 		
 		switch(answerStyle) {
 			
@@ -190,6 +211,15 @@ Flow.Theme.QuestionView = Backbone.View.extend({
 		Flow.Log.debug('Question answered: ' + this.model.get('id'));
 		
 		this.model.set('questionAnswered', (new Date()).getTime());
+	},
+	
+	onQuestionExplanationHeaderClick: function() {
+		
+		this.$el.find('div.question-explanation-content').slideToggle(100, _.bind(function() {
+			if(this.container && typeof this.container.onChildContentResize === 'function') {
+				this.container.onChildContentResize.apply(this.container, []);
+			}
+		}, this));
 	},
 	
 	onBeforeShow: function() {
