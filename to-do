@@ -1,4 +1,4 @@
-- update mechanisms
+- update rules on mechanisms that have them
 
 - calendar implementation needs finishing, must answer following questions (next line)
 - how does calendar interact with 'has answer' functionality? new validation function required. Will the answer be selectable if it's not an option?

@@ -68,13 +68,14 @@ Flow.Theme.QuestionView = Backbone.View.extend({
 		'				<% }); %>',
 		'			</div>',
 		'			<div class="row spacer-10">',
-		'			<button class="continue btn btn-default" type="button">Done</button>',
+		'				<button class="continue btn btn-default" type="button">Done</button>',
 		'			</div>',
 		'		</div>',
 	].join(''),
 	
 	template_single_date: [
-		'		<input type="text" class="date-selector" />'
+		'		<p>Provide a date using the date-picker below.</p>',
+		'		<input type="text" class="date-selector" />',
 	].join(''),
 	
 	template_end: [
@@ -147,11 +148,7 @@ Flow.Theme.QuestionView = Backbone.View.extend({
 					
 					this.onAnswersSelected([jqTarget.find('div.answer-content').html()]);
 					
-					window.setTimeout(function(context) {
-						return function() {
-							context.onQuestionAnswered();
-						};
-					}(this), 300);
+					window.setTimeout(_.bind(this.onQuestionAnswered, this), 300);
 				}, this));
 				break;
 			case this.answerDisplayTypes.LIST_SELECT:
@@ -159,11 +156,7 @@ Flow.Theme.QuestionView = Backbone.View.extend({
 				this.$el.find('#answers_' + this.model.get('id') + ' .multi_answer_select').change(_.bind(function(event) {
 					this.onAnswersSelected(event.target.value ? [event.target.value] : []);
 					
-					window.setTimeout(function(context) {
-						return function() {
-							context.onQuestionAnswered();
-						};
-					}(this), 300);
+					window.setTimeout(_.bind(this.onQuestionAnswered, this), 300);
 				}, this));
 				break;
 			case this.answerDisplayTypes.CHECK_BUTTON_CLICK:
@@ -190,8 +183,11 @@ Flow.Theme.QuestionView = Backbone.View.extend({
 				
 				break;
 			case this.answerDisplayTypes.SINGLE_DATE:
-				
-				
+			
+				this.$el.find('#answers_' + this.model.get('id') + ' input.date-selector').change(_.bind(function(event) {
+					this.onAnswersSelected([event.target.value]);
+					window.setTimeout(_.bind(this.onQuestionAnswered, this), 300);
+				}, this));
 				break;
 			default:
 				Flow.Log.error('Unknown answerStyle provided: ' + answerStyle);
@@ -232,6 +228,18 @@ Flow.Theme.QuestionView = Backbone.View.extend({
 			if(select.length && !select.hasClass('form-control')) {
 				select.addClass('form-control');
 			}
+			
+			var datePicker = this.$el.find('input.date-selector');
+			if(datePicker.length) {
+				datePicker.datepicker({
+					showOn: 'both',
+					dateFormat: 'yy/mm/dd',
+					changeMonth: true,
+					changeYear: true,
+					yearRange: '1950:' + (new Date()).getFullYear()
+				});
+			}
+			
 			this.hadFirstShow = true;
 		}
 	}

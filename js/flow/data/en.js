@@ -53,8 +53,7 @@ Flow.config.questions = [{
 	id: '3',
 	content: 'What is the date on which the abuse(s) happened (if the abuses included detention or torture, when did the detention or torture end)?',
 	explanations: ['Temporal jurisdiction/admissibility. To determine whether the victim\'s abuse would come within the mechanism\'s jurisdiction – i.e. either when the particular country signed on to the treaty/acceded to the mechanisms or when the treaty/mechanism came into force.'],
-	answers: ['2001/01/01', '2005/06/30', '2010/12/31'],
-	answerType: 'single-select'
+	answerType: 'single-date'
 },
 {
 	id: '4',
@@ -236,7 +235,7 @@ Flow.config.outcomes = [{
 	description: Flow.config.selectors.outcome_un_cerd.find('.outcome-description').html(),
 	image: Flow.config.selectors.outcome_un_cerd.find('img').attr('src'),
 	condition: function(questions) {
-		return true;
+		return !questions['3'].isBeforeDate('2005/01/05');
 	}
 },{
 	/* U.N. Committee on Elimination of Discrimination against Women (CEDAW) */
