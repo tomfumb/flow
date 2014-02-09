@@ -1,7 +1,5 @@
 - update rules on mechanisms that have them
 
-- calendar implementation needs finishing, must answer following questions (next line)
-- how does calendar interact with 'has answer' functionality? new validation function required. Will the answer be selectable if it's not an option?
 - when resizing container to fit summary height is not always correctly set - sometimes under or over shot. Possibly related to the briefly-displayed vertical scroll bar? Look for a pattern in this happening when the container gets larger or shorter relative to the previous slide
 - observed one case where answeredQuestion in OutcomeManagerView became detached from collection? answeredQuestion.collection was undefined. need to understand how this is possible
 - some scenario where question summary links can be repeated and clicking the duplicates messes things up

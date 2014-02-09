@@ -18,8 +18,7 @@ Flow.Theme.ContentView = Backbone.View.extend({
 		'		</div>',
 		'	</div>',
 		'</div>',
-		'<div id="flow_outcomes" class="container"></div>',
-		'<div id="flow_scratch"></div>'
+		'<div id="flow_outcomes" class="container"></div>'
 	].join(''),
 		
 	summary_template: [
@@ -43,7 +42,7 @@ Flow.Theme.ContentView = Backbone.View.extend({
 		
 		Flow.Log.debug('ContentView.addQuestions');
 		
-		var scratch = this.$el.find('#flow_scratch');
+		var scratch = $('#flow_scratch');
 		var summary = this.$el.find('#flow_question_summary');
 		
 		var availableCount = 0;

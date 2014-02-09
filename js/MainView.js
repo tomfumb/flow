@@ -72,9 +72,11 @@ CCIJ.MainView = Backbone.View.extend({
 		introView.render();
 		
 		new Flow.MainView({model: combinedModel, el: '#flow_body'});
-		new Flow.PrintView({model: combinedModel, el: '#flow_print'});
 		
 		Flow.OutcomeManager.reset(Flow.config.outcomes);
 		Flow.QuestionManager.reset(Flow.config.questions);
+		
+		var printView = new Flow.PrintView({model: combinedModel, el: '#flow_print'});
+		printView.render();
 	}
 });

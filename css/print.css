@@ -1,0 +1,19 @@
+#ccij_main {
+	display: none;
+}
+
+#ccij_header {
+	display: none;
+}
+
+#ccij_navbar {
+	display: none;
+}
+
+.print-question {
+	margin-bottom: 10px;
+}
+
+#flow_print {
+	display: block;
+}
