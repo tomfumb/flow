@@ -21,10 +21,10 @@ Flow.Question = Backbone.Model.extend({
 		return selected;
 	},
 	
-	isBeforeDate: function(checkDateStr) {
+	isBeforeOrOnDate: function(checkDateStr) {
 		
 		if(!(typeof checkDateStr === 'string' && checkDateStr.match(/\d{4}\/\d{2}\/\d{2}/))) {
-			Flow.Log.error('isBeforeDate supplied with bad checkDateStr format. Must be YYYY/MM/DD');
+			Flow.Log.error('isBeforeOrOnDate supplied with bad checkDateStr format. Must be YYYY/MM/DD');
 			return;
 		}
 		
@@ -35,20 +35,20 @@ Flow.Question = Backbone.Model.extend({
 		}
 		
 		if(selectedAnswers.length > 1) {
-			Flow.Log.error('isBeforeDate attempting to check date on answers array with > 1 entry');
+			Flow.Log.error('isBeforeOrOnDate attempting to check date on answers array with > 1 entry');
 			return false;
 		}
 		
 		selectedDateStr = selectedAnswers[0];
 		
 		if(!(typeof selectedDateStr === 'string' && selectedDateStr.match(/\d{4}\/\d{2}\/\d{2}/))) {
-			Flow.Log.error('isBeforeDate supplied with bad selectedDateStr format. Must be YYYY/MM/DD');
+			Flow.Log.error('isBeforeOrOnDate supplied with bad selectedDateStr format. Must be YYYY/MM/DD');
 			return;
 		}
 		
 		var checkDate = new Date(checkDateStr);
 		var selectedDate = new Date(selectedDateStr);
 		
-		return (selectedDate < checkDate);
+		return (selectedDate <= checkDate);
 	}
 });

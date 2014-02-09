@@ -235,7 +235,7 @@ Flow.config.outcomes = [{
 	description: Flow.config.selectors.outcome_un_cerd.find('.outcome-description').html(),
 	image: Flow.config.selectors.outcome_un_cerd.find('img').attr('src'),
 	condition: function(questions) {
-		return !questions['3'].isBeforeDate('2005/01/05');
+		return !questions['3'].isBeforeOrOnDate('2005/01/05');
 	}
 },{
 	/* U.N. Committee on Elimination of Discrimination against Women (CEDAW) */
