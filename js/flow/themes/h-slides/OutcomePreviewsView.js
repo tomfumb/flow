@@ -26,11 +26,17 @@ Flow.Theme.OutcomePreviewsView = Backbone.View.extend({
 		'			</tr>',
 		'		</table>',
 		'	</div>',
+		'</div>',
+		'<div class="spacer-10"></div>',
+		'<div class="row">',
+		'	<div class="col-24 col-xs-24 col-sm-24 col-md-24 col-lg-24">',
+		'		<div id="flow_outcome_recent_changes" class="alert alert-info"></div>',
+		'	</div>',
 		'</div>'
 	].join(''),
 	
 	outcome_preview_template: [
-		'<div id="<%= outcomeElId %>" class="available-outcome-preview-container available-outcome-preview"></div>'
+		'<div id="<%= outcomeElId %>"<%= displayStyle %> class="available-outcome-preview-container available-outcome-preview"></div>'
 	].join(''),
 	
 	render: function(previewClickHandler) {
@@ -63,17 +69,15 @@ Flow.Theme.OutcomePreviewsView = Backbone.View.extend({
 	
 		var scratch = $('#flow_scratch'), view, outcomeElId;
 		_.each(this.model.models, function(outcome) {
-		
-			if(outcome.get('available')) {
 				
-				outcomeElId = this.getPreviewContainerIdFromOutcome(outcome);
-				scratch.append(_.template(this.outcome_preview_template, {
-					outcomeElId: outcomeElId
-				}));
-				
-				view = new Flow.Theme.OutcomePreviewView({el: '#' + outcomeElId, model: outcome});
-				view.render();
-			}
+			outcomeElId = this.getPreviewContainerIdFromOutcome(outcome);
+			scratch.append(_.template(this.outcome_preview_template, {
+				outcomeElId: outcomeElId,
+				displayStyle: (outcome.get('available') ? '' : ' style="display: none;"')
+			}));
+			
+			view = new Flow.Theme.OutcomePreviewView({el: '#' + outcomeElId, model: outcome});
+			view.render();
 			
 		}, this);
 		
@@ -91,7 +95,7 @@ Flow.Theme.OutcomePreviewsView = Backbone.View.extend({
 		return elId.replace(/op_/, '');
 	},
 	
-	onOutcomesUpdated: function() {
+	onOutcomesUpdated: function(changedOutcome) {
 		
 		var availableCount = 0;
 		_.each(this.model.models, function(outcome) {
@@ -109,8 +113,14 @@ Flow.Theme.OutcomePreviewsView = Backbone.View.extend({
 			countEl.fadeIn(100);
 		}, this));
 		
-		var previewEl = this.$el.find('#flow_available_outcome_previews');
-		previewEl.empty().html(this.getAvailablePreviewsHtml());
+		var changedPreviewEl = this.$el.find('#' + this.getPreviewContainerIdFromOutcome(changedOutcome));
+		changedPreviewEl.stop();
+		if(changedOutcome.get('available')) {
+			changedPreviewEl.fadeIn(300);
+		}
+		else {
+			changedPreviewEl.fadeOut(300);
+		}
 		
 		this.handlePreviewClicks();
 	},

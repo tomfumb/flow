@@ -11,7 +11,7 @@ Flow.Theme.OutcomeManagerView = Backbone.View.extend({
 		'				<h4 class="modal-title" id="flow_outcome_modal_label">Your Options</h4>',
 		'			</div>',
 		'			<div class="modal-body" id="flow_outcome_modal_body">',
-		'				<div id="flow_outcome_modal_unanswered_count" class="alert alert-info"></div>',
+		'				<div id="flow_outcome_modal_unanswered_count" class="alert alert-warning"></div>',
 		'				<ul class="nav nav-tabs">',
 		'					<li id="flow_outcome_available_link"><a class="outcome-tab-link" href="#flow_outcome_available" data-toggle="tab">Available</a></li>',
 		'					<li><a class="outcome-tab-link" href="#flow_outcome_unavailable" data-toggle="tab">Unavailable</a></li>',

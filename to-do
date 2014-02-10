@@ -1,13 +1,12 @@
+- need some way of notifying which outcomes' availability changed due to the last answered question (use abbreviations as links)
 - update rules on mechanisms that have them
 - when resizing container to fit summary height is not always correctly set - sometimes under or over shot. Possibly related to the briefly-displayed vertical scroll bar? Look for a pattern in this happening when the container gets larger or shorter relative to the previous slide
-- add cache-bust approach
 - some scenario where question summary links can be repeated and clicking the duplicates messes things up
 - for performance may be wise for mechanisms' conditions to use comma-separated question IDs as keys to distinct evaluations so that all questions involved in the availability of the condition are not evaluated each time an answer changes. Or something like that - anything that prevents the re-evaluation of everything could be good, but not a high priority concern right now
 - consider not automatically advancing the carousel if the user has explicitly requested a specific question, or if the following question is already answered - could get messy / confusing
 - if the last question is conditionally available, is answered, and then becomes unavailable it is still treated as an available question (summary highlights as active and quesion is shown).
 - Multiple consecutive conditional questions - if c is dependent on b and b dependent on a c should be unavailable when b is unavailable
 - test case - what happens if a second answer is given during slide transition, does it slide twice?
-- set up routing with history API - handle page loading with hash location and question / area navigation history
 - handle swipe actions for question back / fwd
 - http://getbootstrap.com/getting-started/#browsers
 - tip buttons near key functionality explaining what's going on

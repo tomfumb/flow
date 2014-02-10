@@ -32,7 +32,7 @@ CCIJ.MainView = Backbone.View.extend({
 		$('#' + id).parents('li').addClass('active');
 	},
 	
-	onHomeSelected: function(event) {
+	onHomeSelected: function() {
 		
 		this.focuses.hide();
 		this.intro.show();
@@ -40,7 +40,7 @@ CCIJ.MainView = Backbone.View.extend({
 		this.changeActiveNavTab('ccij_home_nav');
 	},
 	
-	onRemediesSelected: function(event) {
+	onRemediesSelected: function() {
 		
 		this.focuses.hide();
 		this.$el.find('#ccij_outcomes').show();
@@ -48,16 +48,16 @@ CCIJ.MainView = Backbone.View.extend({
 		this.changeActiveNavTab('ccij_remedies_nav');
 	},
 	
-	onAssessSelected: function(event) {
+	onAssessSelected: function() {
 		
 		this.focuses.hide();
 		
 		if(!this.flowShown) {
 			this.flowSelected();
-			this.flowShown = true;
 		}
 		
 		this.$el.find('#flow').show();
+		this.flowShown = true;
 		
 		this.changeActiveNavTab('ccij_assess_nav');
 	},
