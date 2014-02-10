@@ -18,6 +18,7 @@ Flow.Theme.ContentView = Backbone.View.extend({
 		'		</div>',
 		'	</div>',
 		'</div>',
+		'<div id="flow_outcome_previews" class="container"></div>',
 		'<div id="flow_outcomes" class="container"></div>'
 	].join(''),
 		
@@ -417,8 +418,19 @@ Flow.Theme.ContentView = Backbone.View.extend({
 		
 		Flow.Log.debug('ContentView.addOutcomes');
 		
+		this.outcomePreviews = new Flow.Theme.OutcomePreviewsView({model: outcomes});
 		this.outcomeManager = new Flow.Theme.OutcomeManagerView({model: outcomes});
 		this.outcomeManager.render();
+		this.outcomePreviews.render(_.bind(this.outcomeShowRequested, this));
+	},
+	
+	outcomeShowRequested: function(outcome) {
+		if(outcome) {
+			this.outcomeManager.showOutcomeInModal(outcome);
+		}
+		else {
+			this.outcomeManager.showOutcomesInModal();
+		}
 	},
 	
 	getQuestionContainerId: function(questionId) {

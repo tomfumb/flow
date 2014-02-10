@@ -3,34 +3,32 @@ Flow.Theme.OutcomeManagerView = Backbone.View.extend({
 	el: '#flow_outcomes',
 	
 	template: [
-		'<div class="row">',
-		'	<div class="col-24 col-sm-24 col-md-24 col-lg-24">',
-		'		<h5 id="flow_outcome_count_report" class="clickable">Remedies: <span id="flow_outcome_count_available_number"><%= availableCount %></span> available of <%= totalCount %> total</h5>',
-		'	</div>',
-		'</div>',
-		'<div class="row" id="flow_outcome_preview"></div>',
 		'<div class="modal" id="flow_outcome_modal" tabindex="-1" role="dialog" aria-labelledby="flow_outcome_modal_label" aria-hidden="true">',
 		'	<div class="modal-dialog">',
 		'		<div class="modal-content">',
 		'			<div class="modal-header">',
 		'				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>',
-		'				<h4 class="modal-title" id="flow_outcome_modal_label">Outcomes</h4>',
+		'				<h4 class="modal-title" id="flow_outcome_modal_label">Your Options</h4>',
 		'			</div>',
 		'			<div class="modal-body" id="flow_outcome_modal_body">',
-		'				<div id="flow_outcome_modal_unanswered_count"></div>',
-		'				<div id="flow_outcome_listing">',
-		'					<div id="flow_outcomes_available" class="row outcome-availability-container">',
-		'						<h4>Available</h4>',
+		'				<div id="flow_outcome_modal_unanswered_count" class="alert alert-info"></div>',
+		'				<ul class="nav nav-tabs">',
+		'					<li id="flow_outcome_available_link"><a class="outcome-tab-link" href="#flow_outcome_available" data-toggle="tab">Available</a></li>',
+		'					<li><a class="outcome-tab-link" href="#flow_outcome_unavailable" data-toggle="tab">Unavailable</a></li>',
+		'					<li style="display: none;" id="flow_outcome_detail_link"><a class="outcome-tab-link" href="#flow_outcome_detail" data-toggle="tab">Detail</a></li>',
+		'				</ul>',
+		'				<div class="tab-content">',
+		'					<div class="tab-pane active" id="flow_outcome_available">',
+		'						<div class="spacer-10"></div>',
+		'						<p>Based on the questions you have answered the following options may be available to you.</p>',
+		'						<div id="flow_outcome_available_outcomes"></div>',
 		'					</div>',
-		'					<div id="flow_outcomes_unavailable" class="row outcome-availability-container">',
-		'						<h4>Unavailable</h4>',
+		'					<div class="tab-pane" id="flow_outcome_unavailable">',
+		'						<div class="spacer-10"></div>',
+		'						<p>Based on the questions you have answered the following options may not be available to you.</p>',
+		'						<div id="flow_outcome_unavailable_outcomes"></div>',
 		'					</div>',
-		'				</div>',
-		'				<div id="flow_outcome_details">',
-		'					<h5 id="flow_outcome_listing_return" class="clickable clickable-colour">Back to listing</h5>',
-		'					<img id="flow_outcome_details_image" width="75px" height="75px" />',
-		'					<h4 id="flow_outcome_details_title"></h4>',
-		'					<div id="flow_outcome_details_description"></div>',
+		'					<div class="tab-pane" id="flow_outcome_detail"></div>',
 		'				</div>',
 		'			</div>',
 		'			<div class="modal-footer">',
@@ -41,215 +39,100 @@ Flow.Theme.OutcomeManagerView = Backbone.View.extend({
 		'</div>'
 	].join(''),
 	
-	outcome_preview_template: [
-		'<div id="<%= outcomeElId %>" class="outcome-preview-container col-6 col-xs-6 col-sm-6 col-md-6 col-lg-6 <%= availabilityClass %>"></div>'
-	].join(''),
-	
 	outcome_template: [
-		'<div id="<%= outcomeElId %>" class="outcome-container col-6 col-xs-6 col-sm-6 col-md-6 col-lg-6"></div>'
+		'<div class="row">',
+		'	<div id="<%= outcomeElId %>" class="outcome-manager-outcome-container col-24 col-xs-24 col-sm-24 col-md-24 col-lg-24">',
+		'	</div>',
+		'</div>'
 	].join(''),
 	
 	render: function() {
 		
-		var availableCount = 0, totalCount = 0;
-		_.each(this.model.models, function(outcome) {
+		this.$el.html(_.template(this.template));
 		
-			totalCount++;
-			if(outcome.get('available')) {
-				availableCount++;
-			}
-		}, this);
-		
-		this.$el.html(_.template(
-		
-			this.template, {
-				availableCount: availableCount,
-				totalCount: totalCount
-			}
-		));
-			
-		this.model.on('change:available', _.bind(this.onOutcomesUpdated, this));
-		this.$el.find('#flow_outcome_count_report').click(_.bind(this.onCountReportClicked, this));
-		this.$el.find('#flow_outcome_listing_return').click(_.bind(this.onListingReturnClicked, this));
-		
-		this.previewContainer = this.$el.find('#flow_outcome_preview');
 		this.modal = this.$el.find('#flow_outcome_modal');
-		this.outcomeListPane = this.$el.find('#flow_outcome_listing');
-		this.outcomeDetailsPane = this.$el.find('#flow_outcome_details');
-		this.availableContainer = this.$el.find('#flow_outcomes_available');
-		this.unavailableContainer = this.$el.find('#flow_outcomes_unavailable');
 		
-		this.updatePreviews();
-	},
-	
-	onOutcomesUpdated: function() {
-		this.updatePreviews();
-	},
-	
-	updatePreviews: function() {
+		this.$el.find('#flow_outcome_modal_body a.outcome-tab-link').click(function (e) {
+			e.preventDefault();
+			$(this).tab('show');
+		});
 		
-		this.previewContainer.html('');
-		
-		var availableCount = 0, available;
-		
-		_.each(this.sort(), function(model, index) {
-		
-			available = model.get('available');
-			
-			if(available) {
-				availableCount++;
-			}
-		
-			var availabilityClass = (available ? 'outcome-preview-available' : 'outcome-preview-unavailable');
-			var outcomeElId = 'flow_outcome_preview_' + index;
-			
-			var outcomeEl = $(_.template(
-				this.outcome_preview_template, {
-					outcomeElId: outcomeElId,
-					availabilityClass: availabilityClass
-				}
-			));
-			
-			this.previewContainer.append(outcomeEl);
-				
-			var view = new Flow.Theme.OutcomeView({ model: model, el: '#' + outcomeElId });
-			
-			view.onOutcomeSelected = _.bind(this.onOutcomeSelected, this);
-			view.render();
-		}, this);
-		
-		this.$el.find('#flow_outcome_count_available_number').html(availableCount);
-	},
-	
-	onCountReportClicked: function() {
-	
-		Flow.Log.debug('ContentView.onCountReportClicked');
-		
-		this.showOutcomesInModal();
+		this.availableOutcomesContainer = this.$el.find('#flow_outcome_available_outcomes');
+		this.unavailableOutcomesContainer = this.$el.find('#flow_outcome_unavailable_outcomes');
 	},
 	
 	showOutcomesInModal: function() {
 		
 		this.renderOutcomesInModal();
-		
-		this.outcomeListPane.show();
-		this.outcomeDetailsPane.hide();
-		
+		this.$el.find('#flow_outcome_available_link a').tab('show');
 		this.modal.modal();
+	},
+	
+	showOutcomeInModal: function(outcome, internal) {
+		
+		internal = (typeof internal === 'undefined' ? false : !!internal);
+		
+		if(!internal) {
+			this.renderOutcomesInModal();
+			this.modal.modal();
+		}
+		
+		this.$el.find('#flow_outcome_detail_link').show().find('>a').html(outcome.get('abbreviation')).tab('show');
+		this.$el.find('#flow_outcome_detail').html(outcome.get('selector').html());
 	},
 	
 	renderOutcomesInModal: function() {
 			
-		this.availableContainer.find('div.outcome-container').remove();
-		this.unavailableContainer.find('div.outcome-container').remove();
-		
-		_.each(this.sort(), function(model, index) {
+		this.availableOutcomesContainer.html('');
+		this.unavailableOutcomesContainer.html('');
 			
-			var outcomeElId = 'flow_outcome_' + index;
+		var outcomeElId, outcomeEl;
+		_.each(this.model.models, function(outcome, index) {
 			
-			var outcomeEl = $(_.template(
+			outcomeElId = this.getContainerIdFromOutcome(outcome);
+			outcomeEl = $(_.template(
 				this.outcome_template, {
 					outcomeElId: outcomeElId
 				}
 			));
 			
-			if(model.get('available')) {
-				this.availableContainer.append(outcomeEl);
+			if(outcome.get('available')) {
+				this.availableOutcomesContainer.append(outcomeEl);
 			}
 			else {
-				this.unavailableContainer.append(outcomeEl);
+				this.unavailableOutcomesContainer.append(outcomeEl);
 			}
 				
-			var view = new Flow.Theme.OutcomeView({ model: model, el: '#' + outcomeElId });
+			var view = new Flow.Theme.OutcomeView({ model: outcome, el: '#' + outcomeElId });
 			
-			view.onOutcomeSelected = _.bind(this.onOutcomeSelected, this);
 			view.render();
 			
 		}, this);
+		
+		this.modal.find('.outcome-manager-outcome-container').click(_.bind(function(event) {
+			var jqEl = $(event.target);
+			var element = (jqEl.hasClass('outcome-manager-outcome-container') ? jqEl : jqEl.parents('.outcome-manager-outcome-container'));
+			var outcomeElementId = element.attr('id');
+			var outcome = this.model.findWhere({id: this.getOutcomeIdFromContainerId(outcomeElementId)});
+			this.showOutcomeInModal(outcome, true);
+		}, this));
 		
 		if(this.unansweredQuestions > 0) {
 			
 			var questionPluralPart = (this.unansweredQuestions > 1 ? 's are' : ' is');
 			
-			this.$el.find('#flow_outcome_modal_unanswered_count').show().html(this.unansweredQuestions + ' question' + questionPluralPart + ' unanswered. See question numbers <button type="button" class="btn btn-default">like</button> <button type="button" class="btn btn-default">this</button> above question area.');
+			this.$el.find('#flow_outcome_modal_unanswered_count').show().html(this.unansweredQuestions + ' question' + questionPluralPart + ' unanswered.');
 		}
 		else {
 			this.$el.find('#flow_outcome_modal_unanswered_count').hide();
 		}
 	},
 	
-	sort: function() {
-		
-		// sort a shallow copy of the models array - don't affect Backbone's model ordering but reference the same model objects to support model events
-		var models = this.model.models.slice();
-		
-		// first sort alphabetically
-		models.sort(function(a, b) {
-			
-			var aTitle = a.get('title'), bTitle = b.get('title');
-			var sortedTitles = [aTitle, bTitle].sort();
-			
-			if(aTitle === sortedTitles[0]) {
-				return -1;
-			}
-			
-			return 1;
-		});
-		
-		// then sort by availability
-		var availableModels = [], unavailableModels = [];
-		_.each(models, function(model) {
-		
-			if(model.get('available')) {
-				availableModels.push(model);
-			}
-			else {
-				unavailableModels.push(model);
-			}
-		});
-		
-		return availableModels.concat(unavailableModels);
+	getContainerIdFromOutcome: function(outcome) {
+		return 'o_' + outcome.get('id');
 	},
 	
-	onOutcomeSelected: function(outcome) {
-	
-		var modalData = this.modal.data('bs.modal');
-		var modalShowing = (modalData ? modalData.isShown : false);
-		
-		var image = (outcome.get('image') || 'images/place-holder.png');
-		
-		$('#flow_outcome_details_image').attr('src', image);
-		$('#flow_outcome_details_title').html(outcome.get('title'));
-		$('#flow_outcome_details_description').html(outcome.get('description'));
-		
-		if(modalShowing) {
-			
-			if(this.outcomeListPane.is(':visible')) {
-				this.outcomeListPane.fadeOut(200, _.bind(function() {
-					this.outcomeDetailsPane.fadeIn(200);
-				}, this));
-			}
-			// else do nothing
-		}
-		else {
-			this.outcomeListPane.hide();
-			this.outcomeDetailsPane.show();
-			
-			this.modal.modal();
-		}
-	},
-	
-	onListingReturnClicked: function(event) {
-	
-		event.preventDefault();
-		
-		// outcomes may not previously been rendered in the modal window, so make sure something will be shown
-		if(!this.modal.find('div.outcome-container').length) {
-			this.renderOutcomesInModal();
-		}
-		
-		this.outcomeDetailsPane.fadeOut(200, _.bind(function() {
-			this.outcomeListPane.fadeIn(200);
-		}, this));
+	getOutcomeIdFromContainerId: function(elId) {
+		return elId.replace(/o_/, '');
 	}
 });

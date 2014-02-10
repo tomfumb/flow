@@ -5,19 +5,16 @@ Flow.OutcomeManager = new (Backbone.Collection.extend({
 	initialize: function() {
 		
 		Flow.Log.debug('Initialising OutcomeManager');
+		
+		this.on('reset', _.bind(this.onReset, this));
+	},
 	
+	onReset: function() {
 		_.each(this.models, function(model) {
-			
-			var description = model.get('description');
-			if(!description) {
-				description = $('#o' + model.get('id')).html();
-				model.set('description', description);
-				if(!description) {
-					Flow.Log.warn('No content available for outcome ' + model.get('id'));
-				}
+			model.set('id', Flow.Util.generateId());
+			if(!model.get('abbreviation')) {
+				model.set('abbreviation', model.get('title').substring(0, 7) + '...');
 			}
-			
-			model.set('available', true);			
 		}, this);
 	},
 	

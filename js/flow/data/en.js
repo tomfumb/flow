@@ -150,191 +150,209 @@ Flow.config.questions = [{
 Flow.config.outcomes = [{
 	/* International Criminal Court */
 	title: Flow.config.selectors.outcome_icc.find('.outcome-title').html(),
-	abbrebiation: Flow.config.selectors.outcome_icc.find('.outcome-abbreviation').html(),
+	abbreviation: Flow.config.selectors.outcome_icc.find('.outcome-abbreviation').html(),
 	url: Flow.config.selectors.outcome_icc.find('.outcome-url').html(),
 	description: Flow.config.selectors.outcome_icc.find('.outcome-description').html(),
 	image: Flow.config.selectors.outcome_icc.find('img').attr('src'),
+	selector: Flow.config.selectors.outcome_icc,
 	condition: function(questions) {
 		return (questions['2b'].hasAnswer('Canada') || questions['2b'].hasAnswer('United Kingdom'));
 	}
 },{
 	/* Extraordinary Chambers for Cambodia */
 	title: Flow.config.selectors.outcome_eccc.find('.outcome-title').html(),
-	abbrebiation: Flow.config.selectors.outcome_eccc.find('.outcome-abbreviation').html(),
+	abbreviation: Flow.config.selectors.outcome_eccc.find('.outcome-abbreviation').html(),
 	url: Flow.config.selectors.outcome_eccc.find('.outcome-url').html(),
 	description: Flow.config.selectors.outcome_eccc.find('.outcome-description').html(),
 	image: Flow.config.selectors.outcome_eccc.find('img').attr('src'),
+	selector: Flow.config.selectors.outcome_eccc,
 	condition: function(questions) {
 		return !questions['1'].hasAnswer('Aruba');
 	}
 },{
 	/* War Crimes Chamber of the Court of Bosnia and Herzegovina */
 	title: Flow.config.selectors.outcome_bosnia.find('.outcome-title').html(),
-	abbrebiation: Flow.config.selectors.outcome_bosnia.find('.outcome-abbreviation').html(),
+	abbreviation: Flow.config.selectors.outcome_bosnia.find('.outcome-abbreviation').html(),
 	url: Flow.config.selectors.outcome_bosnia.find('.outcome-url').html(),
 	description: Flow.config.selectors.outcome_bosnia.find('.outcome-description').html(),
 	image: Flow.config.selectors.outcome_bosnia.find('img').attr('src'),
+	selector: Flow.config.selectors.outcome_bosnia,
 	condition: function(questions) {
-		return true;
+		return (!questions['1'].isAnswered() || questions['1'].hasAnswer('Bosnia and Herzegovina'));
 	}
 },{
 	/* Criminal Prosecution in Canada */
 	title: Flow.config.selectors.outcome_crim_pro_can.find('.outcome-title').html(),
-	abbrebiation: Flow.config.selectors.outcome_crim_pro_can.find('.outcome-abbreviation').html(),
+	abbreviation: Flow.config.selectors.outcome_crim_pro_can.find('.outcome-abbreviation').html(),
 	url: Flow.config.selectors.outcome_crim_pro_can.find('.outcome-url').html(),
 	description: Flow.config.selectors.outcome_crim_pro_can.find('.outcome-description').html(),
 	image: Flow.config.selectors.outcome_crim_pro_can.find('img').attr('src'),
+	selector: Flow.config.selectors.outcome_crim_pro_can,
 	condition: function(questions) {
 		return true;
 	}
 },{
 	/* Civil lawsuit in Canada */
 	title: Flow.config.selectors.outcome_civ_law_can.find('.outcome-title').html(),
-	abbrebiation: Flow.config.selectors.outcome_civ_law_can.find('.outcome-abbreviation').html(),
+	abbreviation: Flow.config.selectors.outcome_civ_law_can.find('.outcome-abbreviation').html(),
 	url: Flow.config.selectors.outcome_civ_law_can.find('.outcome-url').html(),
 	description: Flow.config.selectors.outcome_civ_law_can.find('.outcome-description').html(),
 	image: Flow.config.selectors.outcome_civ_law_can.find('img').attr('src'),
+	selector: Flow.config.selectors.outcome_civ_law_can,
 	condition: function(questions) {
 		return true;
 	}
 },{
 	/* Immigration penalties in Canada */
 	title: Flow.config.selectors.outcome_imm_pen_can.find('.outcome-title').html(),
-	abbrebiation: Flow.config.selectors.outcome_imm_pen_can.find('.outcome-abbreviation').html(),
+	abbreviation: Flow.config.selectors.outcome_imm_pen_can.find('.outcome-abbreviation').html(),
 	url: Flow.config.selectors.outcome_imm_pen_can.find('.outcome-url').html(),
 	description: Flow.config.selectors.outcome_imm_pen_can.find('.outcome-description').html(),
 	image: Flow.config.selectors.outcome_imm_pen_can.find('img').attr('src'),
+	selector: Flow.config.selectors.outcome_imm_pen_can,
 	condition: function(questions) {
 		return true;
 	}
 },{
 	/* U.N. Committee against Torture (CAT) */
 	title: Flow.config.selectors.outcome_un_cat.find('.outcome-title').html(),
-	abbrebiation: Flow.config.selectors.outcome_un_cat.find('.outcome-abbreviation').html(),
+	abbreviation: Flow.config.selectors.outcome_un_cat.find('.outcome-abbreviation').html(),
 	url: Flow.config.selectors.outcome_un_cat.find('.outcome-url').html(),
 	description: Flow.config.selectors.outcome_un_cat.find('.outcome-description').html(),
-	image: Flow.config.selectors.outcome_un_cat.find('img').attr('src'),
+	image: Flow.config.selectors.outcome_un_hrc.find('img').attr('src'),
+	selector: Flow.config.selectors.outcome_un_hrc,
 	condition: function(questions) {
 		return true;
 	}
 },{
 	/* U.N. Human Rights Committee */
 	title: Flow.config.selectors.outcome_un_hrc.find('.outcome-title').html(),
-	abbrebiation: Flow.config.selectors.outcome_un_hrc.find('.outcome-abbreviation').html(),
+	abbreviation: Flow.config.selectors.outcome_un_hrc.find('.outcome-abbreviation').html(),
 	url: Flow.config.selectors.outcome_un_hrc.find('.outcome-url').html(),
 	description: Flow.config.selectors.outcome_un_hrc.find('.outcome-description').html(),
 	image: Flow.config.selectors.outcome_un_hrc.find('img').attr('src'),
+	selector: Flow.config.selectors.outcome_un_hrc,
 	condition: function(questions) {
 		return true;
 	}
 },{
 	/* U.N. Committee on the Elimination of Racial Discrimination (CERD) */
 	title: Flow.config.selectors.outcome_un_cerd.find('.outcome-title').html(),
-	abbrebiation: Flow.config.selectors.outcome_un_cerd.find('.outcome-abbreviation').html(),
+	abbreviation: Flow.config.selectors.outcome_un_cerd.find('.outcome-abbreviation').html(),
 	url: Flow.config.selectors.outcome_un_cerd.find('.outcome-url').html(),
 	description: Flow.config.selectors.outcome_un_cerd.find('.outcome-description').html(),
 	image: Flow.config.selectors.outcome_un_cerd.find('img').attr('src'),
+	selector: Flow.config.selectors.outcome_un_cerd,
 	condition: function(questions) {
 		return !questions['3'].isBeforeOrOnDate('2005/01/05');
 	}
 },{
 	/* U.N. Committee on Elimination of Discrimination against Women (CEDAW) */
 	title: Flow.config.selectors.outcome_un_cedaw.find('.outcome-title').html(),
-	abbrebiation: Flow.config.selectors.outcome_un_cedaw.find('.outcome-abbreviation').html(),
+	abbreviation: Flow.config.selectors.outcome_un_cedaw.find('.outcome-abbreviation').html(),
 	url: Flow.config.selectors.outcome_un_cedaw.find('.outcome-url').html(),
 	description: Flow.config.selectors.outcome_un_cedaw.find('.outcome-description').html(),
 	image: Flow.config.selectors.outcome_un_cedaw.find('img').attr('src'),
-	image: Flow.config.selectors.outcome_un_cedaw.find('img').attr('src'),
+	selector: Flow.config.selectors.outcome_un_cedaw,
 	condition: function(questions) {
 		return true;
 	}
 },{
 	/* U.N. Committee on Enforced Disappearances (CED) */
 	title: Flow.config.selectors.outcome_un_ced.find('.outcome-title').html(),
-	abbrebiation: Flow.config.selectors.outcome_un_ced.find('.outcome-abbreviation').html(),
+	abbreviation: Flow.config.selectors.outcome_un_ced.find('.outcome-abbreviation').html(),
 	url: Flow.config.selectors.outcome_un_ced.find('.outcome-url').html(),
 	description: Flow.config.selectors.outcome_un_ced.find('.outcome-description').html(),
 	image: Flow.config.selectors.outcome_un_ced.find('img').attr('src'),
+	selector: Flow.config.selectors.outcome_un_ced,
 	condition: function(questions) {
 		return true;
 	}
 },{
 	/* U.N. Committee on Economic, Social and Cultural Rights (CESCR) */
 	title: Flow.config.selectors.outcome_un_cescr.find('.outcome-title').html(),
-	abbrebiation: Flow.config.selectors.outcome_un_cescr.find('.outcome-abbreviation').html(),
+	abbreviation: Flow.config.selectors.outcome_un_cescr.find('.outcome-abbreviation').html(),
 	url: Flow.config.selectors.outcome_un_cescr.find('.outcome-url').html(),
 	description: Flow.config.selectors.outcome_un_cescr.find('.outcome-description').html(),
 	image: Flow.config.selectors.outcome_un_cescr.find('img').attr('src'),
+	selector: Flow.config.selectors.outcome_un_cescr,
 	condition: function(questions) {
 		return true;
 	}
 },{
 	/* U.N. Committee on the Rights of the Child (CRC) */
 	title: Flow.config.selectors.outcome_un_crc.find('.outcome-title').html(),
-	abbrebiation: Flow.config.selectors.outcome_un_crc.find('.outcome-abbreviation').html(),
+	abbreviation: Flow.config.selectors.outcome_un_crc.find('.outcome-abbreviation').html(),
 	url: Flow.config.selectors.outcome_un_crc.find('.outcome-url').html(),
 	description: Flow.config.selectors.outcome_un_crc.find('.outcome-description').html(),
 	image: Flow.config.selectors.outcome_un_crc.find('img').attr('src'),
+	selector: Flow.config.selectors.outcome_un_crc,
 	condition: function(questions) {
 		return true;
 	}
 },{
 	/* U.N. Working Group on Enforced Disappearances (WGEID) */
 	title: Flow.config.selectors.outcome_un_wgeid.find('.outcome-title').html(),
-	abbrebiation: Flow.config.selectors.outcome_un_wgeid.find('.outcome-abbreviation').html(),
+	abbreviation: Flow.config.selectors.outcome_un_wgeid.find('.outcome-abbreviation').html(),
 	url: Flow.config.selectors.outcome_un_wgeid.find('.outcome-url').html(),
 	description: Flow.config.selectors.outcome_un_wgeid.find('.outcome-description').html(),
 	image: Flow.config.selectors.outcome_un_wgeid.find('img').attr('src'),
+	selector: Flow.config.selectors.outcome_un_wgeid,
 	condition: function(questions) {
 		return true;
 	}
 },{
 	/* Inter-American Commission/Court of Human Rights */
 	title: Flow.config.selectors.outcome_ia_chr.find('.outcome-title').html(),
-	abbrebiation: Flow.config.selectors.outcome_ia_chr.find('.outcome-abbreviation').html(),
+	abbreviation: Flow.config.selectors.outcome_ia_chr.find('.outcome-abbreviation').html(),
 	url: Flow.config.selectors.outcome_ia_chr.find('.outcome-url').html(),
 	description: Flow.config.selectors.outcome_ia_chr.find('.outcome-description').html(),
 	image: Flow.config.selectors.outcome_ia_chr.find('img').attr('src'),
+	selector: Flow.config.selectors.outcome_ia_chr,
 	condition: function(questions) {
 		return true;
 	}
 },{
 	/* African Commission on Human and Peoples' Rights */
 	title: Flow.config.selectors.outcome_acm_hpr.find('.outcome-title').html(),
-	abbrebiation: Flow.config.selectors.outcome_acm_hpr.find('.outcome-abbreviation').html(),
+	abbreviation: Flow.config.selectors.outcome_acm_hpr.find('.outcome-abbreviation').html(),
 	url: Flow.config.selectors.outcome_acm_hpr.find('.outcome-url').html(),
 	description: Flow.config.selectors.outcome_acm_hpr.find('.outcome-description').html(),
 	image: Flow.config.selectors.outcome_acm_hpr.find('img').attr('src'),
+	selector: Flow.config.selectors.outcome_acm_hpr,
 	condition: function(questions) {
 		return true;
 	}
 },{
 	/* African Court on Human and Peoples' Rights */
 	title: Flow.config.selectors.outcome_act_hpr.find('.outcome-title').html(),
-	abbrebiation: Flow.config.selectors.outcome_act_hpr.find('.outcome-abbreviation').html(),
+	abbreviation: Flow.config.selectors.outcome_act_hpr.find('.outcome-abbreviation').html(),
 	url: Flow.config.selectors.outcome_act_hpr.find('.outcome-url').html(),
 	description: Flow.config.selectors.outcome_act_hpr.find('.outcome-description').html(),
 	image: Flow.config.selectors.outcome_act_hpr.find('img').attr('src'),
+	selector: Flow.config.selectors.outcome_act_hpr,
 	condition: function(questions) {
 		return true;
 	}
 },{
 	/* Economic Community Of West African States (ECOWAS) */
 	title: Flow.config.selectors.outcome_ecowas.find('.outcome-title').html(),
-	abbrebiation: Flow.config.selectors.outcome_ecowas.find('.outcome-abbreviation').html(),
+	abbreviation: Flow.config.selectors.outcome_ecowas.find('.outcome-abbreviation').html(),
 	url: Flow.config.selectors.outcome_ecowas.find('.outcome-url').html(),
 	description: Flow.config.selectors.outcome_ecowas.find('.outcome-description').html(),
 	image: Flow.config.selectors.outcome_ecowas.find('img').attr('src'),
+	selector: Flow.config.selectors.outcome_ecowas,
 	condition: function(questions) {
 		return true;
 	}
 },{
 	/* European Court of Human Rights */
 	title: Flow.config.selectors.outcome_echr.find('.outcome-title').html(),
-	abbrebiation: Flow.config.selectors.outcome_echr.find('.outcome-abbreviation').html(),
+	abbreviation: Flow.config.selectors.outcome_echr.find('.outcome-abbreviation').html(),
 	url: Flow.config.selectors.outcome_echr.find('.outcome-url').html(),
 	description: Flow.config.selectors.outcome_echr.find('.outcome-description').html(),
 	image: Flow.config.selectors.outcome_echr.find('img').attr('src'),
+	selector: Flow.config.selectors.outcome_echr,
 	condition: function(questions) {
 		return true;
 	}

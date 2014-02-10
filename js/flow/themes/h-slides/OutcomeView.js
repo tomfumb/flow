@@ -1,9 +1,11 @@
 Flow.Theme.OutcomeView = Backbone.View.extend({
 
 	template: [
-		'<img src="<%= image %>" height="60px" width="60px" title="<%= title %><%= availability %>" alt="<%= title %>" class="clickable" />',
-		'<br />',
-		'<h5 class="clickable clickable-colour"><%= title %></h5>'
+		'<div title="<%= title %>" class="clickable outcome-view">',
+		'	<img src="<%= image %>" height="75px" width="75px" alt="<%= title %>" style="float: left;" />',
+		'	<h5 style="float: left; margin-left: 10px;"><%= title %></h5>',
+		'	<div style="clear: both;"></div>',
+		'</div>'
 	].join(''),
 
 	render: function() {
@@ -14,19 +16,8 @@ Flow.Theme.OutcomeView = Backbone.View.extend({
 		this.$el.html(_.template(
 			this.template, {
 				title: title,
-				image: image,
-				availability: (this.model.get('available') ? '' : ' (unavailable)')
+				image: image
 			}
 		));
-		
-		this.$el.find('.clickable').click(_.bind(function(event) {
-				
-			event.preventDefault();
-			this.onOutcomeSelected(this.model);
-		}, this));
-	},
-	
-	onOutcomeSelected: function(outcome) {
-		Flow.Log.warn('OutcomeView.onOutcomeSelected has not been overridden');
 	}
 });

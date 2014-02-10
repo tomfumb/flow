@@ -1,3 +1,1 @@
-Flow.Outcome = Backbone.Model.extend({
-	
-});
+Flow.Outcome = Backbone.Model.extend({ });

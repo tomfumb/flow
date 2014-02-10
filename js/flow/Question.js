@@ -1,5 +1,15 @@
 Flow.Question = Backbone.Model.extend({
 	
+	isAnswered: function() {
+		
+		var selectedAnswers = this.get('selectedAnswers');
+		if(typeof selectedAnswers !== 'undefined' && selectedAnswers.length) {
+			return true;
+		}
+		
+		return false;
+	},
+	
 	hasAnswer: function(requiredAnswer) {
 	
 		// first check that the answer is actually available within the question. If not there is a problem
@@ -9,6 +19,11 @@ Flow.Question = Backbone.Model.extend({
 		
 		if(!found) {
 			Flow.Log.error('Question "' + this.get('id') + '" checked for answer but answer "' + requiredAnswer + '" not available');
+			return false;
+		}
+		
+		// cannot let unavailable questions interfere with the outcome
+		if(!this.get('available')) {
 			return false;
 		}
 		
