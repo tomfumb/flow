@@ -1,3 +1,4 @@
 $(function() {
-	new CCIJ.MainView();
+	new CCIJ.Workspace(new CCIJ.MainView());
+	Backbone.history.start();
 });

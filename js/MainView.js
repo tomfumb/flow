@@ -7,14 +7,22 @@ CCIJ.MainView = Backbone.View.extend({
 		this.intro = this.$el.find('#ccij_intro');
 		this.focuses = this.$el.find('.main-focus');
 		
-		$('#ccij_remedies_entry,#ccij_remedies_nav').click(_.bind(this.onRemediesSelected, this));
-		$('#ccij_assess_entry,#ccij_assess_nav').click(_.bind(this.onAssessSelected, this));
-		$('#ccij_home_nav').click(_.bind(this.onHomeSelected, this));
+		this.intro.find('.entry-point').addClass('clickable').click(_.bind(this.onEntryPointClicked, this));
 		
-		this.intro.find('.entry-point').addClass('clickable');
+		$('#ccij_navbar .nav a').click(function() { 
+			if($('#ccij_navbar .navbar-toggle').css('display') !== 'none'){
+				$('#ccij_navbar .navbar-toggle').click();
+			}
+		});
+	},
+	
+	onEntryPointClicked: function(event) {
 		
-		// will be replaced when Backbone router has been setup
-		this.changeActiveNavTab('ccij_home_nav');
+		var jqEl = $(event.target);
+		var element = (jqEl.hasClass('entry-point') ? jqEl : jqEl.parents('.entry-point'));
+		var clickedId = element.attr('id');
+		var navLink = $('#' + clickedId.replace(/entry$/, 'nav'));
+		navLink.get(0).click();
 	},
 	
 	changeActiveNavTab: function(id) {
@@ -25,8 +33,6 @@ CCIJ.MainView = Backbone.View.extend({
 	},
 	
 	onHomeSelected: function(event) {
-			
-		event.preventDefault();
 		
 		this.focuses.hide();
 		this.intro.show();
@@ -35,8 +41,6 @@ CCIJ.MainView = Backbone.View.extend({
 	},
 	
 	onRemediesSelected: function(event) {
-	
-		event.preventDefault();
 		
 		this.focuses.hide();
 		this.$el.find('#ccij_outcomes').show();
@@ -46,10 +50,13 @@ CCIJ.MainView = Backbone.View.extend({
 	
 	onAssessSelected: function(event) {
 		
-		event.preventDefault();
-		
 		this.focuses.hide();
-		this.flowSelected();
+		
+		if(!this.flowShown) {
+			this.flowSelected();
+			this.flowShown = true;
+		}
+		
 		this.$el.find('#flow').show();
 		
 		this.changeActiveNavTab('ccij_assess_nav');

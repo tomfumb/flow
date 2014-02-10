@@ -1,5 +1,6 @@
 - update rules on mechanisms that have them
 - when resizing container to fit summary height is not always correctly set - sometimes under or over shot. Possibly related to the briefly-displayed vertical scroll bar? Look for a pattern in this happening when the container gets larger or shorter relative to the previous slide
+- add cache-bust approach
 - some scenario where question summary links can be repeated and clicking the duplicates messes things up
 - for performance may be wise for mechanisms' conditions to use comma-separated question IDs as keys to distinct evaluations so that all questions involved in the availability of the condition are not evaluated each time an answer changes. Or something like that - anything that prevents the re-evaluation of everything could be good, but not a high priority concern right now
 - consider not automatically advancing the carousel if the user has explicitly requested a specific question, or if the following question is already answered - could get messy / confusing
