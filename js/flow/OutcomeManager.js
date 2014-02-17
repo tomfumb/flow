@@ -27,7 +27,9 @@ Flow.OutcomeManager = new (Backbone.Collection.extend({
 		}, this);
 	},
 	
-	checkAvailableOutcomes: function(questions) {
+	checkAvailableOutcomes: function(questions, answeredQuestion) {
+		
+		var answeredQuestionId = (answeredQuestion ? answeredQuestion.get('id') : false);
 		
 		_.each(this.models, function(outcome) {
 			
@@ -37,13 +39,17 @@ Flow.OutcomeManager = new (Backbone.Collection.extend({
 				depends = outcome.get('depends');
 				if(depends) {
 					
-					_.each(depends, function(questionId) {
-						relevantQuestions.push(questions.get(questionId));
-					});
-				
-					if(relevantQuestions.length) {
-						var available = condition.apply(this, relevantQuestions);
-						outcome.set('available', available);
+					// if an answered question was provided then only re-evaluate outcomes that depend on this question
+					if(answeredQuestionId === false || (_.indexOf(depends, answeredQuestionId) > -1)) {
+					
+						_.each(depends, function(questionId) {
+							relevantQuestions.push(questions.get(questionId));
+						});
+					
+						if(relevantQuestions.length) {
+							var available = condition.apply(this, relevantQuestions);
+							outcome.set('available', available);
+						}
 					}
 				}
 			}

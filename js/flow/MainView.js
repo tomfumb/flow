@@ -36,7 +36,7 @@ Flow.MainView = Backbone.View.extend({
 		
 		// execute any condition functions that determine if questions are now available or unavailable
 		this.questions.checkAvailableQuestions();
-		this.outcomes.checkAvailableOutcomes(this.questions);
+		this.outcomes.checkAvailableOutcomes(this.questions, answeredQuestion);
 	},
 	
 	onQuestionAnswered: function(answeredQuestion) {
