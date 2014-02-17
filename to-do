@@ -16,6 +16,7 @@
 - http://getbootstrap.com/getting-started/#browsers
 - tip buttons near key functionality explaining what's going on
 - email results to user
+- text wrap problem in single_few answers with long text when page narrow
 - use gallery-style slider for outcome previews
 - try to get rid of table in outcome previews
 - notify user of which outcomes have changed their availability

@@ -41,8 +41,6 @@ Flow.Question = Backbone.Model.extend({
 			return requiredAnswer == answer;
 		});
 		
-		Flow.Log.debug('Question (model) ' + this.get('id') + ' has selected answer ' + requiredAnswer + ': ' + selected);
-		
 		return selected;
 	},
 	

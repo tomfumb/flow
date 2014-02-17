@@ -27,29 +27,30 @@ Flow.OutcomeManager = new (Backbone.Collection.extend({
 		}, this);
 	},
 	
-	checkAvailableOutcomes: function(questions, answeredQuestion) {
-		
-		var answeredQuestionId = (answeredQuestion ? answeredQuestion.get('id') : false);
+	checkAvailableOutcomes: function(questions, changedQuestions) {
 		
 		_.each(this.models, function(outcome) {
 			
-			var condition = outcome.get('condition'), depends, relevantQuestions = [];
-			if(typeof condition === 'function') {
+			var condition = outcome.get('condition'), depends = outcome.get('depends'), relevantQuestions = [];
+			if(condition && depends) {
+					
+				var outcomeAffected = false;
+				_.each(changedQuestions, function(changedQuestion) {
+					if(_.indexOf(depends, changedQuestion.get('id')) > -1) {
+						outcomeAffected = true;
+						return false;
+					}
+				});
 				
-				depends = outcome.get('depends');
-				if(depends) {
-					
-					// if an answered question was provided then only re-evaluate outcomes that depend on this question
-					if(answeredQuestionId === false || (_.indexOf(depends, answeredQuestionId) > -1)) {
-					
-						_.each(depends, function(questionId) {
-							relevantQuestions.push(questions.get(questionId));
-						});
-					
-						if(relevantQuestions.length) {
-							var available = condition.apply(this, relevantQuestions);
-							outcome.set('available', available);
-						}
+				if(outcomeAffected) {
+				
+					_.each(depends, function(questionId) {
+						relevantQuestions.push(questions.get(questionId));
+					});
+				
+					if(relevantQuestions.length) {
+						var available = condition.apply(this, relevantQuestions);
+						outcome.set('available', available);
 					}
 				}
 			}

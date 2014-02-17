@@ -45,15 +45,25 @@ Flow.QuestionManager = new (Backbone.Collection.extend({
 	checkAvailableQuestions: function() {
 		
 		Flow.Log.debug('QuestionManager.checkAvailableQuestions');
+		
+		var changedQuestions = [];
 	
 		_.each(this.models, function(question) {
 			
 			var condition = question.get('condition');
 			if(typeof condition === 'function') {
+				
 				var available = condition.apply(this, [this.indexedQuestions]);
-				Flow.Log.info('QuestionManager.checkAvailableQuestions Setting question ' + question.get('id') + ' available to ' + available);
+				
+				// coercive comparison in case property started as undefined
+				if(available != question.get('available')) {
+					changedQuestions.push(question);
+				}
+				
 				question.set('available', available);
 			}
 		}, this);
+		
+		return changedQuestions;
 	}
 }));
