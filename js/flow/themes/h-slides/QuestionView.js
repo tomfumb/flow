@@ -62,7 +62,7 @@ Flow.Theme.QuestionView = Backbone.View.extend({
 		'			</div>',
 		'			<div class="row">',
 		'				<% _.each(answers, function(answer, index) { %>',
-		'					<div class="col-xs-24 col-sm-24 col-md-6 col-lg-4">',
+		'					<div class="col-xs-24 col-sm-24 col-md-12 col-lg-12">',
 		'						<input type="checkbox" id="q<%= question.get("id") %>_a_<%= index %>" /> <span class="answer-checkbox-text clickable"><%= answer %></span>',
 		'					</div>',
 		'				<% }); %>',

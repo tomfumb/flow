@@ -10,7 +10,7 @@ CCIJ.MainView = Backbone.View.extend({
 		this.intro.find('.entry-point').addClass('clickable').click(_.bind(this.onEntryPointClicked, this));
 		
 		$('#ccij_navbar .nav a').click(function() { 
-			if($('#ccij_navbar .navbar-toggle').css('display') !== 'none'){
+			if($('#ccij_navbar .navbar-toggle').is(':visible') && $('#ccij_navbar .navbar-collapse').is(':visible')) {
 				$('#ccij_navbar .navbar-toggle').click();
 			}
 		});

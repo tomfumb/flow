@@ -10,27 +10,42 @@ Flow.OutcomeManager = new (Backbone.Collection.extend({
 	},
 	
 	onReset: function() {
+		
+		var selector;
 		_.each(this.models, function(model) {
+			
 			model.set('id', Flow.Util.generateId());
-			if(!model.get('abbreviation')) {
-				model.set('abbreviation', model.get('title').substring(0, 7) + '...');
-			}
+			selector = model.get('selector');
+			
+			model.set('title', selector.find('.outcome-title').html());
+			model.set('abbreviation', (selector.find('.outcome-abbreviation').html() || model.get('title').substring(0, 7) + '...'));
+			model.set('url', selector.find('.outcome-url').html());
+			model.set('description', selector.find('.outcome-description').html());
+			model.set('image', selector.find('img').attr('src'));		
+			
+			model.set('available', true);	
 		}, this);
 	},
 	
 	checkAvailableOutcomes: function(questions) {
 		
-		var indexedQuestions = _.indexBy(questions, function(question) {
-			return question.get('id');
-		});
-		
 		_.each(this.models, function(outcome) {
 			
-			var condition = outcome.get('condition');
+			var condition = outcome.get('condition'), depends, relevantQuestions = [];
 			if(typeof condition === 'function') {
-				var available = condition.apply(this, [indexedQuestions]);
-				Flow.Log.info('OutcomeManager.checkAvailableOutcomes Setting outcome ' + outcome.get('title') + ' available to ' + available);
-				outcome.set('available', available);
+				
+				depends = outcome.get('depends');
+				if(depends) {
+					
+					_.each(depends, function(questionId) {
+						relevantQuestions.push(questions.get(questionId));
+					});
+				
+					if(relevantQuestions.length) {
+						var available = condition.apply(this, relevantQuestions);
+						outcome.set('available', available);
+					}
+				}
 			}
 		}, this);
 	}

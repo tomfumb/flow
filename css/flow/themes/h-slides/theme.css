@@ -200,3 +200,7 @@
 	padding: 4px;
 	margin-top: 10px;
 }
+
+#flow_outcome_recent_changes {
+	visibility: hidden;
+}

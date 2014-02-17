@@ -397,6 +397,9 @@ Flow.Theme.ContentView = Backbone.View.extend({
 		
 		// update modal with list of remaining questions
 		this.outcomeManager.unansweredQuestions = this.countUnansweredQuestions(answeredQuestion.collection.models);
+		
+		// update outcome preview manager wiht which question was just answered so it can report changes based on those answers
+		this.outcomePreviews.onQuestionAnswered(answeredQuestion);
 	},
 	
 	countUnansweredQuestions: function(questions) {

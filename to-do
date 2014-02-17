@@ -1,8 +1,13 @@
-- need some way of notifying which outcomes' availability changed due to the last answered question (use abbreviations as links)
+- update outcome rules
+- am I updating list (and number) of available outcomes each time one changes its availability? that could potentially change multiple times each answer is changed, is there a more efficient way to do this that also solves the issue below of showing when all outcome updates have completed?
+- need some way of notifying which outcomes' availability changed due to the last answered question (use abbreviations as links) - part of an approach in onOutcomesUpdated in outcome preview view but this function is called each time a single outcome is updated, not when all updates have finished, need a way of knowing this so that all changes can be described at once. Test with an 'outcomeUpdatesFinished' event.
 - update rules on mechanisms that have them
+- Mobile issues:
+1) phone browser doesn't work for clicking on .entry-point text / image
+2) modal doesn't scroll when off screen
+3) date picker isn't obvious when presented with keyboard input beneath text input
 - when resizing container to fit summary height is not always correctly set - sometimes under or over shot. Possibly related to the briefly-displayed vertical scroll bar? Look for a pattern in this happening when the container gets larger or shorter relative to the previous slide
 - some scenario where question summary links can be repeated and clicking the duplicates messes things up
-- for performance may be wise for mechanisms' conditions to use comma-separated question IDs as keys to distinct evaluations so that all questions involved in the availability of the condition are not evaluated each time an answer changes. Or something like that - anything that prevents the re-evaluation of everything could be good, but not a high priority concern right now
 - consider not automatically advancing the carousel if the user has explicitly requested a specific question, or if the following question is already answered - could get messy / confusing
 - if the last question is conditionally available, is answered, and then becomes unavailable it is still treated as an available question (summary highlights as active and quesion is shown).
 - Multiple consecutive conditional questions - if c is dependent on b and b dependent on a c should be unavailable when b is unavailable
@@ -15,7 +20,7 @@
 - try to get rid of table in outcome previews
 - notify user of which outcomes have changed their availability
 - ensure user sees a notification about number change if it's off-screen when it changes
-- look for a way to reduce redundancy in outcome configuration - really can't just loop over the div.with_class and find a way to attach the condition?
+- main CCIJ site has Google Analytics - should incorporate the async version of this too, log trips to all #destinations
 - check necessity of shims in index.htm
 - consider creating sprite for images, especially logos with fixed size
 - minify / compress js

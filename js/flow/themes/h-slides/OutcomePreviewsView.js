@@ -97,7 +97,7 @@ Flow.Theme.OutcomePreviewsView = Backbone.View.extend({
 	
 	onOutcomesUpdated: function(changedOutcome) {
 		
-		var availableCount = 0;
+		var availableCount = 0, fadeSpeed = 300;
 		_.each(this.model.models, function(outcome) {
 		
 			if(outcome.get('available')) {
@@ -108,7 +108,7 @@ Flow.Theme.OutcomePreviewsView = Backbone.View.extend({
 		var countEl = this.$el.find('#flow_available_count_main');
 		
 		countEl.stop();
-		countEl.fadeOut(300, _.bind(function() {
+		countEl.fadeOut(fadeSpeed, _.bind(function() {
 			countEl.html(availableCount);
 			countEl.fadeIn(100);
 		}, this));
@@ -116,13 +116,18 @@ Flow.Theme.OutcomePreviewsView = Backbone.View.extend({
 		var changedPreviewEl = this.$el.find('#' + this.getPreviewContainerIdFromOutcome(changedOutcome));
 		changedPreviewEl.stop();
 		if(changedOutcome.get('available')) {
-			changedPreviewEl.fadeIn(300);
+			changedPreviewEl.fadeIn(fadeSpeed);
 		}
 		else {
-			changedPreviewEl.fadeOut(300);
+			changedPreviewEl.fadeOut(fadeSpeed);
 		}
 		
-		this.handlePreviewClicks();
+		/*
+		var changesEl = this.$el.find('#flow_outcome_recent_changes');
+		
+		changesEl.fadeIn(fadeSpeed);
+		changesEl.html('Question ' + this.lastAnsweredQuestion.get('id') + );
+		*/
 	},
 	
 	handlePreviewClicks: function() {
@@ -142,5 +147,9 @@ Flow.Theme.OutcomePreviewsView = Backbone.View.extend({
 	
 	onPreviewClicked: function(outcome) {
 		Flow.Log.error('OutcomePreviewView.onPreviewClicked has not been overridden. Nothing is going to happen when a preview is clicked');
+	},
+	
+	onQuestionAnswered: function(question) {
+		this.lastAnsweredQuestion = question;
 	}
 });
