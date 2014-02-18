@@ -1,3 +1,11 @@
+- parse condition function to get arguments / depends
+- outcome condition should combine question 2a and 2b, don't update outcome availability until after 2b is answered, if 2a yes
+- Your Options text clickable
+- title for questions
+- special event on 0 options available, maybe just show outcome manager which always has a special message on 0 available
+- check logic for date checks - does one need a day adding / subtracting? how will user interpret?
+- update spreadsheet with used values
+
 - update outcome rules 
 - am I updating list (and number) of available outcomes each time one changes its availability? that could potentially change multiple times each answer is changed, is there a more efficient way to do this that also solves the issue below of showing when all outcome updates have completed?
 - need some way of notifying which outcomes' availability changed due to the last answered question (use abbreviations as links) - part of an approach in onOutcomesUpdated in outcome preview view but this function is called each time a single outcome is updated, not when all updates have finished, need a way of knowing this so that all changes can be described at once. Test with an 'outcomeUpdatesFinished' event.
@@ -20,7 +28,7 @@
 - use gallery-style slider for outcome previews
 - try to get rid of table in outcome previews
 - notify user of which outcomes have changed their availability
-- ensure user sees a notification about number change if it's off-screen when it changes
+- ensure user sees a notification about number change if it's off-screen when it changes - simple text flash in set space, first fade is longer than all subsequent
 - main CCIJ site has Google Analytics - should incorporate the async version of this too, log trips to all #destinations
 - check necessity of shims in index.htm
 - consider creating sprite for images, especially logos with fixed size

@@ -13,6 +13,11 @@ Flow.Log = {
 	defaultLogLevel: 4,
 	logGapInterval: 200,
 	
+	init: function() {
+		window.console = (window.console || {log: function() {}, error: function() {}});
+		return this;	
+	},
+	
 	debug: function(message) {
 		this.log(this.logLevels.DEBUG, message, false);
 	},
@@ -66,4 +71,4 @@ Flow.Log = {
 			// option to submit message to server log at a later date if logToServer
 		}
 	}
-};
+}.init();

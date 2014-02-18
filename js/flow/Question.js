@@ -20,6 +20,10 @@ Flow.Question = Backbone.Model.extend({
 		return false;
 	},
 	
+	isNotAnswered: function() {
+		return !this.isAnswered();
+	},
+	
 	hasAnswer: function(requiredAnswer) {
 	
 		// first check that the answer is actually available within the question. If not there is a problem
@@ -42,6 +46,10 @@ Flow.Question = Backbone.Model.extend({
 		});
 		
 		return selected;
+	},
+	
+	doesNotHaveAnswer: function(requiredAnswer) {
+		return !this.hasAnswer(requiredAnswer);
 	},
 	
 	hasOneOfAnswers: function(possibleAnswers) {

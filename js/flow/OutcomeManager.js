@@ -11,7 +11,7 @@ Flow.OutcomeManager = new (Backbone.Collection.extend({
 	
 	onReset: function() {
 		
-		var selector;
+		var selector, condition;
 		_.each(this.models, function(model) {
 			
 			model.set('id', Flow.Util.generateId());
@@ -24,6 +24,26 @@ Flow.OutcomeManager = new (Backbone.Collection.extend({
 			model.set('image', selector.find('img').attr('src'));		
 			
 			model.set('available', true);	
+			
+			condition = model.get('condition');
+			if(condition) {
+				
+				// extract argument names from condition function, use to derive which questions this outcome is dependent upon
+				// non-standard approach but considered necessary to avoid risk of bad configuration leading to poor results
+				var conditionStr = condition.toString();
+				var open = conditionStr.indexOf('('), close = conditionStr.indexOf(')');
+				var args = conditionStr.substring(open + 1, close).match(/\bq\d+([a-z]+)?\b/ig);
+				
+				if(args) {
+					
+					var depends = [];
+					_.each(args, function(arg) {
+						depends.push(arg.replace(/^q/, ''));
+					});
+					
+					model.set('depends', depends);
+				}
+			}
 		}, this);
 	},
 	
