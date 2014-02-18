@@ -225,10 +225,10 @@ Flow.config.outcomes = [{
 
 		// condition 1 - check that a relevant country is selected
 		var condition1 = false
-		if(!q1.isAnswered() || q1.hasOneOfAnswers(relevantCountries)) {
+		if(q1.isNotAnswered() || q1.hasOneOfAnswers(relevantCountries)) {
 			condition1 = true;
 		}
-		if(q2a.hasAnswer('yes') && (!q2b.isAnswered() || q2b.hasOneOfAnswers(relevantCountries))) {
+		if(q2a.hasAnswer('yes') && (q2b.hasOneOfAnswers(relevantCountries))) {
 			condition1 = true;
 		}
 		
@@ -238,7 +238,7 @@ Flow.config.outcomes = [{
 		
 		// condition 2 - check abuse date / end date against selected country/ies
 		var condition2 = false;
-		if (!q3.isAnswered() || (
+		if (q3.isNotAnswered() || (
 			((q1.hasAnswer('Algeria') || q2b.hasAnswer('Algeria')) && q3.isAfterOrOnDate('1987/03/01')) ||
 			((q1.hasAnswer('Angola') || q2b.hasAnswer('Angola')) && q3.isAfterOrOnDate('1990/03/02')) ||
 			((q1.hasAnswer('Benin') || q2b.hasAnswer('Benin')) && q3.isAfterOrOnDate('1986/01/20')) ||
@@ -301,14 +301,14 @@ Flow.config.outcomes = [{
 		}
 		
 		// condition 3 - check types of abuses committed
-		var condition3 = (!q4.isAnswered() || q4.hasOneOfAnswers(['beating', 'bodily mutilation', 'burning', 'death threats', 'deprivation of medical care', 'electric shock', 'forced stress positions', 'forced nudity', 'forced to watch abuse of other prisoners', 'incomunicado detention', 'kicking', 'kidnapping/disappearance', 'killing', 'mock execution', 'prolonged exposure to extreme cold or heat', 'prolonged food/water deprivation', 'prolonged sleep deprivation', 'punching', 'rape or other sexual assault', 'severe mental suffering', 'solitary confinement', 'suffocation', 'waterboarding']));
+		var condition3 = (q4.isNotAnswered() || q4.hasOneOfAnswers(['beating', 'bodily mutilation', 'burning', 'death threats', 'deprivation of medical care', 'electric shock', 'forced stress positions', 'forced nudity', 'forced to watch abuse of other prisoners', 'incomunicado detention', 'kicking', 'kidnapping/disappearance', 'killing', 'mock execution', 'prolonged exposure to extreme cold or heat', 'prolonged food/water deprivation', 'prolonged sleep deprivation', 'punching', 'rape or other sexual assault', 'severe mental suffering', 'solitary confinement', 'suffocation', 'waterboarding']));
 		
 		if(!condition3) {
 			return false;
 		}
 
 		// condition 4 - check abusers for state actors
-		var condition4 = (!q8.isAnswered() || q8.hasOneOfAnswers(['soldier in government\'s army', 'police officer', 'other government official']));
+		var condition4 = (q8.isNotAnswered() || q8.hasOneOfAnswers(["soldier in government's army", 'police officer', 'other government official']));
 
 		if(!condition4) {
 			return false;
@@ -316,8 +316,8 @@ Flow.config.outcomes = [{
 		
 		// condition 5 - exhausting domestic remedies
 		var condition5 = false;
-		if(	(!q14a.isAnswered() || !q14a.hasAnswer('yes')) || 
-			(q14a.hasAnswer('yes') && (!q14b.isAnswered() || (q14b.hasAnswer('yes') && (!q14c.isAnswered() || q14c.hasOneOfAnswers(['Investigation or prosecution still ongoing', 'A court held someone responsible', 'Someone was put on trial but was found not guilty'])))))
+		if(	(q14a.isNotAnswered() || q14a.doesNotHaveAnswer('yes')) || 
+			(q14a.hasAnswer('yes') && (q14b.isNotAnswered() || (q14b.hasAnswer('yes') && (q14c.isNotAnswered() || q14c.hasOneOfAnswers(['Investigation or prosecution still ongoing', 'A court held someone responsible', 'Someone was put on trial but was found not guilty'])))))
 		) {
 			condition5 = true;
 		}

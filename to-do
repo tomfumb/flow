@@ -1,9 +1,6 @@
-- parse condition function to get arguments / depends
-- outcome condition should combine question 2a and 2b, don't update outcome availability until after 2b is answered, if 2a yes
 - Your Options text clickable
 - title for questions
 - special event on 0 options available, maybe just show outcome manager which always has a special message on 0 available
-- check logic for date checks - does one need a day adding / subtracting? how will user interpret?
 - update spreadsheet with used values
 
 - update outcome rules 
