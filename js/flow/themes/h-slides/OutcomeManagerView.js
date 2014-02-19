@@ -20,7 +20,12 @@ Flow.Theme.OutcomeManagerView = Backbone.View.extend({
 		'				<div class="tab-content">',
 		'					<div class="tab-pane active" id="flow_outcome_available">',
 		'						<div class="spacer-10"></div>',
-		'						<p>Based on the questions you have answered the following options may be available to you.</p>',
+		'						<p id="flow_some_options_note">Based on the questions you have answered the following options may be available to you.</p>',
+		'						<div id="flow_no_options_note_container">',
+		'							<h4>No Available Options</h4>',
+		'							<p>Based on the questions you have answered we have not been able to find any suitable options.</p>',
+		'							<p>Please note that an automated tool cannot provide perfect results and therefore we recommend that you discuss your case with a CCIJ lawyer.</p>',
+		'						</div>',
 		'						<div id="flow_outcome_available_outcomes"></div>',
 		'					</div>',
 		'					<div class="tab-pane" id="flow_outcome_unavailable">',
@@ -59,6 +64,9 @@ Flow.Theme.OutcomeManagerView = Backbone.View.extend({
 		
 		this.availableOutcomesContainer = this.$el.find('#flow_outcome_available_outcomes');
 		this.unavailableOutcomesContainer = this.$el.find('#flow_outcome_unavailable_outcomes');
+		
+		this.someOptionsNote = this.$el.find('#flow_some_options_note');
+		this.noOptionsNote = this.$el.find('#flow_no_options_note_container');
 	},
 	
 	showOutcomesInModal: function() {
@@ -86,7 +94,7 @@ Flow.Theme.OutcomeManagerView = Backbone.View.extend({
 		this.availableOutcomesContainer.html('');
 		this.unavailableOutcomesContainer.html('');
 			
-		var outcomeElId, outcomeEl;
+		var outcomeElId, outcomeEl, availableCount = 0;
 		_.each(this.model.models, function(outcome, index) {
 			
 			outcomeElId = this.getContainerIdFromOutcome(outcome);
@@ -97,17 +105,25 @@ Flow.Theme.OutcomeManagerView = Backbone.View.extend({
 			));
 			
 			if(outcome.get('available')) {
+				availableCount++;
 				this.availableOutcomesContainer.append(outcomeEl);
 			}
 			else {
 				this.unavailableOutcomesContainer.append(outcomeEl);
 			}
 				
-			var view = new Flow.Theme.OutcomeView({ model: outcome, el: '#' + outcomeElId });
-			
-			view.render();
+			(new Flow.Theme.OutcomeView({ model: outcome, el: '#' + outcomeElId })).render();
 			
 		}, this);
+		
+		if(availableCount === 0) {
+			this.someOptionsNote.hide();
+			this.noOptionsNote.show();
+		}
+		else {
+			this.someOptionsNote.show();
+			this.noOptionsNote.hide();
+		}
 		
 		this.modal.find('.outcome-manager-outcome-container').click(_.bind(function(event) {
 			var jqEl = $(event.target);

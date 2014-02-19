@@ -38,7 +38,10 @@ Flow.config.questions = [{
 	id: '4',
 	content: 'Describe the abuse(s) committed against the victim',
 	explanations: ['Subject matter jurisdiction/admissibility. To determine whether the victim\'s abuse constitutes a crime/violation that comes within the mechanism\'s subject matter jurisdiction.'],
-	answers: ['beating', 'bodily mutilation', 'burning', 'death threats', 'deprivation of medical care', 'electric shock', 'forced stress positions', 'forced nudity', 'forced to watch abuse of other prisoners', 'incomunicado detention', 'kicking', 'kidnapping/disappearance', 'killing', 'mock execution', 'prolonged exposure to extreme cold or heat', 'prolonged food/water deprivation', 'prolonged sleep deprivation', 'punching', 'rape or other sexual assault', 'severe mental suffering', 'solitary confinement', 'suffocation', 'waterboarding'],
+	
+	// answers currently based on those relevant to ECCC, checking with CCIJ whether this is correct
+	
+	answers: ['beating', 'bodily mutilation', 'burning', 'burning of houses', 'death threats', 'denial of fair trial', 'deprivation of medical care', 'destruction or serious damage to property', 'electric shock', 'enslavement', 'forced abortion', 'forced displacement', 'forced nudity', 'forced sterilization', 'forced stress positions', 'forced to watch abuse of other prisoners', 'forcing a prisoner to perform military service', 'incommunicado detention', 'kicking', 'kidnapping/disappearance', 'killing', 'mock execution', 'persecutions on political, racial, or religious grounds', 'poisoning of water or food supplies', 'prolonged exposure to extreme cold or heat', 'prolonged food/water deprivation', 'prolonged sleep deprivation', 'punching', 'rape or other sexual assault', 'religious persecution', 'serious mental harm to a person based on race, ethnicity, religion or nationality', 'severe mental suffering', 'solitary confinement', 'stealing children', 'suffocation', 'waterboarding'],
 	answerType: 'multi-select'
 },{
 	id: '5',
@@ -136,6 +139,62 @@ Flow.config.outcomes = [{
 	/* Extraordinary Chambers for Cambodia */
 	selector: $('#ccij_outcome_eccc'),
 	condition: function(questions) {
+		
+		var relevantCountries = ['Cambodia'];
+		
+		var relevantAbuses = ['beating', 'bodily mutilation', 'burning', 'burning of houses', 'death threats', 'denial of fair trial', 'deprivation of medical care', 'destruction or serious damage to property', 'electric shock', 'enslavement', 'forced abortion', 'forced displacement', 'forced nudity', 'forced sterilization', 'forced stress positions', 'forced to watch abuse of other prisoners', 'forcing a prisoner to perform military service', 'incommunicado detention', 'kicking', 'kidnapping/disappearance', 'killing', 'mock execution', 'persecutions on political, racial, or religious grounds', 'poisoning of water or food supplies', 'prolonged exposure to extreme cold or heat', 'prolonged food/water deprivation', 'prolonged sleep deprivation', 'punching', 'rape or other sexual assault', 'religious persecution', 'serious mental harm to a person based on race, ethnicity, religion or nationality', 'severe mental suffering', 'solitary confinement', 'stealing children', 'suffocation', 'waterboarding'];
+
+		// condition 1 - check that a relevant country is selected
+		var condition1 = false
+		if(q1.isNotAnswered() || q1.hasOneOfAnswers(relevantCountries)) {
+			condition1 = true;
+		}
+		if(q2a.hasAnswer('yes') && (q2b.hasOneOfAnswers(relevantCountries))) {
+			condition1 = true;
+		}
+		
+		if(!condition1) {
+			return false;
+		}
+		
+		// condition 2 - check abuse date / end date against selected country/ies
+		var condition2 = false;
+		if (q3.isNotAnswered() || (
+			(q1.hasAnswer('Cambodia') || q2b.hasAnswer('Cambodia')) && q3.isBetweenDates('1975/04/17', '1979/01/06'))) {
+			condition2 = true;
+		}
+		
+		if(!condition2) {
+			return false;
+		}
+		
+		// condition 3 - check types of abuses committed
+		var condition3 = (q4.isNotAnswered() || q4.hasOneOfAnswers(relevantAbuses));
+		
+		if(!condition3) {
+			return false;
+		}
+
+		// condition 4 - check abusers for state actors
+		var condition4 = (q8.isNotAnswered() || q8.hasOneOfAnswers(relevantAbusers));
+
+		if(!condition4) {
+			return false;
+		}
+		
+		// condition 5 - exhausting domestic remedies
+		var condition5 = false;
+		if(	(q14a.isNotAnswered() || q14a.doesNotHaveAnswer('yes')) || 
+			(q14a.hasAnswer('yes') && (q14b.isNotAnswered() || (q14b.hasAnswer('yes') && (q14c.isNotAnswered() || q14c.hasOneOfAnswers(relevantActionOutcomes)))))
+		) {
+			condition5 = true;
+		}
+		
+		if(!condition5) {
+			return false;
+		}
+
+		// by this point all conditions must have passed
 		return true;
 	}
 },{
@@ -222,6 +281,12 @@ Flow.config.outcomes = [{
 	condition: function(q1, q2a, q2b, q3, q4, q8, q14a, q14b, q14c) {
 		
 		var relevantCountries = ['Algeria', 'Angola', 'Benin', 'Botswana', 'Burkina Faso', 'Burundi', 'Cameroon', 'Central African Republic', 'Cape Verde', 'Chad', "Cote d'Ivoire", 'Comoros', 'Congo, Democratic Republic of the', 'Congo, Republic of the', 'Djibouti', 'Egypt', 'Equatorial Guinea', 'Eritrea', 'Ethiopia', 'Gabon', 'Gambia, The', 'Ghana', 'Guinea-Bissau', 'Guinea', 'Kenya', 'Libya', 'Lesotho', 'Liberia', 'Madagascar', 'Mali', 'Malawi', 'Mozambique', 'Mauritania', 'Mauritius', 'Namibia', 'Nigeria', 'Niger', 'Rwanda', 'South Africa', 'Sahrawi Arab Democratic Republic (Western Sahara)', 'Senegal', 'Seychelles', 'Sierra Leone', 'Somalia', 'Sao Tome and Principe', 'Sudan', 'Swaziland', 'Tanzania', 'Togo', 'Tunisia', 'Uganda', 'Zambia', 'Zimbabwe'];
+		
+		var relevantAbuses = ['beating', 'bodily mutilation', 'burning', 'death threats', 'deprivation of medical care', 'electric shock', 'forced stress positions', 'forced nudity', 'forced to watch abuse of other prisoners', 'incommunicado detention', 'kicking', 'kidnapping/disappearance', 'killing', 'mock execution', 'prolonged exposure to extreme cold or heat', 'prolonged food/water deprivation', 'prolonged sleep deprivation', 'punching', 'rape or other sexual assault', 'severe mental suffering', 'solitary confinement', 'suffocation', 'waterboarding'];
+		
+		var relevantAbusers = ["soldier in government's army", 'police officer', 'other government official'];
+		
+		var relevantActionOutcomes = ['Investigation or prosecution still ongoing', 'A court held someone responsible', 'Someone was put on trial but was found not guilty'];
 
 		// condition 1 - check that a relevant country is selected
 		var condition1 = false
@@ -301,14 +366,14 @@ Flow.config.outcomes = [{
 		}
 		
 		// condition 3 - check types of abuses committed
-		var condition3 = (q4.isNotAnswered() || q4.hasOneOfAnswers(['beating', 'bodily mutilation', 'burning', 'death threats', 'deprivation of medical care', 'electric shock', 'forced stress positions', 'forced nudity', 'forced to watch abuse of other prisoners', 'incomunicado detention', 'kicking', 'kidnapping/disappearance', 'killing', 'mock execution', 'prolonged exposure to extreme cold or heat', 'prolonged food/water deprivation', 'prolonged sleep deprivation', 'punching', 'rape or other sexual assault', 'severe mental suffering', 'solitary confinement', 'suffocation', 'waterboarding']));
+		var condition3 = (q4.isNotAnswered() || q4.hasOneOfAnswers(relevantAbuses));
 		
 		if(!condition3) {
 			return false;
 		}
 
 		// condition 4 - check abusers for state actors
-		var condition4 = (q8.isNotAnswered() || q8.hasOneOfAnswers(["soldier in government's army", 'police officer', 'other government official']));
+		var condition4 = (q8.isNotAnswered() || q8.hasOneOfAnswers(relevantAbusers));
 
 		if(!condition4) {
 			return false;
@@ -317,7 +382,7 @@ Flow.config.outcomes = [{
 		// condition 5 - exhausting domestic remedies
 		var condition5 = false;
 		if(	(q14a.isNotAnswered() || q14a.doesNotHaveAnswer('yes')) || 
-			(q14a.hasAnswer('yes') && (q14b.isNotAnswered() || (q14b.hasAnswer('yes') && (q14c.isNotAnswered() || q14c.hasOneOfAnswers(['Investigation or prosecution still ongoing', 'A court held someone responsible', 'Someone was put on trial but was found not guilty'])))))
+			(q14a.hasAnswer('yes') && (q14b.isNotAnswered() || (q14b.hasAnswer('yes') && (q14c.isNotAnswered() || q14c.hasOneOfAnswers(relevantActionOutcomes)))))
 		) {
 			condition5 = true;
 		}

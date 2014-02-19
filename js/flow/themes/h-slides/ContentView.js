@@ -4,7 +4,12 @@ Flow.Theme.ContentView = Backbone.View.extend({
 	
 	template: [
 		'<div class="container">',
-		'	<div id="flow_question_summary" class="row"></div>',
+		'	<div class="row">',
+		'		<div class="col-24 col-sm-24 col-md-24 col-lg-24">',
+		'			<h4>Questions</h4>',
+		'		</div>',
+		'	</div>',
+		'	<div id="flow_question_summary"></div>',
 		'</div>',
 		'<div class="spacer-5"></div>',
 		'<div class="container">',

@@ -6,7 +6,7 @@ Flow.Theme.OutcomePreviewsView = Backbone.View.extend({
 		'<div class="row">',
 		'	<div class="col-24 col-sm-24 col-md-24 col-lg-24">',
 		'		<hr />',
-		'		<h4>Your Options</h4>',
+		'		<h4 id="flow_options_preview_title" class="clickable clickable-colour">Your Options</h4>',
 		'	</div>',
 		'</div>',
 		'<div class="row">',
@@ -61,7 +61,7 @@ Flow.Theme.OutcomePreviewsView = Backbone.View.extend({
 		
 		this.model.on('change:available', _.bind(this.onOutcomesUpdated, this));
 		
-		this.$el.find('#flow_available_count_main_container').click(_.bind(this.onAvailableCountClicked, this));
+		this.$el.find('#flow_available_count_main_container,#flow_options_preview_title').click(_.bind(this.onAvailableCountClicked, this));
 		this.handlePreviewClicks();
 	},
 	

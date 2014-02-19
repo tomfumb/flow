@@ -1,9 +1,9 @@
 .clickable-colour {
-	color: #0000ff;
+	color: #2d6ca2;
 }
 
 .clickable-colour:hover {
-	color: #9900ff;
+	color: #0000ff;
 }
 
 #flow_carousel {
@@ -203,4 +203,11 @@
 
 #flow_outcome_recent_changes {
 	visibility: hidden;
+}
+
+#flow_no_options_note_container {
+	padding: 10px 16px 10px 16px;
+	border: 1px solid #ff0000;
+	background-color: #FCF0E3;
+	display: none;
 }
