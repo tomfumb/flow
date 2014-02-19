@@ -138,7 +138,7 @@ Flow.config.outcomes = [{
 },{
 	/* Extraordinary Chambers for Cambodia */
 	selector: $('#ccij_outcome_eccc'),
-	condition: function(questions) {
+	condition: function(q1, q2a, q2b, q3, q4) {
 		
 		var relevantCountries = ['Cambodia'];
 		
@@ -174,7 +174,8 @@ Flow.config.outcomes = [{
 		if(!condition3) {
 			return false;
 		}
-
+	
+		/*
 		// condition 4 - check abusers for state actors
 		var condition4 = (q8.isNotAnswered() || q8.hasOneOfAnswers(relevantAbusers));
 
@@ -193,6 +194,7 @@ Flow.config.outcomes = [{
 		if(!condition5) {
 			return false;
 		}
+		*/
 
 		// by this point all conditions must have passed
 		return true;
