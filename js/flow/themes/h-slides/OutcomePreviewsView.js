@@ -30,7 +30,12 @@ Flow.Theme.OutcomePreviewsView = Backbone.View.extend({
 		'<div class="spacer-10"></div>',
 		'<div class="row">',
 		'	<div class="col-24 col-xs-24 col-sm-24 col-md-24 col-lg-24">',
-		'		<div id="flow_outcome_recent_changes" class="alert alert-info"></div>',
+		'		<div id="flow_outcome_recent_changes" class="alert alert-info">',
+		'			<span id="flow_outcome_history_back" class="clickable outcome-history-nav"><span class="glyphicon glyphicon-chevron-left"></span></span>',
+		'			<span id="flow_outcome_history_fwd" class="clickable outcome-history-nav"><span class="glyphicon glyphicon-chevron-right"></span></span>',
+		'			<div id="flow_outcome_recent_changes_content"></div>',
+		'			<div class="clearer">',
+		'		</div>',
 		'	</div>',
 		'</div>'
 	].join(''),
@@ -38,6 +43,9 @@ Flow.Theme.OutcomePreviewsView = Backbone.View.extend({
 	outcome_preview_template: [
 		'<div id="<%= outcomeElId %>"<%= displayStyle %> class="available-outcome-preview-container available-outcome-preview"></div>'
 	].join(''),
+	
+	changeHistory: [],
+	changeHistoryPosition: -1,
 	
 	render: function(previewClickHandler) {
 		
@@ -58,8 +66,6 @@ Flow.Theme.OutcomePreviewsView = Backbone.View.extend({
 				previewHtml: this.getAvailablePreviewsHtml()
 			}
 		));
-		
-		this.model.on('change:available', _.bind(this.onOutcomesUpdated, this));
 		
 		this.$el.find('#flow_available_count_main_container,#flow_options_preview_title').click(_.bind(this.onAvailableCountClicked, this));
 		this.handlePreviewClicks();
@@ -95,39 +101,12 @@ Flow.Theme.OutcomePreviewsView = Backbone.View.extend({
 		return elId.replace(/op_/, '');
 	},
 	
-	onOutcomesUpdated: function(changedOutcome) {
-		
-		var availableCount = 0, fadeSpeed = 300;
-		_.each(this.model.models, function(outcome) {
-		
-			if(outcome.get('available')) {
-				availableCount++;
-			}	
-		});
-		
-		var countEl = this.$el.find('#flow_available_count_main');
-		
-		countEl.stop();
-		countEl.fadeOut(fadeSpeed, _.bind(function() {
-			countEl.html(availableCount);
-			countEl.fadeIn(100);
-		}, this));
-		
-		var changedPreviewEl = this.$el.find('#' + this.getPreviewContainerIdFromOutcome(changedOutcome));
-		changedPreviewEl.stop();
-		if(changedOutcome.get('available')) {
-			changedPreviewEl.fadeIn(fadeSpeed);
-		}
-		else {
-			changedPreviewEl.fadeOut(fadeSpeed);
-		}
-		
-		/*
-		var changesEl = this.$el.find('#flow_outcome_recent_changes');
-		
-		changesEl.fadeIn(fadeSpeed);
-		changesEl.html('Question ' + this.lastAnsweredQuestion.get('id') + );
-		*/
+	getTextLinkIdFromOutcome: function(outcome) {
+		return 'optl_' + (new Date()).getTime() + '_' + outcome.get('id');
+	},
+	
+	getOutcomeIdFromTextLinkId: function(elId) {
+		return elId.replace(/optl_\d+_/, '');
 	},
 	
 	handlePreviewClicks: function() {
@@ -151,5 +130,113 @@ Flow.Theme.OutcomePreviewsView = Backbone.View.extend({
 	
 	onQuestionAnswered: function(question) {
 		this.lastAnsweredQuestion = question;
+	},
+	
+	onOutcomesChanged: function(changedOutcomes) {
+
+		var availableCount = 0, fadeSpeed = 300;
+		_.each(this.model.models, function(outcome) {
+		
+			if(outcome.get('available')) {
+				availableCount++;
+			}	
+		});
+		
+		var countEl = this.$el.find('#flow_available_count_main');
+		
+		countEl.stop();
+		countEl.fadeOut(fadeSpeed, _.bind(function() {
+			countEl.html(availableCount);
+			countEl.fadeIn(100);
+		}, this));
+		
+		var addedLinks = [], removedLinks = [];
+		
+		_.each(changedOutcomes.added, function(outcome) {
+			
+			var changedPreviewEl = this.$el.find('#' + this.getPreviewContainerIdFromOutcome(outcome));
+			changedPreviewEl.stop();
+			changedPreviewEl.fadeIn(fadeSpeed);
+			
+			addedLinks.push('<span class="clickable clickable-colour outcome-text-link" id="' + this.getTextLinkIdFromOutcome(outcome) + '" title="' + outcome.get('title') + '">' + outcome.get('abbreviation') + '</span>');
+		}, this);
+		
+		_.each(changedOutcomes.removed, function(outcome) {
+			var changedPreviewEl = this.$el.find('#' + this.getPreviewContainerIdFromOutcome(outcome));
+			changedPreviewEl.stop();
+			changedPreviewEl.fadeOut(fadeSpeed);
+			
+			removedLinks.push('<span class="clickable clickable-colour outcome-text-link" id="' + this.getTextLinkIdFromOutcome(outcome) + '" title="' + outcome.get('title') + '">' + outcome.get('abbreviation') + '</span>');
+		}, this);
+		
+		var changesEl = this.$el.find('#flow_outcome_recent_changes');
+		var changesContentEl = changesEl.find('#flow_outcome_recent_changes_content');
+		
+		var hasAdded = !!addedLinks.length, hasRemoved = !!removedLinks.length;
+		var conjunctionText = (hasAdded && hasRemoved ? ' and ' : '');
+		
+		if(!changesEl.is(':visible')) {
+			
+			changesEl.stop();
+			changesEl.slideDown(fadeSpeed);
+		}
+		
+		this.changeHistory.push('Question ' + this.lastAnsweredQuestion.get('id') + (hasAdded ? ' added ' + addedLinks.join(', ') : '') + conjunctionText + (hasRemoved ? ' removed ' + removedLinks.join(', ') : ''));
+		
+		this.changeHistoryPosition = (this.changeHistory.length - 1);
+		
+		changesContentEl.html(this.changeHistory[this.changeHistoryPosition]);
+		changesContentEl.find('.outcome-text-link').click(_.bind(this.onOutcomeTextLinkClicked, this));
+		
+		this.checkOutcomeHistoryNav();
+	},
+	
+	onOutcomeTextLinkClicked: function(event) {
+		
+		var jqEl = $(event.target);
+		var outcome = this.model.findWhere({id: this.getOutcomeIdFromTextLinkId(jqEl.attr('id'))});
+		this.onPreviewClicked(outcome);
+	},
+	
+	checkOutcomeHistoryNav: function() {
+		
+		var navBack = this.$el.find('#flow_outcome_history_back');
+		var navFwd = this.$el.find('#flow_outcome_history_fwd');
+		
+		if(this.changeHistoryPosition > 0 && this.changeHistoryPosition <= (this.changeHistory.length - 1)) {
+			navBack.css('visibility', 'visible');
+		}
+		else {
+			navBack.css('visibility', 'hidden');
+		}
+		
+		if(this.changeHistoryPosition >= 0 && this.changeHistoryPosition < (this.changeHistory.length - 1)) {
+			navFwd.css('visibility', 'visible');
+		}
+		else {
+			navFwd.css('visibility', 'hidden');
+		}
+		
+		if(this.changeHistory.length === 1) {
+			// this is the first time any navigation controls have been shown, attach click handlers
+			this.handleOutcomeHistoryNav(navBack, navFwd);
+		}
+	},
+	
+	handleOutcomeHistoryNav: function(navBack, navFwd) {
+		
+		var changesContentEl = this.$el.find('#flow_outcome_recent_changes_content');
+		
+		navBack.click(_.bind(function(event) {
+			this.changeHistoryPosition--;
+			changesContentEl.html(this.changeHistory[this.changeHistoryPosition]).find('.outcome-text-link').click(_.bind(this.onOutcomeTextLinkClicked, this));
+			this.checkOutcomeHistoryNav();
+		}, this));
+		
+		navFwd.click(_.bind(function(event) {
+			this.changeHistoryPosition++;
+			changesContentEl.html(this.changeHistory[this.changeHistoryPosition]).find('.outcome-text-link').click(_.bind(this.onOutcomeTextLinkClicked, this));
+			this.checkOutcomeHistoryNav();
+		}, this));
 	}
 });

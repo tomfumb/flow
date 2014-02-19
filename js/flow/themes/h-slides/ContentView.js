@@ -511,5 +511,9 @@ Flow.Theme.ContentView = Backbone.View.extend({
 	
 	onChildContentResize: function() {
 		this.resizeQuestionContainers(true, 100);
+	},
+	
+	onOutcomesChanged: function(changedOutcomes) {
+		this.outcomePreviews.onOutcomesChanged(changedOutcomes);
 	}
 });

@@ -49,6 +49,8 @@ Flow.OutcomeManager = new (Backbone.Collection.extend({
 	
 	checkAvailableOutcomes: function(questions, changedQuestions) {
 		
+		var changed = {added: [], removed: []};
+		
 		_.each(this.models, function(outcome) {
 			
 			var condition = outcome.get('condition'), depends = outcome.get('depends'), relevantQuestions = [];
@@ -69,11 +71,22 @@ Flow.OutcomeManager = new (Backbone.Collection.extend({
 					});
 				
 					if(relevantQuestions.length) {
+						
 						var available = condition.apply(this, relevantQuestions);
+						
+						if(available && !outcome.get('available')) {
+							changed.added.push(outcome);
+						}
+						else if(!available && outcome.get('available')) {
+							changed.removed.push(outcome);
+						}
+						
 						outcome.set('available', available);
 					}
 				}
 			}
 		}, this);
+		
+		return changed;
 	}
 }));

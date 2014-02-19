@@ -1,9 +1,9 @@
 .clickable-colour {
-	color: #2d6ca2;
+	color: #2d6ca2 !important ;
 }
 
 .clickable-colour:hover {
-	color: #0000ff;
+	color: #0000ff !important;
 }
 
 #flow_carousel {
@@ -202,7 +202,7 @@
 }
 
 #flow_outcome_recent_changes {
-	visibility: hidden;
+	display: none;
 }
 
 #flow_no_options_note_container {
@@ -210,4 +210,14 @@
 	border: 1px solid #ff0000;
 	background-color: #FCF0E3;
 	display: none;
+}
+
+#flow_outcome_recent_changes_content {
+	float: left;
+	margin-left: 10px;
+}
+
+.outcome-history-nav {
+	visibility: hidden;
+	float: left;
 }

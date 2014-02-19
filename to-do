@@ -1,8 +1,5 @@
 - update spreadsheet with used values
-- update outcome rules 
-- am I updating list (and number) of available outcomes each time one changes its availability? that could potentially change multiple times each answer is changed, is there a more efficient way to do this that also solves the issue below of showing when all outcome updates have completed?
-- need some way of notifying which outcomes' availability changed due to the last answered question (use abbreviations as links) - part of an approach in onOutcomesUpdated in outcome preview view but this function is called each time a single outcome is updated, not when all updates have finished, need a way of knowing this so that all changes can be described at once. Test with an 'outcomeUpdatesFinished' event.
-- update rules on mechanisms that have them
+- update outcome rules
 - Mobile issues:
 1) phone browser doesn't work for clicking on .entry-point text / image
 2) modal doesn't scroll when off screen
@@ -20,7 +17,6 @@
 - text wrap problem in single_few answers with long text when page narrow
 - use gallery-style slider for outcome previews
 - try to get rid of table in outcome previews
-- notify user of which outcomes have changed their availability
 - ensure user sees a notification about number change if it's off-screen when it changes - simple text flash in set space, first fade is longer than all subsequent
 - main CCIJ site has Google Analytics - should incorporate the async version of this too, log trips to all #destinations
 - check necessity of shims in index.htm
