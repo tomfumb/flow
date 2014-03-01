@@ -24,6 +24,10 @@ Flow.Question = Backbone.Model.extend({
 		return !this.isAnswered();
 	},
 	
+	isUnknownOrNotAnswered: function() {
+		return (!this.isAnswered() || this.hasAnswer('unknown'));
+	},
+	
 	hasAnswer: function(requiredAnswer) {
 	
 		// first check that the answer is actually available within the question. If not there is a problem

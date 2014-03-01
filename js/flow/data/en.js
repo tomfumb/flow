@@ -132,13 +132,13 @@ Flow.config.questions = [{
 Flow.config.outcomes = [{
 	/* International Criminal Court */
 	selector: $('#ccij_outcome_icc'),
-	condition: function(questions) {
-		return true;
+	condition: function(q1) {
+		return false;
 	}
 },{
 	/* Extraordinary Chambers for Cambodia */
 	selector: $('#ccij_outcome_eccc'),
-	condition: function(q1, q2a, q2b, q3, q4) {
+	condition: function(q1, q2a, q2b, q3, q4, q5, q6, q7) {
 		
 		var relevantCountries = ['Cambodia'];
 		
@@ -174,6 +174,26 @@ Flow.config.outcomes = [{
 		if(!condition3) {
 			return false;
 		}
+		
+		// condition 4 - check scenario in which abuse occurred. Only a no in 5, 6, or 7 will rule out ECCC. Unanswered, yes, or unknown will keep it in
+		var condition4 = true;
+		if(q5.hasAnswer('no') && q6.hasAnswer('no') && q7.hasAnswer('no')) {
+			condition4 = false;
+		}
+		
+		if(!condition4) {
+			return false;
+		}
+		
+		// condition 5 - abuser(s). Awaiting confirmation from Matt re who is actually covered
+		var condition5 = true;
+		/*
+		 * 	missing logic
+		 */
+		if(!condition5) {
+			return false;
+		}
+		
 	
 		/*
 		// condition 4 - check abusers for state actors
@@ -202,85 +222,224 @@ Flow.config.outcomes = [{
 },{
 	/* War Crimes Chamber of the Court of Bosnia and Herzegovina */
 	selector: $('#ccij_outcome_bosnia'),
-	condition: function(questions) {
-		return true;
+	condition: function(q1) {
+		return false;
 	}
 },{
 	/* Criminal Prosecution in Canada */
 	selector: $('#ccij_outcome_crim_pro_can'),
-	condition: function(questions) {
-		return true;
+	condition: function(q1) {
+		return false;
 	}
 },{
 	/* Civil lawsuit in Canada */
 	selector: $('#ccij_outcome_civ_law_can'),
-	condition: function(questions) {
-		return true;
+	condition: function(q1) {
+		return false;
 	}
 },{
 	/* Immigration penalties in Canada */
 	selector: $('#ccij_outcome_imm_pen_can'),
-	condition: function(questions) {
-		return true;
+	condition: function(q1) {
+		return false;
 	}
 },{
 	/* U.N. Committee against Torture (CAT) */
 	selector: $('#ccij_outcome_un_cat'),
-	condition: function(questions) {
+	condition: function(q1, q2a, q2b, q3, q4, q8, q14a, q14b, q14c, q15) {
+		
+		var relevantCountries = ['Algeria', 'Andorra', 'Argentina', 'Australia', 'Austria', 'Azerbaijan', 'Belgium', 'Bolivia', 'Bosnia and Herzegovina', 'Brazil', 'Bulgaria', 'Burundi', 'Cameroon', 'Canada', 'Chile', 'Costa Rica', 'Croatia', 'Cyprus', 'Czech Republic', 'Denmark', 'Ecuador', 'Finland', 'France', 'Georgia', 'Germany', 'Ghana', 'Greece', 'Guatemala', 'Guinea-Bissau', 'Hungary', 'Iceland', 'Ireland', 'Italy', 'Kazakhstan', 'Liechtenstein', 'Luxembourg', 'Malta', 'Mexico', 'Monaco', 'Montenegro', 'Morocco', 'Netherlands', 'New Zealand', 'Norway', 'Paraguay', 'Peru', 'Poland', 'Portugal', 'Qatar', 'South Korea', 'Moldova', 'Russia', 'Senegal', 'Serbia', 'Seychelles', 'Slovakia', 'Slovenia', 'South Africa', 'Spain', 'Sweden', 'Switzerland', 'Togo', 'Tunisia', 'Turkey', 'Ukraine', 'Uruguay', 'Venezuela'];
+		
+		var relevantAbuses = ['beating', 'bodily mutilation', 'burning', 'death threats', 'deprivation of medical care', 'electric shock', 'forced  stress positions', 'forced nudity', 'forced to watch abuse of other prisoners', 'incomunicado detention', 'kicking', 'mock execution', 'prolonged exposure to extreme cold or heat', 'prolonged food/water deprivation', 'prolonged sleep deprivation', 'punching', 'rape or other sexual assault', 'severe mental suffering', 'solitary confinement', 'suffocation', 'waterboarding'];
+		
+		var relevantAbusers = ["soldier in government's army", 'police officer', 'other government official'];
+		
+		var relevantActionOutcomes = ['Investigation or prosecution still ongoing', 'A court held someone responsible', 'Someone was put on trial but was found not guilty'];
+		
+		// condition 1 - check that a relevant country is selected
+		var condition1 = false
+		if(q1.isNotAnswered() || q1.hasOneOfAnswers(relevantCountries)) {
+			condition1 = true;
+		}
+		if(q2a.hasAnswer('yes') && (q2b.hasOneOfAnswers(relevantCountries))) {
+			condition1 = true;
+		}
+		
+		if(!condition1) {
+			return false;
+		}
+		
+		// condition 2 - check abuse date / end date against selected country/ies
+		var condition2 = false;
+		if (q3.isNotAnswered() || (
+			((q1.hasAnswer('Algeria') || q2b.hasAnswer('Algeria')) && q3.isAfterOrOnDate('1989/09/12')) || 
+			((q1.hasAnswer('Andorra') || q2b.hasAnswer('Andorra')) && q3.isAfterOrOnDate('2006/09/22')) || 
+			((q1.hasAnswer('Argentina') || q2b.hasAnswer('Argentina')) && q3.isAfterOrOnDate('1987/06/26')) || 
+			((q1.hasAnswer('Australia') || q2b.hasAnswer('Australia')) && q3.isAfterOrOnDate('1989/08/08')) || 
+			((q1.hasAnswer('Austria') || q2b.hasAnswer('Austria')) && q3.isAfterOrOnDate('1987/07/29')) || 
+			((q1.hasAnswer('Azerbaijan') || q2b.hasAnswer('Azerbaijan')) && q3.isAfterOrOnDate('1996/08/16')) || 
+			((q1.hasAnswer('Belgium') || q2b.hasAnswer('Belgium')) && q3.isAfterOrOnDate('1999/06/25')) || 
+			((q1.hasAnswer('Bolivia') || q2b.hasAnswer('Bolivia')) && q3.isAfterOrOnDate('1999/04/12')) || 
+			((q1.hasAnswer('Bosnia and Herzegovina') || q2b.hasAnswer('Bosnia and Herzegovina')) && q3.isAfterOrOnDate('1993/09/01')) || 
+			((q1.hasAnswer('Brazil') || q2b.hasAnswer('Brazil')) && q3.isAfterOrOnDate('1989/09/28')) || 
+			((q1.hasAnswer('Bulgaria') || q2b.hasAnswer('Bulgaria')) && q3.isAfterOrOnDate('1987/06/26')) || 
+			((q1.hasAnswer('Burundi') || q2b.hasAnswer('Burundi')) && q3.isAfterOrOnDate('1993/02/18')) || 
+			((q1.hasAnswer('Cameroon') || q2b.hasAnswer('Cameroon')) && q3.isAfterOrOnDate('1987/06/26')) || 
+			((q1.hasAnswer('Canada') || q2b.hasAnswer('Canada')) && q3.isAfterOrOnDate('1987/06/26')) || 
+			((q1.hasAnswer('Chile') || q2b.hasAnswer('Chile')) && q3.isAfterOrOnDate('1988/09/30')) || 
+			((q1.hasAnswer('Costa Rica') || q2b.hasAnswer('Costa Rica')) && q3.isAfterOrOnDate('1993/11/11')) || 
+			((q1.hasAnswer('Croatia') || q2b.hasAnswer('Croatia')) && q3.isAfterOrOnDate('1992/10/12')) || 
+			((q1.hasAnswer('Cyprus') || q2b.hasAnswer('Cyprus')) && q3.isAfterOrOnDate('1991/07/18')) || 
+			((q1.hasAnswer('Czech Republic') || q2b.hasAnswer('Czech Republic')) && q3.isAfterOrOnDate('1993/02/22')) || 
+			((q1.hasAnswer('Denmark') || q2b.hasAnswer('Denmark')) && q3.isAfterOrOnDate('1987/06/26')) || 
+			((q1.hasAnswer('Ecuador') || q2b.hasAnswer('Ecuador')) && q3.isAfterOrOnDate('1988/03/30')) || 
+			((q1.hasAnswer('Finland') || q2b.hasAnswer('Finland')) && q3.isAfterOrOnDate('1989/08/30')) || 
+			((q1.hasAnswer('France') || q2b.hasAnswer('France')) && q3.isAfterOrOnDate('1987/06/26')) || 
+			((q1.hasAnswer('Georgia') || q2b.hasAnswer('Georgia')) && q3.isAfterOrOnDate('1994/10/26')) || 
+			((q1.hasAnswer('Germany') || q2b.hasAnswer('Germany')) && q3.isAfterOrOnDate('1990/10/01')) || 
+			((q1.hasAnswer('Ghana') || q2b.hasAnswer('Ghana')) && q3.isAfterOrOnDate('2000/09/07')) || 
+			((q1.hasAnswer('Greece') || q2b.hasAnswer('Greece')) && q3.isAfterOrOnDate('1988/10/06')) || 
+			((q1.hasAnswer('Guatemala') || q2b.hasAnswer('Guatemala')) && q3.isAfterOrOnDate('1990/01/05')) || 
+			((q1.hasAnswer('Guinea-Bissau') || q2b.hasAnswer('Guinea-Bissau')) && q3.isAfterOrOnDate('2013/09/24')) || 
+			((q1.hasAnswer('Hungary') || q2b.hasAnswer('Hungary')) && q3.isAfterOrOnDate('1987/06/26')) || 
+			((q1.hasAnswer('Iceland') || q2b.hasAnswer('Iceland')) && q3.isAfterOrOnDate('1996/10/23')) ||	
+			((q1.hasAnswer('Ireland') || q2b.hasAnswer('Ireland')) && q3.isAfterOrOnDate('2002/04/11')) || 
+			((q1.hasAnswer('Italy') || q2b.hasAnswer('Italy')) && q3.isAfterOrOnDate('1989/01/12')) || 
+			((q1.hasAnswer('Kazakhstan') || q2b.hasAnswer('Kazakhstan')) && q3.isAfterOrOnDate('1998/08/26')) || 
+			((q1.hasAnswer('Liechtenstein') || q2b.hasAnswer('Liechtenstein')) && q3.isAfterOrOnDate('1990/09/02')) || 
+			((q1.hasAnswer('Luxembourg') || q2b.hasAnswer('Luxembourg')) && q3.isAfterOrOnDate('1987/09/29')) || 
+			((q1.hasAnswer('Malta') || q2b.hasAnswer('Malta')) && q3.isAfterOrOnDate('1990/09/13')) || 
+			((q1.hasAnswer('Mexico') || q2b.hasAnswer('Mexico')) && q3.isAfterOrOnDate('1987/06/26')) || 
+			((q1.hasAnswer('Monaco') || q2b.hasAnswer('Monaco')) && q3.isAfterOrOnDate('1991/12/06')) || 
+			((q1.hasAnswer('Montenegro') || q2b.hasAnswer('Montenegro')) && q3.isAfterOrOnDate('2006/10/23')) || 
+			((q1.hasAnswer('Morocco') || q2b.hasAnswer('Morocco')) && q3.isAfterOrOnDate('1993/06/21')) || 
+			((q1.hasAnswer('Netherlands') || q2b.hasAnswer('Netherlands')) && q3.isAfterOrOnDate('1988/12/21')) || 
+			((q1.hasAnswer('New Zealand') || q2b.hasAnswer('New Zealand')) && q3.isAfterOrOnDate('1989/12/10')) || 
+			((q1.hasAnswer('Norway') || q2b.hasAnswer('Norway')) && q3.isAfterOrOnDate('1987/06/26')) || 
+			((q1.hasAnswer('Paraguay') || q2b.hasAnswer('Paraguay')) && q3.isAfterOrOnDate('1990/03/12')) || 
+			((q1.hasAnswer('Peru') || q2b.hasAnswer('Peru')) && q3.isAfterOrOnDate('1988/07/07')) || 
+			((q1.hasAnswer('Poland') || q2b.hasAnswer('Poland')) && q3.isAfterOrOnDate('1989/06/26')) || 
+			((q1.hasAnswer('Portugal') || q2b.hasAnswer('Portugal')) && q3.isAfterOrOnDate('1989/02/09')) || 
+			((q1.hasAnswer('Qatar') || q2b.hasAnswer('Qatar')) && q3.isAfterOrOnDate('2012/03/14')) || 
+			((q1.hasAnswer('South Korea') || q2b.hasAnswer('South Korea')) && q3.isAfterOrOnDate('1995/01/09')) || 
+			((q1.hasAnswer('Moldova') || q2b.hasAnswer('Moldova')) && q3.isAfterOrOnDate('1995/11/28')) || 
+			((q1.hasAnswer('Russia') || q2b.hasAnswer('Russia')) && q3.isAfterOrOnDate('1987/06/26')) || 
+			((q1.hasAnswer('Senegal') || q2b.hasAnswer('Senegal')) && q3.isAfterOrOnDate('1987/06/26')) || 
+			((q1.hasAnswer('Serbia') || q2b.hasAnswer('Serbia')) && q3.isAfterOrOnDate('2001/03/12')) || 
+			((q1.hasAnswer('Seychelles') || q2b.hasAnswer('Seychelles')) && q3.isAfterOrOnDate('1992/05/05')) || 
+			((q1.hasAnswer('Slovakia') || q2b.hasAnswer('Slovakia')) && q3.isAfterOrOnDate('1993/05/28')) || 
+			((q1.hasAnswer('Slovenia') || q2b.hasAnswer('Slovenia')) && q3.isAfterOrOnDate('1993/07/16')) || 
+			((q1.hasAnswer('South Africa') || q2b.hasAnswer('South Africa')) && q3.isAfterOrOnDate('1998/12/10')) || 
+			((q1.hasAnswer('Spain') || q2b.hasAnswer('Spain')) && q3.isAfterOrOnDate('1987/10/21')) || 
+			((q1.hasAnswer('Sweden') || q2b.hasAnswer('Sweden')) && q3.isAfterOrOnDate('1987/06/26')) || 
+			((q1.hasAnswer('Switzerland') || q2b.hasAnswer('Switzerland')) && q3.isAfterOrOnDate('1987/06/26')) || 
+			((q1.hasAnswer('Togo') || q2b.hasAnswer('Togo')) && q3.isAfterOrOnDate('1987/11/18')) || 
+			((q1.hasAnswer('Tunisia') || q2b.hasAnswer('Tunisia')) && q3.isAfterOrOnDate('1988/09/23')) || 
+			((q1.hasAnswer('Turkey') || q2b.hasAnswer('Turkey')) && q3.isAfterOrOnDate('1988/08/02')) || 
+			((q1.hasAnswer('Ukraine') || q2b.hasAnswer('Ukraine')) && q3.isAfterOrOnDate('2003/09/12')) || 
+			((q1.hasAnswer('Uruguay') || q2b.hasAnswer('Uruguay')) && q3.isAfterOrOnDate('1987/06/26')) || 
+			((q1.hasAnswer('Venezuela') || q2b.hasAnswer('Venezuela')) && q3.isAfterOrOnDate('1991/07/29'))
+		)) {
+			condition2 = true;
+		}
+		
+		if(!condition2) {
+			return false;
+		} 
+		
+		// condition 3 - check types of abuses committed
+		var condition3 = (q4.isNotAnswered() || q4.hasOneOfAnswers(relevantAbuses));
+		
+		if(!condition3) {
+			return false;
+		}
+
+		// condition 4 - check abusers for state actors
+		var condition4 = (q8.isNotAnswered() || q8.hasOneOfAnswers(relevantAbusers));
+
+		if(!condition4) {
+			return false;
+		}
+		
+		// condition 5 - exhausting domestic remedies
+		var condition5 = false;
+		
+		if(
+			(q14a.isUnknownOrNotAnswered() || q14a.hasAnswer('no')) ||
+			(q14a.hasAnswer('yes') && q14b.isUnknownOrNotAnswered()) ||
+			(q14a.hasAnswer('yes') && q14b.hasAnswer('yes') && q14c.isNotAnswered()) ||
+			(q14a.hasAnswer('yes') && q14b.hasAnswer('yes') && !q14c.hasOneOfAnswers(relevantActionOutcomes))) {
+			condition5 = true;
+		}
+			
+		if(!condition5) {
+			return false;
+		}
+		
+		// other international remedies sought
+		var condition6 = false;
+		if(q15.doesNotHaveAnswer('yes')) {
+			condition6 = true;
+		}
+		
+		if(!condition6) {
+			return false;
+		}
+			
 		return true;
 	}
 },{
 	/* U.N. Human Rights Committee */
 	selector: $('#ccij_outcome_un_hrc'),
-	condition: function(questions) {
-		return true;
+	condition: function(q1) {
+		return false;
 	}
 },{
 	/* U.N. Committee on the Elimination of Racial Discrimination (CERD) */
 	selector: $('#ccij_outcome_un_cerd'),
-	condition: function(questions) {
-		return true;
+	condition: function(q1) {
+		return false;
 	}
 },{
 	/* U.N. Committee on Elimination of Discrimination against Women (CEDAW) */
 	selector: $('#ccij_outcome_un_cedaw'),
-	condition: function(questions) {
-		return true;
+	condition: function(q1) {
+		return false;
 	}
 },{
 	/* U.N. Committee on Enforced Disappearances (CED) */
 	selector: $('#ccij_outcome_un_ced'),
-	condition: function(questions) {
-		return true;
+	condition: function(q1) {
+		return false;
 	}
 },{
 	/* U.N. Committee on Economic, Social and Cultural Rights (CESCR) */
 	selector: $('#ccij_outcome_un_cescr'),
-	condition: function(questions) {
-		return true;
+	condition: function(q1) {
+		return false;
 	}
 },{
 	/* U.N. Committee on the Rights of the Child (CRC) */
 	selector: $('#ccij_outcome_un_crc'),
-	condition: function(questions) {
-		return true;
+	condition: function(q1) {
+		return false;
 	}
 },{
 	/* U.N. Working Group on Enforced Disappearances (WGEID) */
 	selector: $('#ccij_outcome_un_wgeid'),
-	condition: function(questions) {
-		return true;
+	condition: function(q1) {
+		return false;
 	}
 },{
 	/* Inter-American Commission/Court of Human Rights */
 	selector: $('#ccij_outcome_ia_chr'),
-	condition: function(questions) {
-		return true;
+	condition: function(q1) {
+		return false;
 	}
 },{
 	/* African Commission on Human and Peoples' Rights */
 	selector: $('#ccij_outcome_acm_hpr'),
-	condition: function(q1, q2a, q2b, q3, q4, q8, q14a, q14b, q14c) {
+	condition: function(q1, q2a, q2b, q3, q4, q8, q14a, q14b, q14c, q15) {
 		
 		var relevantCountries = ['Algeria', 'Angola', 'Benin', 'Botswana', 'Burkina Faso', 'Burundi', 'Cameroon', 'Central African Republic', 'Cape Verde', 'Chad', "Cote d'Ivoire", 'Comoros', 'Congo, Democratic Republic of the', 'Congo, Republic of the', 'Djibouti', 'Egypt', 'Equatorial Guinea', 'Eritrea', 'Ethiopia', 'Gabon', 'Gambia, The', 'Ghana', 'Guinea-Bissau', 'Guinea', 'Kenya', 'Libya', 'Lesotho', 'Liberia', 'Madagascar', 'Mali', 'Malawi', 'Mozambique', 'Mauritania', 'Mauritius', 'Namibia', 'Nigeria', 'Niger', 'Rwanda', 'South Africa', 'Sahrawi Arab Democratic Republic (Western Sahara)', 'Senegal', 'Seychelles', 'Sierra Leone', 'Somalia', 'Sao Tome and Principe', 'Sudan', 'Swaziland', 'Tanzania', 'Togo', 'Tunisia', 'Uganda', 'Zambia', 'Zimbabwe'];
 		
@@ -383,13 +542,27 @@ Flow.config.outcomes = [{
 		
 		// condition 5 - exhausting domestic remedies
 		var condition5 = false;
-		if(	(q14a.isNotAnswered() || q14a.doesNotHaveAnswer('yes')) || 
-			(q14a.hasAnswer('yes') && (q14b.isNotAnswered() || (q14b.hasAnswer('yes') && (q14c.isNotAnswered() || q14c.hasOneOfAnswers(relevantActionOutcomes)))))
-		) {
+		
+		if(
+			(q14a.isUnknownOrNotAnswered() || q14a.hasAnswer('no')) ||
+			(q14a.hasAnswer('yes') && q14b.isUnknownOrNotAnswered()) ||
+			(q14a.hasAnswer('yes') && q14b.hasAnswer('yes') && q14c.isNotAnswered()) ||
+			(q14a.hasAnswer('yes') && q14b.hasAnswer('yes') && !q14c.hasOneOfAnswers(relevantActionOutcomes))) {
 			condition5 = true;
 		}
 		
 		if(!condition5) {
+			return false;
+		}
+		
+		// other international remedies sought
+		var condition6 = false;
+		
+		if(q15.doesNotHaveAnswer('yes')) {
+			condition6 = true;
+		}
+		
+		if(!condition6) {
 			return false;
 		}
 
@@ -399,19 +572,19 @@ Flow.config.outcomes = [{
 },{
 	/* African Court on Human and Peoples' Rights */
 	selector: $('#ccij_outcome_act_hpr'),
-	condition: function(questions) {
-		return true;
+	condition: function(q1) {
+		return false;
 	}
 },{
 	/* Economic Community Of West African States (ECOWAS) */
 	selector: $('#ccij_outcome_ecowas'),
-	condition: function(questions) {
-		return true;
+	condition: function(q1) {
+		return false;
 	}
 },{
 	/* European Court of Human Rights */
 	selector: $('#ccij_outcome_echr'),
-	condition: function(questions) {
-		return true;
+	condition: function(q1) {
+		return false;
 	}
 }];

@@ -1,15 +1,26 @@
+- icon for question area (ESL)
+- order mechanisms by international, regional, national
+- must replace all isNotAnswered with isUnknownOrNotAnswered where relevant
 - update spreadsheet with used values
 - update outcome rules
+- q8 needs an 'unknown' option, treat as all available
+- q8 needs a company / corporation option
+- q12, 13a, 13b become 4, 5a, 5b
+- smaller text in horiz list of options so can fit more. case for 'em' instead of 'px'?
+- if modal closed after showing options at end should be really obvious how to re-open it
+- print view (Firefox) printed outcome list twice
 - Mobile issues:
 1) phone browser doesn't work for clicking on .entry-point text / image
 2) modal doesn't scroll when off screen
 3) date picker isn't obvious when presented with keyboard input beneath text input
+4) question summary list should just be one row, swipeable / pageable like outcomes list. Will require some complex logic to ensure the current question is as close to the centre of that display as possible
 - when resizing container to fit summary height is not always correctly set - sometimes under or over shot. Possibly related to the briefly-displayed vertical scroll bar? Look for a pattern in this happening when the container gets larger or shorter relative to the previous slide
 - some scenario where question summary links can be repeated and clicking the duplicates messes things up
 - consider not automatically advancing the carousel if the user has explicitly requested a specific question, or if the following question is already answered - could get messy / confusing
 - if the last question is conditionally available, is answered, and then becomes unavailable it is still treated as an available question (summary highlights as active and quesion is shown).
 - Multiple consecutive conditional questions - if c is dependent on b and b dependent on a c should be unavailable when b is unavailable
 - test case - what happens if a second answer is given during slide transition, does it slide twice?
+- test case - slow download of resources, anything available before it will actually work?
 - handle swipe actions for question back / fwd
 - http://getbootstrap.com/getting-started/#browsers
 - tip buttons near key functionality explaining what's going on

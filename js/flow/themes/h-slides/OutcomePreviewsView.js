@@ -158,7 +158,7 @@ Flow.Theme.OutcomePreviewsView = Backbone.View.extend({
 			changedPreviewEl.stop();
 			changedPreviewEl.fadeIn(fadeSpeed);
 			
-			addedLinks.push('<span class="clickable clickable-colour outcome-text-link" id="' + this.getTextLinkIdFromOutcome(outcome) + '" title="' + outcome.get('title') + '">' + outcome.get('abbreviation') + '</span>');
+			addedLinks.push('<li class="clickable clickable-colour outcome-text-link" id="' + this.getTextLinkIdFromOutcome(outcome) + '">' + outcome.get('title') + '</li>');
 		}, this);
 		
 		_.each(changedOutcomes.removed, function(outcome) {
@@ -166,14 +166,14 @@ Flow.Theme.OutcomePreviewsView = Backbone.View.extend({
 			changedPreviewEl.stop();
 			changedPreviewEl.fadeOut(fadeSpeed);
 			
-			removedLinks.push('<span class="clickable clickable-colour outcome-text-link" id="' + this.getTextLinkIdFromOutcome(outcome) + '" title="' + outcome.get('title') + '">' + outcome.get('abbreviation') + '</span>');
+			removedLinks.push('<li class="clickable clickable-colour outcome-text-link" id="' + this.getTextLinkIdFromOutcome(outcome) + '">' + outcome.get('title') + '</li>');
 		}, this);
 		
 		var changesEl = this.$el.find('#flow_outcome_recent_changes');
 		var changesContentEl = changesEl.find('#flow_outcome_recent_changes_content');
 		
 		var hasAdded = !!addedLinks.length, hasRemoved = !!removedLinks.length;
-		var conjunctionText = (hasAdded && hasRemoved ? ' and ' : '');
+		var conjunctionText = (hasAdded && hasRemoved ? ' and' : '');
 		
 		if(!changesEl.is(':visible')) {
 			
@@ -181,7 +181,7 @@ Flow.Theme.OutcomePreviewsView = Backbone.View.extend({
 			changesEl.slideDown(fadeSpeed);
 		}
 		
-		this.changeHistory.push('Question ' + this.lastAnsweredQuestion.get('id') + (hasAdded ? ' added ' + addedLinks.join(', ') : '') + conjunctionText + (hasRemoved ? ' removed ' + removedLinks.join(', ') : ''));
+		this.changeHistory.push('Question ' + this.lastAnsweredQuestion.get('id') + (hasAdded ? ' added <ul>' + addedLinks.join('') + '</ul>' : '') + conjunctionText + (hasRemoved ? ' removed <ul>' + removedLinks.join('') + '</ul>' : ''));
 		
 		this.changeHistoryPosition = (this.changeHistory.length - 1);
 		

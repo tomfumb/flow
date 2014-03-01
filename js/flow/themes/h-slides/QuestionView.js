@@ -185,7 +185,12 @@ Flow.Theme.QuestionView = Backbone.View.extend({
 			case this.answerDisplayTypes.SINGLE_DATE:
 			
 				this.$el.find('#answers_' + this.model.get('id') + ' input.date-selector').change(_.bind(function(event) {
-					this.onAnswersSelected([event.target.value]);
+					if(event.target.value !== '') {
+						this.onAnswersSelected([event.target.value]);
+					}
+					else {
+						this.onAnswersSelected([]);
+					}
 					window.setTimeout(_.bind(this.onQuestionAnswered, this), 300);
 				}, this));
 				break;
