@@ -33,6 +33,9 @@ Flow.Theme.ContentView = Backbone.View.extend({
 	
 	questions: [],
 	
+	backPermitted: false,
+	fwdPermitted: false,
+	
 	render: function() {
 		
 		Flow.Log.debug('ContentView.render');
@@ -108,6 +111,8 @@ Flow.Theme.ContentView = Backbone.View.extend({
 		
 		this.$el.find('#flow_content_items').append(scratch.find('div.question-container'));
 		
+		this.$el.find('#flow_carousel').on('swipeleft', _.bind(this.onSwipeLeft, this)).on('swiperight', _.bind(this.onSwipeRight, this));		
+		
 		// update modal with all questions unanswered / unavailable
 		this.outcomeManager.unansweredQuestions = availableCount;
 	},
@@ -127,8 +132,8 @@ Flow.Theme.ContentView = Backbone.View.extend({
 		// ensure navigation buttons aren't available during carousel movement
 		this.$carouselEl.on('slide.bs.carousel', _.bind(this.onSlideStart, this));
 		this.$carouselEl.on('slid.bs.carousel', _.bind(this.onSlideStop, this));
-		
-		this.$el.find('#flow_carousel_navigation_forward').css('visibility', 'visible');
+			
+		this.checkNavigationOptions();
 		
 		this.questions[0].view.onBeforeShow();
 	},
@@ -203,16 +208,20 @@ Flow.Theme.ContentView = Backbone.View.extend({
 	checkNavigationOptions: function() {
 		
 		if(this.getIndexOfPreviousAvailableQuestion() === -1) {
+			this.backPermitted = false;
 			this.$el.find('#flow_carousel_navigation_back').css('visibility', 'hidden');
 		}
 		else {
+			this.backPermitted = true;
 			this.$el.find('#flow_carousel_navigation_back').css('visibility', 'visible');
 		}
 		
 		if(this.getIndexOfNextAvailableQuestion() === -1) {
+			this.fwdPermitted = false;
 			this.$el.find('#flow_carousel_navigation_forward').css('visibility', 'hidden');
 		}
 		else {
+			this.fwdPermitted = true;
 			this.$el.find('#flow_carousel_navigation_forward').css('visibility', 'visible');
 		}
 	},
@@ -463,6 +472,18 @@ Flow.Theme.ContentView = Backbone.View.extend({
 	
 	onForwardSelected: function(event) {
 		this.showNextQuestion();
+	},
+	
+	onSwipeLeft: function() {
+		if(this.fwdPermitted) {
+			this.showNextQuestion();
+		}
+	},
+	
+	onSwipeRight: function() {
+		if(this.backPermitted) {
+			this.showPreviousQuestion();
+		}
 	},
 	
 	resizeQuestionContainers: function(animate, animateSpeed) {
