@@ -13,7 +13,6 @@
 - Multiple consecutive conditional questions - if c is dependent on b and b dependent on a c should be unavailable when b is unavailable
 - test case - what happens if a second answer is given during slide transition, does it slide twice?
 - test case - slow download of resources, anything available before it will actually work?
-- handle swipe actions for question back / fwd
 - http://getbootstrap.com/getting-started/#browsers
 - tip buttons near key functionality explaining what's going on
 - email results to user

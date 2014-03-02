@@ -504,6 +504,12 @@ Flow.Theme.ContentView = Backbone.View.extend({
 		navigationEls.stop(true);
 		
 		var elHeight = activeEl.find('.carousel-caption').height();
+		
+		if(elHeight === 0) {
+			// then another slide is already in progress, don't collapse to 0
+			return;
+		}
+		
 		if(elHeight % 2 != 0) {
 			elHeight += 1;
 		}
