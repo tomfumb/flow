@@ -1,11 +1,13 @@
 <?php
 
+$destination = 'feedback@ccij.ca';
+
 if(isset($_POST['from']) && isset($_POST['message'])) {
 	
 	$from = $_POST['from'];
 	$message = $_POST['message'];
 	
-	if(is_null($from) || filter_var($from, FILTER_VALIDATE_EMAIL)) {
+	if(is_null($from) || empty($from) || !filter_var($from, FILTER_VALIDATE_EMAIL)) {
 		header('HTTP/1.1 400 Invalid email address', true, 400);
 		exit();
 	}
@@ -16,7 +18,7 @@ if(isset($_POST['from']) && isset($_POST['message'])) {
 	}
 	
 	$sent = mail(
-		'thomaschristian@gmail.com',
+		$destination,
 		'Feedback: Opportunities for Justice',
 		$message,
 		'From: ' . $from,

@@ -18,7 +18,7 @@ Flow.Theme.FeedbackView = Backbone.View.extend({
 		'				<h4>Your Comment</h4>',
 		'				<textarea id="flow_feedback_message" class="form-control" rows="5"></textarea>',
 		'				<br />',
-		'				<button type="button" id="flow_feedback_send" disabled="disabled" class="btn btn-primary">Send</button> <img id="flow_feedback_load" src="images/small-load.gif" width="24px" height="24px" style="display: none;" /><span class="glyphicon glyphicon-ok" id="flow_feedback_success" style="display: none;"><span><span class="glyphicon glyphicon-remove" id="flow_feedback_fail" style="display: none;"><span>',
+		'				<button type="button" id="flow_feedback_send" disabled="disabled" class="btn btn-primary">Send</button> <img id="flow_feedback_load" src="images/small-load.gif" width="24px" height="24px" style="display: none;" /><span class="glyphicon glyphicon-ok" id="flow_feedback_success" style="display: none;" title="Feedback sent"></span><span class="glyphicon glyphicon-remove" id="flow_feedback_fail" style="display: none;" title="Send failed"></span>',
 		'			</div>',
 		'			<div class="modal-footer">',
 		'				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>',
