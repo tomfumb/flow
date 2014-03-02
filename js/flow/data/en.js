@@ -65,7 +65,7 @@ Flow.config.questions = [{
 	id: '8',
 	content: 'Who committed the abuse(s)?',
 	explanations: ['Subject matter jurisdiction over Torture. To determine whether the victim\'s abuse constitutes torture such that it comes within the mechanism\'s subject matter jurisdiction;', 'Immunity. To determine if the abuse was committed by a government actor such that there would be immunity in Canadian courts;', 'Territorial jurisdiction. To determine if the country  where the abuse happened is responsible because the perpetrator was a government actor or not responsible because the abuse was committed by a non-government actor (e.g. a rebel group).'],
-	answers: ['soldier in government\'s army', 'police officer', 'other government official', 'soldier in rebel army', 'person in plainclothes', 'unknown'],
+	answers: ['soldier in government\'s army', 'police officer', 'other government official', 'soldier in rebel army', 'person in plainclothes', 'company or corporation', 'unknown'],
 	answerType: 'multi-select'
 },{
 	id: '9',
