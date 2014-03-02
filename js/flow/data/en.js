@@ -65,7 +65,7 @@ Flow.config.questions = [{
 	id: '8',
 	content: 'Who committed the abuse(s)?',
 	explanations: ['Subject matter jurisdiction over Torture. To determine whether the victim\'s abuse constitutes torture such that it comes within the mechanism\'s subject matter jurisdiction;', 'Immunity. To determine if the abuse was committed by a government actor such that there would be immunity in Canadian courts;', 'Territorial jurisdiction. To determine if the country  where the abuse happened is responsible because the perpetrator was a government actor or not responsible because the abuse was committed by a non-government actor (e.g. a rebel group).'],
-	answers: ['soldier in government\'s army', 'police officer', 'other government official', 'soldier in rebel army', 'person in plainclothes'],
+	answers: ['soldier in government\'s army', 'police officer', 'other government official', 'soldier in rebel army', 'person in plainclothes', 'unknown'],
 	answerType: 'multi-select'
 },{
 	id: '9',
@@ -138,11 +138,13 @@ Flow.config.outcomes = [{
 },{
 	/* Extraordinary Chambers for Cambodia */
 	selector: $('#ccij_outcome_eccc'),
-	condition: function(q1, q2a, q2b, q3, q4, q5, q6, q7) {
+	condition: function(q1, q2a, q2b, q3, q4, q5, q6, q7, q8) {
 		
 		var relevantCountries = ['Cambodia'];
 		
 		var relevantAbuses = ['beating', 'bodily mutilation', 'burning', 'burning of houses', 'death threats', 'denial of fair trial', 'deprivation of medical care', 'destruction or serious damage to property', 'electric shock', 'enslavement', 'forced abortion', 'forced displacement', 'forced nudity', 'forced sterilization', 'forced stress positions', 'forced to watch abuse of other prisoners', 'forcing a prisoner to perform military service', 'incommunicado detention', 'kicking', 'kidnapping/disappearance', 'killing', 'mock execution', 'persecutions on political, racial, or religious grounds', 'poisoning of water or food supplies', 'prolonged exposure to extreme cold or heat', 'prolonged food/water deprivation', 'prolonged sleep deprivation', 'punching', 'rape or other sexual assault', 'religious persecution', 'serious mental harm to a person based on race, ethnicity, religion or nationality', 'severe mental suffering', 'solitary confinement', 'stealing children', 'suffocation', 'waterboarding'];
+		
+		var relevantAbusers = ["soldier in government's army", 'police officer', 'other government official'];
 
 		// condition 1 - check that a relevant country is selected
 		var condition1 = false
@@ -185,36 +187,12 @@ Flow.config.outcomes = [{
 			return false;
 		}
 		
-		// condition 5 - abuser(s). Awaiting confirmation from Matt re who is actually covered
-		var condition5 = true;
-		/*
-		 * 	missing logic
-		 */
-		if(!condition5) {
-			return false;
-		}
-		
-	
-		/*
-		// condition 4 - check abusers for state actors
-		var condition4 = (q8.isNotAnswered() || q8.hasOneOfAnswers(relevantAbusers));
-
-		if(!condition4) {
-			return false;
-		}
-		
-		// condition 5 - exhausting domestic remedies
-		var condition5 = false;
-		if(	(q14a.isNotAnswered() || q14a.doesNotHaveAnswer('yes')) || 
-			(q14a.hasAnswer('yes') && (q14b.isNotAnswered() || (q14b.hasAnswer('yes') && (q14c.isNotAnswered() || q14c.hasOneOfAnswers(relevantActionOutcomes)))))
-		) {
-			condition5 = true;
-		}
+		// condition 4 - check abuser(s) for state actors
+		var condition5 = (q8.isUnknownOrNotAnswered() || q8.hasOneOfAnswers(relevantAbusers));
 		
 		if(!condition5) {
 			return false;
 		}
-		*/
 
 		// by this point all conditions must have passed
 		return true;
@@ -354,8 +332,8 @@ Flow.config.outcomes = [{
 			return false;
 		}
 
-		// condition 4 - check abusers for state actors
-		var condition4 = (q8.isNotAnswered() || q8.hasOneOfAnswers(relevantAbusers));
+		// condition 4 - check abuser(s) for state actors
+		var condition4 = (q8.isUnknownOrNotAnswered() || q8.hasOneOfAnswers(relevantAbusers));
 
 		if(!condition4) {
 			return false;
@@ -534,7 +512,7 @@ Flow.config.outcomes = [{
 		}
 
 		// condition 4 - check abusers for state actors
-		var condition4 = (q8.isNotAnswered() || q8.hasOneOfAnswers(relevantAbusers));
+		var condition4 = (q8.isUnknownOrNotAnswered() || q8.hasOneOfAnswers(relevantAbusers));
 
 		if(!condition4) {
 			return false;
