@@ -57,7 +57,7 @@ Flow.PrintView = Backbone.View.extend({
 			}
 		}, this);
 		
-		this.$el.append(_.template(this.outcomes_template, {
+		this.$el.find('#flow_outcomes_print').html(_.template(this.outcomes_template, {
 			outcomes: this.availableOutcomes
 		}));
 	},

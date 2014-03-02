@@ -33,9 +33,27 @@ Flow.config.questions = [{
 	content: 'What is the date on which the abuse(s) happened (if the abuses included detention or torture, when did the detention or torture end)?',
 	explanations: ['Temporal jurisdiction/admissibility. To determine whether the victim\'s abuse would come within the mechanism\'s jurisdiction – i.e. either when the particular country signed on to the treaty/acceded to the mechanisms or when the treaty/mechanism came into force.'],
 	answerType: 'single-date'
+},{
+	id: '4',
+	content: 'At the time of the abuse(s), what country was the victim a citizen of?',
+	answers: Flow.config.lists.countries,
+	answerType: 'single-select'
+},{
+	id: '5a',
+	content: 'At the time of the abuse(s), was the victim a citizen of any other country?',
+	answers: Flow.config.lists.yesnounknown,
+	answerType: 'single-select'
+},{
+	id: '5b',
+	content: 'Of which other country was the victim a citizen at the time of the abuse(s)?',
+	answers: Flow.config.lists.countries,
+	answerType: 'single-select',
+	condition: function(questions) {
+		return(questions['5a'].hasAnswer('yes'));
+	}
 },
 {
-	id: '4',
+	id: '6',
 	content: 'Describe the abuse(s) committed against the victim',
 	explanations: ['Subject matter jurisdiction/admissibility. To determine whether the victim\'s abuse constitutes a crime/violation that comes within the mechanism\'s subject matter jurisdiction.'],
 	
@@ -44,64 +62,46 @@ Flow.config.questions = [{
 	answers: ['beating', 'bodily mutilation', 'burning', 'burning of houses', 'death threats', 'denial of fair trial', 'deprivation of medical care', 'destruction or serious damage to property', 'electric shock', 'enslavement', 'forced abortion', 'forced displacement', 'forced nudity', 'forced sterilization', 'forced stress positions', 'forced to watch abuse of other prisoners', 'forcing a prisoner to perform military service', 'incommunicado detention', 'kicking', 'kidnapping/disappearance', 'killing', 'mock execution', 'persecutions on political, racial, or religious grounds', 'poisoning of water or food supplies', 'prolonged exposure to extreme cold or heat', 'prolonged food/water deprivation', 'prolonged sleep deprivation', 'punching', 'rape or other sexual assault', 'religious persecution', 'serious mental harm to a person based on race, ethnicity, religion or nationality', 'severe mental suffering', 'solitary confinement', 'stealing children', 'suffocation', 'waterboarding'],
 	answerType: 'multi-select'
 },{
-	id: '5',
+	id: '7',
 	content: 'Did the abuse(s) take place during a war?',
 	explanations: ['Subject matter jurisdiction over War Crimes. To determine whether the victim\'s abuse constitutes a war crime such that it comes within the mechanism\'s subject matter jurisdiction.'],
 	answers: Flow.config.lists.yesnounknown,
 	answerType: 'single-select'
 },{
-	id: '6',
+	id: '8',
 	content: 'Were these kinds of abuses committed against many other people in the country at that time?',
 	explanations: ['Subject matter jurisdiction over Crimes Against Humanity. To determine whether the victim\'s abuse constitutes a crime against humanity such that it comes within the mechanism\'s subject matter jurisdiction.'],
 	answers: Flow.config.lists.yesnounknown,
 	answerType: 'single-select'
 },{
-	id: '7',
+	id: '9',
 	content: 'Was the victim targeted because of her/his race, ethnicity, religion or nationality?',
 	explanations: ['Subject matter jurisdiction over Genocide. To determine whether the victim\'s abuse constitutes genocide such that it comes within the mechanism\'s subject matter jurisdiction.'],
 	answers: Flow.config.lists.yesnounknown,
 	answerType: 'single-select'
 },{
-	id: '8',
+	id: '10',
 	content: 'Who committed the abuse(s)?',
 	explanations: ['Subject matter jurisdiction over Torture. To determine whether the victim\'s abuse constitutes torture such that it comes within the mechanism\'s subject matter jurisdiction;', 'Immunity. To determine if the abuse was committed by a government actor such that there would be immunity in Canadian courts;', 'Territorial jurisdiction. To determine if the country  where the abuse happened is responsible because the perpetrator was a government actor or not responsible because the abuse was committed by a non-government actor (e.g. a rebel group).'],
 	answers: ['soldier in government\'s army', 'police officer', 'other government official', 'soldier in rebel army', 'person in plainclothes', 'company or corporation', 'unknown'],
 	answerType: 'multi-select'
 },{
-	id: '9',
+	id: '11',
 	content: 'Are any of the people responsible for the abuse(s) currently living in Canada?',
 	explanations: ['Territorial jurisdiction for action in Canada. To determine if a criminal UJ case or immigration penalty might be possible in Canada.'],
 	answers: Flow.config.lists.yesnounknown,
 	answerType: 'single-select'
 },{
-	id: '10',
+	id: '12',
 	content: 'Do any of the people responsible for the abuse(s) ever visit Canada?',
 	explanations: ['Territorial jurisdiction for action in Canada. To determine if a criminal UJ case or immigration penalty might be possible in Canada'],
 	answers: Flow.config.lists.yesnounknown,
 	answerType: 'single-select'
 },{
-	id: '11',
+	id: '13',
 	content: 'Do any of the people responsible for the abuse(s) ever travel outside the country where the abuse(s) happened?',
 	answers: Flow.config.lists.yesnounknown,
 	answerType: 'single-select'
-},{
-	id: '12',
-	content: 'At the time of the abuse(s), what country was the victim a citizen of?',
-	answers: Flow.config.lists.countries,
-	answerType: 'single-select'
-},{
-	id: '13a',
-	content: 'At the time of the abuse(s), was the victim a citizen of any other country?',
-	answers: Flow.config.lists.yesnounknown,
-	answerType: 'single-select'
-},{
-	id: '13b',
-	content: 'Of which other country was the victim a citizen at the time of the abuse(s)?',
-	answers: Flow.config.lists.countries,
-	answerType: 'single-select',
-	condition: function(questions) {
-		return(questions['13a'].hasAnswer('yes'));
-	}
 },{
 	id: '14a',
 	content: 'In your opinion, in the country where the abuse(s) occurred, are the courts fair, independent and impartial, such that justice can be achieved there?',
@@ -133,12 +133,12 @@ Flow.config.outcomes = [{
 	/* International Criminal Court */
 	selector: $('#ccij_outcome_icc'),
 	condition: function(q1) {
-		return false;
+		return true;
 	}
 },{
 	/* Extraordinary Chambers for Cambodia */
 	selector: $('#ccij_outcome_eccc'),
-	condition: function(q1, q2a, q2b, q3, q4, q5, q6, q7, q8) {
+	condition: function(q1, q2a, q2b, q3, q6, q7, q8, q9, q10) {
 		
 		var relevantCountries = ['Cambodia'];
 		
@@ -171,7 +171,7 @@ Flow.config.outcomes = [{
 		}
 		
 		// condition 3 - check types of abuses committed
-		var condition3 = (q4.isNotAnswered() || q4.hasOneOfAnswers(relevantAbuses));
+		var condition3 = (q6.isNotAnswered() || q6.hasOneOfAnswers(relevantAbuses));
 		
 		if(!condition3) {
 			return false;
@@ -179,7 +179,7 @@ Flow.config.outcomes = [{
 		
 		// condition 4 - check scenario in which abuse occurred. Only a no in 5, 6, or 7 will rule out ECCC. Unanswered, yes, or unknown will keep it in
 		var condition4 = true;
-		if(q5.hasAnswer('no') && q6.hasAnswer('no') && q7.hasAnswer('no')) {
+		if(q7.hasAnswer('no') && q8.hasAnswer('no') && q9.hasAnswer('no')) {
 			condition4 = false;
 		}
 		
@@ -188,7 +188,7 @@ Flow.config.outcomes = [{
 		}
 		
 		// condition 4 - check abuser(s) for state actors
-		var condition5 = (q8.isUnknownOrNotAnswered() || q8.hasOneOfAnswers(relevantAbusers));
+		var condition5 = (q10.isUnknownOrNotAnswered() || q10.hasOneOfAnswers(relevantAbusers));
 		
 		if(!condition5) {
 			return false;
@@ -201,34 +201,34 @@ Flow.config.outcomes = [{
 	/* War Crimes Chamber of the Court of Bosnia and Herzegovina */
 	selector: $('#ccij_outcome_bosnia'),
 	condition: function(q1) {
-		return false;
+		return true;
 	}
 },{
 	/* Criminal Prosecution in Canada */
 	selector: $('#ccij_outcome_crim_pro_can'),
 	condition: function(q1) {
-		return false;
+		return true;
 	}
 },{
 	/* Civil lawsuit in Canada */
 	selector: $('#ccij_outcome_civ_law_can'),
 	condition: function(q1) {
-		return false;
+		return true;
 	}
 },{
 	/* Immigration penalties in Canada */
 	selector: $('#ccij_outcome_imm_pen_can'),
 	condition: function(q1) {
-		return false;
+		return true;
 	}
 },{
 	/* U.N. Committee against Torture (CAT) */
 	selector: $('#ccij_outcome_un_cat'),
-	condition: function(q1, q2a, q2b, q3, q4, q8, q14a, q14b, q14c, q15) {
+	condition: function(q1, q2a, q2b, q3, q6, q10, q14a, q14b, q14c, q15) {
 		
 		var relevantCountries = ['Algeria', 'Andorra', 'Argentina', 'Australia', 'Austria', 'Azerbaijan', 'Belgium', 'Bolivia', 'Bosnia and Herzegovina', 'Brazil', 'Bulgaria', 'Burundi', 'Cameroon', 'Canada', 'Chile', 'Costa Rica', 'Croatia', 'Cyprus', 'Czech Republic', 'Denmark', 'Ecuador', 'Finland', 'France', 'Georgia', 'Germany', 'Ghana', 'Greece', 'Guatemala', 'Guinea-Bissau', 'Hungary', 'Iceland', 'Ireland', 'Italy', 'Kazakhstan', 'Liechtenstein', 'Luxembourg', 'Malta', 'Mexico', 'Monaco', 'Montenegro', 'Morocco', 'Netherlands', 'New Zealand', 'Norway', 'Paraguay', 'Peru', 'Poland', 'Portugal', 'Qatar', 'South Korea', 'Moldova', 'Russia', 'Senegal', 'Serbia', 'Seychelles', 'Slovakia', 'Slovenia', 'South Africa', 'Spain', 'Sweden', 'Switzerland', 'Togo', 'Tunisia', 'Turkey', 'Ukraine', 'Uruguay', 'Venezuela'];
 		
-		var relevantAbuses = ['beating', 'bodily mutilation', 'burning', 'death threats', 'deprivation of medical care', 'electric shock', 'forced  stress positions', 'forced nudity', 'forced to watch abuse of other prisoners', 'incomunicado detention', 'kicking', 'mock execution', 'prolonged exposure to extreme cold or heat', 'prolonged food/water deprivation', 'prolonged sleep deprivation', 'punching', 'rape or other sexual assault', 'severe mental suffering', 'solitary confinement', 'suffocation', 'waterboarding'];
+		var relevantAbuses = ['beating', 'bodily mutilation', 'burning', 'death threats', 'deprivation of medical care', 'electric shock', 'forced stress positions', 'forced nudity', 'forced to watch abuse of other prisoners', 'incommunicado detention', 'kicking', 'mock execution', 'prolonged exposure to extreme cold or heat', 'prolonged food/water deprivation', 'prolonged sleep deprivation', 'punching', 'rape or other sexual assault', 'severe mental suffering', 'solitary confinement', 'suffocation', 'waterboarding'];
 		
 		var relevantAbusers = ["soldier in government's army", 'police officer', 'other government official'];
 		
@@ -326,14 +326,14 @@ Flow.config.outcomes = [{
 		} 
 		
 		// condition 3 - check types of abuses committed
-		var condition3 = (q4.isNotAnswered() || q4.hasOneOfAnswers(relevantAbuses));
+		var condition3 = (q6.isNotAnswered() || q6.hasOneOfAnswers(relevantAbuses));
 		
 		if(!condition3) {
 			return false;
 		}
 
 		// condition 4 - check abuser(s) for state actors
-		var condition4 = (q8.isUnknownOrNotAnswered() || q8.hasOneOfAnswers(relevantAbusers));
+		var condition4 = (q10.isUnknownOrNotAnswered() || q10.hasOneOfAnswers(relevantAbusers));
 
 		if(!condition4) {
 			return false;
@@ -370,54 +370,54 @@ Flow.config.outcomes = [{
 	/* U.N. Human Rights Committee */
 	selector: $('#ccij_outcome_un_hrc'),
 	condition: function(q1) {
-		return false;
+		return true;
 	}
 },{
 	/* U.N. Committee on the Elimination of Racial Discrimination (CERD) */
 	selector: $('#ccij_outcome_un_cerd'),
 	condition: function(q1) {
-		return false;
+		return true;
 	}
 },{
 	/* U.N. Committee on Elimination of Discrimination against Women (CEDAW) */
 	selector: $('#ccij_outcome_un_cedaw'),
 	condition: function(q1) {
-		return false;
+		return true;
 	}
 },{
 	/* U.N. Committee on Enforced Disappearances (CED) */
 	selector: $('#ccij_outcome_un_ced'),
 	condition: function(q1) {
-		return false;
+		return true;
 	}
 },{
 	/* U.N. Committee on Economic, Social and Cultural Rights (CESCR) */
 	selector: $('#ccij_outcome_un_cescr'),
 	condition: function(q1) {
-		return false;
+		return true;
 	}
 },{
 	/* U.N. Committee on the Rights of the Child (CRC) */
 	selector: $('#ccij_outcome_un_crc'),
 	condition: function(q1) {
-		return false;
+		return true;
 	}
 },{
 	/* U.N. Working Group on Enforced Disappearances (WGEID) */
 	selector: $('#ccij_outcome_un_wgeid'),
 	condition: function(q1) {
-		return false;
+		return true;
 	}
 },{
 	/* Inter-American Commission/Court of Human Rights */
 	selector: $('#ccij_outcome_ia_chr'),
 	condition: function(q1) {
-		return false;
+		return true;
 	}
 },{
 	/* African Commission on Human and Peoples' Rights */
 	selector: $('#ccij_outcome_acm_hpr'),
-	condition: function(q1, q2a, q2b, q3, q4, q8, q14a, q14b, q14c, q15) {
+	condition: function(q1, q2a, q2b, q3, q6, q10, q14a, q14b, q14c, q15) {
 		
 		var relevantCountries = ['Algeria', 'Angola', 'Benin', 'Botswana', 'Burkina Faso', 'Burundi', 'Cameroon', 'Central African Republic', 'Cape Verde', 'Chad', "Cote d'Ivoire", 'Comoros', 'Congo, Democratic Republic of the', 'Congo, Republic of the', 'Djibouti', 'Egypt', 'Equatorial Guinea', 'Eritrea', 'Ethiopia', 'Gabon', 'Gambia, The', 'Ghana', 'Guinea-Bissau', 'Guinea', 'Kenya', 'Libya', 'Lesotho', 'Liberia', 'Madagascar', 'Mali', 'Malawi', 'Mozambique', 'Mauritania', 'Mauritius', 'Namibia', 'Nigeria', 'Niger', 'Rwanda', 'South Africa', 'Sahrawi Arab Democratic Republic (Western Sahara)', 'Senegal', 'Seychelles', 'Sierra Leone', 'Somalia', 'Sao Tome and Principe', 'Sudan', 'Swaziland', 'Tanzania', 'Togo', 'Tunisia', 'Uganda', 'Zambia', 'Zimbabwe'];
 		
@@ -505,14 +505,14 @@ Flow.config.outcomes = [{
 		}
 		
 		// condition 3 - check types of abuses committed
-		var condition3 = (q4.isNotAnswered() || q4.hasOneOfAnswers(relevantAbuses));
+		var condition3 = (q6.isNotAnswered() || q6.hasOneOfAnswers(relevantAbuses));
 		
 		if(!condition3) {
 			return false;
 		}
 
 		// condition 4 - check abusers for state actors
-		var condition4 = (q8.isUnknownOrNotAnswered() || q8.hasOneOfAnswers(relevantAbusers));
+		var condition4 = (q10.isUnknownOrNotAnswered() || q10.hasOneOfAnswers(relevantAbusers));
 
 		if(!condition4) {
 			return false;
@@ -551,18 +551,18 @@ Flow.config.outcomes = [{
 	/* African Court on Human and Peoples' Rights */
 	selector: $('#ccij_outcome_act_hpr'),
 	condition: function(q1) {
-		return false;
+		return true;
 	}
 },{
 	/* Economic Community Of West African States (ECOWAS) */
 	selector: $('#ccij_outcome_ecowas'),
 	condition: function(q1) {
-		return false;
+		return true;
 	}
 },{
 	/* European Court of Human Rights */
 	selector: $('#ccij_outcome_echr'),
 	condition: function(q1) {
-		return false;
+		return true;
 	}
 }];

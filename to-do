@@ -1,10 +1,7 @@
 - icon for question area (ESL)
 - order mechanisms by international, regional, national
 - update spreadsheet with used values
-- q12, 13a, 13b become 4, 5a, 5b
-- smaller text in horiz list of options so can fit more. case for 'em' instead of 'px'?
 - if modal closed after showing options at end should be really obvious how to re-open it
-- print view (Firefox) printed outcome list twice
 - Mobile issues:
 1) phone browser doesn't work for clicking on .entry-point text / image
 2) modal doesn't scroll when off screen
