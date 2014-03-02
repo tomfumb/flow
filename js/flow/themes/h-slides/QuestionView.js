@@ -75,7 +75,7 @@ Flow.Theme.QuestionView = Backbone.View.extend({
 	
 	template_single_date: [
 		'		<p>Provide a date using the date-picker below.</p>',
-		'		<input type="text" class="date-selector" />',
+		'		<input type="text" class="date-selector hint-text" value="YYYY/MM/DD" />',
 	].join(''),
 	
 	template_end: [
@@ -184,7 +184,7 @@ Flow.Theme.QuestionView = Backbone.View.extend({
 				break;
 			case this.answerDisplayTypes.SINGLE_DATE:
 			
-				this.$el.find('#answers_' + this.model.get('id') + ' input.date-selector').change(_.bind(function(event) {
+				this.$el.find('#answers_' + this.model.get('id') + ' input.date-selector').on('change', _.bind(function(event) {
 					if(event.target.value !== '') {
 						this.onAnswersSelected([event.target.value]);
 					}
@@ -192,7 +192,11 @@ Flow.Theme.QuestionView = Backbone.View.extend({
 						this.onAnswersSelected([]);
 					}
 					window.setTimeout(_.bind(this.onQuestionAnswered, this), 300);
-				}, this));
+				}, this)).on('focus', function() {
+					if($(this).hasClass('hint-text')) {
+						$(this).val('').removeClass('hint-text');
+					}
+				});
 				break;
 			default:
 				Flow.Log.error('Unknown answerStyle provided: ' + answerStyle);

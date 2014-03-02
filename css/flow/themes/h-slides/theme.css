@@ -221,3 +221,7 @@
 	visibility: hidden;
 	float: left;
 }
+
+input.hint-text {
+	color: gray;
+}
