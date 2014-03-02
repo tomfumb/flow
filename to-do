@@ -2,21 +2,16 @@
 - order mechanisms by international, regional, national
 - update spreadsheet with used values
 - if modal closed after showing options at end should be really obvious how to re-open it
+- replace modal for showing options with swipe left / right page - use modal only for emailing results and feedback
 - Mobile issues:
 2) modal doesn't scroll when off screen
 3) date picker isn't obvious when presented with keyboard input beneath text input
 4) question summary list should just be one row, swipeable / pageable like outcomes list. Will require some complex logic to ensure the current question is as close to the centre of that display as possible
-- when resizing container to fit summary height is not always correctly set - sometimes under or over shot. Possibly related to the briefly-displayed vertical scroll bar? Look for a pattern in this happening when the container gets larger or shorter relative to the previous slide
 - some scenario where question summary links can be repeated and clicking the duplicates messes things up
-- consider not automatically advancing the carousel if the user has explicitly requested a specific question, or if the following question is already answered - could get messy / confusing
-- if the last question is conditionally available, is answered, and then becomes unavailable it is still treated as an available question (summary highlights as active and quesion is shown).
-- Multiple consecutive conditional questions - if c is dependent on b and b dependent on a c should be unavailable when b is unavailable
-- test case - what happens if a second answer is given during slide transition, does it slide twice?
 - test case - slow download of resources, anything available before it will actually work?
 - http://getbootstrap.com/getting-started/#browsers
 - tip buttons near key functionality explaining what's going on
 - email results to user
-- text wrap problem in single_few answers with long text when page narrow
 - use gallery-style slider for outcome previews
 - try to get rid of table in outcome previews
 - main CCIJ site has Google Analytics - should incorporate the async version of this too, log trips to all #destinations
@@ -25,5 +20,4 @@
 - minify / compress js
 
 Meeting 2014/01/28
-- countries list needs to be agreed and not just forgotten about (current list is from US Dept. of State)
 - feedback mechanism required, emails a CCIJ address

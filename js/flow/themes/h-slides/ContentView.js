@@ -7,6 +7,7 @@ Flow.Theme.ContentView = Backbone.View.extend({
 		'	<div class="row">',
 		'		<div class="col-24 col-sm-24 col-md-24 col-lg-24">',
 		'			<h4>Questions</h4>',
+		'			<span id="flow_feedback_icon" class="glyphicon glyphicon-send clickable"></span>',
 		'		</div>',
 		'	</div>',
 		'	<div id="flow_question_summary"></div>',
@@ -44,10 +45,18 @@ Flow.Theme.ContentView = Backbone.View.extend({
 		this.$el.find('#flow_carousel_navigation_back').click(_.bind(this.onBackSelected, this));
 		this.$el.find('#flow_carousel_navigation_forward').click(_.bind(this.onForwardSelected, this));
 		
+		this.$el.find('#flow_feedback_icon').click(_.bind(this.onFeedbackIconClicked, this));
+		
 		$(window).resize(_.bind(this.onWindowResize, this));
 	},
 	
 	addQuestions: function(questions) {
+		
+		if(this.addQuestionsCalled) {
+			// possible that somehow this function is called twice in error condition
+			debugger;
+		}
+		this.addQuestionsCalled = true;
 		
 		Flow.Log.debug('ContentView.addQuestions');
 		
@@ -542,5 +551,14 @@ Flow.Theme.ContentView = Backbone.View.extend({
 	
 	onOutcomesChanged: function(changedOutcomes) {
 		this.outcomePreviews.onOutcomesChanged(changedOutcomes);
+	},
+	
+	onFeedbackIconClicked: function() {
+		
+		if(!this.feedbackView) {
+			this.feedbackView = new Flow.Theme.FeedbackView();
+		}
+		
+		this.feedbackView.render();
 	}
 });
