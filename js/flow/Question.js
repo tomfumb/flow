@@ -25,7 +25,7 @@ Flow.Question = Backbone.Model.extend({
 	},
 	
 	isUnknownOrNotAnswered: function() {
-		return (!this.isAnswered() || this.hasAnswer('unknown'));
+		return (!this.isAnswered() || this.hasAnswer('Unknown'));
 	},
 	
 	hasAnswer: function(requiredAnswer) {
