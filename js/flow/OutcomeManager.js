@@ -18,7 +18,7 @@ Flow.OutcomeManager = new (Backbone.Collection.extend({
 			selector = model.get('selector');
 			
 			model.set('title', selector.find('.outcome-title').html());
-			model.set('abbreviation', (selector.find('.outcome-abbreviation').html() || model.get('title').substring(0, 7) + '...'));
+			model.set('abbreviation', (selector.find('.outcome-abbreviation').html() || model.get('title').substring(0, 10) + '...'));
 			model.set('url', selector.find('.outcome-url').html());
 			model.set('description', selector.find('.outcome-description').html());
 			model.set('image', selector.find('img').attr('src'));		

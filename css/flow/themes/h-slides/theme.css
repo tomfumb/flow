@@ -135,6 +135,7 @@
 
 .outcome-preview-abbreviation {
 	text-align: center;
+	font-size: smaller;
 }
 
 #flow_outcome_details {
