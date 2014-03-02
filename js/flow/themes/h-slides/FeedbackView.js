@@ -30,23 +30,27 @@ Flow.Theme.FeedbackView = Backbone.View.extend({
 	
 	render: function() {
 		
-		var scratch = $('#flow_scratch');
-		scratch.html(_.template(this.template));
+		if(!this.content) {
+			
+			var scratch = $('#flow_scratch');
+			scratch.html(_.template(this.template));
+			
+			this.content = scratch.find('#flow_feedback_modal');
+			
+			scratch.html('');
 		
-		this.content = scratch.find('#flow_feedback_modal');
-		scratch.html('');
-		
-		this.content.find('#flow_feedback_from').addClass('input-attention').on('keyup', _.bind(this.onFromChanged, this));
-		this.content.find('#flow_feedback_message').addClass('input-attention').on('keyup', _.bind(this.onMessageChanged, this));
-		
-		this.content.find('#flow_feedback_send').click(_.bind(this.onSendClicked, this));
-		
-		this.sendButton = this.content.find('#flow_feedback_send');
-		this.from = this.content.find('#flow_feedback_from');
-		this.message = this.content.find('#flow_feedback_message');
-		this.loadImg = this.content.find('#flow_feedback_load');
-		this.successImg = this.content.find('#flow_feedback_success');
-		this.failImg = this.content.find('#flow_feedback_fail');
+			this.content.find('#flow_feedback_from').addClass('input-attention').on('keyup', _.bind(this.onFromChanged, this));
+			this.content.find('#flow_feedback_message').addClass('input-attention').on('keyup', _.bind(this.onMessageChanged, this));
+			
+			this.content.find('#flow_feedback_send').click(_.bind(this.onSendClicked, this));
+			
+			this.sendButton = this.content.find('#flow_feedback_send');
+			this.from = this.content.find('#flow_feedback_from');
+			this.message = this.content.find('#flow_feedback_message');
+			this.loadImg = this.content.find('#flow_feedback_load');
+			this.successImg = this.content.find('#flow_feedback_success');
+			this.failImg = this.content.find('#flow_feedback_fail');
+		}
 		
 		this.content.modal();
 	},
@@ -93,13 +97,7 @@ Flow.Theme.FeedbackView = Backbone.View.extend({
 		
 		this.sendButton.attr('disabled', 'disabled');
 		
-		var url = document.location.href;
-		var urlLastSlash = url.lastIndexOf('/');
-		if(urlLastSlash !== url.length - 1) {
-			url = url.substring(0, urlLastSlash);
-		}
-		
-		$.ajax(url + '/feedback/', {
+		$.ajax('feedback/', {
 			type: 'POST',
 			data: {
 				from: this.from.val(),

@@ -8,6 +8,7 @@ Flow.Theme.ContentView = Backbone.View.extend({
 		'		<div class="col-24 col-sm-24 col-md-24 col-lg-24">',
 		'			<h4>Questions</h4>',
 		'			<span id="flow_feedback_icon" class="glyphicon glyphicon-send clickable"></span>',
+		'			<span id="flow_send_results_icon" class="glyphicon glyphicon-envelope clickable"></span>',
 		'		</div>',
 		'	</div>',
 		'	<div id="flow_question_summary"></div>',
