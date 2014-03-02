@@ -5,7 +5,7 @@ Flow.Theme.OutcomeManagerView = Backbone.View.extend({
 	template: [
 		'<div class="modal" id="flow_outcome_modal" tabindex="-1" role="dialog" aria-labelledby="flow_outcome_modal_label" aria-hidden="true">',
 		'	<div class="modal-dialog">',
-		'		<div class="modal-content">',
+		'		<div class="modal-content" style="-webkit-overflow-scrolling: touch;">',
 		'			<div class="modal-header">',
 		'				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>',
 		'				<h4 class="modal-title" id="flow_outcome_modal_label">Your Options</h4>',
@@ -56,6 +56,7 @@ Flow.Theme.OutcomeManagerView = Backbone.View.extend({
 		this.$el.html(_.template(this.template));
 		
 		this.modal = this.$el.find('#flow_outcome_modal');
+		this.modalContent = this.modal.find('.modal-content');
 		
 		this.$el.find('#flow_outcome_modal_body a.outcome-tab-link').click(function (e) {
 			e.preventDefault();
@@ -67,8 +68,22 @@ Flow.Theme.OutcomeManagerView = Backbone.View.extend({
 		
 		this.someOptionsNote = this.$el.find('#flow_some_options_note');
 		this.noOptionsNote = this.$el.find('#flow_no_options_note_container');
+		/*
+		$(window).resize(_.bind(this.onWindowResize, this));
+		this.onWindowResize();
+		*/
 	},
-	
+	/*
+	onWindowResize: function() {
+		
+		if(window.innerWidth < 768) {
+			this.modalContent.css('max-height', window.innerHeight).css('overflow-y', 'auto');
+		}
+		else {
+			this.modalContent.css('max-height', '').css('overflow-y', 'visible');
+		}
+	},
+	*/
 	showOutcomesInModal: function() {
 		
 		this.renderOutcomesInModal();

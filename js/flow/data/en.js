@@ -1,7 +1,7 @@
 Flow.config = {
 	lists: {
 		countries: ['Afghanistan', 'Albania', 'Algeria', 'Andorra', 'Angola', 'Antigua and Barbuda', 'Argentina', 'Armenia', 'Aruba', 'Australia', 'Austria', 'Azerbaijan', 'Bahamas, The', 'Bahrain', 'Bangladesh', 'Barbados', 'Belarus', 'Belgium', 'Belize', 'Benin', 'Bhutan', 'Bolivia', 'Bosnia and Herzegovina', 'Botswana', 'Brazil', 'Brunei ', 'Bulgaria', 'Burkina Faso', 'Burma', 'Burundi', 'Cambodia', 'Cameroon', 'Canada', 'Cape Verde', 'Central African Republic', 'Chad', 'Chile', 'China', 'Colombia', 'Comoros', 'Congo, Democratic Republic of the', 'Congo, Republic of the', 'Costa Rica', "Cote d'Ivoire", 'Croatia', 'Cuba', 'Curacao', 'Cyprus', 'Czech Republic', 'Denmark', 'Djibouti', 'Dominica', 'Dominican Republic', 'East Timor', 'Ecuador', 'Egypt', 'El Salvador', 'Equatorial Guinea', 'Eritrea', 'Estonia', 'Ethiopia', 'Fiji', 'Finland', 'France', 'Gabon', 'Gambia, The', 'Georgia', 'Germany', 'Ghana', 'Greece', 'Grenada', 'Guatemala', 'Guinea-Bissau', 'Guinea', 'Guyana', 'Haiti', 'Holy See', 'Honduras', 'Hong Kong', 'Hungary', 'Iceland', 'India', 'Indonesia', 'Iran', 'Iraq', 'Ireland', 'Israel', 'Italy', 'Jamaica', 'Japan', 'Jordan', 'Kazakhstan', 'Kenya', 'Kiribati', 'Korea, North', 'Korea, South', 'Kosovo', 'Kuwait', 'Kyrgyzstan', 'Laos', 'Latvia', 'Lebanon', 'Lesotho', 'Liberia', 'Libya', 'Liechtenstein', 'Lithuania', 'Luxembourg', 'Macau', 'Macedonia', 'Madagascar', 'Malawi', 'Malaysia', 'Maldives', 'Mali', 'Malta', 'Marshall Islands', 'Mauritania', 'Mauritius', 'Mexico', 'Micronesia', 'Moldova', 'Monaco', 'Mongolia', 'Montenegro', 'Morocco', 'Mozambique', 'Namibia', 'Nauru', 'Nepal', 'Netherlands', 'Netherlands Antilles', 'New Zealand', 'Nicaragua', 'Niger', 'Nigeria', 'North Korea', 'Norway', 'Oman', 'Pakistan', 'Palau', 'Palestinian Territories', 'Panama', 'Papua New Guinea', 'Paraguay', 'Peru', 'Philippines', 'Poland', 'Portugal', 'Qatar', 'Romania', 'Russia', 'Rwanda', 'Saint Kitts and Nevis', 'Saint Lucia', 'Saint Vincent and the Grenadines', 'Sahrawi Arab Democratic Republic (Western Sahara)', 'Samoa', 'San Marino', 'Sao Tome and Principe', 'Saudi Arabia', 'Senegal', 'Serbia', 'Seychelles', 'Sierra Leone', 'Singapore', 'Sint Maarten', 'Slovakia', 'Slovenia', 'Solomon Islands', 'Somalia', 'South Africa', 'South Korea', 'South Sudan', 'Spain', 'Sri Lanka', 'Sudan', 'Suriname', 'Swaziland', 'Sweden', 'Switzerland', 'Syria', 'Taiwan', 'Tajikistan', 'Tanzania', 'Thailand', 'Timor-Leste', 'Togo', 'Tonga', 'Trinidad and Tobago', 'Tunisia', 'Turkey', 'Turkmenistan', 'Tuvalu', 'Uganda', 'Ukraine', 'United Arab Emirates', 'United Kingdom', 'Uruguay', 'Uzbekistan', 'Vanuatu', 'Venezuela', 'Vietnam', 'Yemen', 'Zambia', 'Zimbabwe'],
-		yesnounknown: ['yes', 'no', 'unknown'],
+		yesnounknown: ['Yes', 'No', 'Unknown'],
 	}
 };
 
@@ -25,7 +25,7 @@ Flow.config.questions = [{
 	answers: Flow.config.lists.countries,
 	answerType: 'single-select',
 	condition: function(questions) {
-		return(questions['2a'].hasAnswer('yes'));
+		return(questions['2a'].hasAnswer('Yes'));
 	}
 },
 {
@@ -49,7 +49,7 @@ Flow.config.questions = [{
 	answers: Flow.config.lists.countries,
 	answerType: 'single-select',
 	condition: function(questions) {
-		return(questions['5a'].hasAnswer('yes'));
+		return(questions['5a'].hasAnswer('Yes'));
 	}
 },
 {
@@ -59,7 +59,7 @@ Flow.config.questions = [{
 	
 	// answers currently based on those relevant to ECCC, checking with CCIJ whether this is correct
 	
-	answers: ['beating', 'bodily mutilation', 'burning', 'burning of houses', 'death threats', 'denial of fair trial', 'deprivation of medical care', 'destruction or serious damage to property', 'electric shock', 'enslavement', 'forced abortion', 'forced displacement', 'forced nudity', 'forced sterilization', 'forced stress positions', 'forced to watch abuse of other prisoners', 'forcing a prisoner to perform military service', 'incommunicado detention', 'kicking', 'kidnapping/disappearance', 'killing', 'mock execution', 'persecutions on political, racial, or religious grounds', 'poisoning of water or food supplies', 'prolonged exposure to extreme cold or heat', 'prolonged food/water deprivation', 'prolonged sleep deprivation', 'punching', 'rape or other sexual assault', 'religious persecution', 'serious mental harm to a person based on race, ethnicity, religion or nationality', 'severe mental suffering', 'solitary confinement', 'stealing children', 'suffocation', 'waterboarding'],
+	answers: ['Beating', 'Bodily mutilation', 'Burning', 'Burning of houses', 'Death threats', 'Denial of fair trial', 'Deprivation of medical care', 'Destruction or serious damage to property', 'Electric shock', 'Enslavement', 'Forced abortion', 'Forced displacement', 'Forced nudity', 'Forced sterilization', 'Forced stress positions', 'Forced to watch abuse of other prisoners', 'Forcing a prisoner to perform military service', 'Incommunicado detention', 'Kicking', 'Kidnapping/disappearance', 'Killing', 'Mock execution', 'Persecutions on political, racial, or religious grounds', 'Poisoning of water or food supplies', 'Prolonged exposure to extreme cold or heat', 'Prolonged food/water deprivation', 'Prolonged sleep deprivation', 'Punching', 'Rape or other sexual assault', 'Religious persecution', 'Serious mental harm to a person based on race, ethnicity, religion or nationality', 'Severe mental suffering', 'Solitary confinement', 'Stealing children', 'Suffocation', 'Waterboarding'],
 	answerType: 'multi-select'
 },{
 	id: '7',
@@ -83,7 +83,7 @@ Flow.config.questions = [{
 	id: '10',
 	content: 'Who committed the abuse(s)?',
 	explanations: ['Subject matter jurisdiction over Torture. To determine whether the victim\'s abuse constitutes torture such that it comes within the mechanism\'s subject matter jurisdiction;', 'Immunity. To determine if the abuse was committed by a government actor such that there would be immunity in Canadian courts;', 'Territorial jurisdiction. To determine if the country  where the abuse happened is responsible because the perpetrator was a government actor or not responsible because the abuse was committed by a non-government actor (e.g. a rebel group).'],
-	answers: ['soldier in government\'s army', 'police officer', 'other government official', 'soldier in rebel army', 'person in plainclothes', 'company or corporation', 'unknown'],
+	answers: ["Soldier in government's army", 'police officer', 'Other government official', 'Soldier in rebel army', 'Person in plainclothes', 'Company or corporation', 'Unknown'],
 	answerType: 'multi-select'
 },{
 	id: '11',
@@ -119,7 +119,7 @@ Flow.config.questions = [{
 	answers: ['Investigation or prosecution still ongoing', 'No investigation', 'Inadequate investigation', 'A court held someone responsible', 'Someone was put on trial but was found not guilty'],
 	answerType: 'single-select',
 	condition: function(questions) {
-		return(questions['14b'].hasAnswer('yes'));
+		return(questions['14b'].hasAnswer('Yes'));
 	}
 },{
 	id: '15',
@@ -142,16 +142,16 @@ Flow.config.outcomes = [{
 		
 		var relevantCountries = ['Cambodia'];
 		
-		var relevantAbuses = ['beating', 'bodily mutilation', 'burning', 'burning of houses', 'death threats', 'denial of fair trial', 'deprivation of medical care', 'destruction or serious damage to property', 'electric shock', 'enslavement', 'forced abortion', 'forced displacement', 'forced nudity', 'forced sterilization', 'forced stress positions', 'forced to watch abuse of other prisoners', 'forcing a prisoner to perform military service', 'incommunicado detention', 'kicking', 'kidnapping/disappearance', 'killing', 'mock execution', 'persecutions on political, racial, or religious grounds', 'poisoning of water or food supplies', 'prolonged exposure to extreme cold or heat', 'prolonged food/water deprivation', 'prolonged sleep deprivation', 'punching', 'rape or other sexual assault', 'religious persecution', 'serious mental harm to a person based on race, ethnicity, religion or nationality', 'severe mental suffering', 'solitary confinement', 'stealing children', 'suffocation', 'waterboarding'];
+		var relevantAbuses = ['Beating', 'Bodily mutilation', 'Burning', 'Burning of houses', 'Death threats', 'Denial of fair trial', 'Deprivation of medical care', 'Destruction or serious damage to property', 'Electric shock', 'Enslavement', 'Forced abortion', 'Forced displacement', 'Forced nudity', 'Forced sterilization', 'Forced stress positions', 'Forced to watch abuse of other prisoners', 'Forcing a prisoner to perform military service', 'Incommunicado detention', 'Kicking', 'Kidnapping/disappearance', 'Killing', 'Mock execution', 'Persecutions on political, racial, or religious grounds', 'Poisoning of water or food supplies', 'Prolonged exposure to extreme cold or heat', 'Prolonged food/water deprivation', 'Prolonged sleep deprivation', 'Punching', 'Rape or other sexual assault', 'Religious persecution', 'Serious mental harm to a person based on race, ethnicity, religion or nationality', 'Severe mental suffering', 'Solitary confinement', 'Stealing children', 'Suffocation', 'Waterboarding'];
 		
-		var relevantAbusers = ["soldier in government's army", 'police officer', 'other government official'];
+		var relevantAbusers = ["Soldier in government's army", 'Police officer', 'Other government official'];
 
 		// condition 1 - check that a relevant country is selected
 		var condition1 = false
 		if(q1.isNotAnswered() || q1.hasOneOfAnswers(relevantCountries)) {
 			condition1 = true;
 		}
-		if(q2a.hasAnswer('yes') && (q2b.hasOneOfAnswers(relevantCountries))) {
+		if(q2a.hasAnswer('Yes') && (q2b.hasOneOfAnswers(relevantCountries))) {
 			condition1 = true;
 		}
 		
@@ -179,7 +179,7 @@ Flow.config.outcomes = [{
 		
 		// condition 4 - check scenario in which abuse occurred. Only a no in 5, 6, or 7 will rule out ECCC. Unanswered, yes, or unknown will keep it in
 		var condition4 = true;
-		if(q7.hasAnswer('no') && q8.hasAnswer('no') && q9.hasAnswer('no')) {
+		if(q7.hasAnswer('No') && q8.hasAnswer('No') && q9.hasAnswer('No')) {
 			condition4 = false;
 		}
 		
@@ -228,9 +228,9 @@ Flow.config.outcomes = [{
 		
 		var relevantCountries = ['Algeria', 'Andorra', 'Argentina', 'Australia', 'Austria', 'Azerbaijan', 'Belgium', 'Bolivia', 'Bosnia and Herzegovina', 'Brazil', 'Bulgaria', 'Burundi', 'Cameroon', 'Canada', 'Chile', 'Costa Rica', 'Croatia', 'Cyprus', 'Czech Republic', 'Denmark', 'Ecuador', 'Finland', 'France', 'Georgia', 'Germany', 'Ghana', 'Greece', 'Guatemala', 'Guinea-Bissau', 'Hungary', 'Iceland', 'Ireland', 'Italy', 'Kazakhstan', 'Liechtenstein', 'Luxembourg', 'Malta', 'Mexico', 'Monaco', 'Montenegro', 'Morocco', 'Netherlands', 'New Zealand', 'Norway', 'Paraguay', 'Peru', 'Poland', 'Portugal', 'Qatar', 'South Korea', 'Moldova', 'Russia', 'Senegal', 'Serbia', 'Seychelles', 'Slovakia', 'Slovenia', 'South Africa', 'Spain', 'Sweden', 'Switzerland', 'Togo', 'Tunisia', 'Turkey', 'Ukraine', 'Uruguay', 'Venezuela'];
 		
-		var relevantAbuses = ['beating', 'bodily mutilation', 'burning', 'death threats', 'deprivation of medical care', 'electric shock', 'forced stress positions', 'forced nudity', 'forced to watch abuse of other prisoners', 'incommunicado detention', 'kicking', 'mock execution', 'prolonged exposure to extreme cold or heat', 'prolonged food/water deprivation', 'prolonged sleep deprivation', 'punching', 'rape or other sexual assault', 'severe mental suffering', 'solitary confinement', 'suffocation', 'waterboarding'];
+		var relevantAbuses = ['Beating', 'Bodily mutilation', 'Burning', 'Death threats', 'Deprivation of medical care', 'Electric shock', 'Forced stress positions', 'Forced nudity', 'Forced to watch abuse of other prisoners', 'Incommunicado detention', 'Kicking', 'Mock execution', 'Prolonged exposure to extreme cold or heat', 'Prolonged food/water deprivation', 'Prolonged sleep deprivation', 'Punching', 'Rape or other sexual assault', 'Severe mental suffering', 'Solitary confinement', 'Suffocation', 'Waterboarding'];
 		
-		var relevantAbusers = ["soldier in government's army", 'police officer', 'other government official'];
+		var relevantAbusers = ["Soldier in government's army", 'Police officer', 'Other government official'];
 		
 		var relevantActionOutcomes = ['Investigation or prosecution still ongoing', 'A court held someone responsible', 'Someone was put on trial but was found not guilty'];
 		
@@ -239,7 +239,7 @@ Flow.config.outcomes = [{
 		if(q1.isNotAnswered() || q1.hasOneOfAnswers(relevantCountries)) {
 			condition1 = true;
 		}
-		if(q2a.hasAnswer('yes') && (q2b.hasOneOfAnswers(relevantCountries))) {
+		if(q2a.hasAnswer('Yes') && (q2b.hasOneOfAnswers(relevantCountries))) {
 			condition1 = true;
 		}
 		
@@ -343,10 +343,10 @@ Flow.config.outcomes = [{
 		var condition5 = false;
 		
 		if(
-			(q14a.isUnknownOrNotAnswered() || q14a.hasAnswer('no')) ||
-			(q14a.hasAnswer('yes') && q14b.isUnknownOrNotAnswered()) ||
-			(q14a.hasAnswer('yes') && q14b.hasAnswer('yes') && q14c.isNotAnswered()) ||
-			(q14a.hasAnswer('yes') && q14b.hasAnswer('yes') && !q14c.hasOneOfAnswers(relevantActionOutcomes))) {
+			(q14a.isUnknownOrNotAnswered() || q14a.hasAnswer('No')) ||
+			(q14a.hasAnswer('Yes') && q14b.isUnknownOrNotAnswered()) ||
+			(q14a.hasAnswer('Yes') && q14b.hasAnswer('Yes') && q14c.isNotAnswered()) ||
+			(q14a.hasAnswer('Yes') && q14b.hasAnswer('Yes') && !q14c.hasOneOfAnswers(relevantActionOutcomes))) {
 			condition5 = true;
 		}
 			
@@ -356,7 +356,7 @@ Flow.config.outcomes = [{
 		
 		// other international remedies sought
 		var condition6 = false;
-		if(q15.doesNotHaveAnswer('yes')) {
+		if(q15.doesNotHaveAnswer('Yes')) {
 			condition6 = true;
 		}
 		
@@ -421,9 +421,9 @@ Flow.config.outcomes = [{
 		
 		var relevantCountries = ['Algeria', 'Angola', 'Benin', 'Botswana', 'Burkina Faso', 'Burundi', 'Cameroon', 'Central African Republic', 'Cape Verde', 'Chad', "Cote d'Ivoire", 'Comoros', 'Congo, Democratic Republic of the', 'Congo, Republic of the', 'Djibouti', 'Egypt', 'Equatorial Guinea', 'Eritrea', 'Ethiopia', 'Gabon', 'Gambia, The', 'Ghana', 'Guinea-Bissau', 'Guinea', 'Kenya', 'Libya', 'Lesotho', 'Liberia', 'Madagascar', 'Mali', 'Malawi', 'Mozambique', 'Mauritania', 'Mauritius', 'Namibia', 'Nigeria', 'Niger', 'Rwanda', 'South Africa', 'Sahrawi Arab Democratic Republic (Western Sahara)', 'Senegal', 'Seychelles', 'Sierra Leone', 'Somalia', 'Sao Tome and Principe', 'Sudan', 'Swaziland', 'Tanzania', 'Togo', 'Tunisia', 'Uganda', 'Zambia', 'Zimbabwe'];
 		
-		var relevantAbuses = ['beating', 'bodily mutilation', 'burning', 'death threats', 'deprivation of medical care', 'electric shock', 'forced stress positions', 'forced nudity', 'forced to watch abuse of other prisoners', 'incommunicado detention', 'kicking', 'kidnapping/disappearance', 'killing', 'mock execution', 'prolonged exposure to extreme cold or heat', 'prolonged food/water deprivation', 'prolonged sleep deprivation', 'punching', 'rape or other sexual assault', 'severe mental suffering', 'solitary confinement', 'suffocation', 'waterboarding'];
+		var relevantAbuses = ['Beating', 'Bodily mutilation', 'Burning', 'Death threats', 'Deprivation of medical care', 'Electric shock', 'Forced stress positions', 'Forced nudity', 'Forced to watch abuse of other prisoners', 'Incommunicado detention', 'Kicking', 'Kidnapping/disappearance', 'Killing', 'Mock execution', 'Prolonged exposure to extreme cold or heat', 'Prolonged food/water deprivation', 'Prolonged sleep deprivation', 'Punching', 'Rape or other sexual assault', 'Severe mental suffering', 'Solitary confinement', 'Suffocation', 'Waterboarding'];
 		
-		var relevantAbusers = ["soldier in government's army", 'police officer', 'other government official'];
+		var relevantAbusers = ["Soldier in government's army", 'Police officer', 'Other government official'];
 		
 		var relevantActionOutcomes = ['Investigation or prosecution still ongoing', 'A court held someone responsible', 'Someone was put on trial but was found not guilty'];
 
@@ -432,7 +432,7 @@ Flow.config.outcomes = [{
 		if(q1.isNotAnswered() || q1.hasOneOfAnswers(relevantCountries)) {
 			condition1 = true;
 		}
-		if(q2a.hasAnswer('yes') && (q2b.hasOneOfAnswers(relevantCountries))) {
+		if(q2a.hasAnswer('Yes') && (q2b.hasOneOfAnswers(relevantCountries))) {
 			condition1 = true;
 		}
 		
@@ -522,10 +522,10 @@ Flow.config.outcomes = [{
 		var condition5 = false;
 		
 		if(
-			(q14a.isUnknownOrNotAnswered() || q14a.hasAnswer('no')) ||
-			(q14a.hasAnswer('yes') && q14b.isUnknownOrNotAnswered()) ||
-			(q14a.hasAnswer('yes') && q14b.hasAnswer('yes') && q14c.isNotAnswered()) ||
-			(q14a.hasAnswer('yes') && q14b.hasAnswer('yes') && !q14c.hasOneOfAnswers(relevantActionOutcomes))) {
+			(q14a.isUnknownOrNotAnswered() || q14a.hasAnswer('No')) ||
+			(q14a.hasAnswer('Yes') && q14b.isUnknownOrNotAnswered()) ||
+			(q14a.hasAnswer('Yes') && q14b.hasAnswer('Yes') && q14c.isNotAnswered()) ||
+			(q14a.hasAnswer('Yes') && q14b.hasAnswer('Yes') && !q14c.hasOneOfAnswers(relevantActionOutcomes))) {
 			condition5 = true;
 		}
 		
@@ -536,7 +536,7 @@ Flow.config.outcomes = [{
 		// other international remedies sought
 		var condition6 = false;
 		
-		if(q15.doesNotHaveAnswer('yes')) {
+		if(q15.doesNotHaveAnswer('Yes')) {
 			condition6 = true;
 		}
 		

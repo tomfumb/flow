@@ -245,7 +245,11 @@ Flow.Theme.QuestionView = Backbone.View.extend({
 					dateFormat: 'yy/mm/dd',
 					changeMonth: true,
 					changeYear: true,
-					yearRange: '1950:' + (new Date()).getFullYear()
+					yearRange: '1950:' + (new Date()).getFullYear(),
+					// http://stackoverflow.com/a/1180538/519575
+					/*beforeShow: function(input, inst) {
+						inst.dpDiv.css({marginTop: -input.offsetHeight + 'px', marginLeft: input.offsetWidth + 'px'});
+					}*/
 				});
 			}
 			

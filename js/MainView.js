@@ -7,7 +7,7 @@ CCIJ.MainView = Backbone.View.extend({
 		this.intro = this.$el.find('#ccij_intro');
 		this.focuses = this.$el.find('.main-focus');
 		
-		this.intro.find('.entry-point').addClass('clickable').click(_.bind(this.onEntryPointClicked, this));
+		this.intro.find('.entry-point').addClass('clickable').on('click', _.bind(this.onEntryPointClicked, this));
 		
 		$('#ccij_navbar .nav a').click(function() { 
 			if($('#ccij_navbar .navbar-toggle').is(':visible') && $('#ccij_navbar .navbar-collapse').is(':visible')) {
@@ -21,8 +21,11 @@ CCIJ.MainView = Backbone.View.extend({
 		var jqEl = $(event.target);
 		var element = (jqEl.hasClass('entry-point') ? jqEl : jqEl.parents('.entry-point'));
 		var clickedId = element.attr('id');
+		
 		var navLink = $('#' + clickedId.replace(/entry$/, 'nav'));
-		navLink.get(0).click();
+		var url = navLink.attr('href');
+			
+		document.location.href = url;
 	},
 	
 	changeActiveNavTab: function(id) {

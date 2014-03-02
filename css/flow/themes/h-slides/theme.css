@@ -90,19 +90,16 @@
 	color: black;
 }
 
-.answer {
-	height: 24px;
-}
-
 .answer-content {
-	float: left;
 	font-weight: bold;
+	margin: 0 0 10px 24px;
 }
 
 .answer-pad {
 	float: left;
 	width: 24px;
 	padding: 2px;
+	height: 24px;
 }
 
 .selected-answer-pad {
