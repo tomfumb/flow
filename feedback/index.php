@@ -1,6 +1,6 @@
 <?php
 
-$destination = 'feedback@ccij.ca';
+require_once('../common.php');
 
 if(isset($_POST['from']) && isset($_POST['message'])) {
 	
@@ -18,7 +18,7 @@ if(isset($_POST['from']) && isset($_POST['message'])) {
 	}
 	
 	$sent = mail(
-		$destination,
+		$ccijEmail,
 		'Feedback: Opportunities for Justice',
 		$message,
 		'From: ' . $from,

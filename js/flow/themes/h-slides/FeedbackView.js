@@ -18,7 +18,10 @@ Flow.Theme.FeedbackView = Backbone.View.extend({
 		'				<h4>Your Comment</h4>',
 		'				<textarea id="flow_feedback_message" class="form-control" rows="5"></textarea>',
 		'				<br />',
-		'				<button type="button" id="flow_feedback_send" disabled="disabled" class="btn btn-primary">Send</button> <img id="flow_feedback_load" src="images/small-load.gif" width="24px" height="24px" style="display: none;" /><span class="glyphicon glyphicon-ok" id="flow_feedback_success" style="display: none;" title="Feedback sent"></span><span class="glyphicon glyphicon-remove" id="flow_feedback_fail" style="display: none;" title="Send failed"></span>',
+		'				<button type="button" id="flow_feedback_send" disabled="disabled" class="btn btn-primary">Send</button> ',
+		'				<img id="flow_feedback_load" src="images/small-load.gif" width="24px" height="24px" style="display: none;" />',
+		'				<span class="glyphicon glyphicon-ok" id="flow_feedback_success" style="display: none;" title="Feedback sent"></span>',
+		'				<span class="glyphicon glyphicon-remove" id="flow_feedback_fail" style="display: none;" title="Send failed"></span>',
 		'			</div>',
 		'			<div class="modal-footer">',
 		'				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>',
@@ -38,15 +41,11 @@ Flow.Theme.FeedbackView = Backbone.View.extend({
 			this.content = scratch.find('#flow_feedback_modal');
 			
 			scratch.html('');
-		
-			this.content.find('#flow_feedback_from').addClass('input-attention').on('keyup', _.bind(this.onFromChanged, this));
-			this.content.find('#flow_feedback_message').addClass('input-attention').on('keyup', _.bind(this.onMessageChanged, this));
 			
-			this.content.find('#flow_feedback_send').click(_.bind(this.onSendClicked, this));
+			this.sendButton = this.content.find('#flow_feedback_send').click(_.bind(this.onSendClicked, this));
+			this.from = this.content.find('#flow_feedback_from').addClass('input-attention').on('keyup', _.bind(this.onFromChanged, this));
+			this.message = this.content.find('#flow_feedback_message').addClass('input-attention').on('keyup', _.bind(this.onMessageChanged, this));
 			
-			this.sendButton = this.content.find('#flow_feedback_send');
-			this.from = this.content.find('#flow_feedback_from');
-			this.message = this.content.find('#flow_feedback_message');
 			this.loadImg = this.content.find('#flow_feedback_load');
 			this.successImg = this.content.find('#flow_feedback_success');
 			this.failImg = this.content.find('#flow_feedback_fail');

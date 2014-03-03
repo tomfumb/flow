@@ -1,3 +1,4 @@
+- position email and feedback buttons
 - icon for question area (ESL)
 - order mechanisms by international, regional, national
 - update spreadsheet with used values
@@ -11,10 +12,10 @@
 - test case - slow download of resources, anything available before it will actually work?
 - http://getbootstrap.com/getting-started/#browsers
 - tip buttons near key functionality explaining what's going on
-- email results to user
+- try and strip attributes from printed / posted html
 - use gallery-style slider for outcome previews
 - try to get rid of table in outcome previews
 - main CCIJ site has Google Analytics - should incorporate the async version of this too, log trips to all #destinations
 - check necessity of shims in index.htm
-- consider creating sprite for images, especially logos with fixed size
+- create sprite for images, especially logos with fixed size
 - minify / compress js

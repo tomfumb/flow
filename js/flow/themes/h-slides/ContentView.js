@@ -47,6 +47,7 @@ Flow.Theme.ContentView = Backbone.View.extend({
 		this.$el.find('#flow_carousel_navigation_forward').click(_.bind(this.onForwardSelected, this));
 		
 		this.$el.find('#flow_feedback_icon').click(_.bind(this.onFeedbackIconClicked, this));
+		this.$el.find('#flow_send_results_icon').click(_.bind(this.onSendResultsIconClicked, this));
 		
 		$(window).resize(_.bind(this.onWindowResize, this));
 	},
@@ -561,5 +562,14 @@ Flow.Theme.ContentView = Backbone.View.extend({
 		}
 		
 		this.feedbackView.render();
+	},
+	
+	onSendResultsIconClicked: function() {
+		
+		if(!this.resultsSenderView) {
+			this.resultsSenderView = new Flow.Theme.ResultsSenderView();
+		}
+		
+		this.resultsSenderView.render();
 	}
 });
