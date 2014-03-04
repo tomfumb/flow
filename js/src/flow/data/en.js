@@ -147,7 +147,7 @@ Flow.config.outcomes = [{
 		var relevantAbusers = ["Soldier in government's army", 'Police officer', 'Other government official'];
 
 		// condition 1 - check that a relevant country is selected
-		var condition1 = false
+		var condition1 = false;
 		if(q1.isNotAnswered() || q1.hasOneOfAnswers(relevantCountries)) {
 			condition1 = true;
 		}
@@ -235,7 +235,7 @@ Flow.config.outcomes = [{
 		var relevantActionOutcomes = ['Investigation or prosecution still ongoing', 'A court held someone responsible', 'Someone was put on trial but was found not guilty'];
 		
 		// condition 1 - check that a relevant country is selected
-		var condition1 = false
+		var condition1 = false;
 		if(q1.isNotAnswered() || q1.hasOneOfAnswers(relevantCountries)) {
 			condition1 = true;
 		}
@@ -428,7 +428,7 @@ Flow.config.outcomes = [{
 		var relevantActionOutcomes = ['Investigation or prosecution still ongoing', 'A court held someone responsible', 'Someone was put on trial but was found not guilty'];
 
 		// condition 1 - check that a relevant country is selected
-		var condition1 = false
+		var condition1 = false;
 		if(q1.isNotAnswered() || q1.hasOneOfAnswers(relevantCountries)) {
 			condition1 = true;
 		}

@@ -72,7 +72,7 @@ Flow.Question = Backbone.Model.extend({
 			return;
 		}
 		
-		var selectedAnswers = this.get('selectedAnswers'), selectedDate;
+		var selectedAnswers = this.get('selectedAnswers');
 		if(!(selectedAnswers && selectedAnswers.length)) {
 			return false;
 		}

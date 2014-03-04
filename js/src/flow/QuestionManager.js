@@ -66,4 +66,4 @@ Flow.QuestionManager = new (Backbone.Collection.extend({
 		
 		return changedQuestions;
 	}
-}));
+}))();

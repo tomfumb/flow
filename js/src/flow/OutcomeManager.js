@@ -89,4 +89,4 @@ Flow.OutcomeManager = new (Backbone.Collection.extend({
 		
 		return changed;
 	}
-}));
+}))();
