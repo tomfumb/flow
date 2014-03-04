@@ -17,7 +17,7 @@ Flow.Theme.QuestionView = Backbone.View.extend({
 		'		<% if(explanations && explanations.length) { %>',
 		'		<div class="question-explanation">',
 		'			<div class="question-explanation-header clickable clickable-colour">',
-		'				<img src="images/emblem-notice.png" width="24" height="24" title="Why this question?" />',
+		'				<img src="images/0.png" class="sprites emblem-notice" width="24" height="24" title="Why this question?" />',
 		'				Why this question?',
 		'			</div>',
 		'			<div class="question-explanation-content">',
