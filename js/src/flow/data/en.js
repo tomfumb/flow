@@ -136,92 +136,6 @@ Flow.config.outcomes = [{
 		return true;
 	}
 },{
-	/* Extraordinary Chambers for Cambodia */
-	selector: $('#ccij_outcome_eccc'),
-	condition: function(q1, q2a, q2b, q3, q6, q7, q8, q9, q10) {
-		
-		var relevantCountries = ['Cambodia'];
-		
-		var relevantAbuses = ['Beating', 'Bodily mutilation', 'Burning', 'Burning of houses', 'Death threats', 'Denial of fair trial', 'Deprivation of medical care', 'Destruction or serious damage to property', 'Electric shock', 'Enslavement', 'Forced abortion', 'Forced displacement', 'Forced nudity', 'Forced sterilization', 'Forced stress positions', 'Forced to watch abuse of other prisoners', 'Forcing a prisoner to perform military service', 'Incommunicado detention', 'Kicking', 'Kidnapping/disappearance', 'Killing', 'Mock execution', 'Persecutions on political, racial, or religious grounds', 'Poisoning of water or food supplies', 'Prolonged exposure to extreme cold or heat', 'Prolonged food/water deprivation', 'Prolonged sleep deprivation', 'Punching', 'Rape or other sexual assault', 'Religious persecution', 'Serious mental harm to a person based on race, ethnicity, religion or nationality', 'Severe mental suffering', 'Solitary confinement', 'Stealing children', 'Suffocation', 'Waterboarding'];
-		
-		var relevantAbusers = ["Soldier in government's army", 'Police officer', 'Other government official'];
-
-		// condition 1 - check that a relevant country is selected
-		var condition1 = false;
-		if(q1.isNotAnswered() || q1.hasOneOfAnswers(relevantCountries)) {
-			condition1 = true;
-		}
-		if(q2a.hasAnswer('Yes') && (q2b.hasOneOfAnswers(relevantCountries))) {
-			condition1 = true;
-		}
-		
-		if(!condition1) {
-			return false;
-		}
-		
-		// condition 2 - check abuse date / end date against selected country/ies
-		var condition2 = false;
-		if (q3.isNotAnswered() || (
-			(q1.hasAnswer('Cambodia') || q2b.hasAnswer('Cambodia')) && q3.isBetweenDates('1975/04/17', '1979/01/06'))) {
-			condition2 = true;
-		}
-		
-		if(!condition2) {
-			return false;
-		}
-		
-		// condition 3 - check types of abuses committed
-		var condition3 = (q6.isNotAnswered() || q6.hasOneOfAnswers(relevantAbuses));
-		
-		if(!condition3) {
-			return false;
-		}
-		
-		// condition 4 - check scenario in which abuse occurred. Only a no in 5, 6, or 7 will rule out ECCC. Unanswered, yes, or unknown will keep it in
-		var condition4 = true;
-		if(q7.hasAnswer('No') && q8.hasAnswer('No') && q9.hasAnswer('No')) {
-			condition4 = false;
-		}
-		
-		if(!condition4) {
-			return false;
-		}
-		
-		// condition 4 - check abuser(s) for state actors
-		var condition5 = (q10.isUnknownOrNotAnswered() || q10.hasOneOfAnswers(relevantAbusers));
-		
-		if(!condition5) {
-			return false;
-		}
-
-		// by this point all conditions must have passed
-		return true;
-	}
-},{
-	/* War Crimes Chamber of the Court of Bosnia and Herzegovina */
-	selector: $('#ccij_outcome_bosnia'),
-	condition: function(q1) {
-		return true;
-	}
-},{
-	/* Criminal Prosecution in Canada */
-	selector: $('#ccij_outcome_crim_pro_can'),
-	condition: function(q1) {
-		return true;
-	}
-},{
-	/* Civil lawsuit in Canada */
-	selector: $('#ccij_outcome_civ_law_can'),
-	condition: function(q1) {
-		return true;
-	}
-},{
-	/* Immigration penalties in Canada */
-	selector: $('#ccij_outcome_imm_pen_can'),
-	condition: function(q1) {
-		return true;
-	}
-},{
 	/* U.N. Committee against Torture (CAT) */
 	selector: $('#ccij_outcome_un_cat'),
 	condition: function(q1, q2a, q2b, q3, q6, q10, q14a, q14b, q14c, q15) {
@@ -409,7 +323,7 @@ Flow.config.outcomes = [{
 		return true;
 	}
 },{
-	/* Inter-American Commission/Court of Human Rights */
+	/* Inter-American Commission of Human Rights */
 	selector: $('#ccij_outcome_ia_chr'),
 	condition: function(q1) {
 		return true;
@@ -562,6 +476,92 @@ Flow.config.outcomes = [{
 },{
 	/* European Court of Human Rights */
 	selector: $('#ccij_outcome_echr'),
+	condition: function(q1) {
+		return true;
+	}
+},{
+	/* Extraordinary Chambers for Cambodia */
+	selector: $('#ccij_outcome_eccc'),
+	condition: function(q1, q2a, q2b, q3, q6, q7, q8, q9, q10) {
+		
+		var relevantCountries = ['Cambodia'];
+		
+		var relevantAbuses = ['Beating', 'Bodily mutilation', 'Burning', 'Burning of houses', 'Death threats', 'Denial of fair trial', 'Deprivation of medical care', 'Destruction or serious damage to property', 'Electric shock', 'Enslavement', 'Forced abortion', 'Forced displacement', 'Forced nudity', 'Forced sterilization', 'Forced stress positions', 'Forced to watch abuse of other prisoners', 'Forcing a prisoner to perform military service', 'Incommunicado detention', 'Kicking', 'Kidnapping/disappearance', 'Killing', 'Mock execution', 'Persecutions on political, racial, or religious grounds', 'Poisoning of water or food supplies', 'Prolonged exposure to extreme cold or heat', 'Prolonged food/water deprivation', 'Prolonged sleep deprivation', 'Punching', 'Rape or other sexual assault', 'Religious persecution', 'Serious mental harm to a person based on race, ethnicity, religion or nationality', 'Severe mental suffering', 'Solitary confinement', 'Stealing children', 'Suffocation', 'Waterboarding'];
+		
+		var relevantAbusers = ["Soldier in government's army", 'Police officer', 'Other government official'];
+
+		// condition 1 - check that a relevant country is selected
+		var condition1 = false;
+		if(q1.isNotAnswered() || q1.hasOneOfAnswers(relevantCountries)) {
+			condition1 = true;
+		}
+		if(q2a.hasAnswer('Yes') && (q2b.hasOneOfAnswers(relevantCountries))) {
+			condition1 = true;
+		}
+		
+		if(!condition1) {
+			return false;
+		}
+		
+		// condition 2 - check abuse date / end date against selected country/ies
+		var condition2 = false;
+		if (q3.isNotAnswered() || (
+			(q1.hasAnswer('Cambodia') || q2b.hasAnswer('Cambodia')) && q3.isBetweenDates('1975/04/17', '1979/01/06'))) {
+			condition2 = true;
+		}
+		
+		if(!condition2) {
+			return false;
+		}
+		
+		// condition 3 - check types of abuses committed
+		var condition3 = (q6.isNotAnswered() || q6.hasOneOfAnswers(relevantAbuses));
+		
+		if(!condition3) {
+			return false;
+		}
+		
+		// condition 4 - check scenario in which abuse occurred. Only a no in 5, 6, or 7 will rule out ECCC. Unanswered, yes, or unknown will keep it in
+		var condition4 = true;
+		if(q7.hasAnswer('No') && q8.hasAnswer('No') && q9.hasAnswer('No')) {
+			condition4 = false;
+		}
+		
+		if(!condition4) {
+			return false;
+		}
+		
+		// condition 4 - check abuser(s) for state actors
+		var condition5 = (q10.isUnknownOrNotAnswered() || q10.hasOneOfAnswers(relevantAbusers));
+		
+		if(!condition5) {
+			return false;
+		}
+
+		// by this point all conditions must have passed
+		return true;
+	}
+},{
+	/* War Crimes Chamber of the Court of Bosnia and Herzegovina */
+	selector: $('#ccij_outcome_bosnia'),
+	condition: function(q1) {
+		return true;
+	}
+},{
+	/* Criminal Prosecution in Canada */
+	selector: $('#ccij_outcome_crim_pro_can'),
+	condition: function(q1) {
+		return true;
+	}
+},{
+	/* Civil lawsuit in Canada */
+	selector: $('#ccij_outcome_civ_law_can'),
+	condition: function(q1) {
+		return true;
+	}
+},{
+	/* Immigration penalties in Canada */
+	selector: $('#ccij_outcome_imm_pen_can'),
 	condition: function(q1) {
 		return true;
 	}

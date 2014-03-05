@@ -1,6 +1,5 @@
 - position email and feedback buttons
 - icon for question area (ESL)
-- order mechanisms by international, regional, national
 - update spreadsheet with used values
 - if modal closed after showing options at end should be really obvious how to re-open it
 - replace modal for showing options with swipe left / right page - use modal only for emailing results and feedback
@@ -17,5 +16,4 @@
 - try to get rid of table in outcome previews
 - main CCIJ site has Google Analytics - should incorporate the async version of this too, log trips to all #destinations
 - check necessity of shims in index.htm
-- create sprite for images, especially logos with fixed size
 - minify / compress js
