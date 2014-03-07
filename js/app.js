@@ -34,11 +34,5 @@ requirejs.config({
     }
 });
 
-require(['jquery', 'underscore', 'backbone', 'MainView', 'Workspace'], function($, _, Backbone, MainView, Workspace) {
-	
-	$(function() {
-		new Workspace(new MainView());
-		Backbone.history.start();
-	});
-});
+require(['init'], function() {});
 
