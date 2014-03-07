@@ -17,3 +17,5 @@
 - main CCIJ site has Google Analytics - should incorporate the async version of this too, log trips to all #destinations
 - check necessity of shims in index.htm
 - minify / compress js
+- move to template files and optimise through r.js
+- inline css and optimise through r.js http://stackoverflow.com/a/18927098/519575
