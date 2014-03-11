@@ -70,7 +70,7 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'text!template/print/que
 				}
 			}, this);
 			
-			this.$el.find('#flow_outcomes_print').html(_.template(this.outcomes_template, {
+			this.$el.find('#flow_outcomes_print').html(_.template(outcomeTemplate, {
 				outcomes: this.availableOutcomes
 			}));
 		},
