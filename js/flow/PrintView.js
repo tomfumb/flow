@@ -1,22 +1,6 @@
-define(['jquery', 'underscore', 'backbone', 'flow/Log'], function($, _, Backbone, Log) {
+define(['jquery', 'underscore', 'backbone', 'flow/Log', 'text!template/print/question.html', 'text!template/print/outcome.html'], function($, _, Backbone, Log, questionTemplate, outcomeTemplate) {
 
 	return Backbone.View.extend({
-	
-		question_template: [
-			'<div id="<%= questionElementId %>" class="print-question">',
-			'	<p>Question <%= questionId %> (<span class="question-availability-flag"><%= questionAvailability %></span>): <%= questionText %></p>',
-			'	<p>Answer(s): <span class="question-answers">(none)</span>',
-			'</div>'
-		].join(''),
-		
-		outcomes_template: [
-			'<h5>The following mechanisms may be available, based on the answers you have provided.</h5>',
-			'<ul>',
-			'	<% _.each(outcomes, function(outcome) { %>',
-			'		<li><%= outcome %></li>',
-			'	<% }); %>',
-			'</ul>'
-		].join(''),
 		
 		availableOutcomes: [],
 		
@@ -39,7 +23,7 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log'], function($, _, Backbone
 			
 			_.each(this.questions.models, function(question) {
 				
-				questionEl = _.template(this.question_template, {
+				questionEl = _.template(questionTemplate, {
 					questionId: question.get('id'),
 					questionAvailability: (question.get('available') ? 'available' : 'unavailable'),
 					questionElementId: this.getElementIdFromQuestion(question),
@@ -59,7 +43,7 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log'], function($, _, Backbone
 				}
 			}, this);
 			
-			this.$el.find('#flow_outcomes_print').html(_.template(this.outcomes_template, {
+			this.$el.find('#flow_outcomes_print').html(_.template(outcomeTemplate, {
 				outcomes: this.availableOutcomes
 			}));
 		},

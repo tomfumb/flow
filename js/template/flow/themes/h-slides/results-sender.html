@@ -1,0 +1,25 @@
+<div class="modal" id="flow_results_sender_modal" tabindex="-1" role="dialog" aria-labelledby="flow_feedback_results_sender_label" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title" id="flow_feedback_modal_label">Email Results</h4>
+			</div>
+			<div class="modal-body" id="flow_results_sender_modal_body">
+				<h4>Your Email Address</h4>
+				<div class="input-group">
+					<span class="input-group-addon">@</span>
+					<input id="flow_results_sender_to" type="text" class="form-control" placeholder="Your Email Address">
+				</div>
+				<br />
+				<button type="button" id="flow_results_sender_send" disabled="disabled" class="btn btn-primary">Send</button> 
+				<img id="flow_results_sender_load" src="images/small-load.gif" width="24px" height="24px" style="display: none;" />
+				<span class="glyphicon glyphicon-ok" id="flow_results_sender_success" style="display: none;" title="Feedback sent"></span>
+				<span class="glyphicon glyphicon-remove" id="flow_results_sender_fail" style="display: none;" title="Send failed"></span>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
+</div>

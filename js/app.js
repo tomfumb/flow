@@ -3,6 +3,7 @@ requirejs.config({
 	baseUrl: 'js',
 
 	paths: {
+		'text': './lib/require-text-2.0.10',
 		'jquery': './lib/jquery-1.10.2.min',
 		'jquery-ui': './lib/jquery-ui-1.10.4.custom.min',
 		'jquery-mobile': './lib/jquery.mobile.custom.min',
@@ -34,5 +35,4 @@ requirejs.config({
     }
 });
 
-require(['init'], function() {});
-
+require(['init']);

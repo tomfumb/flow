@@ -1,50 +1,8 @@
-define(['jquery', 'underscore', 'backbone', 'flow/Log', 'theme/OutcomePreviewView'], function($, _, Backbone, Log, OutcomePreviewView) {
+define(['jquery', 'underscore', 'backbone', 'flow/Log', 'theme/OutcomePreviewView', 'text!template/flow/themes/h-slides/outcome-preview.html', 'text!template/flow/themes/h-slides/outcome-preview-outcome.html'], function($, _, Backbone, Log, OutcomePreviewView, previewTemplate, outcomeTemplate) {
 
 	return Backbone.View.extend({
 		
 		el: '#flow_outcome_previews',
-		
-		template: [
-			'<div class="row">',
-			'	<div class="col-24 col-sm-24 col-md-24 col-lg-24">',
-			'		<hr />',
-			'		<h4 id="flow_options_preview_title" class="clickable clickable-colour">Your Options</h4>',
-			'	</div>',
-			'</div>',
-			'<div class="row">',
-			'	<div class="col-24 col-xs-24 col-sm-24 col-md-24 col-lg-24">',
-					/* really don't want to use a table for layout but in this case cannot see any way to achieve the required effect in CSS without recalculating fixed width or having fluid layout overflow */
-			'		<table cellpadding="0">',
-			'			<tr>',
-			'				<td>',
-			'					<div id="flow_available_count_main_container" class="clickable">',
-			'						<span id="flow_available_count_main"><%= availableCount %></span>',
-			'					</div>',
-			'				</td>',
-			'				<td style="overflow: hidden;">',
-			'					<div id="flow_available_outcome_previews" class="available-outcome-preview-container"><%= previewHtml %></div>',
-			'					<div class="clearer"></div>',
-			'				</td>',
-			'			</tr>',
-			'		</table>',
-			'	</div>',
-			'</div>',
-			'<div class="spacer-10"></div>',
-			'<div class="row">',
-			'	<div class="col-24 col-xs-24 col-sm-24 col-md-24 col-lg-24">',
-			'		<div id="flow_outcome_recent_changes" class="alert alert-info">',
-			'			<span id="flow_outcome_history_back" class="clickable outcome-history-nav"><span class="glyphicon glyphicon-chevron-left"></span></span>',
-			'			<span id="flow_outcome_history_fwd" class="clickable outcome-history-nav"><span class="glyphicon glyphicon-chevron-right"></span></span>',
-			'			<div id="flow_outcome_recent_changes_content"></div>',
-			'			<div class="clearer">',
-			'		</div>',
-			'	</div>',
-			'</div>'
-		].join(''),
-		
-		outcome_preview_template: [
-			'<div id="<%= outcomeElId %>"<%= displayStyle %> class="available-outcome-preview-container available-outcome-preview"></div>'
-		].join(''),
 		
 		changeHistory: [],
 		changeHistoryPosition: -1,
@@ -63,7 +21,7 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'theme/OutcomePreviewVie
 			
 			this.$el.html(_.template(
 			
-				this.template, {
+				previewTemplate, {
 					availableCount: availableCount,
 					previewHtml: this.getAvailablePreviewsHtml()
 				}
@@ -79,7 +37,7 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'theme/OutcomePreviewVie
 			_.each(this.model.models, function(outcome) {
 					
 				outcomeElId = this.getPreviewContainerIdFromOutcome(outcome);
-				scratch.append(_.template(this.outcome_preview_template, {
+				scratch.append(_.template(outcomeTemplate, {
 					outcomeElId: outcomeElId,
 					displayStyle: (outcome.get('available') ? '' : ' style="display: none;"')
 				}));

@@ -1,36 +1,9 @@
-define(['jquery', 'underscore', 'backbone'], function($, _, Backbone) {
+define(['jquery', 'underscore', 'backbone', 'text!template/flow/themes/h-slides/feedback.html'], function($, _, Backbone, template) {
 	
 	return Backbone.View.extend({
 
 		template: [
-			'<div class="modal" id="flow_feedback_modal" tabindex="-1" role="dialog" aria-labelledby="flow_feedback_modal_label" aria-hidden="true">',
-			'	<div class="modal-dialog">',
-			'		<div class="modal-content">',
-			'			<div class="modal-header">',
-			'				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>',
-			'				<h4 class="modal-title" id="flow_feedback_modal_label">Send Feedback</h4>',
-			'			</div>',
-			'			<div class="modal-body" id="flow_feedback_modal_body">',
-			'				<h4>Your Email Address</h4>',
-			'				<div class="input-group">',
-			'					<span class="input-group-addon">@</span>',
-			'					<input id="flow_feedback_from" type="text" class="form-control" placeholder="Your Email Address">',
-			'				</div>',
-			'				<br />',
-			'				<h4>Your Comment</h4>',
-			'				<textarea id="flow_feedback_message" class="form-control" rows="5"></textarea>',
-			'				<br />',
-			'				<button type="button" id="flow_feedback_send" disabled="disabled" class="btn btn-primary">Send</button> ',
-			'				<img id="flow_feedback_load" src="images/small-load.gif" width="24px" height="24px" style="display: none;" />',
-			'				<span class="glyphicon glyphicon-ok" id="flow_feedback_success" style="display: none;" title="Feedback sent"></span>',
-			'				<span class="glyphicon glyphicon-remove" id="flow_feedback_fail" style="display: none;" title="Send failed"></span>',
-			'			</div>',
-			'			<div class="modal-footer">',
-			'				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>',
-			'			</div>',
-			'		</div>',
-			'	</div>',
-			'</div>'
+
 		].join(''),
 		
 		render: function() {
@@ -38,7 +11,7 @@ define(['jquery', 'underscore', 'backbone'], function($, _, Backbone) {
 			if(!this.content) {
 				
 				var scratch = $('#flow_scratch');
-				scratch.html(_.template(this.template));
+				scratch.html(_.template(template));
 				
 				this.content = scratch.find('#flow_feedback_modal');
 				

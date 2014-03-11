@@ -1,41 +1,10 @@
 define(
-	['jquery', 'underscore', 'backbone', 'theme/QuestionView', 'theme/OutcomePreviewsView', 'theme/OutcomePreviewView', 'theme/OutcomeManagerView', 'theme/OutcomeView', 'theme/FeedbackView', 'theme/ResultsSenderView', 'flow/Log', 'bootstrap'],
-	function($, _, Backbone, QuestionView, OutcomePreviewsView, OutcomePreviewView, OutcomeManagerView, OutcomeView, FeedbackView, ResultsSenderView, Log) {
+	['jquery', 'underscore', 'backbone', 'theme/QuestionView', 'theme/OutcomePreviewsView', 'theme/OutcomePreviewView', 'theme/OutcomeManagerView', 'theme/OutcomeView', 'theme/FeedbackView', 'theme/ResultsSenderView', 'flow/Log', 'bootstrap', 'text!template/flow/themes/h-slides/content.html', 'text!template/flow/themes/h-slides/summary.html'],
+	function($, _, Backbone, QuestionView, OutcomePreviewsView, OutcomePreviewView, OutcomeManagerView, OutcomeView, FeedbackView, ResultsSenderView, Log, contentTemplate, summaryTemplate) {
 	
 	return Backbone.View.extend({
 
 		el: '#flow_content',
-		
-		template: [
-			'<div class="container">',
-			'	<div class="row">',
-			'		<div class="col-24 col-sm-24 col-md-24 col-lg-24">',
-			'			<h4>Questions</h4>',
-			'			<span id="flow_feedback_icon" class="glyphicon glyphicon-send clickable"></span>',
-			'			<span id="flow_send_results_icon" class="glyphicon glyphicon-envelope clickable"></span>',
-			'		</div>',
-			'	</div>',
-			'	<div id="flow_question_summary"></div>',
-			'</div>',
-			'<div class="spacer-5"></div>',
-			'<div class="container">',
-			'	<div class="row">',
-			'		<div id="flow_carousel" class="carousel slide col-xs-24 col-sm-24 col-md-24 col-lg-24 col-24" data-ride="carousel">',
-			'			<div id="flow_carousel_navigation">',
-			'				<div id="flow_carousel_navigation_back" class="flow-carousel-navigation clickable"><span class="glyphicon glyphicon-chevron-left"></span></div>',
-			'				<div id="flow_carousel_navigation_forward" class="flow-carousel-navigation clickable"><span class="glyphicon glyphicon-chevron-right"></span></div>',
-			'			</div>',
-			'			<div id="flow_content_items" class="carousel-inner"></div>',
-			'		</div>',
-			'	</div>',
-			'</div>',
-			'<div id="flow_outcome_previews" class="container"></div>',
-			'<div id="flow_outcomes" class="container"></div>'
-		].join(''),
-			
-		summary_template: [
-			'<button type="button" id="<%= summaryQuestionElId %>" class="btn <%= summaryClass %>"><%= questionId %></button>'
-		].join(''),
 		
 		questions: [],
 		
@@ -44,8 +13,7 @@ define(
 		
 		render: function() {
 			
-			Log.debug('ContentView.render');
-			this.$el.append(this.template);
+			this.$el.append(contentTemplate);
 			
 			this.$el.find('#flow_carousel_navigation_back').click(_.bind(this.onBackSelected, this));
 			this.$el.find('#flow_carousel_navigation_forward').click(_.bind(this.onForwardSelected, this));
@@ -65,8 +33,6 @@ define(
 			}
 			
 			this.addQuestionsCalled = true;
-			
-			Log.debug('ContentView.addQuestions');
 			
 			var scratch = $('#flow_scratch');
 			var summary = this.$el.find('#flow_question_summary');
@@ -100,7 +66,7 @@ define(
 				var summaryQuestionElId = this.getSummaryQuestionId(questionId);
 				
 				var summaryQuestionEl = $(_.template(
-					this.summary_template, {
+					summaryTemplate, {
 						summaryQuestionElId: summaryQuestionElId,
 						summaryClass: summaryClass,
 						questionId: questionId

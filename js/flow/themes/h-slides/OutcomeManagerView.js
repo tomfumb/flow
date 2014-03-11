@@ -1,61 +1,15 @@
-define(['jquery', 'underscore', 'backbone', 'theme/OutcomeView'], function($, _, Backbone, OutcomeView) {
+define(['jquery', 'underscore', 'backbone', 'theme/OutcomeView', 'text!template/flow/themes/h-slides/outcome-manager.html', 'text!template/flow/themes/h-slides/outcome-manager-outcome.html'], function($, _, Backbone, OutcomeView, managerTemplate, outcomeTemplate) {
 	
 	return Backbone.View.extend({
 	
 		el: '#flow_outcomes',
 		
-		template: [
-			'<div class="modal" id="flow_outcome_modal" tabindex="-1" role="dialog" aria-labelledby="flow_outcome_modal_label" aria-hidden="true">',
-			'	<div class="modal-dialog">',
-			'		<div class="modal-content" style="-webkit-overflow-scrolling: touch;">',
-			'			<div class="modal-header">',
-			'				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>',
-			'				<h4 class="modal-title" id="flow_outcome_modal_label">Your Options</h4>',
-			'			</div>',
-			'			<div class="modal-body" id="flow_outcome_modal_body">',
-			'				<div id="flow_outcome_modal_unanswered_count" class="alert alert-warning"></div>',
-			'				<ul class="nav nav-tabs">',
-			'					<li id="flow_outcome_available_link"><a class="outcome-tab-link" href="#flow_outcome_available" data-toggle="tab">Available</a></li>',
-			'					<li><a class="outcome-tab-link" href="#flow_outcome_unavailable" data-toggle="tab">Unavailable</a></li>',
-			'					<li style="display: none;" id="flow_outcome_detail_link"><a class="outcome-tab-link" href="#flow_outcome_detail" data-toggle="tab">Detail</a></li>',
-			'				</ul>',
-			'				<div class="tab-content">',
-			'					<div class="tab-pane active" id="flow_outcome_available">',
-			'						<div class="spacer-10"></div>',
-			'						<p id="flow_some_options_note">Based on the questions you have answered the following options may be available to you.</p>',
-			'						<div id="flow_no_options_note_container">',
-			'							<h4>No Available Options</h4>',
-			'							<p>Based on the questions you have answered we have not been able to find any suitable options.</p>',
-			'							<p>Please note that an automated tool cannot provide perfect results and therefore we recommend that you discuss your case with a CCIJ lawyer.</p>',
-			'						</div>',
-			'						<div id="flow_outcome_available_outcomes"></div>',
-			'					</div>',
-			'					<div class="tab-pane" id="flow_outcome_unavailable">',
-			'						<div class="spacer-10"></div>',
-			'						<p>Based on the questions you have answered the following options may not be available to you.</p>',
-			'						<div id="flow_outcome_unavailable_outcomes"></div>',
-			'					</div>',
-			'					<div class="tab-pane" id="flow_outcome_detail"></div>',
-			'				</div>',
-			'			</div>',
-			'			<div class="modal-footer">',
-			'				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>',
-			'			</div>',
-			'		</div>',
-			'	</div>',
-			'</div>'
-		].join(''),
-		
 		outcome_template: [
-			'<div class="row">',
-			'	<div id="<%= outcomeElId %>" class="outcome-manager-outcome-container col-24 col-xs-24 col-sm-24 col-md-24 col-lg-24">',
-			'	</div>',
-			'</div>'
 		].join(''),
 		
 		render: function() {
 			
-			this.$el.html(_.template(this.template));
+			this.$el.html(_.template(managerTemplate));
 			
 			this.modal = this.$el.find('#flow_outcome_modal');
 			this.modalContent = this.modal.find('.modal-content');
@@ -116,7 +70,7 @@ define(['jquery', 'underscore', 'backbone', 'theme/OutcomeView'], function($, _,
 				
 				outcomeElId = this.getContainerIdFromOutcome(outcome);
 				outcomeEl = $(_.template(
-					this.outcome_template, {
+					outcomeTemplate, {
 						outcomeElId: outcomeElId
 					}
 				));

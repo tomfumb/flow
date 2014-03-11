@@ -1,14 +1,6 @@
-define(['jquery', 'underscore', 'backbone'], function($, _, Backbone) {
+define(['jquery', 'underscore', 'backbone', 'text!template/flow/themes/h-slides/outcome-preview-image.html'], function($, _, Backbone, template) {
 	
 	return Backbone.View.extend({
-
-		template: [
-			'<div title="<%= title %>" class="clickable clickable-colour">',
-			'	<img src="images/0.png" class="<%= imageClasses %>" height="75px" width="75px" alt="<%= title %>" />',
-			'	<br />',
-			'	<div class="outcome-preview-abbreviation"><%= abbreviation %></div>',
-			'</div>'
-		].join(''),
 
 		render: function() {
 			
@@ -16,7 +8,7 @@ define(['jquery', 'underscore', 'backbone'], function($, _, Backbone) {
 			var imageClasses = this.model.get('imageClasses');
 			
 			this.$el.html(_.template(
-				this.template, {
+				template, {
 					title: title,
 					imageClasses: imageClasses,
 					abbreviation: this.model.get('abbreviation')

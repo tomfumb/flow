@@ -1,4 +1,4 @@
-define(['jquery', 'underscore', 'backbone'], function($, _, Backbone) {
+define(['jquery', 'underscore', 'backbone', 'flow/Log'], function($, _, Backbone, Log) {
 	
 	return Backbone.Router.extend({
 

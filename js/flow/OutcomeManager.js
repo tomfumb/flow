@@ -4,10 +4,7 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'flow/Util', 'flow/Outco
 
 		model: Outcome,
 		
-		initialize: function() {
-			
-			Log.debug('Initialising OutcomeManager');
-			
+		initialize: function() {			
 			this.on('reset', _.bind(this.onReset, this));
 		},
 		

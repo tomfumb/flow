@@ -1,4 +1,4 @@
-define(['jquery', 'underscore', 'backbone', 'flow/Log', 'jquery-ui'], function($, _, Backbone, Log) {
+define(['jquery', 'underscore', 'backbone', 'flow/Log', 'text!template/flow/themes/h-slides/question-base.html', 'text!template/flow/themes/h-slides/question-single-few.html', 'text!template/flow/themes/h-slides/question-single-many.html', 'text!template/flow/themes/h-slides/question-multi.html', 'text!template/flow/themes/h-slides/question-date.html', 'jquery-ui'], function($, _, Backbone, Log, questionTemplate, singleFewTemplate, singleManyTemplate, multiTemplate, dateTemplate) {
 	
 	return Backbone.View.extend({
 	
@@ -10,81 +10,6 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'jquery-ui'], function($
 			CHECKBOXES: 'check_button_click',
 			SINGLE_DATE: 'single_date'
 		},
-		
-		template_base: [
-			'<div class="carousel-caption">',
-			'	<div id="question_<%= question.get("id") %>" class="question">',
-			'		<h4>Question <%= question.get("id") %></h4>',
-			'		<p><%= question.get("content") %></p>',
-			'		<% if(explanations && explanations.length) { %>',
-			'		<div class="question-explanation">',
-			'			<div class="question-explanation-header clickable clickable-colour">',
-			'				<img src="images/0.png" class="sprites emblem-notice" width="24" height="24" title="Why this question?" />',
-			'				Why this question?',
-			'			</div>',
-			'			<div class="question-explanation-content">',
-			'				<ul>',
-			'				<% _.each(explanations, function(explanation) { %> ',
-			'					<li><%= explanation %></li>',
-			'				<% }) %>',
-			'				</ul>',
-			'			</div>',
-			'		</div>',
-			'		<% } %>',
-			'	</div>',
-			'	<div id="answers_<%= question.get("id") %>" class="answers">',
-		].join(''),
-		
-		template_single_few: [
-			'		<p>Select an answer below.</p>',
-			'		<% _.each(answers, function(answer, index) { %>',
-			'			<div class="answer clickable" id="answer_<%= index %>">',
-			'				<div class="answer-pad"></div>',
-			'				<div class="answer-content"><%= answer %></div>',
-			'				<div class="clearer"></div>',
-			'			</div>',
-			'		<% }); %>',
-		].join(''),
-		
-		template_single_many: [
-			'		<p>Select an answer from the drop-down menu below.</p>',
-			'		<select class="multi_answer_select">',
-			'			<option value="">Please Select...</option>',
-			'			<% _.each(answers, function(answer, index) { %>',
-			'				<option type="text" value="<%= answer %>"><%= answer %></option>',
-			'			<% }); %>',
-			'		</select>',
-		].join(''),
-		
-		template_multi: [
-			'		<p>Select all that apply from the following options.</p>',
-			'		<div class="container" style="width: 100%">',
-			'			<div class="row">',
-			'				<div class="col-xs-24 col-sm-24 col-md-24 col-lg-24 minor-info">Check all that apply</div>',
-			'			</div>',
-			'			<div class="row">',
-			'				<% _.each(answers, function(answer, index) { %>',
-			'					<div class="col-xs-24 col-sm-24 col-md-12 col-lg-12">',
-			'						<input type="checkbox" id="q<%= question.get("id") %>_a_<%= index %>" /> <span class="answer-checkbox-text clickable"><%= answer %></span>',
-			'					</div>',
-			'				<% }); %>',
-			'			</div>',
-			'			<div class="row spacer-10">',
-			'				<button class="continue btn btn-default" type="button">Done</button>',
-			'			</div>',
-			'		</div>',
-		].join(''),
-		
-		template_single_date: [
-			'		<p>Provide a date using the date-picker below.</p>',
-			'		<input type="text" class="date-selector hint-text" value="YYYY/MM/DD" />',
-		].join(''),
-		
-		template_end: [
-			'	</div>',
-			'	<hr />',
-			'</div>'
-		].join(''),
 		
 		render: function(isActive, container) {
 			
@@ -102,20 +27,20 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'jquery-ui'], function($
 			switch(this.model.get('answerType')) {
 				case 'single-select':
 					if(this.model.get('answers').length > this.singleAnswerThreshold) {
-						bodyTemplate = this.template_single_many;
+						bodyTemplate = singleManyTemplate;
 						answerStyle = this.answerDisplayTypes.LIST_SELECT;
 					}
 					else {
-						bodyTemplate = this.template_single_few;
+						bodyTemplate = singleFewTemplate;
 						answerStyle = this.answerDisplayTypes.EL_CLICK;
 					}
 					break;
 				case 'multi-select':
-					bodyTemplate = this.template_multi;
+					bodyTemplate = multiTemplate;
 					answerStyle = this.answerDisplayTypes.CHECK_BUTTON_CLICK;
 					break;
 				case 'single-date':
-					bodyTemplate = this.template_single_date;
+					bodyTemplate = dateTemplate;
 					answerStyle = this.answerDisplayTypes.SINGLE_DATE;
 					break;
 				default:
@@ -123,12 +48,16 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'jquery-ui'], function($
 					return;
 			}
 			
-			var template = this.template_base + bodyTemplate + this.template_end;
 			this.$el.html(_.template(
-				template, {
+				questionTemplate, {
 					question: this.model,
-					answers: this.model.get('answers'),
-					explanations: this.model.get('explanations')
+					explanations: this.model.get('explanations'),
+					questionBody: _.template(
+						bodyTemplate, {
+							question: this.model,
+							answers: this.model.get('answers')
+						}
+					)
 				}
 			));
 			

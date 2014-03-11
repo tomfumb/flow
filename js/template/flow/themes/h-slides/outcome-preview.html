@@ -1,0 +1,35 @@
+<div class="row">
+	<div class="col-24 col-sm-24 col-md-24 col-lg-24">
+		<hr />
+		<h4 id="flow_options_preview_title" class="clickable clickable-colour">Your Options</h4>
+	</div>
+</div>
+<div class="row">
+	<div class="col-24 col-xs-24 col-sm-24 col-md-24 col-lg-24">
+		/* really don't want to use a table for layout but in this case cannot see any way to achieve the required effect in CSS without recalculating fixed width or having fluid layout overflow */
+		<table cellpadding="0">
+			<tr>
+				<td>
+					<div id="flow_available_count_main_container" class="clickable">
+						<span id="flow_available_count_main"><%= availableCount %></span>
+					</div>
+				</td>
+				<td style="overflow: hidden;">
+					<div id="flow_available_outcome_previews" class="available-outcome-preview-container"><%= previewHtml %></div>
+					<div class="clearer"></div>
+				</td>
+			</tr>
+		</table>
+	</div>
+</div>
+<div class="spacer-10"></div>
+<div class="row">
+	<div class="col-24 col-xs-24 col-sm-24 col-md-24 col-lg-24">
+		<div id="flow_outcome_recent_changes" class="alert alert-info">
+			<span id="flow_outcome_history_back" class="clickable outcome-history-nav"><span class="glyphicon glyphicon-chevron-left"></span></span>
+			<span id="flow_outcome_history_fwd" class="clickable outcome-history-nav"><span class="glyphicon glyphicon-chevron-right"></span></span>
+			<div id="flow_outcome_recent_changes_content"></div>
+			<div class="clearer">
+		</div>
+	</div>
+</div>
