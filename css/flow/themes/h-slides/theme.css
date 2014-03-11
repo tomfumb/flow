@@ -14,8 +14,7 @@
 	visibility: hidden;
 	position: absolute;
 	z-index: 2;
-	padding-top: 140px;
-	padding-bottom: 140px;
+	padding: 140px 0 140px 0;
 	background-color: #c5c5c5;
 	width: 25px;
 	text-align: center;
@@ -54,12 +53,9 @@
 	top: 0; 
 	/*height: 300px;*/
 	overflow: auto;
-	padding-right: 30px;
-	padding-left: 30px;
+	padding: 0 30px 0 30px;
 	left: 0;
 	z-index: 1;
-	padding-top: 0;
-	padding-bottom: 0;
 }
 
 .question-container {
@@ -68,7 +64,7 @@
 }
 
 .question {
-	margin-bottom: 10px;
+	margin: 0 0 10px 0;
 }
 
 #flow_outcomes {
@@ -122,7 +118,7 @@
 }
 
 #flow_available_outcome_previews {
-	padding-left: 10px;
+	padding: 0 0 0 10px;
 }
 
 .available-outcome-preview-container {

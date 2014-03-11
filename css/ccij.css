@@ -12,7 +12,7 @@
 
 .entry-point-img {
 	float: left;
-	margin-right: 8px;
+	margin: 0 8px 0 0;
 }
 
 #ccij_outcomes {
@@ -20,7 +20,7 @@
 }
 
 .ccij-outcome {
-	margin-top: 25px;
+	margin: 25px 0 0 0;
 }
 
 .ccij-outcome img {
@@ -29,11 +29,11 @@
 
 .ccij-outcome .outcome-title {
 	float: left;
-	margin-left: 10px;
+	margin: 0 0 0 10px;
 }
 
 .ccij-outcome div.outcome-description {
-	padding-top: 10px;
+	padding: 10px 0 0 0;
 	clear: both;
 }
 
