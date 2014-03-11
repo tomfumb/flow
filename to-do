@@ -1,3 +1,4 @@
+- only have useful log messages
 - position email and feedback buttons
 - icon for question area (ESL)
 - update spreadsheet with used values
@@ -8,6 +9,7 @@
 3) date picker isn't obvious when presented with keyboard input beneath text input
 4) question summary list should just be one row, swipeable / pageable like outcomes list. Will require some complex logic to ensure the current question is as close to the centre of that display as possible
 - some scenario where question summary links can be repeated and clicking the duplicates messes things up
+	- see if can be prevented using listenOnce (would be in MainView, not ContentView)
 - test case - slow download of resources, anything available before it will actually work?
 - http://getbootstrap.com/getting-started/#browsers
 - tip buttons near key functionality explaining what's going on
@@ -16,6 +18,4 @@
 - try to get rid of table in outcome previews
 - main CCIJ site has Google Analytics - should incorporate the async version of this too, log trips to all #destinations
 - check necessity of shims in index.htm
-- minify / compress js
-- move to template files and optimise through r.js
 - inline css and optimise through r.js http://stackoverflow.com/a/18927098/519575

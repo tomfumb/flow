@@ -17,16 +17,8 @@ module.exports = function(grunt) {
       compile: {
         options: {
           baseUrl: 'js',
-          paths: {
-            'jquery': 'empty:',
-            'jquery-ui': 'empty:',
-            'jquery-mobile': 'empty:',
-            'underscore': 'empty:',
-            'backbone': 'empty:',
-            'bootstrap': 'empty:'
-          },
           mainConfigFile: "js/app.js",
-          name: "init",
+          name: "app",
           out: "js/dist/<%= pkg.name %>-<%= pkg.version %>.js"
         }
       }

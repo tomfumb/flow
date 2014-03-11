@@ -1,0 +1,21 @@
+input + output
+How will google searches get to the site - do we need some SEO consideration?
+Email results should have a checkbox to also send to CCIJ
+Assess tool should be the first option
+Should there be some level of follow-up within / around the tool? E.g. if someone emails themselves results perhaps it should also email an address at CCIJ so that someone could follow up?
+Using the tool could be emtionally raw for a user and this might need to be managed. Reactions might be different to the people that Matt deals with as they have already decided they are comfortable talking about it
+"Why this question" perhaps should avoid explaining the reason for the question and focus on helping people understand how the question should be answered
+Put questions through reading level test - should be grade 6 or 7
+How much time should be set aside and should they have someone with them?
+It's OK to not answer questions, though this will impact how helpful the tool can be
+Set expectations up front - base case and worse case
+trigger warning and suggestions for psychological support - users will likely have legal and psychological concerns both
+0 options should immediately move to show text on available options
+soften colours and make question text bigger - more engaging
+tool takes the place of a real person who would be giving non-verbal cues on their level of engagement
+space for a tagline under the title: e.g. "communications for a modern world" (rhyming / alliteration helpful) helps people remember. "informing survivors about their options" / "guiding"? suggests more involvement, but maybe too much
+check out typeform for guidance on user experience
+perhaps give feedback about % complete as working through
+
+
+* for freelancing I need to know how to describe my role in 1 sentence for networking - business card should reflect this
