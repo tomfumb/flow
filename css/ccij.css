@@ -6,6 +6,10 @@
 	overflow: hidden;
 }
 
+#ccij_header img {
+	border: 0;
+}
+
 .entry-point-img {
 	float: left;
 	margin-right: 8px;
