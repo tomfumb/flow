@@ -1,7 +1,6 @@
 <?php
 
 require_once('../common.php');
-require_once('../lib/simple_html_dom.php');
 
 if(isset($_POST['to']) && isset($_POST['message'])) {
 	
@@ -18,27 +17,31 @@ if(isset($_POST['to']) && isset($_POST['message'])) {
 		exit();
 	}
 	
-	$dom = str_get_html($message);
+	$message = $_POST['message'];
+	$dom = new DOMDocument;
+	$dom->loadHTML($message);
 	
-	$links = $dom->find('a');
-	$scripts = $dom->find('script');
+	$badCount = 0;
+	foreach($dom->getElementsByTagName('a') as $a) {
+		$badCount++;
+	}
 	
-	// security: 	help prevent someone from sending spam through this service
-	// step 1:		remove any anchor or script tags from the output
-	if(count($links) > 0 || count($scripts) > 0) {
+	foreach($dom->getElementsByTagName('script') as $script) {
+		$badCount++;
+	}
+	
+	if($badCount > 0) {
 		header('HTTP/1.1 400 Bad request', true, 400);
 		exit();
 	}
 	
-	/*
-	// step 2:		remove any attributes that could include onclick, onmouseover etc.
-	// currently disabled as recursing through element references not supported in CCIJ PHP version
-	// removeAllAttributes($dom);
-	*/
+	$xpath = new DOMXPath($dom);
+	$attrs = $xpath->query('//@*');
+	foreach ($attrs as $attr) {
+		$attr->parentNode->removeAttribute($attr->nodeName);
+	}
 	
-	$content = $dom->innertext . '<br /><br /><a href="' . $toolUrl . '">Opportunities for Justice</a>';
-	
-	echo $content;
+	$content = $dom->saveHTML() . '<br /><br /><a href="' . $toolUrl . '">Opportunities for Justice</a>';
 	
 	$sent = mail(
 		$to,
@@ -61,21 +64,5 @@ else {
 	header('HTTP/1.1 404 File not found', true, 404);
 	exit();
 }
-
-/*
-function removeAllAttributes(&$parent) {
-	
-	foreach($parent->find('*') as &$element) {
-		
-		foreach($element->attr as &$attribute) {
-			$attribute = null;
-		}
-		
-		if(count($element->children()) > 0) {
-			removeAllAttributes($element);
-		}
-	}
-}
-*/
 
 ?>

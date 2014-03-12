@@ -12,6 +12,16 @@
 - http://getbootstrap.com/getting-started/#browsers
 - tip buttons near key functionality explaining what's going on
 - try and strip attributes from printed / posted html
+
+	- possible approach: http://stackoverflow.com/a/3026411/519575
+	$dom = new DOMDocument;
+	$dom->loadHTML($html);
+	$xpath = new DOMXPath($dom);
+	$nodes = $xpath->query('//@*');
+	foreach ($nodes as $node) {
+		$node->parentNode->removeAttribute($node->nodeName);
+	}
+
 - use gallery-style slider for outcome previews
 - try to get rid of table in outcome previews
 - main CCIJ site has Google Analytics - should incorporate the async version of this too, log trips to all #destinations
