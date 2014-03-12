@@ -8,8 +8,6 @@
 2) modal doesn't scroll when off screen
 3) date picker isn't obvious when presented with keyboard input beneath text input
 4) question summary list should just be one row, swipeable / pageable like outcomes list. Will require some complex logic to ensure the current question is as close to the centre of that display as possible
-- some scenario where question summary links can be repeated and clicking the duplicates messes things up
-	- see if can be prevented using listenOnce (would be in MainView, not ContentView)
 - test case - slow download of resources, anything available before it will actually work?
 - http://getbootstrap.com/getting-started/#browsers
 - tip buttons near key functionality explaining what's going on

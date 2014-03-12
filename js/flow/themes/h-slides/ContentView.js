@@ -26,12 +26,6 @@ define(
 		
 		addQuestions: function(questions) {
 			
-			if(this.addQuestionsCalled) {
-				// possible that somehow this function is called twice in error condition
-				Log.error('ContentView.addQuestions called twice');
-				return;
-			}
-			
 			this.addQuestionsCalled = true;
 			
 			var scratch = $('#flow_scratch');
