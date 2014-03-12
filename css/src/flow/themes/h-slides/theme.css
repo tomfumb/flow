@@ -93,14 +93,9 @@
 
 .answer-pad {
 	float: left;
-	width: 24px;
 	padding: 2px;
-	height: 24px;
 }
 
-.selected-answer-pad {
-	background: url('img/tick-20x20.png') no-repeat;
-}
 #flow_available_count_main_container {
 	color: #fff;
 	font-size: 60px;

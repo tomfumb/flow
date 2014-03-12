@@ -1,7 +1,7 @@
 <p>Select an answer below.</p>
 <% _.each(answers, function(answer, index) { %>
 	<div class="answer clickable" id="answer_<%= index %>">
-		<div class="answer-pad"></div>
+		<img src="images/0.png" width="20" height="20" alt="selected answer indicator" class="answer-pad" />
 		<div class="answer-content"><%= answer %></div>
 		<div class="clearer"></div>
 	</div>

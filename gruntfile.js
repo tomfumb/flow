@@ -21,6 +21,13 @@ module.exports = function(grunt) {
           name: "app",
           out: "js/dist/<%= pkg.name %>-<%= pkg.version %>.js"
         }
+      },
+      css: {
+        options: {
+          optimizeCss: 'standard',
+          cssIn: 'css/src/ccij.css',
+          out: 'css/dist/<%= pkg.name %>-<%= pkg.version %>.css'
+        }
       }
     },
     lint5: {

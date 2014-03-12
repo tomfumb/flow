@@ -1,0 +1,106 @@
+@import url('../lib/bootstrap/css/bootstrap.min.css');
+@import url('../lib/bootstrap/css/bootstrap-theme.min.css');
+@import url('../lib/jquery-ui/flick/jquery-ui-1.10.4.custom.min.css');
+@import url('flow/themes/h-slides/theme.css');
+
+#ccij_header {
+	height: 64px;
+	text-align: center;
+	background: url('../../images/ccij-header-bg.png');
+	background-repeat: repeat-x;
+	overflow: hidden;
+}
+
+#ccij_header img {
+	border: 0;
+}
+
+.entry-point-img {
+	float: left;
+	margin: 0 8px 0 0;
+}
+
+#ccij_outcomes {
+	display: none;
+}
+
+.ccij-outcome {
+	margin: 25px 0 0 0;
+}
+
+.ccij-outcome img {
+	float: left;
+}
+
+.ccij-outcome .outcome-title {
+	float: left;
+	margin: 0 0 0 10px;
+}
+
+.ccij-outcome div.outcome-description {
+	padding: 10px 0 0 0;
+	clear: both;
+}
+
+#flow {
+
+}
+
+#flow_body {
+	display: none;
+}
+
+#flow_print {
+	display: none;
+}
+
+#flow_scratch {
+	display: none;
+}
+
+.clickable {
+	cursor: pointer;
+}
+
+.clearer { 
+	clear: both;
+}
+
+.spacer-10 {
+	margin: 10px 0 10px 0;
+}
+
+.spacer-5 {
+	margin: 5px 0 5px 0;
+}
+
+.outcome-abbreviation {
+	display: none;
+}
+
+.outcome-url {
+	display: none;
+}
+
+img.sprites { background: url(../../images/sprites.png) no-repeat; }
+img.achpr { width: 75px; height: 75px; background-position: 0 0; }
+img.africancourt { width: 75px; height: 75px; background-position: -76px 0; }
+img.book { width: 48px; height: 48px; background-position: -152px -130px; }
+img.bosnia { width: 75px; height: 75px; background-position: 0 -76px; }
+img.canada-flag { width: 75px; height: 75px; background-position: -76px -76px; }
+img.canada { width: 75px; height: 75px; background-position: -250px -130px; }
+img.ccij-header-bg { width: 1px; height: 64px; background-position: -250px -282px; }
+img.ccij-logo-e { width: 175px; height: 64px; background-position: -152px 0; }
+img.ccij-logo-f { width: 175px; height: 64px; background-position: -152px -65px; }
+img.ccij-name { width: 249px; height: 64px; background-position: 0 -304px; }
+img.eccc { width: 75px; height: 75px; background-position: 0 -152px; }
+img.echr { width: 75px; height: 75px; background-position: -76px -152px; }
+img.ecowas { width: 75px; height: 75px; background-position: -228px -206px; }
+img.emblem-notice { width: 24px; height: 24px; background-position: -201px -130px; }
+img.gavel { width: 48px; height: 48px; background-position: -201px -155px; }
+img.icc { width: 75px; height: 75px; background-position: 0 -228px; }
+img.oas { width: 75px; height: 75px; background-position: -76px -228px; }
+img.test { width: 48px; height: 48px; background-position: -152px -179px; }
+img.tick { width: 20px; height: 20px; background-position: -201px -204px; }
+img.un-hr { width: 75px; height: 75px; background-position: -152px -228px; }
+img.un-women { width: 75px; height: 75px; background-position: -252px -282px; }

@@ -74,8 +74,8 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'text!template/flow/them
 							jqTarget = jqTarget.parents('div.answer');
 						}
 
-						this.$el.find('div.selected-answer-pad').removeClass('selected-answer-pad');
-						jqTarget.addClass('selected-answer-pad');
+						this.$el.find('img.tick').removeClass('tick').removeClass('sprites');
+						jqTarget.find('img').addClass('tick').addClass('sprites');
 						
 						this.onAnswersSelected([jqTarget.find('div.answer-content').html()]);
 						
