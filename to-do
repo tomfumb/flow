@@ -23,7 +23,17 @@
 	}
 
 - use gallery-style slider for outcome previews
+
+	- useful info from youtube:
+		- use ul (necessary?)
+		- white-space: nowrap (allows partial display of elements)
+		- set left css property and have -webkit-transition ? - seems to mean sliding without js animation
+		- list-style: none (could this be how to get rid of the table?)
+		- word-wrap: break-word (could mean longer abbrevs??)
+
 - try to get rid of table in outcome previews
 - main CCIJ site has Google Analytics - should incorporate the async version of this too, log trips to all #destinations
 - check necessity of shims in index.htm
 - split config into outcomes and questions - outcomes is not language-specific but questions is
+- Pam's style guide
+- Todd & Tyler feedback
