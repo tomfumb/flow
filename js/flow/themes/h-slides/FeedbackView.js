@@ -27,6 +27,7 @@ define(['jquery', 'underscore', 'backbone', 'text!template/flow/themes/h-slides/
 			}
 			
 			this.content.modal();
+			this.from.focus();
 		},
 		
 		onFromChanged: function() {

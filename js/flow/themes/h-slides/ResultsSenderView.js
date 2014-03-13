@@ -22,13 +22,19 @@ define(['jquery', 'underscore', 'backbone', 'text!template/flow/themes/h-slides/
 			}
 			
 			this.content.modal();
+			this.to.focus();
 		},
 		
-		onToChanged: function() {
+		onToChanged: function(event) {
 			
 			if(this.toValid()) {
+				
 				this.to.removeClass('input-attention');
 				this.sendButton.removeAttr('disabled');
+				
+				if(event.which === 13) {
+					window.setTimeout(_.bind(this.onSendClicked, this), 0);
+				}
 			}
 			else {
 				this.sendButton.attr('disabled', 'disabled');
