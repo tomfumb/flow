@@ -26,3 +26,4 @@
 - try to get rid of table in outcome previews
 - main CCIJ site has Google Analytics - should incorporate the async version of this too, log trips to all #destinations
 - check necessity of shims in index.htm
+- split config into outcomes and questions - outcomes is not language-specific but questions is
