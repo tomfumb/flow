@@ -1,8 +1,17 @@
+To Do
 - only have useful log messages
+- implement error logging to server, have log emailed and deleted if it exceeds a given size
+- check new email tag / attr stripping logic
 - position email and feedback buttons
+- email results should have a checkbox to also send to CCIJ
 - icon for question area (ESL)
+- SEO (French?)
+- Assess tool should be the first option
 - update spreadsheet with used values
+- soften colours and make question text bigger - more engaging
+- space for a tagline under the title: e.g. "informing survivors about their options"
 - if modal closed after showing options at end should be really obvious how to re-open it
+- perhaps give feedback about % complete as working through
 - replace modal for showing options with swipe left / right page - use modal only for emailing results and feedback
 - Mobile issues:
 2) modal doesn't scroll when off screen
@@ -31,9 +40,17 @@
 		- list-style: none (could this be how to get rid of the table?)
 		- word-wrap: break-word (could mean longer abbrevs??)
 
+- 0 options should immediately move to show text on available options
 - try to get rid of table in outcome previews
 - main CCIJ site has Google Analytics - should incorporate the async version of this too, log trips to all #destinations
 - check necessity of shims in index.htm
 - split config into outcomes and questions - outcomes is not language-specific but questions is
 - Pam's style guide
-- Todd & Tyler feedback
+
+Considerations:
+- Using the tool could be emtionally raw for a user and this might need to be managed. Reactions might be different to the people that Matt deals with as they have already decided they are comfortable talking about it
+- Reading level of tool & question text, would be best at grade 6 or 7
+- how much time should be set aside and should they have someone with them?
+- it's OK to not answer questions, though this will impact how helpful the tool can be
+- Set expectations up front - base case and worse case
+- trigger warning and suggestions for psychological support - users may have both legal and psychological concerns
