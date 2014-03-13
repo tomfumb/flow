@@ -35,7 +35,7 @@ module.exports = function(grunt) {
       templates: [
         "index.htm"
         /* ignoring template .html files as lint tool cannot handle snippets without body tag or underscore _.template variables e.g. <%= ...  %>  */
-      ],
+      ]
     }
   });
 
