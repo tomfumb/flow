@@ -2,10 +2,14 @@
 
 require_once('../common.php');
 
-if(isset($_POST['to']) && isset($_POST['message'])) {
+if(isset($_POST['to']) && isset($_POST['message']) && isset($_POST['cc'])) {
 	
 	$to = $_POST['to'];
 	$message = $_POST['message'];
+	$cc = $_POST['cc'];
+	
+	echo $cc;
+	exit;
 	
 	if(is_null($to) || empty($to) || !filter_var($to, FILTER_VALIDATE_EMAIL)) {
 		header('HTTP/1.1 400 Invalid email address', true, 400);
@@ -50,6 +54,17 @@ if(isset($_POST['to']) && isset($_POST['message'])) {
 		'Content-type: text/html; charset=iso-8859-1',
 		'-f ' . $ccijEmail
 	);
+	
+	if($cc) {
+		// also send to CCIJ but fire-and-forget - don't alter the response if this email fails
+		mail(
+			$ccijEmail,
+			'CC Results: Opportunities for Justice (' . $to . ')',
+			$content,
+			'Content-type: text/html; charset=iso-8859-1',
+			'-f ' . $to
+		);
+	}
 	
 	if($sent) {
 		header('HTTP/1.1 200', true, 200);
