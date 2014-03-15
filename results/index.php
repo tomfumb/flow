@@ -8,9 +8,6 @@ if(isset($_POST['to']) && isset($_POST['message']) && isset($_POST['cc'])) {
 	$message = $_POST['message'];
 	$cc = $_POST['cc'];
 	
-	echo $cc;
-	exit;
-	
 	if(is_null($to) || empty($to) || !filter_var($to, FILTER_VALIDATE_EMAIL)) {
 		header('HTTP/1.1 400 Invalid email address', true, 400);
 		exit();
@@ -26,7 +23,7 @@ if(isset($_POST['to']) && isset($_POST['message']) && isset($_POST['cc'])) {
 	$dom->loadHTML($message);
 	
 	$badCount = 0;
-	foreach($dom->getElementsByTagName('a') as $a) {
+	foreach($dom->getElementsByTagName('a') as $element) {
 		$badCount++;
 	}
 	
@@ -45,7 +42,18 @@ if(isset($_POST['to']) && isset($_POST['message']) && isset($_POST['cc'])) {
 		$attr->parentNode->removeAttribute($attr->nodeName);
 	}
 	
-	$content = $dom->saveHTML() . '<br /><br /><a href="' . $toolUrl . '">Opportunities for Justice</a>';
+	// add link back to tool
+	$link = $dom->createElement('a', 'Opportunities for Justice');
+	$link->setAttribute('href', $toolUrl);
+	$link->setAttribute('target', '_blank');
+	$br = $dom->createElement('br');
+	
+	$body = $dom->getElementsByTagName('body')->item(0);
+	
+	$body->appendChild($br);
+	$body->appendChild($link);
+	
+	$content = $dom->saveHTML();
 	
 	$sent = mail(
 		$to,
@@ -55,7 +63,7 @@ if(isset($_POST['to']) && isset($_POST['message']) && isset($_POST['cc'])) {
 		'-f ' . $ccijEmail
 	);
 	
-	if($cc) {
+	if($cc === 'true') {
 		// also send to CCIJ but fire-and-forget - don't alter the response if this email fails
 		mail(
 			$ccijEmail,

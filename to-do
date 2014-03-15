@@ -1,9 +1,7 @@
 To Do
 - only have useful log messages
 - implement error logging to server, have log emailed and deleted if it exceeds a given size
-- check new email tag / attr stripping logic
 - position email and feedback buttons
-- email results should have a checkbox to also send to CCIJ
 - icon for question area (ESL)
 - SEO (French?)
 - Assess tool should be the first option
@@ -20,7 +18,6 @@ To Do
 - test case - slow download of resources, anything available before it will actually work?
 - http://getbootstrap.com/getting-started/#browsers
 - tip buttons near key functionality explaining what's going on
-- try and strip attributes from printed / posted html
 
 - use gallery-style slider for outcome previews
 
