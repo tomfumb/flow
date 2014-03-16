@@ -9,7 +9,8 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'theme/ContentView'], fu
 			this.questions = this.model.get('Questions');
 			this.outcomes = this.model.get('Outcomes');
 			
-			this.questions.listenToOnce(this.questions, 'start', _.bind(this.onStart, this));
+			this.questions.listenToOnce(this.questions, 'modelReady', _.bind(this.onQuestionsReady, this));
+			this.questions.listenToOnce(this.questions, 'userReady', _.bind(this.onUserReady, this));
 			this.questions.on('change:selectedAnswers', _.bind(this.onAnswersSelected, this));
 			this.questions.on('change:questionAnswered', _.bind(this.onQuestionAnswered, this));
 		},
@@ -17,7 +18,6 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'theme/ContentView'], fu
 		render: function() {
 			
 			Log.debug('MainView.render');
-			this.$el.show();
 			
 			this.content = new ContentView();
 			this.content.render();
@@ -25,13 +25,17 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'theme/ContentView'], fu
 			this.content.addOutcomes(this.outcomes);
 		},
 		
-		onStart: function() {
+		onQuestionsReady: function() {
 			
-			Log.debug('MainView.onStart');
+			Log.debug('MainView.onQuestionsReady');
 			
 			this.render();
 			this.content.addQuestions(this.questions.models);
 			this.content.showFirstQuestion();
+		},
+		
+		onUserReady: function() {
+			this.$el.show();
 		},
 		
 		onAnswersSelected: function(answeredQuestion, answers) {

@@ -24,7 +24,6 @@ To Do
 		- padding element, z-index: 2; position: relative (to offset left slide)
 		- transparency gradient to show when one is only partially available (just right side?)
 		
-- require() modules for test immediately after showing disclaimer. understand button not available until addQuestions and addOutcomes complete - as if button has been clicked but nothing shown
 - 0 options should immediately move to show text on available options
 - main CCIJ site has Google Analytics - should incorporate the async version of this too, log trips to all #destinations
 - check necessity of shims in index.htm

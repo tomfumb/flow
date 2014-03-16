@@ -37,11 +37,12 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'flow/Question'], functi
 					model.set('available', true);
 				}
 			}, this);
+			
+			this.trigger('modelReady');
 		},
 		
-		readyForFirstQuestion: function() {
-			Log.debug('QuestionManager triggering start');		
-			this.trigger('start');
+		userReady: function() {
+			this.trigger('userReady');
 		},
 		
 		checkAvailableQuestions: function() {

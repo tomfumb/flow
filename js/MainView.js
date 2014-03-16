@@ -1,6 +1,6 @@
 define(
 	['jquery', 'underscore', 'backbone', 'data/en', 'flow/Log', 'flow/IntroView', 'flow/MainView', 'flow/PrintView', 'flow/QuestionManager', 'flow/OutcomeManager'],
-	function($, _, Backbone, config, log, IntroView, MainView, PrintView, QuestionManager, OutcomeManager) { 
+	function($, _, Backbone, config, Log, IntroView, MainView, PrintView, QuestionManager, OutcomeManager) { 
 	
 	return Backbone.View.extend({
 	
@@ -85,13 +85,17 @@ define(
 			var introView = new IntroView({model: QuestionManager, el: '#flow_intro'});
 			introView.render();
 			
-			new MainView({model: combinedModel, el: '#flow_body'});
-			
-			OutcomeManager.reset(config.outcomes);
-			QuestionManager.reset(config.questions);
-			
-			var printView = new PrintView({model: combinedModel, el: '#flow_print'});
-			printView.render();
+			// setTimeout of 0 - give the intro view a chance to draw before potentially cpu-intensive question management
+			setTimeout(_.bind(function() {
+				
+				new MainView({model: combinedModel, el: '#flow_body'});
+				
+				OutcomeManager.reset(config.outcomes);
+				QuestionManager.reset(config.questions);
+				
+				var printView = new PrintView({model: combinedModel, el: '#flow_print'});
+				printView.render();
+			}, this), 0);
 		}
 	});
 });
