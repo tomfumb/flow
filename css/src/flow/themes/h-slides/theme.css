@@ -104,6 +104,28 @@
 	width: 120px;
 	height: 100px;
 	border: 4px double #800000;
+	position: relative;
+	z-index: 2; 
+}
+
+.available-count-side-pad {
+	z-index: 2;
+	height: 100px;
+}
+
+#flow_available_count_side_pad_left {
+	position: relative;
+	background-color: #fff;
+	width: 5px;
+	top: -100px;
+	left: 120px;
+}
+
+#flow_available_count_side_pad_right {
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 15px;
 }
 
 #flow_available_count_main {
@@ -113,7 +135,15 @@
 }
 
 #flow_available_outcome_previews {
-	padding: 0 0 0 10px;
+	padding: 0;
+	list-style-type: none;
+	overflow: hidden;
+	position: relative;
+	top: -200px;
+	left: 125px;
+	white-space: nowrap;
+	z-index: 1;
+	width: 10000px
 }
 
 .available-outcome-preview-container {

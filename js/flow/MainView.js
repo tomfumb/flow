@@ -31,11 +31,11 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'theme/ContentView'], fu
 			
 			this.render();
 			this.content.addQuestions(this.questions.models);
-			this.content.showFirstQuestion();
 		},
 		
 		onUserReady: function() {
 			this.$el.show();
+			this.content.onBeforeShow();
 		},
 		
 		onAnswersSelected: function(answeredQuestion, answers) {

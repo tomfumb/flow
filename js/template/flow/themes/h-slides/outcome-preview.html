@@ -5,31 +5,16 @@
 	</div>
 </div>
 <div class="row" style="overflow: hidden;">
-	<!--<div class="col-24 col-xs-24 col-sm-24 col-md-24 col-lg-24">-->
-		
-		<div id="flow_available_count_main_container" class="clickable" style="z-index: 2; position: relative;">
+	<div class="col-24 col-xs-24 col-sm-24 col-md-24 col-lg-24">
+		<div id="flow_available_count_main_container" class="clickable">
 			<span id="flow_available_count_main"><%= availableCount %></span>
 		</div>
-		<ul id="flow_available_outcome_previews" class="available-outcome-preview-container" style="list-style-type: none; overflow: hidden; position: relative; top: -90px; left: 120px; white-space: nowrap; z-index: 1; width: 10000px"><%= previewHtml %></ul>
-
-
-		<!-- really don't want to use a table for layout but in this case cannot see any way to achieve the required effect in CSS without recalculating fixed width or having fluid layout overflow -->
-		<!--
-		<table cellpadding="0">
-			<tr>
-				<td>
-					<div id="flow_available_count_main_container" class="clickable">
-						<span id="flow_available_count_main"><%= availableCount %></span>
-					</div>
-				</td>
-				<td style="overflow: hidden;">
-					<div id="flow_available_outcome_previews" class="available-outcome-preview-container"><%= previewHtml %></div>
-					<div class="clearer"></div>
-				</td>
-			</tr>
-		</table>
-		-->
-	<!--</div>-->
+		<div id="flow_available_count_side_pad_left" class="available-count-side-pad"></div>
+		<ul id="flow_available_outcome_previews" class="available-outcome-preview-container">
+			<%= previewHtml %>
+		</ul>
+		<div id="flow_available_count_side_pad_right" class="available-count-side-pad white-gradient-right-15"></div>
+	</div>
 </div>
 <div class="spacer-10"></div>
 <div class="row">

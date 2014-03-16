@@ -92,19 +92,17 @@ define(
 			
 			// update modal with all questions unanswered / unavailable
 			this.outcomeManager.unansweredQuestions = availableCount;
+			
+			this.prepareDisplay();
 		},
 		
-		showFirstQuestion: function() {
-			
-			Log.debug('ContentView.showFirstQuestion');
+		prepareDisplay: function() {
 			
 			// first question is actually already shown by this point but it does not yet have the ability to move to the next question. Carousel initialisation is required for that
 			this.$carouselEl = this.$el.find('#flow_carousel').carousel({
 				pause: true,
 				interval: false
 			});
-			
-			this.resizeQuestionContainers(false);
 			
 			// ensure navigation buttons aren't available during carousel movement
 			this.$carouselEl.on('slide.bs.carousel', _.bind(this.onSlideStart, this));
@@ -113,6 +111,10 @@ define(
 			this.checkNavigationOptions();
 			
 			this.questions[0].view.onBeforeShow();
+		},
+		
+		onBeforeShow: function() {
+			this.resizeQuestionContainers(false);
 		},
 		
 		showNextQuestion: function() {
