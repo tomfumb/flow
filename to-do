@@ -4,11 +4,12 @@ To Do
 - implement error logging to server, have log emailed and deleted if it exceeds a given size
 - icon for question area (ESL)
 - SEO (French?)
-- update spreadsheet with used values
 - soften colours and make question text bigger - more engaging
 - social media sharing icons??
 - perhaps give feedback about % complete as working through
 - Mobile issues:
+1) modals still too big for small screen
+2) swiping has broken - jquery-mobile not referenced as a dependency
 3) date picker isn't obvious when presented with keyboard input beneath text input
 4) question summary list should just be one row, swipeable / pageable like outcomes list. Will require some complex logic to ensure the current question is as close to the centre of that display as possible
 - test case - slow download of resources, anything available before it will actually work?
