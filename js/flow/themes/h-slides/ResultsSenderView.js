@@ -10,8 +10,7 @@ define(['jquery', 'underscore', 'backbone', 'text!template/flow/themes/h-slides/
 				var scratch = $('#flow_scratch');
 				scratch.html(_.template(template));
 				
-				this.content = scratch.find('#flow_results_sender_modal');
-				
+				this.content = scratch.find('#flow_results_sender_modal').clone();
 				scratch.html('');
 				
 				this.sendButton = this.content.find('#flow_results_sender_send').click(_.bind(this.onSendClicked, this));
@@ -26,6 +25,7 @@ define(['jquery', 'underscore', 'backbone', 'text!template/flow/themes/h-slides/
 			this.content.modal();
 			
 			if(isFirst) {
+				
 				this.content.on('hidden.bs.modal', _.bind(function () {
 					setTimeout(_.bind(function() {
 						this.isShown = false;
