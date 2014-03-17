@@ -1,7 +1,6 @@
 To Do
 - only have useful log messages
 - implement error logging to server, have log emailed and deleted if it exceeds a given size
-- position email and feedback buttons
 - icon for question area (ESL)
 - SEO (French?)
 - update spreadsheet with used values
