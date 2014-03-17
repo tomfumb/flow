@@ -9,9 +9,7 @@ To Do
 - social media sharing icons??
 - if modal closed after showing options at end should be really obvious how to re-open it
 - perhaps give feedback about % complete as working through
-- replace modal for showing options with swipe left / right page - use modal only for emailing results and feedback
 - Mobile issues:
-2) modal doesn't scroll when off screen
 3) date picker isn't obvious when presented with keyboard input beneath text input
 4) question summary list should just be one row, swipeable / pageable like outcomes list. Will require some complex logic to ensure the current question is as close to the centre of that display as possible
 - test case - slow download of resources, anything available before it will actually work?
@@ -19,10 +17,7 @@ To Do
 - tip buttons near key functionality explaining what's going on
 
 - use gallery-style slider for outcome previews
-
-	- partly implemented, needs
-		- padding element, z-index: 2; position: relative (to offset left slide)
-		- transparency gradient to show when one is only partially available (just right side?)
+	- not sliding - does it need to?
 		
 - 0 options should immediately move to show text on available options
 - main CCIJ site has Google Analytics - should incorporate the async version of this too, log trips to all #destinations

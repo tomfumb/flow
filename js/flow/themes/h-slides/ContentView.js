@@ -118,8 +118,6 @@ define(
 		},
 		
 		showNextQuestion: function() {
-			
-			Log.debug('ContentView.showNextQuestion');
 				
 			var nextIndex = this.getIndexOfNextAvailableQuestion();
 			
@@ -150,7 +148,7 @@ define(
 				
 				// force display of available / unavailable outcomes now that the user has completed all questions
 				if(this.outcomeManager) {
-					this.outcomeManager.showOutcomesInModal();
+					this.outcomeManager.showOutcomes(true);
 				}
 			}
 		},
@@ -412,20 +410,18 @@ define(
 		
 		addOutcomes: function(outcomes) {
 			
-			Log.debug('ContentView.addOutcomes');
-			
 			this.outcomePreviews = new OutcomePreviewsView({model: outcomes});
 			this.outcomeManager = new OutcomeManagerView({model: outcomes});
-			this.outcomeManager.render();
+			this.outcomeManager.render(this.$el.find('#flow_content_container_row'));
 			this.outcomePreviews.render(_.bind(this.outcomeShowRequested, this));
 		},
 		
 		outcomeShowRequested: function(outcome) {
 			if(outcome) {
-				this.outcomeManager.showOutcomeInModal(outcome);
+				this.outcomeManager.showOutcome(outcome);
 			}
 			else {
-				this.outcomeManager.showOutcomesInModal();
+				this.outcomeManager.showOutcomes();
 			}
 		},
 		

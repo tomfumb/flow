@@ -96,6 +96,14 @@
 	padding: 2px;
 }
 
+#flow_content_container_row {
+	overflow: hidden;
+}
+
+#flow_outcome_preview_row {
+	height: 100px;
+}
+
 #flow_available_count_main_container {
 	color: #fff;
 	font-size: 60px;
@@ -144,6 +152,14 @@
 	white-space: nowrap;
 	z-index: 1;
 	width: 10000px
+}
+
+#flow_content_right {
+	position: relative;
+	width: 100%;
+	z-index: 3;
+	background-color: #fff;
+	display: none;
 }
 
 .available-outcome-preview-container {
@@ -210,10 +226,6 @@
 	outline: none;
 }
 
-.outcome-tab-link {
-	padding: 10px 4px 10px 4px !important;
-}
-
 .outcome-view {
 	border: 1px dotted #d0d0d0;
 	padding: 4px;
@@ -247,4 +259,8 @@ input.hint-text {
 
 .input-attention {
 	border-color: red !important;
+}
+
+.outcomes-hide {
+	color: #BFB8B8;
 }

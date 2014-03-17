@@ -4,7 +4,8 @@ define(['jquery', 'underscore', 'backbone', 'text!template/flow/themes/h-slides/
 		
 		render: function(resultsHtml) {
 			
-			if(!this.content) {
+			var isFirst = !this.content;
+			if(isFirst) {
 				
 				var scratch = $('#flow_scratch');
 				scratch.html(_.template(template));
@@ -23,7 +24,18 @@ define(['jquery', 'underscore', 'backbone', 'text!template/flow/themes/h-slides/
 			}
 			
 			this.content.modal();
+			
+			if(isFirst) {
+				this.content.on('hidden.bs.modal', _.bind(function () {
+					setTimeout(_.bind(function() {
+						this.isShown = false;
+					}, this), 0);
+				}, this));
+			}
+			
 			this.to.focus();
+			
+			this.isShown = true;
 		},
 		
 		onToChanged: function(event) {

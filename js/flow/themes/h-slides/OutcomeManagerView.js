@@ -1,71 +1,129 @@
-define(['jquery', 'underscore', 'backbone', 'theme/OutcomeView', 'text!template/flow/themes/h-slides/outcome-manager.html', 'text!template/flow/themes/h-slides/outcome-manager-outcome.html'], function($, _, Backbone, OutcomeView, managerTemplate, outcomeTemplate) {
+define(['jquery', 'underscore', 'backbone', 'theme/OutcomeView', 'theme/ResultsSenderView', 'theme/FeedbackView', 'text!template/flow/themes/h-slides/outcome-manager.html', 'text!template/flow/themes/h-slides/outcome-manager-outcome.html'], function($, _, Backbone, OutcomeView, ResultsSenderView, FeedbackView, managerTemplate, outcomeTemplate) {
 	
 	return Backbone.View.extend({
 	
-		el: '#flow_outcomes',
-		
-		outcome_template: [
-		].join(''),
-		
-		render: function() {
+		el: '#flow_content_right',
+				
+		render: function(fullContentContainer) {
+			
+			this.fullContentContainer = fullContentContainer;
 			
 			this.$el.html(_.template(managerTemplate));
-			
-			this.modal = this.$el.find('#flow_outcome_modal');
-			this.modalContent = this.modal.find('.modal-content');
-			
-			this.$el.find('#flow_outcome_modal_body a.outcome-tab-link').click(function (e) {
-				e.preventDefault();
-				$(this).tab('show');
-			});
 			
 			this.availableOutcomesContainer = this.$el.find('#flow_outcome_available_outcomes');
 			this.unavailableOutcomesContainer = this.$el.find('#flow_outcome_unavailable_outcomes');
 			
-			this.someOptionsNote = this.$el.find('#flow_some_options_note');
-			this.noOptionsNote = this.$el.find('#flow_no_options_note_container');
-			/*
-			$(window).resize(_.bind(this.onWindowResize, this));
-			this.onWindowResize();
-			*/
-		},
-		/*
-		onWindowResize: function() {
+			this.someAvailableNote = this.$el.find('#flow_available_options_note');
+			this.noAvailableNote = this.$el.find('#flow_no_available_options_note_container');
 			
-			if(window.innerWidth < 768) {
-				this.modalContent.css('max-height', window.innerHeight).css('overflow-y', 'auto');
-			}
-			else {
-				this.modalContent.css('max-height', '').css('overflow-y', 'visible');
-			}
-		},
-		*/
-		showOutcomesInModal: function() {
+			this.someUnavailableNote = this.$el.find('#flow_unavailable_options_note');
+			this.noUnavailableNote = this.$el.find('#flow_no_unavailable_options_note_container');
 			
-			this.renderOutcomesInModal();
-			this.$el.find('#flow_outcome_available_link a').tab('show');
-			this.modal.modal();
+			this.$el.find('.results-send-link').click(_.bind(function() {
+				this.onSendResultsClicked();
+			}, this));
+			
+			this.$el.find('.feedback-send-link').click(_.bind(function() {
+				this.onFeedbackClicked();
+			}, this));
+			
+			this.$el.find('.results-print-link').click(function() {
+				window.print();
+			});
+			
+			this.$el.find('.outcomes-hide').click(_.bind(function() {
+				this.hideClicked();
+			}, this));
+			
+			$(document).keyup(_.bind(function(e) {
+				if(e.keyCode === 27) {
+					this.onEscapePressed();
+				}
+			}, this));
 		},
 		
-		showOutcomeInModal: function(outcome, internal) {
+		onEscapePressed: function() {
+			if(
+				(!this.resultsSenderView || (this.resultsSenderView && !this.resultsSenderView.isShown)) &&
+				(!this.feedbackView || (this.feedbackView && !this.feedbackView.isShown))) {
+				this.hideClicked();
+			}
+		},
+		
+		show: function() {
+			
+			var height = this.fullContentContainer.height();
+			var width = this.fullContentContainer.width();
+			
+			this.$el.height(height).css('left', width).show();
+			
+			this.fullContentContainer.height(height).find('.content-piece').hide();
+			
+			this.$el.stop().animate({left: 0}, 200, _.bind(function() {
+				this.$el.height('auto');
+				this.fullContentContainer.height('auto');
+				this.isShown = true;
+			}, this));
+		},
+		
+		hide: function() {
+			
+			var height = this.fullContentContainer.height();
+			var width = this.fullContentContainer.width();
+			
+			this.isShown = false;
+			
+			this.fullContentContainer.height(height);
+			
+			this.$el.stop().animate({left: width}, 200, _.bind(function() {
+				this.$el.hide();
+				this.fullContentContainer.height('auto').find('.content-piece').show();
+			}, this));
+		},
+		
+		hideClicked: function() {
+			if(this.isShown) {
+				this.hide();
+			}
+		},
+		
+		showOutcomes: function(fromEnd) {
+			
+			fromEnd = (typeof fromEnd === 'undefined' ? false : !!fromEnd);
+			
+			this.renderOutcomes();
+			if(fromEnd) {
+				this.$el.find('#flow_outcome_what_now_link a').tab('show');
+			}
+			else {
+				this.$el.find('#flow_outcome_available_link a').tab('show');
+			}
+			
+			this.show();
+		},
+		
+		showOutcome: function(outcome, internal) {
 			
 			internal = (typeof internal === 'undefined' ? false : !!internal);
 			
 			if(!internal) {
-				this.renderOutcomesInModal();
-				this.modal.modal();
+				this.renderOutcomes();
 			}
 			
 			this.$el.find('#flow_outcome_detail_link').show().find('>a').html(outcome.get('abbreviation')).tab('show');
 			this.$el.find('#flow_outcome_detail').html(outcome.get('selector').html());
+			
+			if(!internal) {
+				this.show();
+			}
 		},
 		
-		renderOutcomesInModal: function() {
+		renderOutcomes: function() {
 				
 			this.availableOutcomesContainer.html('');
 			this.unavailableOutcomesContainer.html('');
 				
-			var outcomeElId, outcomeEl, availableCount = 0;
+			var outcomeElId, outcomeEl, availableCount = 0, unavailableCount = 0;
 			_.each(this.model.models, function(outcome, index) {
 				
 				outcomeElId = this.getContainerIdFromOutcome(outcome);
@@ -80,6 +138,7 @@ define(['jquery', 'underscore', 'backbone', 'theme/OutcomeView', 'text!template/
 					this.availableOutcomesContainer.append(outcomeEl);
 				}
 				else {
+					unavailableCount++;
 					this.unavailableOutcomesContainer.append(outcomeEl);
 				}
 					
@@ -88,31 +147,58 @@ define(['jquery', 'underscore', 'backbone', 'theme/OutcomeView', 'text!template/
 			}, this);
 			
 			if(availableCount === 0) {
-				this.someOptionsNote.hide();
-				this.noOptionsNote.show();
+				this.someAvailableNote.hide();
+				this.noAvailableNote.show();
 			}
 			else {
-				this.someOptionsNote.show();
-				this.noOptionsNote.hide();
+				this.someAvailableNote.show();
+				this.noAvailableNote.hide();
 			}
 			
-			this.modal.find('.outcome-manager-outcome-container').click(_.bind(function(event) {
+			if(unavailableCount === 0) {
+				this.someUnavailableNote.hide();
+				this.noUnavailableNote.show();
+			}
+			else {
+				this.someUnavailableNote.show();
+				this.noUnavailableNote.hide();
+			}
+			
+			this.$el.find('.outcome-manager-outcome-container').click(_.bind(function(event) {
 				var jqEl = $(event.target);
 				var element = (jqEl.hasClass('outcome-manager-outcome-container') ? jqEl : jqEl.parents('.outcome-manager-outcome-container'));
 				var outcomeElementId = element.attr('id');
 				var outcome = this.model.findWhere({id: this.getOutcomeIdFromContainerId(outcomeElementId)});
-				this.showOutcomeInModal(outcome, true);
+				this.showOutcome(outcome, true);
 			}, this));
 			
 			if(this.unansweredQuestions > 0) {
 				
 				var questionPluralPart = (this.unansweredQuestions > 1 ? 's are' : ' is');
 				
-				this.$el.find('#flow_outcome_modal_unanswered_count').show().html(this.unansweredQuestions + ' question' + questionPluralPart + ' unanswered.');
+				this.$el.find('#flow_outcome_unanswered_count').show().html(this.unansweredQuestions + ' question' + questionPluralPart + ' unanswered.');
 			}
 			else {
-				this.$el.find('#flow_outcome_modal_unanswered_count').hide();
+				this.$el.find('#flow_outcome_unanswered_count').hide();
 			}
+		},
+		
+		onSendResultsClicked: function() {
+			
+			if(!this.resultsSenderView) {
+				this.resultsSenderView = new ResultsSenderView();
+			}
+			
+			this.resultsSenderView.render();
+		},
+		
+		onFeedbackClicked: function() {
+			
+			if(!this.feedbackView) {
+				this.feedbackView = new FeedbackView();
+			}
+			
+			this.feedbackView.render();
 		},
 		
 		getContainerIdFromOutcome: function(outcome) {
