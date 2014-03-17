@@ -6,13 +6,19 @@ define(['jquery', 'underscore', 'backbone', 'text!template/flow/themes/h-slides/
 			
 			var title = this.model.get('title');
 			var imageClasses = this.model.get('imageClasses');
+			var caveats = this.model.get('caveats');
 			
 			this.$el.html(_.template(
 				template, {
 					title: title,
-					imageClasses: imageClasses
+					imageClasses: imageClasses,
+					caveats: caveats
 				}
 			));
+			
+			if(!caveats) {
+				this.$el.find('.outcome-caveats').hide();
+			}
 		}
 	});
 });

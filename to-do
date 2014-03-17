@@ -1,4 +1,5 @@
 To Do
+- add new mechanism charts
 - only have useful log messages
 - implement error logging to server, have log emailed and deleted if it exceeds a given size
 - icon for question area (ESL)
@@ -6,7 +7,6 @@ To Do
 - update spreadsheet with used values
 - soften colours and make question text bigger - more engaging
 - social media sharing icons??
-- if modal closed after showing options at end should be really obvious how to re-open it
 - perhaps give feedback about % complete as working through
 - Mobile issues:
 3) date picker isn't obvious when presented with keyboard input beneath text input

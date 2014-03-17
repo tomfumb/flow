@@ -60,9 +60,15 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log'], function($, _, Backbone
 		
 		hasOneOfAnswers: function(possibleAnswers) {
 			
-			return !!_.find(possibleAnswers, function(possibleAnswer) {
-				return this.hasAnswer(possibleAnswer);
+			// ensure all possible answers are iterated-over to highlight bad data 
+			var found = false;
+			_.each(possibleAnswers, function(possibleAnswer) {
+				if(this.hasAnswer(possibleAnswer)) {
+					found = true;
+				}
 			}, this);
+			
+			return found;
 		},
 		
 		checkDate: function(checkDateStr, when) {

@@ -21,6 +21,7 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'flow/Util', 'flow/Outco
 				model.set('url', selector.find('.outcome-url').html());
 				model.set('description', selector.find('.outcome-description').html());
 				model.set('imageClasses', selector.find('img').attr('class'));		
+				model.set('caveats', selector.find('.outcome-caveat').html());
 				
 				model.set('available', true);	
 				

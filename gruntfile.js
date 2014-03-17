@@ -19,7 +19,8 @@ module.exports = function(grunt) {
           baseUrl: "js",
           mainConfigFile: "js/app.js",
           name: "app",
-          out: "js/dist/<%= pkg.name %>-<%= pkg.version %>.js"
+          out: "js/dist/<%= pkg.name %>-<%= pkg.version %>.js",
+          optimize: "none"
         }
       },
       css: {

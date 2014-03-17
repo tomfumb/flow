@@ -3,6 +3,10 @@
 @import url('../lib/jquery-ui/flick/jquery-ui-1.10.4.custom.min.css');
 @import url('flow/themes/h-slides/theme.css');
 
+body {
+	font-family: sans-serif;
+}
+
 #ccij_header {
 	height: 64px;
 	text-align: center;
@@ -80,6 +84,10 @@
 
 .outcome-url {
 	display: none;
+}
+
+.caveat {
+	color: red;
 }
 
 img.sprites { background: url(../../images/sprites.png) no-repeat; }

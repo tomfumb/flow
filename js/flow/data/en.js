@@ -466,7 +466,88 @@ define(['jquery'], function($) {
 	},{
 		/* African Court on Human and Peoples' Rights */
 		selector: $('#ccij_outcome_act_hpr'),
-		condition: function(q1) {
+		condition: function(q1, q2a, q2b, q3, q6, q10, q14a, q14b, q14c, q15) {
+			
+			var relevantCountries = ['Burkina Faso', "Cote d'Ivoire", 'Ghana', 'Malawi', 'Mali', 'Rwanda', 'Tanzania'];
+			
+			var relevantAbuses = ['Beating', 'Bodily mutilation', 'Burning', 'Death threats', 'Deprivation of medical care', 'Electric shock', 'Forced nudity', 'Forced stress positions', 'Forced to watch abuse of other prisoners', 'Incommunicado detention', 'Kicking', 'Kidnapping/disappearance', 'Killing', 'Mock execution', 'Prolonged exposure to extreme cold or heat', 'Prolonged food/water deprivation', 'Prolonged sleep deprivation', 'Punching', 'Rape or other sexual assault', 'Severe mental suffering', 'Solitary confinement', 'Suffocation', 'Waterboarding'];
+			
+			var relevantAbusers = ['other government official', 'police officer', 'soldier/officer in government army'];
+			
+			var relevantActionOutcomes = ['Investigation or prosecution still ongoing', 'A court held someone responsible', 'Someone was put on trial but was found not guilty'];
+			
+			// condition 1 - check that a relevant country is selected
+			var condition1 = false;
+			if(q1.isNotAnswered() || q1.hasOneOfAnswers(relevantCountries)) {
+				condition1 = true;
+			}
+			if(q2a.hasAnswer('Yes') && (q2b.hasOneOfAnswers(relevantCountries))) {
+				condition1 = true;
+			}
+			
+			if(!condition1) {
+				return false;
+			}
+			
+			// condition 2 - check abuse date / end date against selected country/ies
+			var condition2 = false;
+			if (q3.isNotAnswered() || (
+				((q1.hasAnswer('Burkina Faso') || q2b.hasAnswer('Burkina Faso')) && q3.isAfterOrOnDate('1998/12/31')) ||
+				((q1.hasAnswer("Cote d'Ivoire") || q2b.hasAnswer("Cote d'Ivoire")) && q3.isAfterOrOnDate('2013/07/23')) ||
+				((q1.hasAnswer('Ghana') || q2b.hasAnswer('Ghana')) && q3.isAfterOrOnDate('2011/02/09')) ||
+				((q1.hasAnswer('Malawi') || q2b.hasAnswer('Malawi')) && q3.isAfterOrOnDate('2011/02/09')) ||
+				((q1.hasAnswer('Mali') || q2b.hasAnswer('Mali')) && q3.isAfterOrOnDate('2000/05/10')) ||
+				((q1.hasAnswer('Rwanda') || q2b.hasAnswer('Rwanda')) && q3.isAfterOrOnDate('2013/01/22')) ||
+				((q1.hasAnswer('Tanzania') || q2b.hasAnswer('Tanzania')) && q3.isAfterOrOnDate('2006/02/07'))
+			)) {
+				condition2 = true;
+			}
+			
+			if(!condition2) {
+				return false;
+			}
+			
+			// condition 3 - check types of abuses committed
+			var condition3 = (q6.isNotAnswered() || q6.hasOneOfAnswers(relevantAbuses));
+			
+			if(!condition3) {
+				return false;
+			}
+
+			// check for relevant actors
+			var condition4 = (q10.isUnknownOrNotAnswered() || q10.hasOneOfAnswers(relevantAbusers));
+
+			if(!condition4) {
+				return false;
+			}
+			
+			// condition 5 - exhausting domestic remedies
+			var condition5 = false;
+			
+			if(
+				(q14a.isUnknownOrNotAnswered() || q14a.hasAnswer('No')) ||
+				(q14a.hasAnswer('Yes') && q14b.isUnknownOrNotAnswered()) ||
+				(q14a.hasAnswer('Yes') && q14b.hasAnswer('Yes') && q14c.isNotAnswered()) ||
+				(q14a.hasAnswer('Yes') && q14b.hasAnswer('Yes') && !q14c.hasOneOfAnswers(relevantActionOutcomes))) {
+				condition5 = true;
+			}
+			
+			if(!condition5) {
+				return false;
+			}
+			
+			// other international remedies sought
+			var condition6 = false;
+			
+			if(q15.doesNotHaveAnswer('Yes')) {
+				condition6 = true;
+			}
+			
+			if(!condition6) {
+				return false;
+			}
+
+			// by this point all conditions must have passed
 			return true;
 		}
 	},{
@@ -490,7 +571,7 @@ define(['jquery'], function($) {
 			
 			var relevantAbuses = ['Beating', 'Bodily mutilation', 'Burning', 'Burning of houses', 'Death threats', 'Denial of fair trial', 'Deprivation of medical care', 'Destruction or serious damage to property', 'Electric shock', 'Enslavement', 'Forced abortion', 'Forced displacement', 'Forced nudity', 'Forced sterilization', 'Forced stress positions', 'Forced to watch abuse of other prisoners', 'Forcing a prisoner to perform military service', 'Incommunicado detention', 'Kicking', 'Kidnapping/disappearance', 'Killing', 'Mock execution', 'Persecutions on political, racial, or religious grounds', 'Poisoning of water or food supplies', 'Prolonged exposure to extreme cold or heat', 'Prolonged food/water deprivation', 'Prolonged sleep deprivation', 'Punching', 'Rape or other sexual assault', 'Religious persecution', 'Serious mental harm to a person based on race, ethnicity, religion or nationality', 'Severe mental suffering', 'Solitary confinement', 'Stealing children', 'Suffocation', 'Waterboarding'];
 			
-			var relevantAbusers = ["Soldier in government's army", 'Police officer', 'Other government official'];
+			var relevantAbusers = ["Soldier in government's army", 'Police officer', 'Other government official', 'Soldier in rebel army', 'Person in plainclothes', 'Unknown'];
 
 			// condition 1 - check that a relevant country is selected
 			var condition1 = false;
