@@ -1,6 +1,7 @@
 To Do
 - add new mechanism charts
 - only have useful log messages
+- add in-page links for international, regional, and national mechanisms
 - implement error logging to server, have log emailed and deleted if it exceeds a given size
 - icon for question area (ESL)
 - SEO (French?)
