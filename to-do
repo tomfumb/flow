@@ -1,12 +1,16 @@
 To Do
 - add new mechanism charts
+- print view should show caveats
+- remedies tab needs different name
+- review caveats in already done mechanisms
+- separate mechanism spreadsheets into done / not done
 - only have useful log messages
 - add in-page links for international, regional, and national mechanisms
 - implement error logging to server, have log emailed and deleted if it exceeds a given size
 - icon for question area (ESL)
 - SEO (French?)
 - soften colours and make question text bigger - more engaging
-- social media sharing icons??
+- social media sharing icons
 - perhaps give feedback about % complete as working through
 - Mobile issues:
 1) modals still too big for small screen
@@ -23,7 +27,6 @@ To Do
 - 0 options should immediately move to show text on available options
 - main CCIJ site has Google Analytics - should incorporate the async version of this too, log trips to all #destinations
 - check necessity of shims in index.htm
-- split config into outcomes and questions - outcomes is not language-specific but questions is
 - Pam's style guide
 
 Considerations:
