@@ -1,11 +1,12 @@
 {
   "name": "ccij-flow",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "devDependencies": {
     "grunt": "~0.4.2",
     "grunt-contrib-jshint": "~0.8.0",
     "grunt-contrib-requirejs": "~0.4.3",
-    "grunt-lint5": "~0.3.0"
+    "grunt-lint5": "~0.3.0",
+    "grunt-text-replace": "~0.3.11"
   },
   "repository": {
     "type": "git",
