@@ -20,6 +20,21 @@ define([], function() {
 				var r = Math.random() * 16|0, v = c == 'x' ? r : (r&0x3|0x8);
 				return v.toString(16);
 			});
+		},
+		
+		padZeros: function(number, size) {
+		
+			var numberStr = number.toString()
+			if(numberStr.length >= size) {
+				return number;
+			}
+			
+			var zeros = [];
+			while(numberStr.length + zeros.length < size) { 
+				zeros.push('0');
+			}
+			
+			return zeros.join('') + numberStr;
 		}
 	};
 });

@@ -1,4 +1,4 @@
-define(['jquery', 'underscore', 'backbone', 'flow/Log'], function($, _, Backbone, Log) {
+define(['jquery', 'underscore', 'backbone', 'flow/Log', 'flow/Util'], function($, _, Backbone, Log, Util) {
 
 	return Backbone.Model.extend({
 		
@@ -71,6 +71,10 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log'], function($, _, Backbone
 			return found;
 		},
 		
+		doesNotHaveOneOfAnswers: function(possibleAnswers) {
+			return !this.hasOneOfAnswers(possibleAnswers);
+		},
+		
 		checkDate: function(checkDateStr, when) {
 			
 			var dateRegex = /\d{4}\/\d{2}\/\d{2}/;
@@ -119,6 +123,16 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log'], function($, _, Backbone
 		
 		isBetweenDates: function(checkDateStartStr, checkDateEndStr) {
 			return (this.isAfterOrOnDate(checkDateStartStr) && this.isBeforeOrOnDate(checkDateEndStr));
+		},
+		
+		isWithinYearsAgo: function(years) {
+			
+			var date = new Date();
+			date.setFullYear(date.getFullYear() - years);
+			
+			var historicDateStr = date.getFullYear() + '/' + Util.padZeros(date.getMonth() + 1, 2) + '/' + Util.padZeros(date.getDate(), 2);
+			
+			return this.isAfterOrOnDate(historicDateStr);
 		}
 	});
 });

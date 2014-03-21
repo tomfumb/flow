@@ -150,7 +150,7 @@ define(['jquery'], function($) {
 			
 			var relevantActionOutcomes = ['Investigation or prosecution still ongoing', 'A court held someone responsible', 'Someone was put on trial but was found not guilty'];
 			
-			// condition 1 - check that a relevant country is selected
+			// check relevant country(ies) selected
 			var condition1 = false;
 			if(q1.isNotAnswered() || q1.hasOneOfAnswers(relevantCountries)) {
 				condition1 = true;
@@ -159,11 +159,12 @@ define(['jquery'], function($) {
 				condition1 = true;
 			}
 			
+			// exit if no relevant country(ies)
 			if(!condition1) {
 				return false;
 			}
 			
-			// condition 2 - check abuse date / end date against selected country/ies
+			// check abuse date / end date against selected country(ies)
 			var condition2 = false;
 			if (q3.isNotAnswered() || (
 				((q1.hasAnswer('Algeria') || q2b.hasAnswer('Algeria')) && q3.isAfterOrOnDate('1989/09/12')) || 
@@ -237,46 +238,53 @@ define(['jquery'], function($) {
 				condition2 = true;
 			}
 			
+			// exit if country(ies) not covered by mechanism on the entered date
 			if(!condition2) {
 				return false;
 			} 
 			
-			// condition 3 - check types of abuses committed
+			// check for covered abuses
 			var condition3 = (q6.isNotAnswered() || q6.hasOneOfAnswers(relevantAbuses));
-			
+			// exit if no relevant abuses
 			if(!condition3) {
 				return false;
 			}
 
-			// condition 4 - check abuser(s) for state actors
+			// check for covered abusers
 			var condition4 = (q10.isUnknownOrNotAnswered() || q10.hasOneOfAnswers(relevantAbusers));
-
+			// exit if no relevant abusers
 			if(!condition4) {
 				return false;
 			}
 			
-			// condition 5 - exhausting domestic remedies
+			// check whether domestic remedies exhausted
 			var condition5 = false;
-			
 			if(
 				(q14a.isUnknownOrNotAnswered() || q14a.hasAnswer('No')) ||
 				(q14a.hasAnswer('Yes') && q14b.isUnknownOrNotAnswered()) ||
 				(q14a.hasAnswer('Yes') && q14b.hasAnswer('Yes') && q14c.isNotAnswered()) ||
-				(q14a.hasAnswer('Yes') && q14b.hasAnswer('Yes') && !q14c.hasOneOfAnswers(relevantActionOutcomes))) {
+				(q14a.hasAnswer('Yes') && q14b.hasAnswer('Yes') && q14c.doesNotHaveOneOfAnswers(relevantActionOutcomes))) {
 				condition5 = true;
 			}
-				
+			// exit if domestic remedy reached a particular outcome	
 			if(!condition5) {
 				return false;
 			}
 			
-			// other international remedies sought
-			var condition6 = false;
-			if(q15.doesNotHaveAnswer('Yes')) {
-				condition6 = true;
+			// check whether other international remedies sought
+			var condition6 = q15.doesNotHaveAnswer('Yes');
+			// exit if another remedy sought
+			if(!condition6) {
+				return false;
 			}
 			
-			if(!condition6) {
+			// check against statute of limitations
+			var condition7 = false;
+			if(q3.isNotAnswered() || q3.isWithinYearsAgo(10)) {
+				condition7 = true;
+			}
+			// exit if abuse too long ago
+			if(!condition7) {
 				return false;
 			}
 				
@@ -343,7 +351,7 @@ define(['jquery'], function($) {
 			
 			var relevantActionOutcomes = ['Investigation or prosecution still ongoing', 'A court held someone responsible', 'Someone was put on trial but was found not guilty'];
 
-			// condition 1 - check that a relevant country is selected
+			// check relevant country(ies) selected
 			var condition1 = false;
 			if(q1.isNotAnswered() || q1.hasOneOfAnswers(relevantCountries)) {
 				condition1 = true;
@@ -352,11 +360,12 @@ define(['jquery'], function($) {
 				condition1 = true;
 			}
 			
+			// exit if no relevant country(ies)
 			if(!condition1) {
 				return false;
 			}
 			
-			// condition 2 - check abuse date / end date against selected country/ies
+			// check abuse date / end date against selected country(ies)
 			var condition2 = false;
 			if (q3.isNotAnswered() || (
 				((q1.hasAnswer('Algeria') || q2b.hasAnswer('Algeria')) && q3.isAfterOrOnDate('1987/03/01')) ||
@@ -416,51 +425,56 @@ define(['jquery'], function($) {
 				condition2 = true;
 			}
 			
+			// exit if country(ies) not covered by mechanism on the entered date
 			if(!condition2) {
 				return false;
 			}
 			
-			// condition 3 - check types of abuses committed
+			// check for covered abuses
 			var condition3 = (q6.isNotAnswered() || q6.hasOneOfAnswers(relevantAbuses));
-			
+			// exit if no relevant abuses
 			if(!condition3) {
 				return false;
 			}
 
-			// condition 4 - check abusers for state actors
+			// check for covered abusers
 			var condition4 = (q10.isUnknownOrNotAnswered() || q10.hasOneOfAnswers(relevantAbusers));
-
+			// exit if no relevant abusers
 			if(!condition4) {
 				return false;
 			}
 			
-			// condition 5 - exhausting domestic remedies
+			// check whether domestic remedies exhausted
 			var condition5 = false;
-			
 			if(
 				(q14a.isUnknownOrNotAnswered() || q14a.hasAnswer('No')) ||
 				(q14a.hasAnswer('Yes') && q14b.isUnknownOrNotAnswered()) ||
 				(q14a.hasAnswer('Yes') && q14b.hasAnswer('Yes') && q14c.isNotAnswered()) ||
-				(q14a.hasAnswer('Yes') && q14b.hasAnswer('Yes') && !q14c.hasOneOfAnswers(relevantActionOutcomes))) {
+				(q14a.hasAnswer('Yes') && q14b.hasAnswer('Yes') && q14c.doesNotHaveOneOfAnswers(relevantActionOutcomes))) {
 				condition5 = true;
 			}
-			
+			// exit if domestic remedy reached a particular outcome
 			if(!condition5) {
 				return false;
 			}
 			
-			// other international remedies sought
-			var condition6 = false;
-			
-			if(q15.doesNotHaveAnswer('Yes')) {
-				condition6 = true;
-			}
-			
+			// check whether other international remedies sought
+			var condition6 = q15.doesNotHaveAnswer('Yes');
+			// exit if another remedy sought
 			if(!condition6) {
 				return false;
 			}
+			
+			// check against statute of limitations
+			var condition7 = false;
+			if(q3.isNotAnswered() || q3.isWithinYearsAgo(10)) {
+				condition7 = true;
+			}
+			// exit if abuse too long ago
+			if(!condition7) {
+				return false;
+			}
 
-			// by this point all conditions must have passed
 			return true;
 		}
 	},{
@@ -476,7 +490,7 @@ define(['jquery'], function($) {
 			
 			var relevantActionOutcomes = ['Investigation or prosecution still ongoing', 'A court held someone responsible', 'Someone was put on trial but was found not guilty'];
 			
-			// condition 1 - check that a relevant country is selected
+			// check relevant country(ies) selected
 			var condition1 = false;
 			if(q1.isNotAnswered() || q1.hasOneOfAnswers(relevantCountries)) {
 				condition1 = true;
@@ -484,12 +498,12 @@ define(['jquery'], function($) {
 			if(q2a.hasAnswer('Yes') && (q2b.hasOneOfAnswers(relevantCountries))) {
 				condition1 = true;
 			}
-			
+			// exit if no relevant country(ies)
 			if(!condition1) {
 				return false;
 			}
 			
-			// condition 2 - check abuse date / end date against selected country/ies
+			// check abuse date / end date against selected country(ies)
 			var condition2 = false;
 			if (q3.isNotAnswered() || (
 				((q1.hasAnswer('Burkina Faso') || q2b.hasAnswer('Burkina Faso')) && q3.isAfterOrOnDate('1998/12/31')) ||
@@ -503,51 +517,46 @@ define(['jquery'], function($) {
 				condition2 = true;
 			}
 			
+			// exit if country(ies) not covered by mechanism on the entered date
 			if(!condition2) {
 				return false;
 			}
 			
-			// condition 3 - check types of abuses committed
+			// check for covered abuses
 			var condition3 = (q6.isNotAnswered() || q6.hasOneOfAnswers(relevantAbuses));
-			
+			// exit if no relevant abuses
 			if(!condition3) {
 				return false;
 			}
 
-			// check for relevant actors
+			// check for covered abusers
 			var condition4 = (q10.isUnknownOrNotAnswered() || q10.hasOneOfAnswers(relevantAbusers));
-
+			// exit if no relevant abusers
 			if(!condition4) {
 				return false;
 			}
 			
-			// condition 5 - exhausting domestic remedies
+			// check whether domestic remedies exhausted
 			var condition5 = false;
-			
 			if(
 				(q14a.isUnknownOrNotAnswered() || q14a.hasAnswer('No')) ||
 				(q14a.hasAnswer('Yes') && q14b.isUnknownOrNotAnswered()) ||
 				(q14a.hasAnswer('Yes') && q14b.hasAnswer('Yes') && q14c.isNotAnswered()) ||
-				(q14a.hasAnswer('Yes') && q14b.hasAnswer('Yes') && !q14c.hasOneOfAnswers(relevantActionOutcomes))) {
+				(q14a.hasAnswer('Yes') && q14b.hasAnswer('Yes') && q14c.doesNotHaveOneOfAnswers(relevantActionOutcomes))) {
 				condition5 = true;
 			}
-			
+			// exit if domestic remedy reached a particular outcome
 			if(!condition5) {
 				return false;
 			}
 			
-			// other international remedies sought
-			var condition6 = false;
-			
-			if(q15.doesNotHaveAnswer('Yes')) {
-				condition6 = true;
-			}
-			
+			// check whether other international remedies sought
+			var condition6 = q15.doesNotHaveAnswer('Yes');
+			// exit if another remedy sought
 			if(!condition6) {
 				return false;
 			}
 
-			// by this point all conditions must have passed
 			return true;
 		}
 	},{
@@ -573,7 +582,7 @@ define(['jquery'], function($) {
 			
 			var relevantAbusers = ["Soldier in government's army", 'Police officer', 'Other government official', 'Soldier in rebel army', 'Person in plainclothes', 'Unknown'];
 
-			// condition 1 - check that a relevant country is selected
+			// check relevant country(ies) selected
 			var condition1 = false;
 			if(q1.isNotAnswered() || q1.hasOneOfAnswers(relevantCountries)) {
 				condition1 = true;
@@ -582,46 +591,57 @@ define(['jquery'], function($) {
 				condition1 = true;
 			}
 			
+			// exit if no relevant country(ies)
 			if(!condition1) {
 				return false;
 			}
 			
-			// condition 2 - check abuse date / end date against selected country/ies
+			// check abuse date / end date against selected country(ies)
 			var condition2 = false;
 			if (q3.isNotAnswered() || (
 				(q1.hasAnswer('Cambodia') || q2b.hasAnswer('Cambodia')) && q3.isBetweenDates('1975/04/17', '1979/01/06'))) {
 				condition2 = true;
 			}
 			
+			// exit if country(ies) not covered by mechanism on the entered date
 			if(!condition2) {
 				return false;
 			}
 			
-			// condition 3 - check types of abuses committed
+			// check for covered abuses
 			var condition3 = (q6.isNotAnswered() || q6.hasOneOfAnswers(relevantAbuses));
-			
+			// exit if no relevant abuses
 			if(!condition3) {
 				return false;
 			}
 			
-			// condition 4 - check scenario in which abuse occurred. Only a no in 5, 6, or 7 will rule out ECCC. Unanswered, yes, or unknown will keep it in
+			// check scenario in which abuse occurred. Only a no in 7, 8, or 9 will rule out ECCC. Unanswered, yes, or unknown will keep it in
 			var condition4 = true;
 			if(q7.hasAnswer('No') && q8.hasAnswer('No') && q9.hasAnswer('No')) {
 				condition4 = false;
 			}
-			
+			// exit if no relevant scenario
 			if(!condition4) {
 				return false;
 			}
 			
-			// condition 4 - check abuser(s) for state actors
+			// check for covered abusers
 			var condition5 = (q10.isUnknownOrNotAnswered() || q10.hasOneOfAnswers(relevantAbusers));
-			
+			// exit if no relevant abusers
 			if(!condition5) {
 				return false;
 			}
+			
+			// check against statute of limitations
+			var condition6 = false;
+			if(q3.isNotAnswered() || q3.isWithinYearsAgo(40)) {
+				condition6 = true;
+			}
+			// exit if abuse too long ago
+			if(!condition6) {
+				return false;
+			}
 
-			// by this point all conditions must have passed
 			return true;
 		}
 	},{
