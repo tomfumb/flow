@@ -20,7 +20,6 @@ To Do
 - use gallery-style slider for outcome previews
 	- not sliding - does it need to?
 		
-- 0 options should immediately move to show text on available options
 - main CCIJ site has Google Analytics - should incorporate the async version of this too, log trips to all #destinations
 - check necessity of shims in index.htm
 - Pam's style guide
