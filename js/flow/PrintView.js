@@ -2,8 +2,6 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'text!template/print/que
 
 	return Backbone.View.extend({
 		
-		availableOutcomes: [],
-		
 		initialize: function() {
 				
 			Log.debug('Initialising PrintView');
@@ -36,16 +34,7 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'text!template/print/que
 			this.$el.find('#flow_questions_print').html(scratch.html());
 			scratch.html('');
 			
-			_.each(this.outcomes.models, function(outcome) {
-				
-				if(outcome.get('available')) {
-					this.availableOutcomes.push(outcome.get('title'));
-				}
-			}, this);
-			
-			this.$el.find('#flow_outcomes_print').html(_.template(outcomeTemplate, {
-				outcomes: this.availableOutcomes
-			}));
+			this.onOutcomeAvailabilityChanged();
 		},
 		
 		onAnswersSelected: function(answeredQuestion, answers) {
@@ -56,7 +45,6 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'text!template/print/que
 		},
 		
 		onQuestionAvailabilityChanged: function(question) {
-			
 			this.$el.find('#' + this.getElementIdFromQuestion(question) + ' .question-availability-flag').html((question.get('available') ? 'available' : 'unavailable'));
 		},
 		
@@ -66,7 +54,7 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'text!template/print/que
 			_.each(this.outcomes.models, function(outcome) {
 				
 				if(outcome.get('available')) {
-					this.availableOutcomes.push(outcome.get('title'));
+					this.availableOutcomes.push(outcome.get('title') + (outcome.get('caveats') ? ' ' + outcome.get('caveats') : ''));
 				}
 			}, this);
 			
