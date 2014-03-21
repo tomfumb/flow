@@ -11,6 +11,8 @@ define(
 		backPermitted: false,
 		fwdPermitted: false,
 		
+		postOutcomeUpdateActions: [],
+		
 		render: function() {
 			
 			this.$el.append(contentTemplate);
@@ -146,8 +148,13 @@ define(
 				// how to notify rest of the application that the end of all the questions has been reached?
 				// just not do anything?
 				
-				// force display of available / unavailable outcomes now that the user has completed all questions
-				if(this.outcomeManager) {
+				// force display of available / unavailable outcomes now that the user has completed all questions, but only show after outcome display has been updated
+				if(this.outcomeDisplayUpdating) {
+					this.postOutcomeUpdateActions.push(_.bind(function() {
+						this.outcomeManager.showOutcomes(true);
+					}, this));
+				}
+				else {
 					this.outcomeManager.showOutcomes(true);
 				}
 			}
@@ -516,7 +523,20 @@ define(
 		},
 		
 		onOutcomesChanged: function(changedOutcomes) {
-			this.outcomePreviews.onOutcomesChanged(changedOutcomes);
+			this.outcomeDisplayUpdating = true;
+			this.outcomePreviews.onOutcomesChanged(changedOutcomes, _.bind(this.onOutcomeDisplayUpdated, this));
+		},
+		
+		onOutcomeDisplayUpdated: function() {
+			
+			this.outcomeDisplayUpdating = false;
+			if(this.postOutcomeUpdateActions && this.postOutcomeUpdateActions.length) {
+				_.each(this.postOutcomeUpdateActions, function(fn) {
+					fn();
+				});
+			}
+			
+			this.postOutcomeUpdateActions = [];
 		},
 		
 		onFeedbackIconClicked: function() {

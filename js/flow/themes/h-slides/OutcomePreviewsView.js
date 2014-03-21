@@ -92,7 +92,7 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'theme/OutcomePreviewVie
 			this.lastAnsweredQuestion = question;
 		},
 		
-		onOutcomesChanged: function(changedOutcomes) {
+		onOutcomesChanged: function(changedOutcomes, updatedCallback) {
 
 			var availableCount = 0, fadeSpeed = 300;
 			_.each(this.model.models, function(outcome) {
@@ -107,7 +107,12 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'theme/OutcomePreviewVie
 			countEl.stop();
 			countEl.fadeOut(fadeSpeed, _.bind(function() {
 				countEl.html(availableCount);
-				countEl.fadeIn(100);
+				countEl.fadeIn(100, function() {
+					if(typeof updatedCallback === 'function') {
+						// this fadeIn is the last thing to happen when the outcomes are updated
+						updatedCallback();
+					}
+				});
 			}, this));
 			
 			var addedLinks = [], removedLinks = [];
