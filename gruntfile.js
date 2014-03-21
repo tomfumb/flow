@@ -43,9 +43,33 @@ module.exports = function(grunt) {
         src: ['index.htm', 'css/**/*.css', '!css/lib/*'],
         overwrite: true,
         replacements: [{
-          from: /\flow\-v=\d\.\d\.\d/ig,
+          from: /flow\-v=\d+\.\d+\.\d+/ig,
           to: 'flow-v=<%= pkg.version %>'
         }]
+      },
+      development: {
+        src: ['index.htm'],
+        overwrite: true,
+        replacements: [{
+          from: 'href="css/dist/<%= pkg.name %>.css',
+          to: 'href="css/src/ccij.css'
+        },
+        {
+		  from: 'data-main="js/dist/ccij-flow"',
+		  to: 'data-main="js/app"'
+		}]
+      },
+      live: {
+        src: ['index.htm'],
+        overwrite: true,
+        replacements: [{
+          from: 'href="css/src/ccij.css',
+          to: 'href="css/dist/<%= pkg.name %>.css'
+        },
+        {
+		  from: 'data-main="js/app"',
+		  to: 'data-main="js/dist/ccij-flow"'
+		}]
       }
     }
   });
@@ -58,7 +82,9 @@ module.exports = function(grunt) {
   grunt.registerTask('lint', ['jshint']);
   grunt.registerTask('r', ['requirejs']);
   grunt.registerTask('html', ['lint5']);
-  grunt.registerTask('version', ['replace']);
+  grunt.registerTask('version', ['replace:urlVersion']);
+  grunt.registerTask('development', ['replace:development']);
+  grunt.registerTask('live', ['replace:live']);
 
-  grunt.registerTask('default', ['jshint', 'lint5', 'requirejs', 'version']);
+  grunt.registerTask('default', ['jshint', 'lint5', 'requirejs', 'version', 'live']);
 };
