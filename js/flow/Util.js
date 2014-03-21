@@ -24,7 +24,7 @@ define([], function() {
 		
 		padZeros: function(number, size) {
 		
-			var numberStr = number.toString()
+			var numberStr = number.toString();
 			if(numberStr.length >= size) {
 				return number;
 			}

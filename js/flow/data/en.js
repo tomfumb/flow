@@ -568,7 +568,124 @@ define(['jquery'], function($) {
 	},{
 		/* European Court of Human Rights */
 		selector: $('#ccij_outcome_echr'),
-		condition: function(q1) {
+		condition: function(q1, q2a, q2b, q3, q6, q10, q14a, q14b, q14c, q15) {
+			
+			var relevantCountries = ['Albania', 'Andorra', 'Armenia', 'Austria', 'Azerbaijan', 'Belgium', 'Bosnia and Herzegovina', 'Bulgaria', 'Croatia', 'Cyprus', 'Czech Republic', 'Denmark', 'Estonia', 'Finland', 'France', 'Georgia', 'Germany', 'Greece', 'Hungary', 'Iceland', 'Ireland', 'Italy', 'Latvia', 'Liechtenstein', 'Lithuania', 'Luxembourg', 'Macedonia', 'Malta', 'Moldova', 'Monaco', 'Montenegro', 'Netherlands', 'Norway', 'Poland', 'Portugal', 'Romania', 'Russia', 'San Marino', 'Serbia', 'Slovakia', 'Slovenia', 'Spain', 'Sweden', 'Switzerland', 'Turkey', 'Ukraine', 'United Kingdom'];
+			
+			var relevantAbuses = ['Beating', 'Bodily mutilation', 'Burning', 'Death threats', 'Deprivation of medical care', 'Electric shock', 'Enslavement', 'Forced  stress positions', 'Forced nudity', 'Forced to watch abuse of other prisoners', 'Incomunicado detention', 'Kicking', 'Kidnapping/disappearance', 'Killing', 'Mock execution', 'Prolonged exposure to extreme cold or heat', 'Prolonged food/water', 'deprivation', 'Prolonged sleep deprivation', 'Punching', 'Rape or other sexual assault', 'Severe mental suffering', 'Solitary', 'confinement', 'Suffocation', 'Waterboarding'];
+			
+			var relevantAbusers = ['Other government official', 'Police officer', 'Soldier/officer in government army'];
+			
+			var relevantActionOutcomes = ['Investigation or prosecution still ongoing', 'A court held someone responsible', 'Someone was put on trial but was found not guilty'];
+			
+			// check relevant country(ies) selected
+			var condition1 = false;
+			if(q1.isNotAnswered() || q1.hasOneOfAnswers(relevantCountries)) {
+				condition1 = true;
+			}
+			if(q2a.hasAnswer('Yes') && (q2b.hasOneOfAnswers(relevantCountries))) {
+				condition1 = true;
+			}
+			
+			// exit if no relevant country(ies)
+			if(!condition1) {
+				return false;
+			}
+			
+			// check abuse date / end date against selected country(ies)
+			var condition2 = false;
+			if (q3.isNotAnswered() || (
+				((q1.hasAnswer('Albania') || q2b.hasAnswer('Albania')) && q3.isAfterOrOnDate('1996/10/02')) || 
+				((q1.hasAnswer('Andorra') || q2b.hasAnswer('Andorra')) && q3.isAfterOrOnDate('1996/07/22')) || 
+				((q1.hasAnswer('Armenia') || q2b.hasAnswer('Armenia')) && q3.isAfterOrOnDate('1996/04/26')) || 
+				((q1.hasAnswer('Austria') || q2b.hasAnswer('Austria')) && q3.isAfterOrOnDate('1958/09/03')) || 
+				((q1.hasAnswer('Azerbaijan') || q2b.hasAnswer('Azerbaijan')) && q3.isAfterOrOnDate('2002/04/15')) || 
+				((q1.hasAnswer('Belgium') || q2b.hasAnswer('Belgium')) && q3.isAfterOrOnDate('1956/06/14')) || 
+				((q1.hasAnswer('Bosnia and Herzegovina') || q2b.hasAnswer('Bosnia and Herzegovina')) && q3.isAfterOrOnDate('2002/07/12')) || 
+				((q1.hasAnswer('Bulgaria') || q2b.hasAnswer('Bulgaria')) && q3.isAfterOrOnDate('1992/09/07')) || 
+				((q1.hasAnswer('Croatia') || q2b.hasAnswer('Croatia')) && q3.isAfterOrOnDate('1997/11/05')) || 
+				((q1.hasAnswer('Cyprus') || q2b.hasAnswer('Cyprus')) && q3.isAfterOrOnDate('1962/10/06')) || 
+				((q1.hasAnswer('Czech Republic') || q2b.hasAnswer('Czech Republic')) && q3.isAfterOrOnDate('1992/03/18')) || 
+				((q1.hasAnswer('Denmark') || q2b.hasAnswer('Denmark')) && q3.isAfterOrOnDate('1953/09/03')) ||
+				((q1.hasAnswer('Estonia') || q2b.hasAnswer('Estonia')) && q3.isAfterOrOnDate('1996/04/16')) ||
+				((q1.hasAnswer('Finland') || q2b.hasAnswer('Finland')) && q3.isAfterOrOnDate('1990/05/10')) ||
+				((q1.hasAnswer('France') || q2b.hasAnswer('France')) && q3.isAfterOrOnDate('1974/05/03')) ||
+				((q1.hasAnswer('Georgia') || q2b.hasAnswer('Georgia')) && q3.isAfterOrOnDate('1999/05/20')) ||
+				((q1.hasAnswer('Germany') || q2b.hasAnswer('Germany')) && q3.isAfterOrOnDate('1953/09/03')) ||
+				((q1.hasAnswer('Greece') || q2b.hasAnswer('Greece')) && q3.isAfterOrOnDate('1974/11/28')) ||
+				((q1.hasAnswer('Hungary') || q2b.hasAnswer('Hungary ')) && q3.isAfterOrOnDate('1992/11/05')) ||
+				((q1.hasAnswer('Iceland') || q2b.hasAnswer('Iceland')) && q3.isAfterOrOnDate('1953/09/03')) ||
+				((q1.hasAnswer('Ireland') || q2b.hasAnswer('Ireland')) && q3.isAfterOrOnDate('1953/09/03')) ||
+				((q1.hasAnswer('Italy') || q2b.hasAnswer('Italy')) && q3.isAfterOrOnDate('1955/10/26')) ||
+				((q1.hasAnswer('Latvia') || q2b.hasAnswer('Latvia')) && q3.isAfterOrOnDate('1997/06/27')) ||
+				((q1.hasAnswer('Liechtenstein') || q2b.hasAnswer('Liechtenstein')) && q3.isAfterOrOnDate('1992/09/08')) ||
+				((q1.hasAnswer('Lithuania') || q2b.hasAnswer('Lithuania')) && q3.isAfterOrOnDate('1995/06/20')) ||
+				((q1.hasAnswer('Luxembourg') || q2b.hasAnswer('Luxembourg ')) && q3.isAfterOrOnDate('1953/09/03')) ||
+				((q1.hasAnswer('Macedonia') || q2b.hasAnswer('Macedonia')) && q3.isAfterOrOnDate('1997/04/10')) ||
+				((q1.hasAnswer('Malta') || q2b.hasAnswer('Malta')) && q3.isAfterOrOnDate('1967/01/23')) ||
+				((q1.hasAnswer('Moldova') || q2b.hasAnswer('Moldova')) && q3.isAfterOrOnDate('1997/09/12')) ||
+				((q1.hasAnswer('Monaco') || q2b.hasAnswer('Monaco')) && q3.isAfterOrOnDate('2005/11/30')) ||
+				((q1.hasAnswer('Montenegro') || q2b.hasAnswer('Montenegro')) && q3.isAfterOrOnDate('2006/06/06')) ||
+				((q1.hasAnswer('Netherlands') || q2b.hasAnswer('Netherlands')) && q3.isAfterOrOnDate('1954/08/31')) ||
+				((q1.hasAnswer('Norway') || q2b.hasAnswer('Norway ')) && q3.isAfterOrOnDate('1953/09/03')) ||
+				((q1.hasAnswer('Poland') || q2b.hasAnswer('Poland')) && q3.isAfterOrOnDate('1993/01/19')) ||
+				((q1.hasAnswer('Portugal') || q2b.hasAnswer('Portugal')) && q3.isAfterOrOnDate('1978/11/09')) ||
+				((q1.hasAnswer('Romania') || q2b.hasAnswer('Romania')) && q3.isAfterOrOnDate('1994/06/20')) ||
+				((q1.hasAnswer('Russia') || q2b.hasAnswer('Russia')) && q3.isAfterOrOnDate('1998/05/05')) ||
+				((q1.hasAnswer('San Marino') || q2b.hasAnswer('San Marino')) && q3.isAfterOrOnDate('1989/03/22')) ||
+				((q1.hasAnswer('Serbia') || q2b.hasAnswer('Serbia')) && q3.isAfterOrOnDate('2004/03/03')) ||
+				((q1.hasAnswer('Slovakia') || q2b.hasAnswer('Slovakia')) && q3.isAfterOrOnDate('1993/01/01')) ||
+				((q1.hasAnswer('Slovenia') || q2b.hasAnswer('Slovenia')) && q3.isAfterOrOnDate('1994/06/28')) ||
+				((q1.hasAnswer('Spain') || q2b.hasAnswer('Spain')) && q3.isAfterOrOnDate('1979/10/04')) ||
+				((q1.hasAnswer('Sweden') || q2b.hasAnswer('Sweden')) && q3.isAfterOrOnDate('1953/09/03')) ||
+				((q1.hasAnswer('Switzerland') || q2b.hasAnswer('Switzerland')) && q3.isAfterOrOnDate('1974/11/28')) ||
+				((q1.hasAnswer('Turkey') || q2b.hasAnswer('Turkey')) && q3.isAfterOrOnDate('1954/05/18')) ||
+				((q1.hasAnswer('Ukraine') || q2b.hasAnswer('Ukraine')) && q3.isAfterOrOnDate('1997/09/11')) ||
+				((q1.hasAnswer('United Kingdom') || q2b.hasAnswer('United Kingdom')) && q3.isAfterOrOnDate('1953/09/03'))
+			)) {
+				condition2 = true;
+			}
+			
+			// exit if country(ies) not covered by mechanism on the entered date
+			if(!condition2) {
+				return false;
+			} 
+			
+			// check for covered abuses
+			var condition3 = (q6.isNotAnswered() || q6.hasOneOfAnswers(relevantAbuses));
+			// exit if no relevant abuses
+			if(!condition3) {
+				return false;
+			}
+
+			// check for covered abusers
+			var condition4 = (q10.isUnknownOrNotAnswered() || q10.hasOneOfAnswers(relevantAbusers));
+			// exit if no relevant abusers
+			if(!condition4) {
+				return false;
+			}
+			
+			// check whether domestic remedies exhausted
+			var condition5 = false;
+			if(
+				(q14a.isUnknownOrNotAnswered() || q14a.hasAnswer('No')) ||
+				(q14a.hasAnswer('Yes') && q14b.isUnknownOrNotAnswered()) ||
+				(q14a.hasAnswer('Yes') && q14b.hasAnswer('Yes') && q14c.isNotAnswered()) ||
+				(q14a.hasAnswer('Yes') && q14b.hasAnswer('Yes') && q14c.doesNotHaveOneOfAnswers(relevantActionOutcomes))) {
+				condition5 = true;
+			}
+			// exit if domestic remedy reached a particular outcome	
+			if(!condition5) {
+				return false;
+			}
+			
+			// check whether other international remedies sought
+			var condition6 = q15.doesNotHaveAnswer('Yes');
+			// exit if another remedy sought
+			if(!condition6) {
+				return false;
+			}
+			
 			return true;
 		}
 	},{
