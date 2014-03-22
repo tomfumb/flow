@@ -1,11 +1,12 @@
 To Do
 - collect all countries with dates in array, separate fn for verify each country only once
 - add new mechanism charts
+- create lorem ipsum language version to ensure that the language approach is valid and how much effort is involved
 - only have useful log messages
-- add in-page links for international, regional, and national mechanisms
 - implement error logging to server, have log emailed and deleted if it exceeds a given size
 - icon for question area (ESL)
 - SEO (French?)
+- sliding 'available' screen - do tabs still fit on mobile screen?
 - soften colours and make question text bigger - more engaging
 - social media sharing icons
 - perhaps give feedback about % complete as working through
@@ -17,15 +18,12 @@ To Do
 - test case - slow download of resources, anything available before it will actually work?
 - http://getbootstrap.com/getting-started/#browsers
 - tip buttons near key functionality explaining what's going on
-
-- use gallery-style slider for outcome previews
-	- not sliding - does it need to?
-		
+- use gallery-style slider for outcome previews and question summaries, must ensure current question always visible
 - main CCIJ site has Google Analytics - should incorporate the async version of this too, log trips to all #destinations
 - check necessity of shims in index.htm
 - Pam's style guide
 
-Considerations:
+Considerations (for Chris):
 - Using the tool could be emtionally raw for a user and this might need to be managed. Reactions might be different to the people that Matt deals with as they have already decided they are comfortable talking about it
 - Reading level of tool & question text, would be best at grade 6 or 7
 - how much time should be set aside and should they have someone with them?
