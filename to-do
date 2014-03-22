@@ -1,4 +1,5 @@
 To Do
+- collect all countries with dates in array, separate fn for verify each country only once
 - add new mechanism charts
 - only have useful log messages
 - add in-page links for international, regional, and national mechanisms
