@@ -15,11 +15,7 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'flow/Util'], function($
 			}
 			
 			var selectedAnswers = this.get('selectedAnswers');
-			if(typeof selectedAnswers !== 'undefined' && selectedAnswers.length) {
-				return true;
-			}
-			
-			return false;
+			return (_.isArray(selectedAnswers) && selectedAnswers.length);
 		},
 		
 		isNotAnswered: function() {
@@ -42,12 +38,14 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'flow/Util'], function($
 				return false;
 			}
 			
+			var selectedAnswers = this.get('selectedAnswers');
+			
 			// cannot let answered but now unavailable questions interfere with the outcome
-			if(!this.get('available') || typeof this.get('selectedAnswers') === 'undefined') {
+			if(!this.get('available') || !_.isArray(selectedAnswers)) {
 				return false;
 			}
 			
-			var selected = !!_.find(this.get('selectedAnswers'), function(answer) {
+			var selected = !!_.find(selectedAnswers, function(answer) {
 				return requiredAnswer == answer;
 			});
 			
@@ -115,26 +113,31 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'flow/Util'], function($
 			}
 		},
 		
-		isAfterOrOnDate: function(checkDateStr, dateIdx) {
+		getDateFromDates: function(dates, idx) {
 			
-			if(_.isArray(checkDateStr) && checkDateStr.length) {
-				checkDateStr = (isNaN(dateIdx) ? checkDateStr[0] : checkDateStr[dateIdx]); 
+			if(_.isArray(dates)) {
+				
+				if(idx < 0) {
+					idx = dates.length + idx;
+				}
+				
+				return dates[idx];
 			}
-			
-			return this.checkDate(checkDateStr, this.dateWhens.AOO);
+			else {
+				return dates;
+			}
 		},
 		
-		isBeforeOrOnDate: function(checkDateStr, dateIdx) {
-			
-			if(_.isArray(checkDateStr) && checkDateStr.length) {
-				checkDateStr = (isNaN(dateIdx) ? checkDateStr[0] : checkDateStr[dateIdx]); 
-			}
-			
-			return this.checkDate(checkDateStr, this.dateWhens.BOO);
+		isAfterOrOnDate: function(checkDateStr, datePosition) {
+			return this.checkDate(this.getDateFromDates(checkDateStr, datePosition), this.dateWhens.AOO);
 		},
 		
-		isBetweenDates: function(checkDateStartStr, checkDateEndStr) {
-			return (this.isAfterOrOnDate(checkDateStartStr) && this.isBeforeOrOnDate(checkDateEndStr));
+		isBeforeOrOnDate: function(checkDateStr, datePosition) {
+			return this.checkDate(this.getDateFromDates(checkDateStr, datePosition), this.dateWhens.BOO);
+		},
+		
+		isBetweenDates: function(checkDateStartStr, checkDateEndStr, startPosition, endPosition) {
+			return (this.isAfterOrOnDate(this.getDateFromDates(checkDateStartStr, startPosition)) && this.isBeforeOrOnDate(this.getDateFromDates(checkDateEndStr, endPosition)));
 		},
 		
 		isWithinYearsAgo: function(years) {
@@ -147,7 +150,7 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'flow/Util'], function($
 			return this.isAfterOrOnDate(historicDateStr);
 		},
 		
-		relevantDatesForCountry: function(countriesData) {
+		relevantDatesForSelectedCountry: function(countriesData) {
 			
 			var selectedCountryData;
 			// only validate every single country in the list once. After that only look for the specific requested answer
@@ -156,8 +159,6 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'flow/Util'], function($
 				selectedCountryData = _.find(countriesData, function(countryData) {
 					return this.hasAnswer(countryData.country);
 				}, this);
-				
-				return selectedCountryData;
 			}
 			else {
 				
@@ -170,7 +171,7 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'flow/Util'], function($
 					var dateForCheck = (_.isArray(countryData.date) ? countryData.date : [countryData.date]);
 					_.each(dateForCheck, function(date) {
 						
-						if(!dateValid(date)) {
+						if(!this.dateValid(date)) {
 							Log.error('country date supplied with bad format. Must be YYYY/MM/DD');
 						}
 					}, this);
@@ -178,12 +179,17 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'flow/Util'], function($
 				}, this);
 				
 				countriesData.validated = true;
-				return selectedCountryData;
 			}
+				
+			if(selectedCountryData) {
+				return selectedCountryData.date;
+			}
+			
+			return undefined;
 		},
 		
 		hasCountry: function(countriesData) {
-			return !!this.relevantDatesForCountry(countriesData);
+			return !!this.relevantDatesForSelectedCountry(countriesData);
 		}
 	});
 });
