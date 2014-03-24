@@ -33,7 +33,7 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'flow/Util'], function($
 		hasAnswer: function(requiredAnswer) {
 		
 			// first check that the answer is actually available within the question. If not there is a problem
-			var found = _.find(this.get('answers'), function(answer) {
+			var found = !!_.find(this.get('answers'), function(answer) {
 				return requiredAnswer == answer;
 			});
 			
@@ -42,7 +42,7 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'flow/Util'], function($
 				return false;
 			}
 			
-			// cannot let unavailable questions interfere with the outcome
+			// cannot let answered but now unavailable questions interfere with the outcome
 			if(!this.get('available') || typeof this.get('selectedAnswers') === 'undefined') {
 				return false;
 			}
@@ -75,11 +75,13 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'flow/Util'], function($
 			return !this.hasOneOfAnswers(possibleAnswers);
 		},
 		
+		dateValid: function(dateStr) {
+			return !!dateStr.match(/\d{4}\/\d{2}\/\d{2}/);
+		},
+		
 		checkDate: function(checkDateStr, when) {
 			
-			var dateRegex = /\d{4}\/\d{2}\/\d{2}/;
-			
-			if(!(typeof checkDateStr === 'string' && checkDateStr.match(dateRegex))) {
+			if(!(typeof checkDateStr === 'string' && this.dateValid(checkDateStr))) {
 				Log.error('checkDate supplied with bad checkDateStr format. Must be YYYY/MM/DD');
 				return;
 			}
@@ -95,7 +97,7 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'flow/Util'], function($
 			}
 			
 			selectedDateStr = selectedAnswers[0];
-			if(!(typeof selectedDateStr === 'string' && selectedDateStr.match(dateRegex))) {
+			if(!(typeof selectedDateStr === 'string' && this.dateValid(selectedDateStr))) {
 				Log.error('checkDate supplied with bad selectedDateStr format. Must be YYYY/MM/DD');
 				return;
 			}
@@ -113,11 +115,21 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'flow/Util'], function($
 			}
 		},
 		
-		isAfterOrOnDate: function(checkDateStr) {
+		isAfterOrOnDate: function(checkDateStr, dateIdx) {
+			
+			if(_.isArray(checkDateStr) && checkDateStr.length) {
+				checkDateStr = (isNaN(dateIdx) ? checkDateStr[0] : checkDateStr[dateIdx]); 
+			}
+			
 			return this.checkDate(checkDateStr, this.dateWhens.AOO);
 		},
 		
-		isBeforeOrOnDate: function(checkDateStr) {
+		isBeforeOrOnDate: function(checkDateStr, dateIdx) {
+			
+			if(_.isArray(checkDateStr) && checkDateStr.length) {
+				checkDateStr = (isNaN(dateIdx) ? checkDateStr[0] : checkDateStr[dateIdx]); 
+			}
+			
 			return this.checkDate(checkDateStr, this.dateWhens.BOO);
 		},
 		
@@ -133,6 +145,45 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'flow/Util'], function($
 			var historicDateStr = date.getFullYear() + '/' + Util.padZeros(date.getMonth() + 1, 2) + '/' + Util.padZeros(date.getDate(), 2);
 			
 			return this.isAfterOrOnDate(historicDateStr);
+		},
+		
+		relevantDatesForCountry: function(countriesData) {
+			
+			var selectedCountryData;
+			// only validate every single country in the list once. After that only look for the specific requested answer
+			if(countriesData.validated) {
+				
+				selectedCountryData = _.find(countriesData, function(countryData) {
+					return this.hasAnswer(countryData.country);
+				}, this);
+				
+				return selectedCountryData;
+			}
+			else {
+				
+				_.each(countriesData, function(countryData) {
+					
+					if(this.hasAnswer(countryData.country)) {
+						selectedCountryData = countryData;
+					}
+					
+					var dateForCheck = (_.isArray(countryData.date) ? countryData.date : [countryData.date]);
+					_.each(dateForCheck, function(date) {
+						
+						if(!dateValid(date)) {
+							Log.error('country date supplied with bad format. Must be YYYY/MM/DD');
+						}
+					}, this);
+					
+				}, this);
+				
+				countriesData.validated = true;
+				return selectedCountryData;
+			}
+		},
+		
+		hasCountry: function(countriesData) {
+			return !!this.relevantDatesForCountry(countriesData);
 		}
 	});
 });
