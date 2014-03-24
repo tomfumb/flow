@@ -21,7 +21,6 @@ To Do
 - http://getbootstrap.com/getting-started/#browsers
 - tip buttons near key functionality explaining what's going on
 - use gallery-style slider for outcome previews and question summaries, must ensure current question always visible
-- main CCIJ site has Google Analytics - should incorporate the async version of this too, log trips to all #destinations
 - check necessity of shims in index.htm
 - remove logos - will be provided by Wise & Hammer
 
