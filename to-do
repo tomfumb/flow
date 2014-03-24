@@ -23,7 +23,11 @@ To Do
 - use gallery-style slider for outcome previews and question summaries, must ensure current question always visible
 - main CCIJ site has Google Analytics - should incorporate the async version of this too, log trips to all #destinations
 - check necessity of shims in index.htm
-- Pam's style guide
+- remove logos - will be provided by Wise & Hammer
+
+Wise & Hammer meeting
+- possibly ask user for name / location and have opt-in for newsletter at end of tool
+	- change what's next screen to ask for email address and opt-in to newsletter
 
 Considerations (for Chris):
 - Using the tool could be emtionally raw for a user and this might need to be managed. Reactions might be different to the people that Matt deals with as they have already decided they are comfortable talking about it
