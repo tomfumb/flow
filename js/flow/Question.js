@@ -4,7 +4,8 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'flow/Util'], function($
 		
 		dateWhens: {
 			BOO: 'before or on',
-			AOO: 'after or on'
+			AOO: 'after or on',
+			B: 'before'
 		},
 		
 		isAnswered: function() {
@@ -108,6 +109,8 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'flow/Util'], function($
 					return (selectedDate >= checkDate);
 				case this.dateWhens.BOO:
 					return (selectedDate <= checkDate);
+				case this.dateWhens.B:
+					return (selectedDate < checkDate);
 				default:
 					return false;
 			}
@@ -134,6 +137,10 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'flow/Util'], function($
 		
 		isBeforeOrOnDate: function(checkDateStr, datePosition) {
 			return this.checkDate(this.getDateFromDates(checkDateStr, datePosition), this.dateWhens.BOO);
+		},
+		
+		isBeforeDate: function(checkDateStr, datePosition) {
+			return this.checkDate(this.getDateFromDates(checkDateStr, datePosition), this.dateWhens.B);
 		},
 		
 		isBetweenDates: function(checkDateStartStr, checkDateEndStr, startPosition, endPosition) {
