@@ -71,6 +71,72 @@ module.exports = function(grunt) {
 		  to: 'data-main="js/dist/ccij-flow"'
 		}]
       }
+    },
+    remove: {
+      fileList: 'dist/**/*',
+      dirList: 'dist'
+    },
+    copy: {
+      main: {
+		files: [{
+          src: 'index.htm',
+          dest: 'dist/'
+        },{
+          src: 'js/dist/*.js',
+          dest: 'dist/'
+        },{
+          src: 'js/lib/require*.js',
+          dest: 'dist/'
+        },{
+          src: 'css/print.css',
+          dest: 'dist/'
+        },{
+          src: 'css/dist/*.css',
+          dest: 'dist/'
+        },{
+          cwd: 'css/lib/',
+          expand: true,
+          src: '**',
+          dest: 'dist/css/lib/'
+        },{
+          src: 'images/*',
+          dest: 'dist/'
+        },{
+          src: '*.php',
+          dest: 'dist/'
+        },{
+          src: 'feedback/*.php',
+          dest: 'dist/'
+        },{
+          src: 'results/*.php',
+          dest: 'dist/'
+        }]
+      },
+    },
+    chmod: {
+      static: {
+        options: {
+          mode: '0644'
+        },
+        src: ['dist/**/*.htm', 'dist/**/*.js', 'dist/**/*.css', 'dist/images/*']
+      },
+      dynamic: {
+        options: {
+          mode: '0755'
+        },
+        src: ['dist/**/*.php']
+      }
+    },
+    "ftp-deploy": {
+      build: {
+        auth: {
+          host: 'ccij.ca',
+          port: 21,
+          authKey: 'ccij'
+        },
+        src: 'dist',
+        dest: '/public_html/test'
+      }
     }
   });
 
@@ -78,6 +144,9 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-requirejs');
   grunt.loadNpmTasks('grunt-lint5');
   grunt.loadNpmTasks('grunt-text-replace');
+  grunt.loadNpmTasks('grunt-contrib-copy');
+  grunt.loadNpmTasks('grunt-chmod');
+  grunt.loadNpmTasks('grunt-ftp-deploy');
 
   grunt.registerTask('lint', ['jshint']);
   grunt.registerTask('r', ['requirejs']);
@@ -85,6 +154,8 @@ module.exports = function(grunt) {
   grunt.registerTask('version', ['replace:urlVersion']);
   grunt.registerTask('development', ['replace:development']);
   grunt.registerTask('live', ['replace:live']);
+  
+  grunt.registerTask('deploy', ['lint', 'html', 'r', 'version', 'replace:live', 'copy', 'chmod', 'ftp-deploy', 'development']);
 
-  grunt.registerTask('default', ['jshint', 'lint5', 'requirejs', 'version', 'live']);
+  grunt.registerTask('default', ['lint', 'html', 'r', 'version', 'live']);
 };
