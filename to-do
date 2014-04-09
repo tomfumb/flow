@@ -1,6 +1,8 @@
-Figure a way to have question answers use single english values but foreign language text
+each time an outcome preview is removed or added I need to know if it had a left offset of < 0. If yes and removing: increase the left css property by one width. If yes and adding: decrease the left css property by one width. In each case do an immediate show() instead of fadein. If above 0 offset (whether on or off screen) simply calling checkSlideEnabled() should be sufficient.
+add swipe support to outcome preview row
 
 To Do
+- figure out a way to have question answers use single english values but foreign language text
 - update deployment process - shouldn't do minification as that should already be done and tested
 - do we keep the Stories project link or is it delegated to the CCIJ site - question for Pam
 	- mention the possibility of having real or hypothetical cases alongside the tool for people to work through for education

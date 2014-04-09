@@ -47,6 +47,8 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'theme/OutcomePreviewVie
 			this.outcomePreviewMoveContainer = this.$el.find('#flow_available_outcome_previews');
 			this.originalLeftMovePos = parseInt(this.outcomePreviewMoveContainer.css('left').replace(/px/, ''), 10);
 			this.moveRightPadWidth = this.$el.find('#flow_available_count_side_pad_right').outerWidth();
+			
+			$(window).resize(_.bind(this.onWindowResize, this));
 		},
 		
 		onShow: function() {
@@ -215,9 +217,13 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'theme/OutcomePreviewVie
 				var requiredSpace = visiblePreviews.length * this.outcomePreviewWidth;
 					
 				var leftOffset = parseInt(this.outcomePreviewMoveContainer.css('left').replace(/px/, ''), 10) - this.originalLeftMovePos;
+				if(leftOffset < 0) {
+					leftOffset *= -1;
+				}
+				
 				var rightOverflow = (availableSpace - (requiredSpace - leftOffset)) * -1;
 				
-				var hiddenLeft = (leftOffset === 0 ? 0 : (leftOffset / this.outcomePreviewWidth) * -1);
+				var hiddenLeft = (leftOffset === 0 ? 0 : leftOffset / this.outcomePreviewWidth);
 				var hiddenRight = (rightOverflow <= 0 ? 0 : rightOverflow / this.outcomePreviewWidth);
 				
 				this.slideLeftEnabled = hiddenRight > 0;
@@ -309,11 +315,29 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'theme/OutcomePreviewVie
 				return;
 			}
 			
-			Log.debug('move right requested');
+			var availablePreviews = _.filter(this.previews, function(preview) {
+				return preview.isShown();
+			});
+			
+			if(!availablePreviews.length) {
+				Log.error('Outcome preview move requested but none visible');
+				return;
+			}
+			
+			this.slideLeftEnabled = false;
+			this.slideRightEnabled = false;
+			
+			this.outcomePreviewMoveContainer.animate({'left': (parseInt(this.outcomePreviewMoveContainer.css('left').replace(/px/, ''), 10) + this.outcomePreviewWidth) + 'px'}, 200, _.bind(function() {
+				this.checkSlideEnabled();
+			}, this));
 		},
 		
 		resetSlide: function() {
 			this.outcomePreviewMoveContainer.css('left', this.originalLeftMovePos);
+		},
+		
+		onWindowResize: function() {
+			this.checkSlideEnabled();
 		}
 	});
 });
