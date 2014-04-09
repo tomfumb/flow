@@ -6,7 +6,9 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'theme/OutcomePreviewVie
 		
 		changeHistory: [],
 		changeHistoryPosition: -1,
+		
 		previews: [],
+		availableOutcomePreviews: [],
 		
 		slideLeftEnabled: false,
 		slideRightEnabled: false,
@@ -20,7 +22,7 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'theme/OutcomePreviewVie
 			
 				if(outcome.get('available')) {
 					availableCount++;
-				}	
+				}
 			});
 			
 			this.$el.html(_.template(
@@ -33,6 +35,9 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'theme/OutcomePreviewVie
 			
 			_.each(this.previews, function(preview) {
 				preview.refreshEl(this.$el);
+				if(preview.isShown()) {
+					this.availableOutcomePreviews.push(preview);
+				}
 			}, this);
 			
 			this.$el.find('#flow_available_count_main_container,#flow_options_preview_title').click(_.bind(this.onAvailableCountClicked, this));
@@ -52,6 +57,7 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'theme/OutcomePreviewVie
 		},
 		
 		onShow: function() {
+			
 			this.checkSlideEnabled();
 		},
 		
@@ -190,6 +196,36 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'theme/OutcomePreviewVie
 			changesContentEl.find('.outcome-text-link').click(_.bind(this.onOutcomeTextLinkClicked, this));
 			
 			this.checkOutcomeHistoryNav();
+			
+			this.availableOutcomePreviews = _.filter(this.previews, function(preview) {
+				return preview.isShown();
+			});
+		},
+		
+		getHiddenPreviews: function() {
+			
+			var availableSpace = this.outcomePreviewRow.innerWidth() - this.originalLeftMovePos - this.moveRightPadWidth;
+			
+			if(typeof this.outcomePreviewWidth === 'undefined') {
+				this.outcomePreviewWidth = this.availableOutcomePreviews[0].width();
+			}
+			
+			var requiredSpace = this.availableOutcomePreviews.length * this.outcomePreviewWidth;
+				
+			var leftOffset = parseInt(this.outcomePreviewMoveContainer.css('left').replace(/px/, ''), 10) - this.originalLeftMovePos;
+			if(leftOffset < 0) {
+				leftOffset *= -1;
+			}
+			
+			var rightOverflow = (availableSpace - (requiredSpace - leftOffset)) * -1;
+			
+			var hiddenLeft = (leftOffset === 0 ? 0 : leftOffset / this.outcomePreviewWidth);
+			var hiddenRight = (rightOverflow <= 0 ? 0 : rightOverflow / this.outcomePreviewWidth);
+			
+			var hiddenLeftPreviews = this.availableOutcomePreviews.slice(0, hiddenLeft);
+			var hiddenRightPreviews = this.availableOutcomePreviews.slice(this.availableOutcomePreviews.length - hiddenRight, this.availableOutcomePreviews.length);
+			
+			return {left: hiddenLeftPreviews, right: hiddenRightPreviews};
 		},
 		
 		checkSlideEnabled: function() {
@@ -199,39 +235,14 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'theme/OutcomePreviewVie
 				return;
 			}
 			
-			this.slideLeftEnabled = false;
-			this.slideRightEnabled = false;
-			
-			var visiblePreviews = _.filter(this.previews, function(preview) {
-				return preview.isShown();
-			});
-			 
-			var availableSpace = this.outcomePreviewRow.innerWidth() - this.originalLeftMovePos - this.moveRightPadWidth;
-			
-			if(visiblePreviews.length) {
-				
-				if(typeof this.outcomePreviewWidth === 'undefined') {
-					this.outcomePreviewWidth = visiblePreviews[0].width();
-				}
-				
-				var requiredSpace = visiblePreviews.length * this.outcomePreviewWidth;
-					
-				var leftOffset = parseInt(this.outcomePreviewMoveContainer.css('left').replace(/px/, ''), 10) - this.originalLeftMovePos;
-				if(leftOffset < 0) {
-					leftOffset *= -1;
-				}
-				
-				var rightOverflow = (availableSpace - (requiredSpace - leftOffset)) * -1;
-				
-				var hiddenLeft = (leftOffset === 0 ? 0 : leftOffset / this.outcomePreviewWidth);
-				var hiddenRight = (rightOverflow <= 0 ? 0 : rightOverflow / this.outcomePreviewWidth);
-				
-				this.slideLeftEnabled = hiddenRight > 0;
-				this.slideRightEnabled = hiddenLeft > 0;
-			}
-			else {
+			if(!this.availableOutcomePreviews.length) {
 				this.resetSlide();
 			}
+				
+			var hiddenPreviews = this.getHiddenPreviews();
+				
+			this.slideLeftEnabled = hiddenPreviews.right.length > 0;
+			this.slideRightEnabled = hiddenPreviews.left.length > 0;
 					
 			this.slideLeftCtrl.css('visibility', (this.slideLeftEnabled ? 'visible' : 'hidden'));
 			this.slideRightCtrl.css('visibility', (this.slideRightEnabled ? 'visible' : 'hidden'));
