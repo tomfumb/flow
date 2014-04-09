@@ -1,9 +1,7 @@
-Get grunt working on deployments
 Figure a way to have question answers use single english values but foreign language text
 
-
-
 To Do
+- update deployment process - shouldn't do minification as that should already be done and tested
 - do we keep the Stories project link or is it delegated to the CCIJ site - question for Pam
 	- mention the possibility of having real or hypothetical cases alongside the tool for people to work through for education
 - add new mechanism charts

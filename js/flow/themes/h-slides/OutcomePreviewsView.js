@@ -29,6 +29,9 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'theme/OutcomePreviewVie
 			
 			this.$el.find('#flow_available_count_main_container,#flow_options_preview_title').click(_.bind(this.onAvailableCountClicked, this));
 			this.handlePreviewClicks();
+			
+			$('#flow_available_outcome_preview_move_left').click(_.bind(this.onMoveLeftRequested, this));
+			$('#flow_available_outcome_preview_move_right').click(_.bind(this.onMoveRightRequested, this));
 		},
 		
 		getAvailablePreviewsHtml: function() {
@@ -203,6 +206,29 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'theme/OutcomePreviewVie
 				changesContentEl.html(this.changeHistory[this.changeHistoryPosition]).find('.outcome-text-link').click(_.bind(this.onOutcomeTextLinkClicked, this));
 				this.checkOutcomeHistoryNav();
 			}, this));
+		},
+		
+		onMoveLeftRequested: function() {
+			
+			if(typeof this.originalLeftMovePos === 'undefined') {
+				this.outcomePreviewMoveContainer = $('#flow_available_outcome_previews');
+				this.originalLeftMovePos = parseInt(this.outcomePreviewMoveContainer.css('left').replace(/px/, ''), 10);
+			}
+			
+			var availablePreviews = this.outcomePreviewMoveContainer.find('.available-outcome-preview-container:visible');
+			
+			if(!availablePreviews.length) {
+				Log.error('Outcome preview move requested but none visible');
+				return;
+			}
+			
+			var previewWidth = $(availablePreviews[0]).outerWidth();
+			
+			this.outcomePreviewMoveContainer.css('left', (parseInt(this.outcomePreviewMoveContainer.css('left').replace(/px/, ''), 10) - previewWidth) + 'px');
+		},
+		
+		onMoveRightRequested: function() {
+			Log.debug('move right requested');
 		}
 	});
 });
