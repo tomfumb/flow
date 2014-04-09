@@ -6,6 +6,7 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'theme/OutcomePreviewVie
 		
 		changeHistory: [],
 		changeHistoryPosition: -1,
+		previews: [],
 		
 		render: function(previewClickHandler) {
 			
@@ -45,8 +46,7 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'theme/OutcomePreviewVie
 					displayStyle: (outcome.get('available') ? '' : ' style="display: none;"')
 				}));
 				
-				view = new OutcomePreviewView({el: '#' + outcomeElId, model: outcome});
-				view.render();
+				this.previews.push((new OutcomePreviewView({el: '#' + outcomeElId, model: outcome})).render());
 				
 			}, this);
 			

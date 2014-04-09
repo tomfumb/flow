@@ -14,6 +14,12 @@ define(['jquery', 'underscore', 'backbone', 'text!template/flow/themes/h-slides/
 					abbreviation: this.model.get('abbreviation')
 				}
 			));
+			
+			return this;
+		},
+		
+		isShown: function() {
+			return !!this.model.get('available');
 		}
 	});
 });

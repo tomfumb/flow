@@ -105,16 +105,6 @@
 	padding-left: 0;
 }
 
-#flow_available_count_inset {
-	position: relative;
-	left: 0;
-	z-index: 2;
-	float: left;
-	width: 7px;
-	height: 100px;
-	background-color: #fff;
-}
-
 #flow_available_count_main_container {
 	color: #fff;
 	font-size: 60px;
@@ -133,12 +123,20 @@
 	height: 100px;
 }
 
+#flow_available_count_inset {
+	position: relative;
+	left: 0;
+	float: left;
+	width: 7px;
+	background-color: #fff;
+}
+
 #flow_available_count_side_pad_left {
 	position: relative;
 	background-color: #fff;
-	width: 5px;
+	width: 3px;
+	left: 127px;
 	top: -100px;
-	left: 120px;
 }
 
 #flow_available_count_side_pad_right {
@@ -155,12 +153,12 @@
 }
 
 #flow_available_outcome_previews {
-	padding-left: 7px;
+	padding-left: 0;
 	list-style-type: none;
 	overflow: hidden;
 	position: relative;
 	top: -200px;
-	left: 125px;
+	left: 130px;
 	white-space: nowrap;
 	z-index: 1;
 	width: 10000px
