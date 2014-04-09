@@ -8,6 +8,9 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'theme/OutcomePreviewVie
 		changeHistoryPosition: -1,
 		previews: [],
 		
+		slideLeftEnabled: false,
+		slideRightEnabled: false,
+		
 		render: function(previewClickHandler) {
 			
 			this.onPreviewClicked = previewClickHandler;
@@ -28,11 +31,26 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'theme/OutcomePreviewVie
 				}
 			));
 			
+			_.each(this.previews, function(preview) {
+				preview.refreshEl(this.$el);
+			}, this);
+			
 			this.$el.find('#flow_available_count_main_container,#flow_options_preview_title').click(_.bind(this.onAvailableCountClicked, this));
 			this.handlePreviewClicks();
 			
-			$('#flow_available_outcome_preview_move_left').click(_.bind(this.onMoveLeftRequested, this));
-			$('#flow_available_outcome_preview_move_right').click(_.bind(this.onMoveRightRequested, this));
+			this.slideLeftCtrl = this.$el.find('#flow_available_outcome_preview_move_left');
+			this.slideRightCtrl = this.$el.find('#flow_available_outcome_preview_move_right');
+			this.slideLeftCtrl.click(_.bind(this.onMoveLeftRequested, this));
+			this.slideRightCtrl.click(_.bind(this.onMoveRightRequested, this));
+			
+			this.outcomePreviewRow = this.$el.find('#flow_outcome_preview_row');
+			this.outcomePreviewMoveContainer = this.$el.find('#flow_available_outcome_previews');
+			this.originalLeftMovePos = parseInt(this.outcomePreviewMoveContainer.css('left').replace(/px/, ''), 10);
+			this.moveRightPadWidth = this.$el.find('#flow_available_count_side_pad_right').outerWidth();
+		},
+		
+		onShow: function() {
+			this.checkSlideEnabled();
 		},
 		
 		getAvailablePreviewsHtml: function() {
@@ -120,11 +138,21 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'theme/OutcomePreviewVie
 			
 			var addedLinks = [], removedLinks = [];
 			
+			this.outcomeAddPending = !!changedOutcomes.added.length;
+			this.outcomeRemPending = !!changedOutcomes.removed.length;
+			
+			this.slideLeftEnabled = false;
+			this.slideRightEnabled = false;
+			this.$el.find('.outcome-preview-slider').css('visibility', 'hidden');
+			
 			_.each(changedOutcomes.added, function(outcome) {
 				
 				var changedPreviewEl = this.$el.find('#' + this.getPreviewContainerIdFromOutcome(outcome));
 				changedPreviewEl.stop();
-				changedPreviewEl.fadeIn(fadeSpeed);
+				changedPreviewEl.fadeIn(fadeSpeed, _.bind(function() {
+					this.outcomeAddPending = false;
+					this.checkSlideEnabled();
+				}, this));
 				
 				addedLinks.push('<li class="clickable clickable-colour outcome-text-link" id="' + this.getTextLinkIdFromOutcome(outcome) + '">' + outcome.get('title') + '</li>');
 			}, this);
@@ -132,7 +160,10 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'theme/OutcomePreviewVie
 			_.each(changedOutcomes.removed, function(outcome) {
 				var changedPreviewEl = this.$el.find('#' + this.getPreviewContainerIdFromOutcome(outcome));
 				changedPreviewEl.stop();
-				changedPreviewEl.fadeOut(fadeSpeed);
+				changedPreviewEl.fadeOut(fadeSpeed, _.bind(function() {
+					this.outcomeRemPending = false;
+					this.checkSlideEnabled();
+				}, this));
 				
 				removedLinks.push('<li class="clickable clickable-colour outcome-text-link" id="' + this.getTextLinkIdFromOutcome(outcome) + '">' + outcome.get('title') + '</li>');
 			}, this);
@@ -157,6 +188,47 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'theme/OutcomePreviewVie
 			changesContentEl.find('.outcome-text-link').click(_.bind(this.onOutcomeTextLinkClicked, this));
 			
 			this.checkOutcomeHistoryNav();
+		},
+		
+		checkSlideEnabled: function() {
+			
+			if(this.outcomeAddPending || this.outcomeRemPending) {
+				Log.debug('not yet checking slide enabled');
+				return;
+			}
+			
+			this.slideLeftEnabled = false;
+			this.slideRightEnabled = false;
+			
+			var visiblePreviews = _.filter(this.previews, function(preview) {
+				return preview.isShown();
+			});
+			 
+			var availableSpace = this.outcomePreviewRow.innerWidth() - this.originalLeftMovePos - this.moveRightPadWidth;
+			
+			if(visiblePreviews.length) {
+				
+				if(typeof this.outcomePreviewWidth === 'undefined') {
+					this.outcomePreviewWidth = visiblePreviews[0].width();
+				}
+				
+				var requiredSpace = visiblePreviews.length * this.outcomePreviewWidth;
+					
+				var leftOffset = parseInt(this.outcomePreviewMoveContainer.css('left').replace(/px/, ''), 10) - this.originalLeftMovePos;
+				var rightOverflow = (availableSpace - (requiredSpace - leftOffset)) * -1;
+				
+				var hiddenLeft = (leftOffset === 0 ? 0 : (leftOffset / this.outcomePreviewWidth) * -1);
+				var hiddenRight = (rightOverflow <= 0 ? 0 : rightOverflow / this.outcomePreviewWidth);
+				
+				this.slideLeftEnabled = hiddenRight > 0;
+				this.slideRightEnabled = hiddenLeft > 0;
+			}
+			else {
+				this.resetSlide();
+			}
+					
+			this.slideLeftCtrl.css('visibility', (this.slideLeftEnabled ? 'visible' : 'hidden'));
+			this.slideRightCtrl.css('visibility', (this.slideRightEnabled ? 'visible' : 'hidden'));
 		},
 		
 		onOutcomeTextLinkClicked: function(event) {
@@ -210,25 +282,38 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'theme/OutcomePreviewVie
 		
 		onMoveLeftRequested: function() {
 			
-			if(typeof this.originalLeftMovePos === 'undefined') {
-				this.outcomePreviewMoveContainer = $('#flow_available_outcome_previews');
-				this.originalLeftMovePos = parseInt(this.outcomePreviewMoveContainer.css('left').replace(/px/, ''), 10);
+			if(!this.slideLeftEnabled) {
+				return;
 			}
 			
-			var availablePreviews = this.outcomePreviewMoveContainer.find('.available-outcome-preview-container:visible');
+			var availablePreviews = _.filter(this.previews, function(preview) {
+				return preview.isShown();
+			});
 			
 			if(!availablePreviews.length) {
 				Log.error('Outcome preview move requested but none visible');
 				return;
 			}
 			
-			var previewWidth = $(availablePreviews[0]).outerWidth();
+			this.slideLeftEnabled = false;
+			this.slideRightEnabled = false;
 			
-			this.outcomePreviewMoveContainer.css('left', (parseInt(this.outcomePreviewMoveContainer.css('left').replace(/px/, ''), 10) - previewWidth) + 'px');
+			this.outcomePreviewMoveContainer.animate({'left': (parseInt(this.outcomePreviewMoveContainer.css('left').replace(/px/, ''), 10) - this.outcomePreviewWidth) + 'px'}, 200, _.bind(function() {
+				this.checkSlideEnabled();
+			}, this));
 		},
 		
 		onMoveRightRequested: function() {
+			
+			if(!this.slideRightEnabled) {
+				return;
+			}
+			
 			Log.debug('move right requested');
+		},
+		
+		resetSlide: function() {
+			this.outcomePreviewMoveContainer.css('left', this.originalLeftMovePos);
 		}
 	});
 });

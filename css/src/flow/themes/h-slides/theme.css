@@ -177,6 +177,10 @@
 	float: left;
 }
 
+.outcome-preview-slider {
+	visibility: hidden;
+}
+
 .outcome-preview-abbreviation {
 	text-align: center;
 	font-size: smaller;

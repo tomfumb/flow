@@ -115,8 +115,9 @@ define(
 			this.questions[0].view.onBeforeShow();
 		},
 		
-		onBeforeShow: function() {
+		onShow: function() {
 			this.resizeQuestionContainers(false);
+			this.outcomePreviews.onShow();
 		},
 		
 		showNextQuestion: function() {

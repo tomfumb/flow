@@ -18,6 +18,15 @@ define(['jquery', 'underscore', 'backbone', 'text!template/flow/themes/h-slides/
 			return this;
 		},
 		
+		refreshEl: function(parent) {
+			this.el = parent.find('#' + this.el.id);
+			this.$el = $(this.el);
+		},
+		
+		width: function() {
+			return this.$el.outerWidth();
+		},
+		
 		isShown: function() {
 			return !!this.model.get('available');
 		}

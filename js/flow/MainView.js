@@ -35,7 +35,7 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'theme/ContentView'], fu
 		
 		onUserReady: function() {
 			this.$el.show();
-			this.content.onBeforeShow();
+			this.content.onShow();
 		},
 		
 		onAnswersSelected: function(answeredQuestion, answers) {
