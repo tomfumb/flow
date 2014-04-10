@@ -159,7 +159,11 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'theme/OutcomePreviewVie
 
 			// get index of first currently visible outcome preview
 			var firstVisible = _.find(this.availableOutcomePreviews, function(preview) {
-				return((preview.$el.position().left + preview.$el.width()) > 0);
+				
+				// below approach needs to account for the idx of the preview, otherwise it will always calculate the same value
+				
+				
+				return((parseInt(this.outcomePreviewMoveContainer.css('left').replace(/px/i, ''), 10) + preview.$el.width()) - this.originalLeftMovePos > 0);
 			}, this);
 			var firstVisibleId = firstVisible.model.get('id');
 			var firstVisibleIndex = 0;
