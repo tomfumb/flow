@@ -1,4 +1,5 @@
 each time an outcome preview is removed or added I need to know if it had a left offset of < 0. If yes and removing: increase the left css property by one width. If yes and adding: decrease the left css property by one width. In each case do an immediate show() instead of fadein. If above 0 offset (whether on or off screen) simply calling checkSlideEnabled() should be sufficient. Use getHiddenPreviews function to determine which direction the disappearing outcome is in
+progressing but issues determining which is the first visible preview. Currently not handling the case where the first visible is the one that disappears. complicated
 add swipe support to outcome preview row
 
 To Do
