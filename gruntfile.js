@@ -153,9 +153,9 @@ module.exports = function(grunt) {
   grunt.registerTask('html', ['lint5']);
   grunt.registerTask('version', ['replace:urlVersion']);
   grunt.registerTask('development', ['replace:development']);
-  grunt.registerTask('live', ['replace:live']);
+  grunt.registerTask('live', ['lint', 'html', 'r', 'version', 'replace:live']);
   
-  grunt.registerTask('deploy', ['lint', 'html', 'r', 'version', 'replace:live', 'copy', 'chmod', 'ftp-deploy', 'development']);
+  grunt.registerTask('deploy', ['copy', 'chmod', 'ftp-deploy', 'development']);
 
-  grunt.registerTask('default', ['lint', 'html', 'r', 'version', 'live']);
+  grunt.registerTask('default', ['live']);
 };
