@@ -1,11 +1,12 @@
 To Do
-- figure out a way to have question answers use single english values but foreign language text
 - do we keep the Stories project link or is it delegated to the CCIJ site - question for Pam
 	- mention the possibility of having real or hypothetical cases alongside the tool for people to work through for education
 - add new mechanism charts
-- create lorem ipsum language version to ensure that the language approach is valid and how much effort is involved
+- add updated text
+- revert to 12 in bootstrap
+- figure out a way to have question answers use single english values but foreign language text
+	- create lorem ipsum language version to ensure that the language approach is valid and how much effort is involved
 - only have useful log messages
-- icon for question area (ESL)
 - SEO (French?)
 - sliding 'available' screen - do tabs still fit on mobile screen?
 - soften colours and make question text bigger - more engaging
@@ -20,7 +21,6 @@ To Do
 - test case - remove all outcome previews, what happens to slide / visible logic?
 - http://getbootstrap.com/getting-started/#browsers
 - tip buttons near key functionality explaining what's going on
-- use gallery-style slider for outcome previews and question summaries, must ensure current question always visible
 - check necessity of shims in index.htm
 - remove logos - will be provided by Wise & Hammer
 

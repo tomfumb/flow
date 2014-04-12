@@ -6,6 +6,39 @@
 	color: #0000ff !important;
 }
 
+.overflow-slide-list {
+	list-style-type: none;
+	overflow: hidden;
+	width: 10000px;
+	white-space: nowrap;
+}
+
+#flow_question_summary_container {
+	height: 34px;
+}
+
+#flow_question_summary {
+	height: 34px;
+	padding: 0;
+	z-index: 1;
+	margin: 0;
+	float: left;
+}
+
+#flow_question_summary_side_pad_right {
+	position: relative;
+	right: -7px;
+	top: -34px;
+	width: 15px;
+	height: 34px;
+	z-index: 2;
+	float: right;
+}
+
+.question-summary-container {
+	float: left;
+}
+
 #flow_carousel {
 	background-color: #f3f3f3;
 }
@@ -34,19 +67,6 @@
 	right: 0;
 }
 
-/*
-#flow_content_items {
-	background-color: #f3f3f3;
-}
-*/
-/*
-.question-container-background {
-	height: 300px;
-	background-color: #f3f3f3;
-}
-*/
-
-/* overriding default Bootstrap Carousel styles so that questions are always shown within question background (above) */
 .carousel-caption {
 	overflow: hidden !important;
 	position: inherit;
@@ -154,14 +174,12 @@
 
 #flow_available_outcome_previews {
 	padding-left: 0;
-	list-style-type: none;
-	overflow: hidden;
 	position: relative;
 	top: -200px;
 	left: 130px;
-	white-space: nowrap;
 	z-index: 1;
-	width: 10000px
+	height: 100px;
+	float: left;
 }
 
 #flow_content_right {

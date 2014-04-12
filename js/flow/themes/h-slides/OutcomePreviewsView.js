@@ -1,4 +1,4 @@
-define(['jquery', 'underscore', 'backbone', 'flow/Log', 'theme/OutcomePreviewView', 'text!template/flow/themes/h-slides/outcome-preview.html', 'text!template/flow/themes/h-slides/outcome-preview-outcome.html'], function($, _, Backbone, Log, OutcomePreviewView, previewTemplate, outcomeTemplate) {
+define(['jquery', 'underscore', 'backbone', 'flow/Log', 'theme/OutcomePreviewView', 'text!template/flow/themes/h-slides/outcome-preview.html', 'text!template/flow/themes/h-slides/outcome-preview-outcome.html', 'jquery-mobile'], function($, _, Backbone, Log, OutcomePreviewView, previewTemplate, outcomeTemplate) {
 
 	return Backbone.View.extend({
 		
@@ -53,8 +53,8 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'theme/OutcomePreviewVie
 			this.slideRightCtrl = this.$el.find('#flow_available_outcome_preview_move_right');
 			this.slideLeftCtrl.click(_.bind(this.onMoveRightRequested, this));
 			this.slideRightCtrl.click(_.bind(this.onMoveLeftRequested, this));
-			this.outcomePreviewRow.on('swipeleft', _.bind(this.onMoveRightRequested, this));
-			this.outcomePreviewRow.on('swiperight', _.bind(this.onMoveLeftRequested, this));
+			this.outcomePreviewRow.on('swipeleft', _.bind(this.onMoveLeftRequested, this));
+			this.outcomePreviewRow.on('swiperight', _.bind(this.onMoveRightRequested, this));
 			
 			$(window).resize(_.bind(this.onWindowResize, this));
 		},
@@ -336,8 +336,8 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'theme/OutcomePreviewVie
 			this.slideLeftEnabled = hiddenPreviews.right.length > 0;
 			this.slideRightEnabled = hiddenPreviews.left.length > 0;
 					
-			this.slideLeftCtrl.css('visibility', (this.slideLeftEnabled ? 'visible' : 'hidden'));
-			this.slideRightCtrl.css('visibility', (this.slideRightEnabled ? 'visible' : 'hidden'));
+			this.slideLeftCtrl.css('visibility', (this.slideRightEnabled ? 'visible' : 'hidden'));
+			this.slideRightCtrl.css('visibility', (this.slideLeftEnabled ? 'visible' : 'hidden'));
 		},
 		
 		onOutcomeTextLinkClicked: function(event) {
