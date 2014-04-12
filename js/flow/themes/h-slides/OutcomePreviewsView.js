@@ -150,21 +150,41 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'theme/OutcomePreviewVie
 			this.slideRightEnabled = false;
 			this.$el.find('.outcome-preview-slider').css('visibility', 'hidden');
 
-			// new approach for positioning:
-			// get idx of first visible preview
-			// for each added preview with index < first visible decrement left
-			// for each removed preview with index < first visible increment left
-			// by this point any left value beyond the original means there will be (/79) previews there.
-			// if all currently visible are going to be removed reset left
-
-			// get index of first currently visible outcome preview
-			var firstVisibleIndex, totalLeft = this.getLeftHide();
+			var firstVisibleIndex = (this.availableOutcomePreviews.length === 0 ? 0 : undefined), totalLeft = this.getLeftHide();
 			_.each(this.availableOutcomePreviews, function(preview) {
 				if(totalLeft === this.originalLeftMovePos) {
 					firstVisibleIndex = this.getPreviewIndex(preview.model);
 				}
 				totalLeft += preview.$el.width();
 			}, this);
+			
+			if(typeof firstVisibleIndex === 'undefined') {
+				Log.error('OutcomePreviewView firstVisibleIndex error');
+			}
+			else {
+				
+				var firstId = this.previews[firstVisibleIndex].model.get('id');
+				var isFirstRemoved = !_.find(updatedAvailablePreviews, function(preview) {
+					return(preview.model.get('id') === firstId);
+				});
+				
+				if(isFirstRemoved) {
+					// see if any of the following previews will be shown - if not this means an empty preview row that should be reset to the start
+					var followingIsVisible = false;
+					if(this.previews.length > (firstVisibleIndex + 1)) {
+						_.each(_.rest(this.previews, firstVisibleIndex + 1), function(preview) {
+							followingIsVisible = (followingIsVisible || !!_.find(updatedAvailablePreviews, function(updatedPreview) {
+								return (preview.model.get('id') === updatedPreview.model.get('id'));
+							}));
+						});
+					}
+					
+					if(!followingIsVisible) {
+						this.resetSlide();
+						firstVisibleIndex = 0;
+					}
+				}
+			}
 			
 			_.each(changedOutcomes.added, function(outcome) {
 				

@@ -22,6 +22,7 @@ To Do
 3) date picker isn't obvious when presented with keyboard input beneath text input
 4) question summary list should just be one row, swipeable / pageable like outcomes list. Will require some complex logic to ensure the current question is as close to the centre of that display as possible
 - test case - slow download of resources, anything available before it will actually work?
+- test case - remove all outcome previews, what happens to slide / visible logic?
 - http://getbootstrap.com/getting-started/#browsers
 - tip buttons near key functionality explaining what's going on
 - use gallery-style slider for outcome previews and question summaries, must ensure current question always visible
