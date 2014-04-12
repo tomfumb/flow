@@ -1,4 +1,4 @@
-progressing on adjusting outcome row's left when adding / removing previews but issues determining which is the first visible preview. apparently cannot rely on preview width and left position of move container being correct. Currently not handling the case where the first visible is the one that disappears. complicated
+Currently not handling the case where the first visible is the one that disappears. complicated
 add swipe support to outcome preview row
 
 To Do

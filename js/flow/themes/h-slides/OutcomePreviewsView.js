@@ -154,7 +154,8 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'theme/OutcomePreviewVie
 			// get idx of first visible preview
 			// for each added preview with index < first visible decrement left
 			// for each removed preview with index < first visible increment left
-			// by this point any left value beyond the original means there will be (/79) previews there. if all currently visible are going to be removed and there is something left then decrement left
+			// by this point any left value beyond the original means there will be (/79) previews there.
+			// if all currently visible are going to be removed reset left
 
 			// get index of first currently visible outcome preview
 			var firstVisibleIndex, totalLeft = this.getLeftHide();

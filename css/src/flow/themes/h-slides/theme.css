@@ -175,6 +175,7 @@
 .available-outcome-preview-container {
 	height: 100px;
 	float: left;
+	width: 80px;
 }
 
 .outcome-preview-slider {
