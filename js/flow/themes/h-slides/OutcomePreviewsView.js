@@ -151,38 +151,18 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'theme/OutcomePreviewVie
 			this.$el.find('.outcome-preview-slider').css('visibility', 'hidden');
 
 			// new approach for positioning:
-			//   get idx of first visible preview
-			//	 for each added preview with index < first visible decrement left
-			// 	 for each removed preview with index < first visible increment left
-			//	 by this point any left value beyond the original means there will be (/79) previews there. if all currently visible are going to be removed and there is something left then decrement left
-
+			// get idx of first visible preview
+			// for each added preview with index < first visible decrement left
+			// for each removed preview with index < first visible increment left
+			// by this point any left value beyond the original means there will be (/79) previews there. if all currently visible are going to be removed and there is something left then decrement left
 
 			// get index of first currently visible outcome preview
-			var firstVisible = _.find(this.availableOutcomePreviews, function(preview) {
-				
-				// below approach needs to account for the idx of the preview, otherwise it will always calculate the same value
-				
-				
-				return((parseInt(this.outcomePreviewMoveContainer.css('left').replace(/px/i, ''), 10) + preview.$el.width()) - this.originalLeftMovePos > 0);
-			}, this);
-			var firstVisibleId = firstVisible.model.get('id');
-			var firstVisibleIndex = 0;
-			_.each(this.previews, function(preview, idx) {
-				if(firstVisibleId === preview.model.get('id')) {
-					firstVisibleIndex = idx;
+			var firstVisibleIndex, totalLeft = this.getLeftHide();
+			_.each(this.availableOutcomePreviews, function(preview) {
+				if(totalLeft === this.originalLeftMovePos) {
+					firstVisibleIndex = this.getPreviewIndex(preview.model);
 				}
-			});
-			
-			var getPreviewIndex = _.bind(function(outcome) {
-				
-				var previewIndex, outcomeId = outcome.get('id');
-				_.each(this.previews, function(preview, idx) {
-					if(outcomeId === preview.model.get('id')) {
-						previewIndex = idx;
-					}
-				});
-				
-				return previewIndex;
+				totalLeft += preview.$el.width();
 			}, this);
 			
 			_.each(changedOutcomes.added, function(outcome) {
@@ -195,7 +175,7 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'theme/OutcomePreviewVie
 					this.checkSlideEnabled();
 				}, this));
 				
-				var previewIndex = getPreviewIndex(outcome);
+				var previewIndex = this.getPreviewIndex(outcome);
 				if(previewIndex < firstVisibleIndex) {
 					this.adjustLeftHide(-1);
 				}
@@ -209,7 +189,7 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'theme/OutcomePreviewVie
 				var previewElement = this.getPreviewElement(outcome);
 				previewElement.stop();
 				
-				var previewIndex = getPreviewIndex(outcome), updateLeftOnComplete = false;
+				var previewIndex = this.getPreviewIndex(outcome), updateLeftOnComplete = false;
 				if(previewIndex < firstVisibleIndex) {
 					updateLeftOnComplete = true;
 				}
@@ -251,15 +231,20 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'theme/OutcomePreviewVie
 		},
 		
 		getPreviewElement: function(outcome) {
-			
-			var previewElement, outcomeId = outcome.get('id');
-			_.each(this.previews, function(preview) {
+			var preview = this.previews[this.getPreviewIndex(outcome)];
+			return preview.$el;
+		},
+		
+		getPreviewIndex: function(outcome) {
+				
+			var previewIndex, outcomeId = outcome.get('id');
+			_.each(this.previews, function(preview, idx) {
 				if(outcomeId === preview.model.get('id')) {
-					previewElement = preview;
+					previewIndex = idx;
 				}
 			});
 			
-			return previewElement.$el;
+			return previewIndex;
 		},
 		
 		getHiddenPreviews: function() {
@@ -426,6 +411,10 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'theme/OutcomePreviewVie
 			this.outcomePreviewMoveContainer.animate({'left': (parseInt(this.outcomePreviewMoveContainer.css('left').replace(/px/i, ''), 10) + this.outcomePreviewWidth) + 'px'}, 200, _.bind(function() {
 				this.checkSlideEnabled();
 			}, this));
+		},
+		
+		getLeftHide: function() {
+			return parseInt(this.outcomePreviewMoveContainer.css('left').replace(/px/i, ''), 10);
 		},
 		
 		adjustLeftHide: function(increment) {

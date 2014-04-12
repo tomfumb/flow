@@ -2,6 +2,7 @@ progressing on adjusting outcome row's left when adding / removing previews but 
 add swipe support to outcome preview row
 
 To Do
+- replace all px replaces in outcomepreviewsview.js with getLeftHide
 - figure out a way to have question answers use single english values but foreign language text
 - update deployment process - shouldn't do minification as that should already be done and tested
 - do we keep the Stories project link or is it delegated to the CCIJ site - question for Pam
