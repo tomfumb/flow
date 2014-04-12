@@ -45,7 +45,7 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'theme/OutcomePreviewVie
 			
 			this.outcomePreviewRow = this.$el.find('#flow_outcome_preview_row');
 			this.outcomePreviewMoveContainer = this.$el.find('#flow_available_outcome_previews');
-			this.originalLeftMovePos = parseInt(this.outcomePreviewMoveContainer.css('left').replace(/px/i, ''), 10);
+			this.originalLeftMovePos = this.getLeftHide();
 			this.moveRightPadWidth = this.$el.find('#flow_available_count_side_pad_right').outerWidth();
 			this.availableOutcomeCountEl = this.$el.find('#flow_available_count_main');
 			
@@ -279,7 +279,7 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'theme/OutcomePreviewVie
 			
 			var requiredSpace = this.availableOutcomePreviews.length * this.outcomePreviewWidth;
 				
-			var leftOffset = parseInt(this.outcomePreviewMoveContainer.css('left').replace(/px/i, ''), 10) - this.originalLeftMovePos;
+			var leftOffset = this.getLeftHide() - this.originalLeftMovePos;
 			if(leftOffset < 0) {
 				leftOffset *= -1;
 			}
@@ -407,7 +407,7 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'theme/OutcomePreviewVie
 			this.slideLeftEnabled = false;
 			this.slideRightEnabled = false;
 			
-			this.outcomePreviewMoveContainer.animate({'left': (parseInt(this.outcomePreviewMoveContainer.css('left').replace(/px/i, ''), 10) - this.outcomePreviewWidth) + 'px'}, 200, _.bind(function() {
+			this.outcomePreviewMoveContainer.animate({'left': (this.getLeftHide() - this.outcomePreviewWidth) + 'px'}, 200, _.bind(function() {
 				this.checkSlideEnabled();
 			}, this));
 		},
@@ -430,7 +430,7 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'theme/OutcomePreviewVie
 			this.slideLeftEnabled = false;
 			this.slideRightEnabled = false;
 			
-			this.outcomePreviewMoveContainer.animate({'left': (parseInt(this.outcomePreviewMoveContainer.css('left').replace(/px/i, ''), 10) + this.outcomePreviewWidth) + 'px'}, 200, _.bind(function() {
+			this.outcomePreviewMoveContainer.animate({'left': (this.getLeftHide() + this.outcomePreviewWidth) + 'px'}, 200, _.bind(function() {
 				this.checkSlideEnabled();
 			}, this));
 		},
@@ -440,10 +440,8 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'theme/OutcomePreviewVie
 		},
 		
 		adjustLeftHide: function(increment) {
-			
-			var currentLeft = parseInt(this.outcomePreviewMoveContainer.css('left').replace(/px/i, ''), 10);
 			var adjustment = this.outcomePreviewWidth * increment;
-			this.outcomePreviewMoveContainer.css('left', (currentLeft + adjustment) + 'px');
+			this.outcomePreviewMoveContainer.css('left', (this.getLeftHide() + adjustment) + 'px');
 		},
 		
 		resetSlide: function() {
