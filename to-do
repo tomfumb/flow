@@ -1,6 +1,3 @@
-Currently not handling the case where the first visible is the one that disappears. complicated
-add swipe support to outcome preview row
-
 To Do
 - replace all px replaces in outcomepreviewsview.js with getLeftHide
 - figure out a way to have question answers use single english values but foreign language text

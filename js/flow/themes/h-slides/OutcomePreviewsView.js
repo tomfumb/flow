@@ -43,17 +43,18 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'theme/OutcomePreviewVie
 			this.$el.find('#flow_available_count_main_container,#flow_options_preview_title').click(_.bind(this.onAvailableCountClicked, this));
 			this.handlePreviewClicks();
 			
-			this.slideLeftCtrl = this.$el.find('#flow_available_outcome_preview_move_left');
-			this.slideRightCtrl = this.$el.find('#flow_available_outcome_preview_move_right');
-			this.slideLeftCtrl.click(_.bind(this.onMoveLeftRequested, this));
-			this.slideRightCtrl.click(_.bind(this.onMoveRightRequested, this));
-			
 			this.outcomePreviewRow = this.$el.find('#flow_outcome_preview_row');
 			this.outcomePreviewMoveContainer = this.$el.find('#flow_available_outcome_previews');
 			this.originalLeftMovePos = parseInt(this.outcomePreviewMoveContainer.css('left').replace(/px/i, ''), 10);
 			this.moveRightPadWidth = this.$el.find('#flow_available_count_side_pad_right').outerWidth();
-			
 			this.availableOutcomeCountEl = this.$el.find('#flow_available_count_main');
+			
+			this.slideLeftCtrl = this.$el.find('#flow_available_outcome_preview_move_left');
+			this.slideRightCtrl = this.$el.find('#flow_available_outcome_preview_move_right');
+			this.slideLeftCtrl.click(_.bind(this.onMoveRightRequested, this));
+			this.slideRightCtrl.click(_.bind(this.onMoveLeftRequested, this));
+			this.outcomePreviewRow.on('swipeleft', _.bind(this.onMoveRightRequested, this));
+			this.outcomePreviewRow.on('swiperight', _.bind(this.onMoveLeftRequested, this));
 			
 			$(window).resize(_.bind(this.onWindowResize, this));
 		},
