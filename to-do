@@ -1,4 +1,6 @@
 To Do
+- see if the carousel can be stopped mid-transition for a new transition as this will happen to the question summary row
+- ensure carousel speed and summary transition speed are in-sync
 - do we keep the Stories project link or is it delegated to the CCIJ site - question for Pam
 	- mention the possibility of having real or hypothetical cases alongside the tool for people to work through for education
 - add new mechanism charts
@@ -11,7 +13,8 @@ To Do
 - sliding 'available' screen - do tabs still fit on mobile screen?
 - soften colours and make question text bigger - more engaging
 - social media sharing icons
-- perhaps give feedback about % complete as working through
+- give feedback about % complete as working through - small text beside 'Questions' title
+- add small text for Question 1 (of 19) or similar
 - Mobile issues:
 1) modals still too big for small screen
 2) swiping has broken - jquery-mobile not referenced as a dependency

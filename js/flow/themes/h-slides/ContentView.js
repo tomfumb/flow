@@ -23,6 +23,11 @@ define(
 			this.$el.find('#flow_feedback_icon').click(_.bind(this.onFeedbackIconClicked, this));
 			this.$el.find('#flow_send_results_icon').click(_.bind(this.onSendResultsIconClicked, this));
 			
+			this.questionSummaryContainer = this.$el.find('#flow_question_summary_container');
+			this.questionSummaryRow = this.$el.find('#flow_question_summary');
+			this.questionSummaryRowLeftPad = this.$el.find('#flow_question_summary_side_pad_left');
+			this.questionSummaryRowRightPad = this.$el.find('#flow_question_summary_side_pad_right');
+			
 			$(window).resize(_.bind(this.onWindowResize, this));
 		},
 		
@@ -31,7 +36,6 @@ define(
 			this.addQuestionsCalled = true;
 			
 			var scratch = $('#flow_scratch');
-			var summary = this.$el.find('#flow_question_summary');
 			
 			var availableCount = 0;
 			
@@ -69,7 +73,7 @@ define(
 					}
 				));
 				
-				summary.append(summaryQuestionEl);
+				this.questionSummaryRow.append(summaryQuestionEl);
 				summaryQuestionEl.click(_.bind(this.onSummaryQuestionClicked, this));
 				
 				question.on('change:selectedAnswers', _.bind(this.onAnswersSelected, this));
@@ -95,6 +99,11 @@ define(
 			// update modal with all questions unanswered / unavailable
 			this.outcomeManager.unansweredQuestions = availableCount;
 			
+			this.questionSummaryRowEntries = [];
+			this.questionSummaryRow.find('.question-summary-container').each(_.bind(function(idx, el) {
+				this.questionSummaryRowEntries.push($(el));
+			}, this));
+			
 			this.prepareDisplay();
 		},
 		
@@ -113,6 +122,7 @@ define(
 			this.checkNavigationOptions();
 			
 			this.questions[0].view.onBeforeShow();
+			$(this.questionSummaryRowEntries[0]).prop('active', true);
 		},
 		
 		onShow: function() {
@@ -126,28 +136,15 @@ define(
 			
 			if(nextIndex > -1) {
 				
-				Log.debug('Advancing to ' + nextIndex);
-				
-				_.each(this.questions, function(entry, index) {
-					if(index === nextIndex) {
-						entry.active = true;
-						entry.view.onBeforeShow();
-					}
-					else {
-						entry.active = false;
-					}
-				}, this);
-				
 				this.$carouselEl.carousel(nextIndex);
+				
+				this.updateActiveQuestion(nextIndex);
+				
+				this.showActiveQuestionSummary();
 				
 				this.checkNavigationOptions();
 			}
 			else {
-				
-				Log.debug('No more questions available');
-				
-				// how to notify rest of the application that the end of all the questions has been reached?
-				// just not do anything?
 				
 				// force display of available / unavailable outcomes now that the user has completed all questions, but only show after outcome display has been updated
 				if(this.outcomeDisplayUpdating) {
@@ -162,32 +159,44 @@ define(
 		},
 		
 		showPreviousQuestion: function() {
-			
-			Log.debug('ContentView.showPreviousQuestion');
 				
 			var prevIndex = this.getIndexOfPreviousAvailableQuestion();
 			
 			if(prevIndex > -1) {
 				
-				Log.debug('Reverting to ' + prevIndex);
-				
-				_.each(this.questions, function(entry, index) {
-					if(index === prevIndex) {
-						entry.active = true;
-						entry.view.onBeforeShow();
-					}
-					else {
-						entry.active = false;
-					}
-				}, this);
-				
 				this.$carouselEl.carousel(prevIndex);
+				
+				this.updateActiveQuestion(prevIndex);
+				
+				this.showActiveQuestionSummary();
 				
 				this.checkNavigationOptions();
 			}
 			else {
 				Log.debug('No previous questions available');
 			}
+		},
+		
+		updateActiveQuestion: function(newIndex) {
+				
+			_.each(this.questions, function(entry, index) {
+				if(index === newIndex) {
+					entry.active = true;
+					entry.view.onBeforeShow();
+				}
+				else {
+					entry.active = false;
+				}
+			}, this);
+			
+			_.each(this.questionSummaryRowEntries, function(entry, index) {
+				if(index === newIndex) {
+					entry.prop('active', true);
+				}
+				else {
+					entry.prop('active', false);
+				}
+			});
 		},
 		
 		checkNavigationOptions: function() {
@@ -364,16 +373,14 @@ define(
 				_.each(this.questions, function(entry, index) {
 					if(entry.id == questionId) {
 						requestedIndex = index;
-						entry.active = true;
 						requestedView = entry.view;
-					}
-					else {
-						entry.active = false;
 					}
 				});
 				
 				if(requestedIndex > -1) {
+					this.updateActiveQuestion(requestedIndex);
 					requestedView.onBeforeShow();
+					this.showActiveQuestionSummary();
 					this.$carouselEl.carousel(requestedIndex);
 					this.checkNavigationOptions();
 				}
@@ -517,6 +524,7 @@ define(
 		
 		onWindowResize: function(event) {
 			this.resizeQuestionContainers(false);
+			this.showActiveQuestionSummary();
 		},
 		
 		onChildContentResize: function() {
@@ -556,6 +564,70 @@ define(
 			}
 			
 			this.resultsSenderView.render();
+		},
+
+		getSummaryAvailableSpace: function() {
+			
+			return this.questionSummaryContainer.innerWidth() - 8; // 8 is the 15px width of the gradient - its -7 offset
+		},
+		
+		getSummaryRowWidth: function() {
+			
+			var width = 0;
+			_.each(this.questionSummaryRowEntries, function(entry) {
+				width += entry.outerWidth();
+			});
+			
+			return width;
+		},
+
+		getSummaryHide: function() {
+			
+			var left = parseInt(this.questionSummaryRow.css('left').replace(/px/i, ''), 10);
+			var right = this.getSummaryRowWidth() - this.getSummaryAvailableSpace() - left;
+			
+			return {left: left, right: right};
+		},
+		
+		showActiveQuestionSummary: function() {
+			
+			var preceedingWidth = 0, followingWidth = 0;
+			var summary, summaryIdx = -1;
+			_.each(this.questionSummaryRowEntries, function(entry, idx) {
+				
+				if(entry.prop('active') === true) {
+					summary = entry;
+					summaryIdx = idx;
+				}
+				
+				if(summaryIdx !== idx) {
+					if(summaryIdx > -1) {
+						followingWidth += entry.outerWidth();
+					}
+					else {
+						preceedingWidth += entry.outerWidth();
+					}
+				}
+			});
+			
+			var requiredPadForCentre = (this.getSummaryAvailableSpace() - summary.outerWidth()) / 2;
+			
+			var newLeft;
+			if(preceedingWidth < requiredPadForCentre) {
+				newLeft = 0;
+			}
+			else {
+				if(followingWidth < requiredPadForCentre) {
+					newLeft = (requiredPadForCentre * 2) * -1;
+				}
+				else {
+					newLeft = requiredPadForCentre * -1;
+				}
+			}
+			
+			if(newLeft !== this.getSummaryHide().left) {
+				this.questionSummaryRow.stop().animate({'left': newLeft + 'px'}, 200);
+			}
 		}
 	});
 });
