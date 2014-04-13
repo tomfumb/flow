@@ -591,42 +591,57 @@ define(
 		
 		showActiveQuestionSummary: function() {
 			
-			var preceedingWidth = 0, followingWidth = 0;
-			var summary, summaryIdx = -1;
-			_.each(this.questionSummaryRowEntries, function(entry, idx) {
-				
-				if(entry.prop('active') === true) {
-					summary = entry;
-					summaryIdx = idx;
-				}
-				
-				if(summaryIdx !== idx) {
-					if(summaryIdx > -1) {
-						followingWidth += entry.outerWidth();
-					}
-					else {
-						preceedingWidth += entry.outerWidth();
-					}
-				}
-			});
+			var summaryRowWidth = this.getSummaryRowWidth();
+			var summaryAvailableSpace = this.getSummaryAvailableSpace();
+			var currentLeft = this.getSummaryHide().left;
 			
-			var requiredPadForCentre = (this.getSummaryAvailableSpace() - summary.outerWidth()) / 2;
-			
-			var newLeft;
-			if(preceedingWidth < requiredPadForCentre) {
-				newLeft = 0;
-			}
-			else {
-				if(followingWidth < requiredPadForCentre) {
-					newLeft = (requiredPadForCentre * 2) * -1;
+			if(summaryAvailableSpace < summaryRowWidth) {
+				
+				var preceedingWidth = 0, followingWidth = 0;
+				var summary, summaryIdx = -1;
+				_.each(this.questionSummaryRowEntries, function(entry, idx) {
+					
+					if(entry.prop('active') === true) {
+						summary = entry;
+						summaryIdx = idx;
+					}
+					
+					if(summaryIdx !== idx) {
+						if(summaryIdx > -1) {
+							followingWidth += entry.outerWidth();
+						}
+						else {
+							preceedingWidth += entry.outerWidth();
+						}
+					}
+				});
+				
+				var requiredPadForCentre = (summaryAvailableSpace - summary.outerWidth()) / 2;
+				
+				var newLeft;
+				if(preceedingWidth < requiredPadForCentre) {
+					newLeft = 0;
 				}
 				else {
-					newLeft = requiredPadForCentre * -1;
+					if(followingWidth < requiredPadForCentre) {
+						newLeft = (summaryRowWidth - summaryAvailableSpace) * -1;
+					}
+					else {
+						newLeft = (preceedingWidth - requiredPadForCentre);
+						if(newLeft !== 0) {
+							newLeft *= -1;
+						}
+					}
+				}
+				
+				if(newLeft !== currentLeft) {
+					this.questionSummaryRow.stop().animate({'left': newLeft + 'px'}, 300);
 				}
 			}
-			
-			if(newLeft !== this.getSummaryHide().left) {
-				this.questionSummaryRow.stop().animate({'left': newLeft + 'px'}, 200);
+			else {
+				if(currentLeft !== 0) {
+					this.questionSummaryRow.stop().animate({'left': '0px'}, 300);
+				}
 			}
 		}
 	});
