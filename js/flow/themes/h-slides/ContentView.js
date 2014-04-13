@@ -28,6 +28,9 @@ define(
 			this.questionSummaryRowLeftPad = this.$el.find('#flow_question_summary_side_pad_left');
 			this.questionSummaryRowRightPad = this.$el.find('#flow_question_summary_side_pad_right');
 			
+			this.questionSummaryContainer.on('swipeleft', _.bind(this.onSummarySlideLeftRequested, this));
+			this.questionSummaryContainer.on('swiperight', _.bind(this.onSummarySlideRightRequested, this));
+			
 			$(window).resize(_.bind(this.onWindowResize, this));
 		},
 		
@@ -103,6 +106,7 @@ define(
 			this.questionSummaryRow.find('.question-summary-container').each(_.bind(function(idx, el) {
 				this.questionSummaryRowEntries.push($(el));
 			}, this));
+			this.summarySwipeEnabled = true;
 			
 			this.prepareDisplay();
 		},
@@ -584,12 +588,18 @@ define(
 		getSummaryHide: function() {
 			
 			var left = parseInt(this.questionSummaryRow.css('left').replace(/px/i, ''), 10);
+			if(left < 0) {
+				left *= -1;
+			}
+			
 			var right = this.getSummaryRowWidth() - this.getSummaryAvailableSpace() - left;
 			
 			return {left: left, right: right};
 		},
 		
 		showActiveQuestionSummary: function() {
+			
+			this.summarySwipeEnabled = false;
 			
 			var summaryRowWidth = this.getSummaryRowWidth();
 			var summaryAvailableSpace = this.getSummaryAvailableSpace();
@@ -635,13 +645,44 @@ define(
 				}
 				
 				if(newLeft !== currentLeft) {
-					this.questionSummaryRow.stop().animate({'left': newLeft + 'px'}, 300);
+					this.questionSummaryRow.stop().animate({'left': newLeft + 'px'}, 200, _.bind(function() {
+						this.summarySwipeEnabled = true;
+					}, this));
 				}
 			}
 			else {
 				if(currentLeft !== 0) {
-					this.questionSummaryRow.stop().animate({'left': '0px'}, 300);
+					this.questionSummaryRow.stop().css('left', '0px');
+					this.summarySwipeEnabled = true;
 				}
+			}
+		},
+		
+		onSummarySlideLeftRequested: function() {
+			
+			if(this.summarySwipeEnabled) {
+				
+				this.summarySwipeEnabled = false;
+				
+				var hidden = this.getSummaryHide();
+				var moveBy = Math.min(hidden.right, (this.getSummaryAvailableSpace() - 50));
+				this.questionSummaryRow.stop().animate({'left': ((hidden.left + moveBy) * -1) + 'px'}, 200, _.bind(function() {
+					this.summarySwipeEnabled = true;
+				}, this));
+			}
+		},
+		
+		onSummarySlideRightRequested: function() {
+			
+			if(this.summarySwipeEnabled) {
+				
+				this.summarySwipeEnabled = false;
+				
+				var hidden = this.getSummaryHide();
+				var moveBy = Math.min(hidden.left, (this.getSummaryAvailableSpace() - 50));
+				this.questionSummaryRow.stop().animate({'left': ((hidden.left * -1) + moveBy) + 'px'}, 200, _.bind(function() {
+					this.summarySwipeEnabled = true;
+				}, this));
 			}
 		}
 	});

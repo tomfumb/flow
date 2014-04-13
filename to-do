@@ -1,6 +1,7 @@
 To Do
 - see if the carousel can be stopped mid-transition for a new transition as this will happen to the question summary row
-- ensure carousel speed and summary transition speed are in-sync
+- fix height of question summaries AND *ensure* that ('#flow_question_summary_container'), which is swipeable, is directly over the question summaries, otherwise swiping will be really weird
+- ensure carousel speed and summary transition speed are in-sync, then standardise slide speed values using global
 - do we keep the Stories project link or is it delegated to the CCIJ site - question for Pam
 	- mention the possibility of having real or hypothetical cases alongside the tool for people to work through for education
 - add new mechanism charts

@@ -24,6 +24,7 @@
 	z-index: 1;
 	margin: 0;
 	float: left;
+	left: 0;
 }
 
 #flow_question_summary_side_pad_left {
