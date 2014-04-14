@@ -19,18 +19,18 @@ module.exports = function(grunt) {
           options: {
             baseUrl: "js",
             mainConfigFile: "js/app-en.js",
-            name: "app-en",
+            name: "app",
             out: "js/dist/<%= pkg.name %>-en.js",
             optimize: "none"
           }
         }
-      }
+      },
       french: {
         compile: {
           options: {
             baseUrl: "js",
             mainConfigFile: "js/app-fr.js",
-            name: "app-fr",
+            name: "app",
             out: "js/dist/<%= pkg.name %>-fr.js",
             optimize: "none"
           }

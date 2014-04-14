@@ -1,4 +1,5 @@
 To Do
+- problem with english and french requirejs builds - can it use targets?
 - see if the carousel can be stopped mid-transition for a new transition as this will happen to the question summary row
 - fix height of question summaries AND *ensure* that ('#flow_question_summary_container'), which is swipeable, is directly over the question summaries, otherwise swiping will be really weird
 - ensure carousel speed and summary transition speed are in-sync, then standardise slide speed values using global
@@ -8,8 +9,6 @@ To Do
 - add updated text
 - revert to 12 in bootstrap
 
-- figure out a way to have question answers use single english values but foreign language text
-	- create lorem ipsum language version to ensure that the language approach is valid and how much effort is involved
 - only have useful log messages
 - sliding 'available' screen - do tabs still fit on mobile screen?
 - soften colours and make question text bigger - more engaging
