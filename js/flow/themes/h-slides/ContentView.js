@@ -27,6 +27,7 @@ define(
 			this.questionSummaryRow = this.$el.find('#flow_question_summary');
 			this.questionSummaryRowLeftPad = this.$el.find('#flow_question_summary_side_pad_left');
 			this.questionSummaryRowRightPad = this.$el.find('#flow_question_summary_side_pad_right');
+			this.questionsProgressReport = this.$el.find('#flow_questions_progress_report_count');
 			
 			this.questionSummaryContainer.on('swipeleft', _.bind(this.onSummarySlideLeftRequested, this));
 			this.questionSummaryContainer.on('swiperight', _.bind(this.onSummarySlideRightRequested, this));
@@ -362,7 +363,8 @@ define(
 				summaryEl.removeClass('btn-default btn-success').addClass('btn-unavailable');
 			}
 			
-			// update modal with list of remaining questions
+			var answeredQuestions = this.countAnsweredQuestions(question.collection.models);
+			this.reportQuestionProgress(answeredQuestions.answered, answeredQuestions.available);
 			this.outcomeManager.unansweredQuestions = this.countUnansweredQuestions(question.collection.models);
 		},
 		
@@ -405,26 +407,32 @@ define(
 				summaryEl.data('answered', false);
 			}
 			
-			// update modal with list of remaining questions
+			var answeredQuestions = this.countAnsweredQuestions(answeredQuestion.collection.models);
+			this.reportQuestionProgress(answeredQuestions.answered, answeredQuestions.available);
 			this.outcomeManager.unansweredQuestions = this.countUnansweredQuestions(answeredQuestion.collection.models);
-			
-			// update outcome preview manager wiht which question was just answered so it can report changes based on those answers
 			this.outcomePreviews.onQuestionAnswered(answeredQuestion);
 		},
 		
 		countUnansweredQuestions: function(questions) {
 
-			var unansweredCount = 0;
+			var answeredQuestions = this.countAnsweredQuestions(questions);
+			return answeredQuestions.available - answeredQuestions.answered;
+		},
+		
+		countAnsweredQuestions: function(questions) {
+			
+			var availableCount = 0, answeredCount = 0;
 			_.each(questions, function(question) {
 				if(question.get('available')) {
+					availableCount++;
 					var selectedAnswers = question.get('selectedAnswers');
-					if(!(selectedAnswers && selectedAnswers.length)) {
-						unansweredCount++;
+					if(selectedAnswers && selectedAnswers.length) {
+						answeredCount++;
 					}
 				}
 			});
 			
-			return unansweredCount;
+			return {available: availableCount, answered: answeredCount};
 		},
 		
 		addOutcomes: function(outcomes) {
@@ -568,6 +576,12 @@ define(
 			}
 			
 			this.resultsSenderView.render();
+		},
+
+		reportQuestionProgress: function(answered, available) {
+			
+			var complete = (answered === 0 ? 0 : Math.round(answered / available * 100));
+			this.questionsProgressReport.html(complete);
 		},
 
 		getSummaryAvailableSpace: function() {

@@ -14,8 +14,7 @@
 }
 
 #flow_question_summary_container {
-	float: left;
-	height: 35px;
+
 }
 
 #flow_question_summary {
@@ -98,6 +97,11 @@
 
 .question {
 	margin: 0 0 10px 0;
+}
+
+#flow_questions_progress_report {
+	font-size: small;
+	font-weight: normal;
 }
 
 #flow_outcomes {
