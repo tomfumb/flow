@@ -1,6 +1,7 @@
 <div class="carousel-caption">
 	<div id="question_<%= question.get("id") %>" class="question">
-		<h3 class="question-title">Question <%= question.get("id") %></h3>
+		<h3 class="question-title">Question <%= question.get("id") %><span class="questions-progress-report"> (of <span class="questions-progress-report-count"></span>)</span></h3>
+		<hr />
 		<p><%= question.get("content") %></p>
 		<% if(explanations && explanations.length) { %>
 		<div class="question-explanation">

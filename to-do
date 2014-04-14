@@ -14,12 +14,10 @@ To Do
 - sliding 'available' screen - do tabs still fit on mobile screen?
 - soften colours and make question text bigger - more engaging
 - social media sharing icons
-- add small text for Question 1 (of 19) or similar
 - Mobile issues:
 1) modals still too big for small screen
 2) swiping has broken - jquery-mobile not referenced as a dependency
 3) date picker isn't obvious when presented with keyboard input beneath text input
-4) question summary list should just be one row, swipeable / pageable like outcomes list. Will require some complex logic to ensure the current question is as close to the centre of that display as possible
 - test case - slow download of resources, anything available before it will actually work?
 - test case - remove all outcome previews, what happens to slide / visible logic?
 - http://getbootstrap.com/getting-started/#browsers
@@ -30,11 +28,3 @@ To Do
 Wise & Hammer meeting
 - possibly ask user for name / location and have opt-in for newsletter at end of tool
 	- change what's next screen to ask for email address and opt-in to newsletter
-
-Considerations (for Chris):
-- Using the tool could be emtionally raw for a user and this might need to be managed. Reactions might be different to the people that Matt deals with as they have already decided they are comfortable talking about it
-- Reading level of tool & question text, would be best at grade 6 or 7
-- how much time should be set aside and should they have someone with them?
-- it's OK to not answer questions, though this will impact how helpful the tool can be
-- Set expectations up front - base case and worse case
-- trigger warning and suggestions for psychological support - users may have both legal and psychological concerns

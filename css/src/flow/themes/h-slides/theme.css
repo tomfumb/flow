@@ -99,7 +99,7 @@
 	margin: 0 0 10px 0;
 }
 
-#flow_questions_progress_report {
+.questions-progress-report {
 	font-size: small;
 	font-weight: normal;
 }
@@ -316,5 +316,5 @@ input.hint-text {
 }
 
 .question-title {
-	text-decoration: underline;
+
 }

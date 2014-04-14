@@ -11,7 +11,7 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'text!template/flow/them
 			SINGLE_DATE: 'single_date'
 		},
 		
-		render: function(isActive, container) {
+		render: function(isActive, container, majorQuestionCount) {
 			
 			Log.debug('QuestionView.render');
 			
@@ -133,6 +133,8 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'text!template/flow/them
 					Log.error('Unknown answerStyle provided: ' + answerStyle);
 					return;
 			}
+			
+			this.$el.find('.questions-progress-report-count').html(majorQuestionCount);
 		},
 		
 		onAnswersSelected: function(answers) {
@@ -159,8 +161,6 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'text!template/flow/them
 		},
 		
 		onBeforeShow: function() {
-			
-			Log.debug('QuestionView.onBeforeShow: ' + this.model.get('id'));
 			
 			if(!this.hadFirstShow) {
 				

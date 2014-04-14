@@ -42,6 +42,7 @@ define(
 			var scratch = $('#flow_scratch');
 			
 			var availableCount = 0;
+			var majorQuestionCount = this.countMajorQuestions(questions);
 			
 			_.each(questions, function(question) {
 			
@@ -84,7 +85,7 @@ define(
 				question.on('change:available', _.bind(this.onQuestionAvailabilityChanged, this));
 				
 				var questionView = new QuestionView({el: '#' + questionElId, model: question});
-				questionView.render(!this.hadFirst, this);
+				questionView.render(!this.hadFirst, this, majorQuestionCount);
 				this.questions.push({id: questionId, view: questionView, active: !this.hadFirst});
 				
 				if(question.get('available')) {
@@ -366,6 +367,8 @@ define(
 			var answeredQuestions = this.countAnsweredQuestions(question.collection.models);
 			this.reportQuestionProgress(answeredQuestions.answered, answeredQuestions.available);
 			this.outcomeManager.unansweredQuestions = this.countUnansweredQuestions(question.collection.models);
+			
+			Log.info('question availability changed');
 		},
 		
 		onSummaryQuestionClicked: function(event) {
@@ -411,6 +414,8 @@ define(
 			this.reportQuestionProgress(answeredQuestions.answered, answeredQuestions.available);
 			this.outcomeManager.unansweredQuestions = this.countUnansweredQuestions(answeredQuestion.collection.models);
 			this.outcomePreviews.onQuestionAnswered(answeredQuestion);
+			
+			Log.info('answers selected');
 		},
 		
 		countUnansweredQuestions: function(questions) {
@@ -433,6 +438,20 @@ define(
 			});
 			
 			return {available: availableCount, answered: answeredCount};
+		},
+		
+		countMajorQuestions: function(questions) {
+			
+			var majorCount = 0;
+			_.each(questions, function(question) {
+				if(question.get('available')) {
+					if(question.get('id').match(/^\d+(a)?$/i)) {
+						majorCount++;
+					}
+				}
+			});
+			
+			return majorCount;
 		},
 		
 		addOutcomes: function(outcomes) {
