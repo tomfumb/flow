@@ -1,0 +1,7 @@
+<p>Select an answer from the drop-down menu below.</p>
+<select class="multi_answer_select">
+	<option value="">Please Select...</option>
+	<% _.each(answers, function(answer, index) { %>
+		<option type="text" value="<%= answer %>"><%= answer %></option>
+	<% }); %>
+</select>

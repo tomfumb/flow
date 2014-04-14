@@ -1,7 +1,0 @@
-foreign language version
-
-- new index.htm
-- new templates
-- question values remain the same
-- outcome condition functions remain the same
-- question text needs to be conditional - if only a single text value is provided for the answer then that is both the display and the value. If two values are provided ['one', 'two'] then the first is the value and the second is the display text

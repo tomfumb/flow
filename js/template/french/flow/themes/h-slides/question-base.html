@@ -1,0 +1,26 @@
+<div class="carousel-caption">
+	<div id="question_<%= question.get("id") %>" class="question">
+		<h3 class="question-title">Question <%= question.get("id") %><span class="questions-progress-report"> (of <span class="questions-progress-report-count"></span>)</span></h3>
+		<hr />
+		<p><%= question.get("content") %></p>
+		<% if(explanations && explanations.length) { %>
+		<div class="question-explanation">
+			<div class="question-explanation-header clickable clickable-colour">
+				<img src="images/0.png" class="sprites emblem-notice" width="24" height="24" title="Why this question?" />
+				Why this question?
+			</div>
+			<div class="question-explanation-content">
+				<ul>
+				<% _.each(explanations, function(explanation) { %> 
+					<li><%= explanation %></li>
+				<% }) %>
+				</ul>
+			</div>
+		</div>
+		<% } %>
+	</div>
+	<div id="answers_<%= question.get("id") %>" class="answers">
+		<%= questionBody %>
+	</div>
+	<hr />
+</div>
