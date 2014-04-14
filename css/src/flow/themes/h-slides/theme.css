@@ -14,25 +14,25 @@
 }
 
 #flow_question_summary_container {
-	height: 36px;
+	float: left;
+	height: 35px;
 }
 
 #flow_question_summary {
 	position: relative;
-	height: 36px;
+	height: 35px;
 	padding: 0;
 	z-index: 1;
 	margin: 0;
-	float: left;
 	left: 0;
+	top: -35px;
 }
 
 #flow_question_summary_side_pad_left {
 	position: relative;
 	left: -7px;
-	top: 36px;
 	width: 7px;
-	height: 36px;
+	height: 35px;
 	z-index: 2;
 	float: left;
 	background-color: #fff;
@@ -41,9 +41,9 @@
 #flow_question_summary_side_pad_right {
 	position: relative;
 	right: -7px;
-	top: -36px;
+	top: -70px;
 	width: 15px;
-	height: 36px;
+	height: 35px;
 	z-index: 2;
 	float: right;
 }
