@@ -31,7 +31,7 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'flow/Util'], function($
 		
 			// first check that the answer is actually available within the question. If not there is a problem
 			var found = !!_.find(this.get('answers'), function(answer) {
-				return requiredAnswer == answer;
+				return requiredAnswer == answer.english;
 			});
 			
 			if(!found) {

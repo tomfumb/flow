@@ -1,4 +1,4 @@
-define(['jquery', 'underscore', 'backbone', 'flow/Log', 'text!template/flow/themes/h-slides/question-base.html', 'text!template/flow/themes/h-slides/question-single-few.html', 'text!template/flow/themes/h-slides/question-single-many.html', 'text!template/flow/themes/h-slides/question-multi.html', 'text!template/flow/themes/h-slides/question-date.html', 'jquery-ui'], function($, _, Backbone, Log, questionTemplate, singleFewTemplate, singleManyTemplate, multiTemplate, dateTemplate) {
+define(['jquery', 'underscore', 'backbone', 'flow/Log', 'text!templates/flow/themes/h-slides/question-base.html', 'text!templates/flow/themes/h-slides/question-single-few.html', 'text!templates/flow/themes/h-slides/question-single-many.html', 'text!templates/flow/themes/h-slides/question-multi.html', 'text!templates/flow/themes/h-slides/question-date.html', 'jquery-ui'], function($, _, Backbone, Log, questionTemplate, singleFewTemplate, singleManyTemplate, multiTemplate, dateTemplate) {
 	
 	return Backbone.View.extend({
 	
@@ -77,7 +77,7 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'text!template/flow/them
 						this.$el.find('img.tick').removeClass('tick').removeClass('sprites');
 						jqTarget.find('img').addClass('tick').addClass('sprites');
 						
-						this.onAnswersSelected([jqTarget.find('div.answer-content').html()]);
+						this.onAnswersSelected([jqTarget.find('div.answer-value').html()]);
 						
 						window.setTimeout(_.bind(this.onQuestionAnswered, this), 300);
 					}, this));
@@ -101,8 +101,7 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'text!template/flow/them
 						var answers = [];
 						var checkedAnswers = $(event.target).parents('div.answers').find('input:checked');
 						_.each(checkedAnswers, function(checkbox) {
-							var answerIndex = checkbox.id.replace(/q(\d+)_a_/, '');
-							answers.push(this.model.get('answers')[answerIndex]);
+							answers.push(checkbox.value);
 						}, this);
 						
 						this.onAnswersSelected(answers);

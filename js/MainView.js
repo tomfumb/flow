@@ -1,5 +1,5 @@
 define(
-	['jquery', 'underscore', 'backbone', 'data/en', 'flow/Log', 'flow/IntroView', 'flow/MainView', 'flow/PrintView', 'flow/QuestionManager', 'flow/OutcomeManager'],
+	['jquery', 'underscore', 'backbone', 'data/core', 'flow/Log', 'flow/IntroView', 'flow/MainView', 'flow/PrintView', 'flow/QuestionManager', 'flow/OutcomeManager'],
 	function($, _, Backbone, config, Log, IntroView, MainView, PrintView, QuestionManager, OutcomeManager) { 
 	
 	return Backbone.View.extend({

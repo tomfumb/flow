@@ -1,4 +1,4 @@
-define(['jquery', 'underscore', 'backbone', 'flow/Log', 'text!template/intro.html'], function($, _, Backbone, Log, template) {
+define(['jquery', 'underscore', 'backbone', 'flow/Log', 'text!templates/intro.html'], function($, _, Backbone, Log, template) {
 	
 	return Backbone.View.extend({
 		

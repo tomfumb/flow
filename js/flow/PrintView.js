@@ -1,4 +1,4 @@
-define(['jquery', 'underscore', 'backbone', 'flow/Log', 'text!template/print/question.html', 'text!template/print/outcome.html'], function($, _, Backbone, Log, questionTemplate, outcomeTemplate) {
+define(['jquery', 'underscore', 'backbone', 'flow/Log', 'text!templates/print/question.html', 'text!templates/print/outcome.html'], function($, _, Backbone, Log, questionTemplate, outcomeTemplate) {
 
 	return Backbone.View.extend({
 		

@@ -12,7 +12,8 @@ requirejs.config({
 		'bootstrap': './lib/bootstrap.min',
 		
 		'data': './flow/data',
-		'theme': './flow/themes/h-slides'
+		'theme': './flow/themes/h-slides',
+		'templates': './template/english'
 	},
 
     shim: {

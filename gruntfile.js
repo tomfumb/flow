@@ -14,13 +14,26 @@ module.exports = function(grunt) {
       }
     },
     requirejs: {
-      compile: {
-        options: {
-          baseUrl: "js",
-          mainConfigFile: "js/app.js",
-          name: "app",
-          out: "js/dist/<%= pkg.name %>.js",
-          optimize: "none"
+	  english: {
+        compile: {
+          options: {
+            baseUrl: "js",
+            mainConfigFile: "js/app-en.js",
+            name: "app-en",
+            out: "js/dist/<%= pkg.name %>-en.js",
+            optimize: "none"
+          }
+        }
+      }
+      french: {
+        compile: {
+          options: {
+            baseUrl: "js",
+            mainConfigFile: "js/app-fr.js",
+            name: "app-fr",
+            out: "js/dist/<%= pkg.name %>-fr.js",
+            optimize: "none"
+          }
         }
       },
       css: {
@@ -32,15 +45,16 @@ module.exports = function(grunt) {
       }
     },
     lint5: {
-      dirPath: ".",
+      dirPath: '.',
       templates: [
-        "index.htm"
+        'index-en.htm',
+        'index-fr.htm'
         /* ignoring template .html files as lint tool cannot handle snippets without body tag or underscore _.template variables e.g. <%= ...  %>  */
       ]
     },
     replace: {
       urlVersion: {
-        src: ['index.htm', 'css/**/*.css', '!css/lib/*'],
+        src: ['index-en.htm', 'index-fr.htm', 'css/**/*.css', '!css/lib/*'],
         overwrite: true,
         replacements: [{
           from: /flow\-v=\d+\.\d+\.\d+/ig,
@@ -48,7 +62,7 @@ module.exports = function(grunt) {
         }]
       },
       development: {
-        src: ['index.htm'],
+        src: ['index-en.htm', 'index-fr.htm'],
         overwrite: true,
         replacements: [{
           from: 'href="css/dist/<%= pkg.name %>.css',
@@ -60,7 +74,7 @@ module.exports = function(grunt) {
 		}]
       },
       live: {
-        src: ['index.htm'],
+        src: ['index-en.htm', 'index-fr.htm'],
         overwrite: true,
         replacements: [{
           from: 'href="css/src/ccij.css',
@@ -79,7 +93,10 @@ module.exports = function(grunt) {
     copy: {
       main: {
 		files: [{
-          src: 'index.htm',
+          src: 'index-en.htm',
+          dest: 'dist/'
+        },{
+          src: 'index-fr.htm',
           dest: 'dist/'
         },{
           src: 'js/dist/*.js',
@@ -149,11 +166,12 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-ftp-deploy');
 
   grunt.registerTask('lint', ['jshint']);
-  grunt.registerTask('r', ['requirejs']);
+  grunt.registerTask('r-en', ['requirejs:english']);
+  grunt.registerTask('r-fr', ['requirejs:french']);
   grunt.registerTask('html', ['lint5']);
   grunt.registerTask('version', ['replace:urlVersion']);
   grunt.registerTask('development', ['replace:development']);
-  grunt.registerTask('live', ['lint', 'html', 'r', 'version', 'replace:live']);
+  grunt.registerTask('live', ['lint', 'html', 'r-en', 'r-fr', 'version', 'replace:live']);
   
   grunt.registerTask('deploy', ['copy', 'chmod', 'ftp-deploy', 'development']);
 

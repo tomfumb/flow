@@ -123,9 +123,13 @@
 	color: black;
 }
 
-.answer-content {
+.answer-display {
 	font-weight: bold;
 	margin: 0 0 10px 24px;
+}
+
+.answer-value {
+	display: none;
 }
 
 .answer-pad {
