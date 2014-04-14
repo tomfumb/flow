@@ -28,8 +28,19 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'flow/Question'], functi
 			
 			_.each(this.models, function(model) {
 				
-				var condition = model.get('condition');
+				var selector = $('#flow_question_' + model.get('id'));
+				model.set('content', selector.find('.question-content').html());
 				
+				var explanations = [];
+				selector.find('.question-explanation').each(function() {
+					explanations.push(this.innerHTML);
+				});
+				
+				if(explanations.length) {
+					model.set('explanations', explanations);
+				}
+				
+				var condition = model.get('condition');
 				if(typeof condition === 'function') {
 					model.set('available', condition.apply(this, [this.indexedQuestions]));
 				}

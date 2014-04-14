@@ -7,12 +7,19 @@ To Do
 - add new mechanism charts
 - add updated text
 - revert to 12 in bootstrap
+
 - figure out a way to have question answers use single english values but foreign language text
 	- create lorem ipsum language version to ensure that the language approach is valid and how much effort is involved
 - only have useful log messages
-- SEO (French?)
 - sliding 'available' screen - do tabs still fit on mobile screen?
 - soften colours and make question text bigger - more engaging
+- tip buttons near key functionality explaining what's going on
+- remove logos - will be provided by Wise & Hammer
+- possibly ask user for name / location and have opt-in for newsletter at end of tool
+	- change what's next screen to ask for email address and opt-in to newsletter
+- should have more consistency in index.htm IDs
+
+- SEO (French?)
 - social media sharing icons
 - Mobile issues:
 1) modals still too big for small screen
@@ -21,10 +28,6 @@ To Do
 - test case - slow download of resources, anything available before it will actually work?
 - test case - remove all outcome previews, what happens to slide / visible logic?
 - http://getbootstrap.com/getting-started/#browsers
-- tip buttons near key functionality explaining what's going on
 - check necessity of shims in index.htm
-- remove logos - will be provided by Wise & Hammer
 
 Wise & Hammer meeting
-- possibly ask user for name / location and have opt-in for newsletter at end of tool
-	- change what's next screen to ask for email address and opt-in to newsletter
