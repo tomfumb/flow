@@ -1,4 +1,4 @@
-define(['jquery', 'data/ac-hpr', 'data/civil-canada', 'data/crim-canada', 'data/eccc', 'data/echr', 'data/ecowas', 'data/ia-chr', 'data/icc', 'data/imm-canada', 'data/un-cat', 'data/un-ced', 'data/un-cedaw', 'data/un-cerd', 'data/un-cescr', 'data/un-crc', 'data/un-hrc', 'data/un-wgeid', 'data/wcc-bosnia'], function($, ac_hpr, civil_canada, crim_canada, eccc, echr, ecowas, ia_chr, icc, imm_canada, un_cat, un_ced, un_cedaw, un_cerd, un_cescr, un_crc, un_hrc, un_wgeid, wcc_bosnia) {
+define(['jquery', 'data/ac-hpr', 'data/civil-canada', 'data/crim-canada', 'data/eccc', 'data/echr', 'data/ia-chr', 'data/icc', 'data/imm-canada', 'data/un-cat', 'data/un-ced', 'data/un-cedaw', 'data/un-cerd', 'data/un-cescr', 'data/un-crc', 'data/un-hrc', 'data/un-wgeid', 'data/wcc-bosnia'], function($, ac_hpr, civil_canada, crim_canada, eccc, echr, ia_chr, icc, imm_canada, un_cat, un_ced, un_cedaw, un_cerd, un_cescr, un_crc, un_hrc, un_wgeid, wcc_bosnia) {
 	
 	config = {
 		lists: {
@@ -362,7 +362,7 @@ define(['jquery', 'data/ac-hpr', 'data/civil-canada', 'data/crim-canada', 'data/
 	}];
 	
 	// order here determines the order of display beneath questions - should match ordering of the remedies / options tab
-	config.outcomes = [icc, un_cat, un_hrc, un_cerd, un_cedaw, un_ced, un_cescr, un_crc, un_wgeid, ia_chr, ac_hpr, ecowas, echr, eccc, wcc_bosnia, crim_canada, civil_canada, imm_canada];
+	config.outcomes = [icc, un_cat, un_hrc, un_cerd, un_cedaw, un_ced, un_cescr, un_crc, un_wgeid, ia_chr, ac_hpr, echr, eccc, wcc_bosnia, crim_canada, civil_canada, imm_canada];
 
 	return config;
 });
