@@ -1,4 +1,4 @@
-define(['jquery', 'underscore', 'backbone', 'flow/Log', 'theme/ContentView'], function($, _, Backbone, Log, ContentView) {
+define(['jquery', 'underscore', 'backbone', 'flow/Log', 'ui/ContentView'], function($, _, Backbone, Log, ContentView) {
 
 	return Backbone.View.extend({
 	

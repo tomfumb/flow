@@ -1,4 +1,4 @@
-define(['jquery', 'underscore', 'backbone', 'text!templates/flow/themes/h-slides/outcome.html'], function($, _, Backbone, template) {
+define(['jquery', 'underscore', 'backbone', 'text!templates/outcome.html'], function($, _, Backbone, template) {
 	
 	return Backbone.View.extend({
 

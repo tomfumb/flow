@@ -12,7 +12,7 @@ requirejs.config({
 		'bootstrap': './lib/bootstrap.min',
 		
 		'data': './flow/data',
-		'theme': './flow/themes/h-slides',
+		'ui': './flow/ui',
 		'templates': './template/french'
 	},
 

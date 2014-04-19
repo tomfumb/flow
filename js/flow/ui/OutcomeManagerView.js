@@ -1,4 +1,4 @@
-define(['jquery', 'underscore', 'backbone', 'theme/OutcomeView', 'theme/ResultsSenderView', 'theme/FeedbackView', 'text!templates/flow/themes/h-slides/outcome-manager.html', 'text!templates/flow/themes/h-slides/outcome-manager-outcome.html'], function($, _, Backbone, OutcomeView, ResultsSenderView, FeedbackView, managerTemplate, outcomeTemplate) {
+define(['jquery', 'underscore', 'backbone', 'ui/OutcomeView', 'ui/ResultsSenderView', 'ui/FeedbackView', 'text!templates/outcome-manager.html', 'text!templates/outcome-manager-outcome.html'], function($, _, Backbone, OutcomeView, ResultsSenderView, FeedbackView, managerTemplate, outcomeTemplate) {
 	
 	return Backbone.View.extend({
 	

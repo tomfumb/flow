@@ -1,4 +1,4 @@
-define(['jquery', 'underscore', 'backbone', 'flow/Log', 'theme/OutcomePreviewView', 'text!templates/flow/themes/h-slides/outcome-preview.html', 'text!templates/flow/themes/h-slides/outcome-preview-outcome.html', 'jquery-mobile'], function($, _, Backbone, Log, OutcomePreviewView, previewTemplate, outcomeTemplate) {
+define(['jquery', 'underscore', 'backbone', 'flow/Log', 'ui/OutcomePreviewView', 'text!templates/outcome-preview.html', 'text!templates/outcome-preview-outcome.html', 'jquery-mobile'], function($, _, Backbone, Log, OutcomePreviewView, previewTemplate, outcomeTemplate) {
 
 	return Backbone.View.extend({
 		

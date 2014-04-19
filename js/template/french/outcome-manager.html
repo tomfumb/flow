@@ -1,0 +1,50 @@
+<div class="row">
+	<div class="col-24 col-xs-24 col-sm-24 col-md-24 col-lg-24">
+		<h3>Check Your Possible Options</h3>
+		<p class="outcomes-hide clickable" style="float: left;"><span class="glyphicon glyphicon-arrow-left"></span> back to the test</p>
+		<div style="float: right;">
+			<span class="glyphicon glyphicon-send clickable feedback-send-link" title="provide feedback"></span> 
+			<span class="glyphicon glyphicon-envelope clickable results-send-link" title="email your results"></span>
+		</div>
+		<div class="clearer"></div>
+		<div id="flow_outcome_unanswered_count" class="alert alert-warning"></div>
+		<ul class="nav nav-tabs">
+			<li id="flow_outcome_available_link">
+				<a class="outcome-tab-link" href="#flow_outcome_available" data-toggle="tab">Available</a>
+			</li>
+			<li>
+				<a class="outcome-tab-link" href="#flow_outcome_unavailable" data-toggle="tab">Unavailable</a>
+			</li>
+			<li id="flow_outcome_what_now_link">
+				<a class="outcome-tab-link" href="#flow_outcome_what_now" data-toggle="tab">Next Steps</a>
+			</li>
+			<li style="display: none;" id="flow_outcome_detail_link">
+				<a class="outcome-tab-link" href="#flow_outcome_detail" data-toggle="tab">Detail</a>
+			</li>
+		</ul>
+		<div class="tab-content">
+			<div class="tab-pane active" id="flow_outcome_what_now">
+				<h3>Next Steps</h3>
+				<p><span class="results-send-link clickable clickable-colour">Email</span> or <span class="results-print-link clickable clickable-colour">print</span> your results and contact CCIJ to discuss your case. Contact details are provided at the bottom of this page and at the <a href="http://www.ccij.ca/" target="_blank">CCIJ site</a>.</p>
+				<p>Please feel free to <span class="feedback-send-link clickable clickable-colour">provide feedback</span> on the Opportunities for Justice tool.</p>
+			</div>
+			<div class="tab-pane" id="flow_outcome_available">
+				<div class="spacer-10"></div>
+				<p id="flow_available_options_note">Based on the questions you have answered the following options may be available to you. However, these results should be reviewed by CCIJ, another human rights organization or a lawyer. Please note that this site provides only information, not legal advice. A legal case cannot be based on the results of this questionnaire, as every case and every legal process is extremely unique and complex. This website is designed to help you understand what options might be available and is not designed to make a final conclusion about your case.</p>
+				<div id="flow_no_available_options_note_container">
+					<h4>No Available Options</h4>
+					<p>Based on the questions you have answered, it is possible there may not be any suitable options available. However, this questionnaire cannot provide a conclusive answer, since individual cases can be complex. If you want to explore other options, we recommend that you contact CCIJ. Contact details are provided at the bottom of this page and at the <a href="http://ccij.ca/about/contact/index.php" target="_blank">CCIJ site</a>.</p>
+				</div>
+				<div id="flow_outcome_available_outcomes"></div>
+			</div>
+			<div class="tab-pane" id="flow_outcome_unavailable">
+				<div class="spacer-10"></div>
+				<p id="flow_unavailable_options_note">Based on the questions you have answered the following options may not be available to you. However, these results should be reviewed by CCIJ, another human rights organization or a lawyer. Please note that this site provides only information, not legal advice. A legal case cannot be based on the results of this questionnaire, as every case and every legal process is extremely unique and complex. This website is designed to help you understand what options might be available and is not designed to make a final conclusion about your case.</p>
+				<div id="flow_outcome_unavailable_outcomes"></div>
+			</div>
+			<div class="tab-pane" id="flow_outcome_detail"></div>
+		</div>
+		<br />
+		<p class="outcomes-hide clickable"><span class="glyphicon glyphicon-arrow-left"></span> back to the test</p>
+	</div>
+</div>

@@ -7,19 +7,15 @@ To Do
 - do we keep the Stories project link or is it delegated to the CCIJ site - question for Pam
 	- mention the possibility of having real or hypothetical cases alongside the tool for people to work through for education
 - add new mechanism charts
-- add updated text
 - revert to 12 in bootstrap
-- change mechanism description show approach - test with popup instead of added tab
 
 - only have useful log messages
-- sliding 'available' screen - do tabs still fit on mobile screen?
 - soften colours and make question text bigger - more engaging
 - tip buttons near key functionality explaining what's going on
 - remove logos - will be provided by Wise & Hammer
 - possibly ask user for name / location and have opt-in for newsletter at end of tool
 	- change what's next screen to ask for email address and opt-in to newsletter
 - should have more consistency in index.htm IDs
-- change terminology from 'theme/h-slides' to 'ui' - not really themeable after all. templates should sit in root template directory after this, no need for 'ui' as all UI
 
 - SEO (French?)
 - social media sharing icons

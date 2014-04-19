@@ -1,5 +1,5 @@
 define(
-	['jquery', 'underscore', 'backbone', 'theme/QuestionView', 'theme/OutcomePreviewsView', 'theme/OutcomePreviewView', 'theme/OutcomeManagerView', 'theme/OutcomeView', 'theme/FeedbackView', 'theme/ResultsSenderView', 'flow/Log', 'text!templates/flow/themes/h-slides/content.html', 'text!templates/flow/themes/h-slides/summary.html', 'bootstrap', 'jquery-mobile'],
+	['jquery', 'underscore', 'backbone', 'ui/QuestionView', 'ui/OutcomePreviewsView', 'ui/OutcomePreviewView', 'ui/OutcomeManagerView', 'ui/OutcomeView', 'ui/FeedbackView', 'ui/ResultsSenderView', 'flow/Log', 'text!templates/content.html', 'text!templates/summary.html', 'bootstrap', 'jquery-mobile'],
 	function($, _, Backbone, QuestionView, OutcomePreviewsView, OutcomePreviewView, OutcomeManagerView, OutcomeView, FeedbackView, ResultsSenderView, Log, contentTemplate, summaryTemplate) {
 	
 	return Backbone.View.extend({

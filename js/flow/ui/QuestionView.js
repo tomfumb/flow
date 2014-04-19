@@ -1,4 +1,4 @@
-define(['jquery', 'underscore', 'backbone', 'flow/Log', 'text!templates/flow/themes/h-slides/question-base.html', 'text!templates/flow/themes/h-slides/question-single-few.html', 'text!templates/flow/themes/h-slides/question-single-many.html', 'text!templates/flow/themes/h-slides/question-multi.html', 'text!templates/flow/themes/h-slides/question-date.html', 'jquery-ui'], function($, _, Backbone, Log, questionTemplate, singleFewTemplate, singleManyTemplate, multiTemplate, dateTemplate) {
+define(['jquery', 'underscore', 'backbone', 'flow/Log', 'text!templates/question-base.html', 'text!templates/question-single-few.html', 'text!templates/question-single-many.html', 'text!templates/question-multi.html', 'text!templates/question-date.html', 'jquery-ui'], function($, _, Backbone, Log, questionTemplate, singleFewTemplate, singleManyTemplate, multiTemplate, dateTemplate) {
 	
 	return Backbone.View.extend({
 	

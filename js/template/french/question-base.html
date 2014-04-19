@@ -10,11 +10,16 @@
 				Why this question?
 			</div>
 			<div class="question-explanation-content">
-				<ul>
-				<% _.each(explanations, function(explanation) { %> 
-					<li><%= explanation %></li>
-				<% }) %>
-				</ul>
+				<% if(explanations.length > 1) { %>
+					<ul>
+					<% _.each(explanations, function(explanation) { %> 
+						<li><%= explanation %></li>
+					<% }) %>
+					</ul>
+				<% }
+				else { %>
+					<p><%= explanations[0] %></p>
+				<% } %>
 			</div>
 		</div>
 		<% } %>
