@@ -1,4 +1,4 @@
 <?php
-	$ccijEmail = 'opportunitiesforjustice@ccij.ca';
+	$ccijEmail = 'meisenbrandt@ccij.ca';
 	$toolUrl = 'http://ccij.ca/test/';
 ?>
