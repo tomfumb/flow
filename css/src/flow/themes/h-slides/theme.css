@@ -257,6 +257,7 @@
 
 .question-explanation-header {
 	color: #2d6ca2;
+	margin-top: 5px;
 }
 
 .question-explanation-content {
@@ -268,6 +269,11 @@
 
 .question-explanation-content ul {
 	list-style: square;
+	margin: 5px 0 5px 0;
+}
+
+.question-explanation-content p {
+	margin: 5px;
 }
 
 .btn-unavailable {
