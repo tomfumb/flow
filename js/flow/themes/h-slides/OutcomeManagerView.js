@@ -16,9 +16,6 @@ define(['jquery', 'underscore', 'backbone', 'theme/OutcomeView', 'theme/ResultsS
 			this.someAvailableNote = this.$el.find('#flow_available_options_note');
 			this.noAvailableNote = this.$el.find('#flow_no_available_options_note_container');
 			
-			this.someUnavailableNote = this.$el.find('#flow_unavailable_options_note');
-			this.noUnavailableNote = this.$el.find('#flow_no_unavailable_options_note_container');
-			
 			this.$el.find('.results-send-link').click(_.bind(function() {
 				this.onSendResultsClicked();
 			}, this));
@@ -153,15 +150,6 @@ define(['jquery', 'underscore', 'backbone', 'theme/OutcomeView', 'theme/ResultsS
 			else {
 				this.someAvailableNote.show();
 				this.noAvailableNote.hide();
-			}
-			
-			if(unavailableCount === 0) {
-				this.someUnavailableNote.hide();
-				this.noUnavailableNote.show();
-			}
-			else {
-				this.someUnavailableNote.show();
-				this.noUnavailableNote.hide();
 			}
 			
 			this.$el.find('.outcome-manager-outcome-container').click(_.bind(function(event) {
