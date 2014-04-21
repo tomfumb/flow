@@ -1,37 +1,37 @@
 To Do
 
-
-Canada criminal court still ongoing
-
-- get proper French for core.js
-- order french country names
-- problem with english and french requirejs builds - can it use targets?
-- see if the carousel can be stopped mid-transition for a new transition as this will happen to the question summary row
-- fix height of question summaries AND *ensure* that ('#flow_question_summary_container'), which is swipeable, is directly over the question summaries, otherwise swiping will be really weird
-- ensure carousel speed and summary transition speed are in-sync, then standardise slide speed values using global
-- do we keep the Stories project link or is it delegated to the CCIJ site - question for Pam
-	- mention the possibility of having real or hypothetical cases alongside the tool for people to work through for education
-- add new mechanism charts
-- revert to 12 in bootstrap
-- email Wise & Hammer people about development environment
-
+HIGH
+- remaining mechanisms (Canada criminal court still ongoing)
+- fix height of question summaries AND ensure that ('#flow_question_summary_container'), which is swipeable, is directly over the question summaries, otherwise swiping will be really weird
+- add 'disappearance' and include for full abuses
 - possible to leave outcome preview in inconsistent state - checking and immediately unchecking an act. Should track whether its fading in or out in $.data then show() / hide() completely before next transition if in this state
 - try to open option descriptions in popup, not new tab in slide-in
-- only have useful log messages
-- soften colours and make question text bigger - more engaging
-- tip buttons near key functionality explaining what's going on
-- remove logos - will be provided by Wise & Hammer
 - possibly ask user for name / location and have opt-in for newsletter at end of tool
 	- change what's next screen to ask for email address and opt-in to newsletter
-- should have more consistency in index.htm IDs
-
-- SEO (French?)
-- social media sharing icons
+- does email address get retained across screens?
 - Mobile issues:
 1) modals still too big for small screen
 2) swiping has broken - jquery-mobile not referenced as a dependency
 3) date picker isn't obvious when presented with keyboard input beneath text input
+
+MEDIUM
+- problem with english and french requirejs builds - can it use targets?
+- revert to 12 in bootstrap
+- see if the carousel can be stopped mid-transition for a new transition as this will happen to the question summary row
+- Any need to modify or add to statement about public computer
+- Text flash for options updated
+- remove logos - will be provided by Wise & Hammer
+- order french country names
+- ensure carousel speed and summary transition speed are in-sync, then standardise slide speed values using global
+
+LOW
+- only have useful log messages
+- soften colours and make question text bigger - more engaging
+- should have more consistency in index.htm IDs
+- SEO (French?)
 - test case - slow download of resources, anything available before it will actually work?
 - test case - remove all outcome previews, what happens to slide / visible logic?
 - http://getbootstrap.com/getting-started/#browsers
+
+VERY LOW
 - check necessity of shims in index.htm
