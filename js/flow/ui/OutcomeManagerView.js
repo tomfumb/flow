@@ -15,6 +15,9 @@ define(['jquery', 'underscore', 'backbone', 'ui/OutcomeView', 'ui/ResultsSenderV
 			
 			this.someAvailableNote = this.$el.find('#flow_available_options_note');
 			this.noAvailableNote = this.$el.find('#flow_no_available_options_note_container');
+		
+			this.detailsModal = $('#flow_outcome_details_modal');
+			this.detailsModalBody = this.detailsModal.find('#flow_outcome_details_modal_body');
 			
 			this.$el.find('.results-send-link').click(_.bind(function() {
 				this.onSendResultsClicked();
@@ -99,20 +102,9 @@ define(['jquery', 'underscore', 'backbone', 'ui/OutcomeView', 'ui/ResultsSenderV
 			this.show();
 		},
 		
-		showOutcome: function(outcome, internal) {
-			
-			internal = (typeof internal === 'undefined' ? false : !!internal);
-			
-			if(!internal) {
-				this.renderOutcomes();
-			}
-			
-			this.$el.find('#flow_outcome_detail_link').show().find('>a').html(outcome.get('abbreviation')).tab('show');
-			this.$el.find('#flow_outcome_detail').html(outcome.get('selector').html());
-			
-			if(!internal) {
-				this.show();
-			}
+		showOutcome: function(outcome) {
+			this.detailsModalBody.html(outcome.get('selector').html());
+			this.detailsModal.show().modal();
 		},
 		
 		renderOutcomes: function() {
@@ -157,7 +149,7 @@ define(['jquery', 'underscore', 'backbone', 'ui/OutcomeView', 'ui/ResultsSenderV
 				var element = (jqEl.hasClass('outcome-manager-outcome-container') ? jqEl : jqEl.parents('.outcome-manager-outcome-container'));
 				var outcomeElementId = element.attr('id');
 				var outcome = this.model.findWhere({id: this.getOutcomeIdFromContainerId(outcomeElementId)});
-				this.showOutcome(outcome, true);
+				this.showOutcome(outcome);
 			}, this));
 			
 			if(this.unansweredQuestions > 0) {

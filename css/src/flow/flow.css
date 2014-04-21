@@ -106,11 +106,6 @@
 #flow_outcomes {
 	clear: both;
 }
-
-#flow_outcome_details {
-	display: none;
-}
-
 .question {
 	text-align: left;
 	color: black;
@@ -304,6 +299,10 @@
 #flow_outcome_recent_changes_content {
 	float: left;
 	margin-left: 10px;
+}
+
+#flow_outcome_details_modal {
+	display: none;
 }
 
 .outcome-history-nav {

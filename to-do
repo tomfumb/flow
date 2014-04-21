@@ -2,7 +2,7 @@ To Do
 
 HIGH
 - remaining mechanisms (Canada criminal court still ongoing)
-- try to open option descriptions in popup, not new tab in slide-in
+- try to open option descriptions in popup, not new tab in slide-in (don't forget French template)
 - possibly ask user for name / location and have opt-in for newsletter at end of tool
 	- change what's next screen to ask for email address and opt-in to newsletter
 - does email address get retained across screens?
@@ -16,6 +16,7 @@ MEDIUM
 - revert to 12 in bootstrap
 - see if the carousel can be stopped mid-transition for a new transition as this will happen to the question summary row
 - Any need to modify or add to statement about public computer
+- style outcome navigate buttons
 - Text flash for options updated
 - remove logos - will be provided by Wise & Hammer
 - order french country names
