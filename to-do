@@ -3,8 +3,8 @@ To Do
 
 Canada criminal court still ongoing
 
-
-- get correct meta/refresh tag in index.htm, also include js
+- get proper French for core.js
+- order french country names
 - problem with english and french requirejs builds - can it use targets?
 - see if the carousel can be stopped mid-transition for a new transition as this will happen to the question summary row
 - fix height of question summaries AND *ensure* that ('#flow_question_summary_container'), which is swipeable, is directly over the question summaries, otherwise swiping will be really weird
