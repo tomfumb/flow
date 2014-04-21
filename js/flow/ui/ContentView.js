@@ -557,6 +557,7 @@ define(
 			
 			if(!this.feedbackView) {
 				this.feedbackView = new FeedbackView();
+				this.feedbackView.sharedData = this.sharedData;
 			}
 			
 			this.feedbackView.render();
@@ -566,6 +567,7 @@ define(
 			
 			if(!this.resultsSenderView) {
 				this.resultsSenderView = new ResultsSenderView();
+				this.resultsSenderView.sharedData = this.sharedData;
 			}
 			
 			this.resultsSenderView.render();

@@ -7,18 +7,23 @@
 			</div>
 			<div class="modal-body" id="flow_results_sender_modal_body">
 				<h4>Your Email Address</h4>
-				<div class="input-group">
-					<input id="flow_results_sender_to" type="text" class="form-control" placeholder="Your Email Address">
+				<div class="container">
+					<div class="row">
+						<div class="input-group col-16 col-xs-16 col-sm-16 col-md-16 col-lg-16">
+							<input id="flow_results_sender_to" type="text" class="form-control" placeholder="Your Email Address">
+						</div>
+					</div>
+					<div class="spacer-10"></div>
+					<div class="row">
+						<p><input type="checkbox" id="flow_results_cc_ccij" style="float: left; margin-right: 5px;" /> <span class="clickable">Also send my results and email address to CCIJ</span> (I understand that CCIJ will keep my email address and results confidential, and that submitting my results to CCIJ does not mean I am starting a legal case).</p>
+					</div>
+					<div class="row">
+						<button type="button" id="flow_results_sender_send" disabled="disabled" class="btn btn-primary">Send</button> 
+						<img id="flow_results_sender_load" src="images/small-load.gif" width="24px" height="24px" style="display: none;" />
+						<span class="glyphicon glyphicon-ok" id="flow_results_sender_success" style="display: none;" title="Feedback sent"></span>
+						<span class="glyphicon glyphicon-remove" id="flow_results_sender_fail" style="display: none;" title="Send failed"></span>
+					</div>
 				</div>
-				<br />
-				<p>
-					<input type="checkbox" id="flow_results_cc_ccij" style="float: left; margin-right: 5px;" /> <span class="clickable">Also send my results and email address to CCIJ</span> (I understand that CCIJ will keep my email address and results confidential, and that submitting my results to CCIJ does not mean I am starting a legal case).
-				</p>
-				<br />
-				<button type="button" id="flow_results_sender_send" disabled="disabled" class="btn btn-primary">Send</button> 
-				<img id="flow_results_sender_load" src="images/small-load.gif" width="24px" height="24px" style="display: none;" />
-				<span class="glyphicon glyphicon-ok" id="flow_results_sender_success" style="display: none;" title="Feedback sent"></span>
-				<span class="glyphicon glyphicon-remove" id="flow_results_sender_fail" style="display: none;" title="Send failed"></span>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

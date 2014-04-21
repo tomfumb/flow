@@ -1,4 +1,4 @@
-define(['jquery', 'underscore', 'backbone', 'flow/Log', 'ui/ContentView'], function($, _, Backbone, Log, ContentView) {
+define(['jquery', 'underscore', 'backbone', 'flow/Log', 'flow/Shared', 'ui/ContentView'], function($, _, Backbone, Log, sharedData, contentView) {
 
 	return Backbone.View.extend({
 	
@@ -19,7 +19,8 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'ui/ContentView'], funct
 			
 			Log.debug('MainView.render');
 			
-			this.content = new ContentView();
+			this.content = new contentView();
+			this.content.sharedData = new sharedData();
 			this.content.render();
 			
 			this.content.addOutcomes(this.outcomes);

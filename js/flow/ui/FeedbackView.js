@@ -35,6 +35,12 @@ define(['jquery', 'underscore', 'backbone', 'text!templates/feedback.html'], fun
 			
 			this.from.focus();
 			
+			var emailAddress = this.sharedData.get('userEmail');
+			if(emailAddress) {
+				this.from.val(emailAddress);
+				this.onFromChanged();
+			}
+			
 			this.isShown = true;
 		},
 		
@@ -49,6 +55,8 @@ define(['jquery', 'underscore', 'backbone', 'text!templates/feedback.html'], fun
 			else {
 				this.sendButton.attr('disabled', 'disabled');
 			}
+			
+			this.sharedData.set('userEmail', this.from.val());
 		},
 		
 		onMessageChanged: function() {

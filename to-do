@@ -4,7 +4,6 @@ HIGH
 - remaining mechanisms (Canada criminal court still ongoing)
 - possibly ask user for name / location and have opt-in for newsletter at end of tool
 	- change what's next screen to ask for email address and opt-in to newsletter
-- does email address get retained across screens?
 - text updates
 - Mobile issues:
 1) modals still too big for small screen (scrollable?)
@@ -12,6 +11,7 @@ HIGH
 3) date picker isn't obvious when presented with keyboard input beneath text input
 
 MEDIUM
+- esc when in modal outcome description exits right-slide - already solved in results / feedback
 - problem with english and french requirejs builds - can it use targets?
 - revert to 12 in bootstrap
 - see if the carousel can be stopped mid-transition for a new transition as this will happen to the question summary row

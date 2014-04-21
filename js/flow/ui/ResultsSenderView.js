@@ -35,6 +35,12 @@ define(['jquery', 'underscore', 'backbone', 'text!templates/results-sender.html'
 			
 			this.to.focus();
 			
+			var emailAddress = this.sharedData.get('userEmail');
+			if(emailAddress) {
+				this.to.val(emailAddress);
+				this.onToChanged();
+			}
+			
 			this.isShown = true;
 		},
 		
@@ -45,13 +51,15 @@ define(['jquery', 'underscore', 'backbone', 'text!templates/results-sender.html'
 				this.to.removeClass('input-attention');
 				this.sendButton.removeAttr('disabled');
 				
-				if(event.which === 13) {
+				if(event && event.which === 13) {
 					window.setTimeout(_.bind(this.onSendClicked, this), 0);
 				}
 			}
 			else {
 				this.sendButton.attr('disabled', 'disabled');
 			}
+			
+			this.sharedData.set('userEmail', this.to.val());
 		},
 		
 		toValid: function() {
