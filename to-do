@@ -2,12 +2,12 @@ To Do
 
 HIGH
 - remaining mechanisms (Canada criminal court still ongoing)
-- try to open option descriptions in popup, not new tab in slide-in (don't forget French template)
 - possibly ask user for name / location and have opt-in for newsletter at end of tool
 	- change what's next screen to ask for email address and opt-in to newsletter
 - does email address get retained across screens?
+- text updates
 - Mobile issues:
-1) modals still too big for small screen
+1) modals still too big for small screen (scrollable?)
 2) swiping has broken - jquery-mobile not referenced as a dependency
 3) date picker isn't obvious when presented with keyboard input beneath text input
 

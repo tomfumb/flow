@@ -57,7 +57,7 @@ define(['jquery', 'data/ac-hpr', 'data/civil-canada', 'data/crim-canada', 'data/
 				{english: "Djibouti", french: "Djibouti"},
 				{english: "Dominica", french: "Dominique"},
 				{english: "Dominican Republic", french: "République dominicaine"},
-				{english: "East Timor", french: "Timor oriental"},
+				{english: "East Timor", french: "Timor-Leste"},
 				{english: "Ecuador", french: "Équateur"},
 				{english: "Egypt", french: "Égypte"},
 				{english: "El Salvador", french: "El Salvador"},
