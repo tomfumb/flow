@@ -136,7 +136,7 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'ui/OutcomePreviewView',
 				this.availableOutcomeCountEl.html(updatedAvailablePreviews.length);
 				this.availableOutcomeCountEl.fadeIn(100, function() {
 					if(typeof updatedCallback === 'function') {
-						// this fadeIn is the last thing to happen when the outcomes are updated
+						// this fadeIn is the last thing to happen when the outcomes are updated (it's a fade-out then fade-in whereas other changes are just one or the other)
 						updatedCallback();
 					}
 				});
@@ -192,7 +192,7 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'ui/OutcomePreviewView',
 				var previewElement = this.getPreviewElement(outcome);
 				previewElement.stop();
 
-				previewElement.fadeIn(fadeSpeed, _.bind(function() {
+				previewElement.hide().fadeIn(fadeSpeed, _.bind(function() {
 					this.outcomeAddPending = false;
 					this.checkSlideEnabled();
 				}, this));
@@ -216,7 +216,7 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'ui/OutcomePreviewView',
 					updateLeftOnComplete = true;
 				}
 				
-				previewElement.fadeOut(fadeSpeed, _.bind(function() {
+				previewElement.show().fadeOut(fadeSpeed, _.bind(function() {
 					this.outcomeRemPending = false;
 					if(updateLeftOnComplete) {
 						this.adjustLeftHide(1);

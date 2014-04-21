@@ -14,7 +14,8 @@
 }
 
 #flow_question_summary_container {
-
+	position: relative;
+	height: 46px;
 }
 
 #flow_question_summary {
@@ -33,18 +34,16 @@
 	width: 7px;
 	height: 35px;
 	z-index: 2;
-	float: left;
 	background-color: #fff;
 }
 
 #flow_question_summary_side_pad_right {
-	position: relative;
+	position: absolute;
 	right: -7px;
-	top: -70px;
+	top: 0;
 	width: 15px;
 	height: 35px;
 	z-index: 2;
-	float: right;
 }
 
 .question-summary-container {
@@ -200,7 +199,6 @@
 	left: 130px;
 	z-index: 1;
 	height: 100px;
-	float: left;
 }
 
 #flow_content_right {

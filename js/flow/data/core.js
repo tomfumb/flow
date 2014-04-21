@@ -266,6 +266,7 @@ define(['jquery', 'data/ac-hpr', 'data/civil-canada', 'data/crim-canada', 'data/
 			{english: "Denial of fair trial", french: "Déni de procès équitable"},
 			{english: "Deprivation of medical care", french: "La privation de soins médicaux"},
 			{english: "Destruction or serious damage to property", french: "La destruction ou la détérioration grave de biens"},
+			{english: "Disappearance", french: "Disparition"},
 			{english: "Electric shock", french: "Choc électrique"},
 			{english: "Enslavement", french: "Asservissement"},
 			{english: "Forced abortion", french: "Avortement forcé"},

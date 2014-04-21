@@ -2,9 +2,6 @@ To Do
 
 HIGH
 - remaining mechanisms (Canada criminal court still ongoing)
-- fix height of question summaries AND ensure that ('#flow_question_summary_container'), which is swipeable, is directly over the question summaries, otherwise swiping will be really weird
-- add 'disappearance' and include for full abuses
-- possible to leave outcome preview in inconsistent state - checking and immediately unchecking an act. Should track whether its fading in or out in $.data then show() / hide() completely before next transition if in this state
 - try to open option descriptions in popup, not new tab in slide-in
 - possibly ask user for name / location and have opt-in for newsletter at end of tool
 	- change what's next screen to ask for email address and opt-in to newsletter

@@ -578,7 +578,6 @@ define(
 		},
 
 		getSummaryAvailableSpace: function() {
-			
 			return this.questionSummaryContainer.innerWidth() - 8; // 8 is the 15px width of the gradient - its -7 offset
 		},
 		

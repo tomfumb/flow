@@ -44,6 +44,7 @@ define(['jquery', 'underscore'], function($, _) {
 				{country: "Dominica", date: "2002/07/01"},
 				{country: "Dominican Republic", date: "2005/08/01"},
 				{country: "Ecuador", date: "2002/07/01"},
+				{country: "East Timor", date: "2002/12/01"},
 				{country: "Estonia", date: "2002/07/01"},
 				{country: "Fiji", date: "2002/07/01"},
 				{country: "Finland", date: "2002/07/01"},
@@ -117,7 +118,6 @@ define(['jquery', 'underscore'], function($, _) {
 				{country: "Switzerland", date: "2002/07/01"},
 				{country: "Tajikistan", date: "2002/07/01"},
 				{country: "Tanzania", date: "2002/11/01"},
-				{country: "Timor-Leste", date: "2002/12/01"},
 				{country: "Trinidad and Tobago", date: "2002/07/01"},
 				{country: "Tunisia", date: "2011/09/01"},
 				{country: "Uganda", date: "2002/09/01"},
@@ -128,7 +128,7 @@ define(['jquery', 'underscore'], function($, _) {
 				{country: "Zambia", date: "2003/02/01"}
 			];
 			
-			var relevantAbuses = ['Beating', 'Bodily mutilation', 'Burning', 'Burning of houses', 'Death threats', 'Denial of fair trial', 'Deprivation of medical care', 'Destruction or serious damage to property', 'Electric shock', 'Enslavement', 'Forced abortion', 'Forced displacement', 'Forced nudity', 'Forced sterilization', 'Forced stress positions', 'Forced to watch abuse of other prisoners', 'Forcing a prisoner to perform military service', 'Incommunicado detention', 'Kicking', 'Kidnapping/disappearance', 'Killing', 'Mock execution', 'Persecutions on political, racial, or religious grounds', 'Poisoning of water or food supplies', 'Prolonged exposure to extreme cold or heat', 'Prolonged food/water deprivation', 'Prolonged sleep deprivation', 'Punching', 'Rape or other sexual assault', 'Religious persecution', 'Serious mental harm to a person based on race, ethnicity, religion or nationality', 'Severe mental suffering', 'Solitary confinement', 'Stealing children', 'Suffocation', 'Waterboarding'];
+			var relevantAbuses = ['Beating', 'Bodily mutilation', 'Burning', 'Burning of houses', 'Death threats', 'Denial of fair trial', 'Deprivation of medical care', 'Destruction or serious damage to property', 'Disappearance', 'Electric shock', 'Enslavement', 'Forced abortion', 'Forced displacement', 'Forced nudity', 'Forced sterilization', 'Forced stress positions', 'Forced to watch abuse of other prisoners', 'Forcing a prisoner to perform military service', 'Incommunicado detention', 'Kicking', 'Kidnapping/disappearance', 'Killing', 'Mock execution', 'Persecutions on political, racial, or religious grounds', 'Poisoning of water or food supplies', 'Prolonged exposure to extreme cold or heat', 'Prolonged food/water deprivation', 'Prolonged sleep deprivation', 'Punching', 'Rape or other sexual assault', 'Religious persecution', 'Serious mental harm to a person based on race, ethnicity, religion or nationality', 'Severe mental suffering', 'Solitary confinement', 'Stealing children', 'Suffocation', 'Waterboarding'];
 			
 			var relevantAbusers = ["Soldier in government's army", 'Police officer', 'Other government official', 'Soldier in rebel army', 'Person in plainclothes', 'Unknown'];
 			
