@@ -4,11 +4,22 @@ HIGH
 - remaining mechanisms (Canada criminal court still ongoing)
 - possibly ask user for name / location and have opt-in for newsletter at end of tool
 	- change what's next screen to ask for email address and opt-in to newsletter
+- update dist script for new php
 - text updates
 - Mobile issues:
 1) modals still too big for small screen (scrollable?)
 2) swiping has broken - jquery-mobile not referenced as a dependency
 3) date picker isn't obvious when presented with keyboard input beneath text input
+- check license and ownership
+- Handover email
+	- mailchimp integration
+	- github
+	- languages
+	- my availability
+	- contact info
+	- explanation of mechanism conditions
+	- server move considerations
+	- restrictions?
 
 MEDIUM
 - esc when in modal outcome description exits right-slide - already solved in results / feedback

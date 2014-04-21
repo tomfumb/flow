@@ -329,3 +329,7 @@ input.hint-text {
 #flow_questions {
 	display: none;
 }
+
+#flow_identity_thanks {
+	display: none;
+}

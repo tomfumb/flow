@@ -1,4 +1,4 @@
-define(['jquery', 'underscore', 'backbone', 'ui/OutcomeView', 'ui/ResultsSenderView', 'ui/FeedbackView', 'text!templates/outcome-manager.html', 'text!templates/outcome-manager-outcome.html'], function($, _, Backbone, OutcomeView, ResultsSenderView, FeedbackView, managerTemplate, outcomeTemplate) {
+define(['jquery', 'underscore', 'backbone', 'flow/Util', 'ui/OutcomeView', 'ui/ResultsSenderView', 'ui/FeedbackView', 'text!templates/outcome-manager.html', 'text!templates/outcome-manager-outcome.html'], function($, _, Backbone, Util, OutcomeView, ResultsSenderView, FeedbackView, managerTemplate, outcomeTemplate) {
 	
 	return Backbone.View.extend({
 	
@@ -40,6 +40,15 @@ define(['jquery', 'underscore', 'backbone', 'ui/OutcomeView', 'ui/ResultsSenderV
 					this.onEscapePressed();
 				}
 			}, this));
+			
+			this.email = this.$el.find('#flow_identity_email').on('keyup', _.bind(this.onIdentityChanged, this));
+			this.emailNews = this.$el.find('#flow_identity_news');
+			this.emailNews.parent().find('.clickable').on('click', _.bind(function() {this.emailNews.get(0).click()}, this));
+			this.emailSend = this.$el.find('#flow_identity_send').on('click', _.bind(this.onSendIdentityClicked, this));
+			
+			this.sharedData.on('change:userEmail', function() {
+				this.email.val(this.sharedData.get('userEmail'));
+			}, this);
 		},
 		
 		onEscapePressed: function() {
@@ -181,6 +190,37 @@ define(['jquery', 'underscore', 'backbone', 'ui/OutcomeView', 'ui/ResultsSenderV
 			}
 			
 			this.feedbackView.render();
+		},
+		
+		onIdentityChanged: function() {
+						
+			if(this.identityValid()) {
+				this.email.removeClass('input-attention');
+				this.emailSend.removeAttr('disabled');
+			}
+			else {
+				this.emailSend.attr('disabled', 'disabled');
+			}
+			
+			this.sharedData.set('userEmail', this.email.val());
+		},
+		
+		onSendIdentityClicked: function() {
+			
+			this.$el.find('#flow_identity_thanks').show();
+			this.emailSend.attr('disabled', 'disabled');
+			
+			$.ajax('identity/', {
+				type: 'POST',
+				data: {
+					email: this.email.val(),
+					news: this.emailNews.is(':checked')
+				}
+			});
+		},
+		
+		identityValid: function() {
+			return Util.emailValid(this.email.val());
 		},
 		
 		getContainerIdFromOutcome: function(outcome) {

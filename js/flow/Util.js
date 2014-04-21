@@ -35,6 +35,10 @@ define([], function() {
 			}
 			
 			return zeros.join('') + numberStr;
+		},
+		
+		emailValid: function(input) {
+			return !!input.match(/[a-z0-9!#$%&'*+\/=?^_{|}~-]+(?:\.[a-z0-9!#$%&'*+\/=?^_{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/i);
 		}
 	};
 });

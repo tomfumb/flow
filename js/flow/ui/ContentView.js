@@ -388,8 +388,6 @@ define(
 			this.reportQuestionProgress(answeredQuestions.answered, answeredQuestions.available);
 			this.outcomeManager.unansweredQuestions = this.countUnansweredQuestions(answeredQuestion.collection.models);
 			this.outcomePreviews.onQuestionAnswered(answeredQuestion);
-			
-			Log.info('answers selected');
 		},
 		
 		countUnansweredQuestions: function(questions) {
