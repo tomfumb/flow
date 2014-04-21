@@ -48,8 +48,6 @@ define(
 			
 				var questionId = question.get('id');
 				
-				Log.debug('ContentView.addQuestion (' + questionId + '), first: ' + (this.hadFirst ? 'false' : 'true'));
-				
 				var questionElId = this.getQuestionContainerId(questionId);
 				var questionEl = $('<div id="' + questionElId + '" class="question-container"></div>');
 				
@@ -178,9 +176,6 @@ define(
 				
 				this.checkNavigationOptions();
 			}
-			else {
-				Log.debug('No previous questions available');
-			}
 		},
 		
 		updateActiveQuestion: function(newIndex) {
@@ -228,8 +223,6 @@ define(
 		
 		getIndexOfNextAvailableQuestion: function() {
 			
-			Log.debug('ContentView.getIndexOfNextAvailableQuestion');
-			
 			var nextIndex = -1, activeIndex = -1;
 			_.each(this.questions, function(entry, index) {
 				if(entry.active) {
@@ -241,8 +234,6 @@ define(
 				Log.error('Unable to find currently active view index');
 				return nextIndex;
 			}
-			
-			Log.debug('ActiveIndex: ' + activeIndex);
 			
 			if(activeIndex === (this.questions.length - 1)) {
 				Log.info('Reached end of available questions (index: ' + activeIndex + ')');
@@ -257,12 +248,7 @@ define(
 					var model = entry.view.model, id;
 					id = model.get('id');
 					if(model.get('available')) {
-						
-						Log.debug('Next available question: ' + id);
 						nextIndex = index;
-					}
-					else {
-						Log.debug('Next question not available (' + id + ')');
 					}
 				}
 			}, this);
@@ -271,8 +257,6 @@ define(
 		},
 		
 		getIndexOfPreviousAvailableQuestion: function() {
-			
-			Log.debug('ContentView.getIndexOfPreviousAvailableQuestion');
 			
 			var prevIndex = -1, activeIndex = -1;
 			_.each(this.questions, function(entry, index) {
@@ -285,8 +269,6 @@ define(
 				Log.error('Unable to find currently active view index');
 				return prevIndex;
 			}
-			
-			Log.debug('ActiveIndex: ' + activeIndex);
 			
 			if(activeIndex === 0) {
 				Log.info('Reached beginning of available questions (index: ' + activeIndex + ')');
@@ -302,12 +284,7 @@ define(
 					var model = this.questions[index].view.model;
 					var id = model.get('id');
 					if(model.get('available')) {
-						
-						Log.debug('Previous available question: ' + id);
 						prevIndex = index;
-					}
-					else {
-						Log.debug('Previous question not available (' + id + ')');
 					}
 				}
 			}
@@ -346,7 +323,6 @@ define(
 		onQuestionAvailabilityChanged: function(question) {
 			
 			var questionId = question.get('id');
-			Log.debug('question availability changed: ' + questionId);
 			
 			var summaryEl = this.$el.find('#' + this.getSummaryQuestionId(questionId));
 			var available = question.get('available');
@@ -397,8 +373,6 @@ define(
 		},
 		
 		onAnswersSelected: function(answeredQuestion, answers) {
-			
-			Log.debug('ContentView.onAnswersSelected');
 			
 			var summaryEl = this.$el.find('#' + this.getSummaryQuestionId(answeredQuestion.get('id')));
 			var answered = (answeredQuestion.get('selectedAnswers').length > 0);

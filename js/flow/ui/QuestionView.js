@@ -13,8 +13,6 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'text!templates/question
 		
 		render: function(isActive, container, majorQuestionCount) {
 			
-			Log.debug('QuestionView.render');
-			
 			isActive = (typeof isActive === 'undefined' ? false : !!isActive);
 			this.container = container;
 			
@@ -137,16 +135,10 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'text!templates/question
 		},
 		
 		onAnswersSelected: function(answers) {
-			
-			Log.debug('QuestionView.onAnswerSelected(' + answers.join(', ') + ')');
-			
 			this.model.set('selectedAnswers', answers);
 		},
 		
 		onQuestionAnswered: function() {
-			
-			Log.debug('Question answered: ' + this.model.get('id'));
-			
 			this.model.set('questionAnswered', (new Date()).getTime());
 		},
 		

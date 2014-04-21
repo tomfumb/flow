@@ -1,5 +1,10 @@
 To Do
-- try to open option descriptions in popup, not new tab in slide-in
+
+
+Canada criminal court still ongoing
+
+
+- get correct meta/refresh tag in index.htm, also include js
 - problem with english and french requirejs builds - can it use targets?
 - see if the carousel can be stopped mid-transition for a new transition as this will happen to the question summary row
 - fix height of question summaries AND *ensure* that ('#flow_question_summary_container'), which is swipeable, is directly over the question summaries, otherwise swiping will be really weird
@@ -8,7 +13,10 @@ To Do
 	- mention the possibility of having real or hypothetical cases alongside the tool for people to work through for education
 - add new mechanism charts
 - revert to 12 in bootstrap
+- email Wise & Hammer people about development environment
 
+- possible to leave outcome preview in inconsistent state - checking and immediately unchecking an act. Should track whether its fading in or out in $.data then show() / hide() completely before next transition if in this state
+- try to open option descriptions in popup, not new tab in slide-in
 - only have useful log messages
 - soften colours and make question text bigger - more engaging
 - tip buttons near key functionality explaining what's going on
@@ -27,5 +35,3 @@ To Do
 - test case - remove all outcome previews, what happens to slide / visible logic?
 - http://getbootstrap.com/getting-started/#browsers
 - check necessity of shims in index.htm
-
-Wise & Hammer meeting
