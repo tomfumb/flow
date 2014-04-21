@@ -432,6 +432,7 @@ define(
 			
 			this.outcomePreviews = new OutcomePreviewsView({model: outcomes});
 			this.outcomeManager = new OutcomeManagerView({model: outcomes});
+			this.outcomeManager.sharedData = this.sharedData;
 			this.outcomeManager.render(this.$el.find('#flow_content_container_row'));
 			this.outcomePreviews.render(_.bind(this.outcomeShowRequested, this));
 		},
