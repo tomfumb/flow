@@ -2,10 +2,12 @@ To Do
 
 QUESTIONS
 - in Criminal Canada mechanism does Matt actually mean Q1 or Q2b or just Q1
+- which version of IE does Matt have?
 
 
 HIGH
 - remaining mechanisms (*** Civil Canada in testing ***)
+- cross-browser testing (IE, Firefox)
 - Mobile issues:
 1) modals still too big for small screen (check Android, iOS seems fine now)
 2) date picker isn't obvious in Android when presented with keyboard input beneath text input
