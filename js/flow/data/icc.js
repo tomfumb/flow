@@ -1,4 +1,5 @@
 define(['jquery', 'underscore'], function($, _) {
+	
 	return {
 		selector: $('#ccij_outcome_icc'),
 		condition: function(q1, q2a, q2b, q3, q6, q7, q8, q9, q10, q14a, q14b, q14c, q15) {
