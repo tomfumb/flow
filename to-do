@@ -2,7 +2,6 @@ To Do
 
 QUESTIONS
 - which version of IE does Matt have?
-- what is/are correct date/s for Bosnia?
 
 HIGH
 - add Stories links back in
@@ -34,6 +33,7 @@ MEDIUM
 - v-mouse integration?
 - undo auto-focus on email address in next steps
 - revert to 12 in bootstrap
+- possible to get firstVisibleIndex error, possibly due to animations in progress?
 - see if the carousel can be stopped mid-transition for a new transition as this will happen to the question summary row
 - style outcome navigate buttons
 - seem to be several conditions where phone needs scrolling to top of page

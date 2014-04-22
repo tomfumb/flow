@@ -6,7 +6,7 @@ define(['jquery'], function($) {
 		condition: function(q1, q2a, q2b, q3, q6, q7, q10) {
 			
 			var relevantCountries = [
-				{country: "Bosnia and Herzegovina", date: "2002/07/03"}
+				{country: "Bosnia and Herzegovina"}
 			];
 			
 			var relevantAbuses = ['Beating', 'Bodily mutilation', 'Burning', 'Burning of houses', 'Death threats', 'Denial of fair trial', 'Deprivation of medical care', 'Destruction or serious damage to property', 'Disappearance', 'Electric shock', 'Enslavement', 'Forced abortion', 'Forced displacement', 'Forced nudity', 'Forced sterilization', 'Forced stress positions', 'Forced to watch abuse of other prisoners', 'Forcing a prisoner to perform military service', 'Incommunicado detention', 'Kicking', 'Kidnapping/disappearance', 'Killing', 'Mock execution', 'Persecutions on political, racial, or religious grounds', 'Poisoning of water or food supplies', 'Prolonged exposure to extreme cold or heat', 'Prolonged food/water deprivation', 'Prolonged sleep deprivation', 'Punching', 'Rape or other sexual assault', 'Religious persecution', 'Serious mental harm to a person based on race, ethnicity, religion or nationality', 'Severe mental suffering', 'Solitary confinement', 'Stealing children', 'Suffocation', 'Waterboarding'];
@@ -53,10 +53,13 @@ define(['jquery'], function($) {
 			
 			// check if war crime, crime against humanity, or genocide
 			proceed = false;
-			if(q7.isUnknownOrNotAnswered() || q7.hasAnswer('Yes')) {
+			if(
+				(q7.isUnknownOrNotAnswered() || q7.hasAnswer('Yes')) ||
+				(q8.isUnknownOrNotAnswered() || q8.hasAnswer('Yes')) ||
+				(q9.isUnknownOrNotAnswered() || q9.hasAnswer('Yes'))) {
 				proceed = true;
 			}
-			// exit if not war crime
+			// exit if not war crime, crime against humanity, or genocide
 			if(!proceed) {
 				return false;
 			}
