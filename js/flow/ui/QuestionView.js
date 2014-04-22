@@ -41,7 +41,6 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'text!templates/question
 				case 'multi-select':
 					bodyTemplate = multiTemplate;
 					answerStyle = this.answerDisplayTypes.CHECK_BUTTON_CLICK;
-					answers = _.sortBy(answers, function(answer) { return answer.display; });
 					break;
 				case 'single-date':
 					bodyTemplate = dateTemplate;

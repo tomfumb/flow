@@ -313,15 +313,21 @@ define(['jquery', 'data/ac-hpr', 'data/civil-canada', 'data/crim-canada', 'data/
 		answerType: 'single-select'
 	},{
 		id: '10',
-		answers: [
-			{english: "Soldier in government's army", french: "Soldat dans l'armée de gouvernement"},
-			{english: "Police officer", french: "L'officier de police"},
-			{english: "Other government official", french: "Autre représentant du gouvernement"},
-			{english: "Soldier in rebel army", french: "Soldat dans l'armée rebelle"},
-			{english: "Person in plainclothes", french: "Personne en civil"},
-			{english: "Company or corporation", french: "Société"},
-			{english: "Unknown", french: "Inconnu"}
-		],
+		answers: function() {
+			
+			var answers = [
+				{english: "Soldier in government's army", french: "Soldat dans l'armée de gouvernement"},
+				{english: "Police officer", french: "L'officier de police"},
+				{english: "Other government official", french: "Autre représentant du gouvernement"},
+				{english: "Soldier in rebel army", french: "Soldat dans l'armée rebelle"},
+				{english: "Person in plainclothes", french: "Personne en civil"},
+				{english: "Company or corporation", french: "Société"},
+				{english: "Unknown", french: "Inconnu"}
+			];
+			
+			answers.preventSort = true;
+			return answers;
+		}(),
 		answerType: 'multi-select'
 	},{
 		id: '11',
@@ -345,13 +351,18 @@ define(['jquery', 'data/ac-hpr', 'data/civil-canada', 'data/crim-canada', 'data/
 		answerType: 'single-select'
 	},{
 		id: '14c',
-		answers: [
-			{english: "Investigation or prosecution still ongoing", french: "Enquête ou des poursuites toujours en cours"},
-			{english: "No investigation", french: "Aucune enquête"},
-			{english: "Inadequate investigation", french: "Enquête insuffisante"},
-			{english: "A court held someone responsible", french: "Un tribunal a jugé un responsable"},
-			{english: "Someone was put on trial but was found not guilty", french: "Quelqu'un a été mis à l'essai, mais a été déclaré non coupable"}
-		],
+		answers: function() {
+			var answers = [
+				{english: "Investigation or prosecution still ongoing", french: "Enquête ou des poursuites toujours en cours"},
+				{english: "No investigation", french: "Aucune enquête"},
+				{english: "Inadequate investigation", french: "Enquête insuffisante"},
+				{english: "A court held someone responsible", french: "Un tribunal a jugé un responsable"},
+				{english: "Someone was put on trial but was found not guilty", french: "Quelqu'un a été mis à l'essai, mais a été déclaré non coupable"}
+			];
+			
+			answers.preventSort = true;
+			return answers;
+		}(),
 		answerType: 'single-select',
 		condition: function(questions) {
 			return(questions['14b'].hasAnswer('Yes'));

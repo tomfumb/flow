@@ -15,15 +15,16 @@ HIGH
 	- explanation of mechanism conditions
 	- server move considerations
 	- restrictions?
+	- deployment process (grunt tasks, testing, devices)
 
 MEDIUM
-- problem with english and french requirejs builds - can it use targets?
+- v-mouse integration?
+- undo auto-focus on email address in next steps
 - revert to 12 in bootstrap
 - see if the carousel can be stopped mid-transition for a new transition as this will happen to the question summary row
 - style outcome navigate buttons
 - seem to be several conditions where phone needs scrolling to top of page
 - ensure carousel speed and summary transition speed are in-sync, then standardise slide speed values using global
-- v-mouse integration?
 
 LOW
 - only have useful log messages

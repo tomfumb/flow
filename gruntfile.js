@@ -14,26 +14,22 @@ module.exports = function(grunt) {
       }
     },
     requirejs: {
-	  english: {
-        compile: {
-          options: {
-            baseUrl: "js",
-            mainConfigFile: "js/app-en.js",
-            name: "app",
-            out: "js/dist/<%= pkg.name %>-en.js",
-            optimize: "none"
-          }
+      english: {
+        options: {
+          baseUrl: "js",
+          mainConfigFile: "js/app-en.js",
+          name: "app-en",
+          out: "js/dist/<%= pkg.name %>-en.js",
+          optimize: "none"
         }
       },
       french: {
-        compile: {
-          options: {
-            baseUrl: "js",
-            mainConfigFile: "js/app-fr.js",
-            name: "app",
-            out: "js/dist/<%= pkg.name %>-fr.js",
-            optimize: "none"
-          }
+        options: {
+          baseUrl: "js",
+          mainConfigFile: "js/app-fr.js",
+          name: "app-fr",
+          out: "js/dist/<%= pkg.name %>-fr.js",
+          optimize: "none"
         }
       },
       css: {
@@ -57,7 +53,7 @@ module.exports = function(grunt) {
         src: ['index-en.htm', 'index-fr.htm', 'css/**/*.css', '!css/lib/*'],
         overwrite: true,
         replacements: [{
-          from: /flow\-v=\d+(\.\d+)?(\.\d+)?/ig,
+          from: /flow\-v=\d+(\.\d+)?(\.\d+)?(\.\d+)?/ig,
           to: 'flow-v=<%= pkg.version %>'
         }]
       },
@@ -69,8 +65,8 @@ module.exports = function(grunt) {
           to: 'href="css/src/ccij.css'
         },
         {
-		  from: 'data-main="js/dist/ccij-flow"',
-		  to: 'data-main="js/app"'
+		  from: 'data-main="js/dist/ccij-flow',
+		  to: 'data-main="js/app'
 		}]
       },
       live: {
@@ -81,8 +77,8 @@ module.exports = function(grunt) {
           to: 'href="css/dist/<%= pkg.name %>.css'
         },
         {
-		  from: 'data-main="js/app"',
-		  to: 'data-main="js/dist/ccij-flow"'
+		  from: 'data-main="js/app',
+		  to: 'data-main="js/dist/ccij-flow'
 		}]
       }
     },
@@ -172,14 +168,15 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-ftp-deploy');
 
   grunt.registerTask('lint', ['jshint']);
-  grunt.registerTask('r-en', ['requirejs:english']);
-  grunt.registerTask('r-fr', ['requirejs:french']);
+  grunt.registerTask('r-en', ['requirejs:english', 'requirejs:css']);
+  grunt.registerTask('r-fr', ['requirejs:french', 'requirejs:css']);
   grunt.registerTask('html', ['lint5']);
   grunt.registerTask('version', ['replace:urlVersion']);
   grunt.registerTask('development', ['replace:development']);
-  grunt.registerTask('live', ['lint', 'html', 'r-en', 'r-fr', 'version', 'replace:live']);
+  grunt.registerTask('live', ['lint', 'html', 'requirejs', 'version', 'replace:live']);
+  grunt.registerTask('dist', ['copy', 'chmod']);
   
-  grunt.registerTask('deploy', ['copy', 'chmod', 'ftp-deploy', 'development']);
+  grunt.registerTask('deploy', ['dist', 'ftp-deploy', 'development']);
 
   grunt.registerTask('default', ['live']);
 };

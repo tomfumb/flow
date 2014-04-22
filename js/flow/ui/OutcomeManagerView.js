@@ -49,7 +49,7 @@ define(['jquery', 'underscore', 'backbone', 'flow/Util', 'ui/OutcomeView', 'ui/R
 			
 			this.email = this.$el.find('#flow_identity_email').on('keyup', _.bind(this.onIdentityChanged, this));
 			this.emailNews = this.$el.find('#flow_identity_news');
-			this.emailNews.parent().find('.clickable').on('click', _.bind(function() {this.emailNews.get(0).click()}, this));
+			this.emailNews.parent().find('.clickable').on('click', _.bind(function() {this.emailNews.get(0).click();}, this));
 			this.emailSend = this.$el.find('#flow_identity_send').on('click', _.bind(this.onSendIdentityClicked, this));
 			
 			this.sharedData.on('change:userEmail', function() {
