@@ -93,6 +93,9 @@ module.exports = function(grunt) {
     copy: {
       main: {
 		files: [{
+          src: 'index.php',
+          dest: 'dist/'
+        },{
           src: 'index-en.htm',
           dest: 'dist/'
         },{
@@ -126,6 +129,9 @@ module.exports = function(grunt) {
           dest: 'dist/'
         },{
           src: 'results/*.php',
+          dest: 'dist/'
+        },{
+          src: 'identity/*.php',
           dest: 'dist/'
         }]
       },
