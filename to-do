@@ -26,6 +26,7 @@ HIGH
 	- deployment process (grunt tasks, testing, devices)
 
 MEDIUM
+- figure out how to deploy with debug level change - necessary?
 - v-mouse integration?
 - undo auto-focus on email address in next steps
 - revert to 12 in bootstrap
