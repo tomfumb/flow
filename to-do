@@ -7,9 +7,8 @@ HIGH
 - add Stories links back in
 - remaining mechanisms (*** Civil Canada in testing ***)
 - cross-browser testing (IE, Firefox)
-- Mobile issues:
-1) modals still too big for small screen (check Android, iOS seems fine now)
-2) date picker isn't obvious in Android when presented with keyboard input beneath text input
+- swipe fails on Android Chrome
+- why does selecting date make mechanisms unavailable?
 - check license and ownership
 - Completion email
 	- testing, what to look for (one person per mechanism ?)
