@@ -47,6 +47,12 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'flow/Question'], functi
 				else {
 					model.set('available', true);
 				}
+				
+				// handle language setting
+				_.each(model.get('answers'), function(answer) {
+					answer.value = answer.english;
+					answer.display = answer[window.CCIJ.language];
+				});
 			}, this);
 			
 			this.trigger('modelReady');

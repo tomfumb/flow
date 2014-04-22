@@ -21,6 +21,11 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'text!templates/question
 				this.$el.addClass('active');
 			}
 			
+			var answers = this.model.get('answers');
+			if(answers && !answers.preventSort) {
+				answers = _.sortBy(this.model.get('answers'), function(answer) { return answer.display; });
+			}
+			
 			var bodyTemplate, answerStyle;
 			switch(this.model.get('answerType')) {
 				case 'single-select':
@@ -36,6 +41,7 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'text!templates/question
 				case 'multi-select':
 					bodyTemplate = multiTemplate;
 					answerStyle = this.answerDisplayTypes.CHECK_BUTTON_CLICK;
+					answers = _.sortBy(answers, function(answer) { return answer.display; });
 					break;
 				case 'single-date':
 					bodyTemplate = dateTemplate;
@@ -53,7 +59,7 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'text!templates/question
 					questionBody: _.template(
 						bodyTemplate, {
 							question: this.model,
-							answers: this.model.get('answers')
+							answers: answers
 						}
 					)
 				}

@@ -8,9 +8,9 @@
 			<div class="col-xs-24 col-sm-24 col-md-12 col-lg-12">
 				<input type="checkbox"
 					id="q<%= question.get("id") %>_a_<%= index %>"
-					value="<%= answer.english %>"
+					value="<%= answer.value %>"
 				/>
-				<span class="answer-checkbox-text clickable"><%= answer.english %></span>
+				<span class="answer-checkbox-text clickable"><%= answer.display %></span>
 			</div>
 		<% }); %>
 	</div>

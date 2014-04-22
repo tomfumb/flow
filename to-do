@@ -21,9 +21,7 @@ MEDIUM
 - revert to 12 in bootstrap
 - see if the carousel can be stopped mid-transition for a new transition as this will happen to the question summary row
 - style outcome navigate buttons
-- Text flash for options updated
 - seem to be several conditions where phone needs scrolling to top of page
-- order french country names
 - ensure carousel speed and summary transition speed are in-sync, then standardise slide speed values using global
 - v-mouse integration?
 

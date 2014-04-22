@@ -217,6 +217,8 @@ define(['jquery', 'data/ac-hpr', 'data/civil-canada', 'data/crim-canada', 'data/
 			],
 		}
 	};
+	
+	config.lists.yesnounknown.preventSort = true;
 
 	config.questions = [{
 		id: '1',

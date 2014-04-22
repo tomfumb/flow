@@ -24,9 +24,33 @@
 		</ul>
 		<div class="tab-content">
 			<div class="tab-pane active" id="flow_outcome_what_now">
-				<h3>Next Steps</h3>
-				<p><span class="results-send-link clickable clickable-colour">Email</span> or <span class="results-print-link clickable clickable-colour">print</span> your results and contact CCIJ to discuss your case. Contact details are provided at the bottom of this page and at the <a href="http://www.ccij.ca/" target="_blank">CCIJ site</a>.</p>
-				<p>Please feel free to <span class="feedback-send-link clickable clickable-colour">provide feedback</span> on the Opportunities for Justice tool.</p>
+				<div class="row">
+					<div class="col-24 col-xs-24 col-sm-24 col-md-24 col-lg-24">
+						<h3>Next Steps</h3>
+						<p><span class="results-send-link clickable clickable-colour">Email</span> or <span class="results-print-link clickable clickable-colour">print</span> your results and contact CCIJ to discuss your case. Contact details are provided at the bottom of this page and at the <a href="http://www.ccij.ca/" target="_blank">CCIJ site</a>.</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-24 col-xs-24 col-sm-24 col-md-24 col-lg-24">
+						<h3>Who are you?</h3>
+						<p>Please help us to continually improve our services by telling us who you are.</p>
+						<div class="input-group col-16 col-xs-16 col-sm-16 col-md-16 col-lg-16">
+							<input id="flow_identity_email" type="text" class="form-control" placeholder="Your Email Address">
+						</div>
+					</div>
+				</div>
+				<div class="spacer-5"></div>
+				<div class="row">
+					<div class="col-24 col-xs-24 col-sm-24 col-md-24 col-lg-24">
+						<p><input type="checkbox" id="flow_identity_news" style="float: left; margin-right: 5px;" checked="checked" /> <span class="clickable">Keep me up to date with relevant CCIJ news.</span></p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-24 col-xs-24 col-sm-24 col-md-24 col-lg-24">
+						<button type="button" id="flow_identity_send" disabled="disabled" class="btn btn-primary">Send</button>
+						<span id="flow_identity_thanks">Thanks!</span>
+					</div>
+				</div>
 			</div>
 			<div class="tab-pane" id="flow_outcome_available">
 				<div class="spacer-10"></div>
@@ -42,7 +66,6 @@
 				<p id="flow_unavailable_options_note">Based on the questions you have answered the following options may not be available to you. However, these results should be reviewed by CCIJ, another human rights organization or a lawyer. Please note that this site provides only information, not legal advice. A legal case cannot be based on the results of this questionnaire, as every case and every legal process is extremely unique and complex. This website is designed to help you understand what options might be available and is not designed to make a final conclusion about your case.</p>
 				<div id="flow_outcome_unavailable_outcomes"></div>
 			</div>
-			<div class="tab-pane" id="flow_outcome_detail"></div>
 		</div>
 		<br />
 		<p class="outcomes-hide clickable"><span class="glyphicon glyphicon-arrow-left"></span> back to the test</p>

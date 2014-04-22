@@ -2,8 +2,8 @@
 <% _.each(answers, function(answer, index) { %>
 	<div class="answer clickable" id="answer_<%= index %>">
 		<img src="images/0.png" width="20" height="20" alt="selected answer indicator" class="answer-pad" />
-		<div class="answer-display"><%= answer.english %></div>
-		<div class="answer-value"><%= answer.english %></div>
+		<div class="answer-display"><%= answer.display %></div>
+		<div class="answer-value"><%= answer.value %></div>
 		<div class="clearer"></div>
 	</div>
 <% }); %>

@@ -2,6 +2,6 @@
 <select class="multi_answer_select">
 	<option value="">Please Select...</option>
 	<% _.each(answers, function(answer, index) { %>
-		<option type="text" value="<%= answer.english %>"><%= answer.english %></option>
+		<option type="text" value="<%= answer.value %>"><%= answer.display %></option>
 	<% }); %>
 </select>
