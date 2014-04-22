@@ -19,6 +19,12 @@ define(['jquery', 'underscore', 'backbone', 'flow/Util', 'ui/OutcomeView', 'ui/R
 			this.detailsModal = $('#flow_outcome_details_modal');
 			this.detailsModalBody = this.detailsModal.find('#flow_outcome_details_modal_body');
 			
+			this.detailsModal.on('hidden.bs.modal', _.bind(function () {
+				setTimeout(_.bind(function() {
+					this.detailsModal.isShown = false;
+				}, this), 0);
+			}, this));
+			
 			this.$el.find('.results-send-link').click(_.bind(function() {
 				this.onSendResultsClicked();
 			}, this));
@@ -58,7 +64,9 @@ define(['jquery', 'underscore', 'backbone', 'flow/Util', 'ui/OutcomeView', 'ui/R
 		},
 		
 		onEscapePressed: function() {
+			
 			if(
+				!this.detailsModal.isShown &&
 				(!this.resultsSenderView || (this.resultsSenderView && !this.resultsSenderView.isShown)) &&
 				(!this.feedbackView || (this.feedbackView && !this.feedbackView.isShown))) {
 				this.hideClicked();
@@ -125,6 +133,7 @@ define(['jquery', 'underscore', 'backbone', 'flow/Util', 'ui/OutcomeView', 'ui/R
 		showOutcome: function(outcome) {
 			this.detailsModalBody.html(outcome.get('selector').html());
 			this.detailsModal.show().modal();
+			this.detailsModal.isShown = true;
 		},
 		
 		renderOutcomes: function() {

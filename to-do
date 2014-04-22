@@ -3,9 +3,8 @@ To Do
 HIGH
 - remaining mechanisms (Canada criminal court still ongoing)
 - Mobile issues:
-1) modals still too big for small screen (scrollable?)
-2) swiping has broken - jquery-mobile not referenced as a dependency
-3) date picker isn't obvious when presented with keyboard input beneath text input
+1) modals still too big for small screen (check Android, iOS seems fine now)
+2) date picker isn't obvious in Android when presented with keyboard input beneath text input
 - check license and ownership
 - Handover email
 	- mailchimp integration
@@ -18,7 +17,6 @@ HIGH
 	- restrictions?
 
 MEDIUM
-- esc when in modal outcome description exits right-slide - already solved in results / feedback
 - problem with english and french requirejs builds - can it use targets?
 - revert to 12 in bootstrap
 - see if the carousel can be stopped mid-transition for a new transition as this will happen to the question summary row
@@ -26,8 +24,10 @@ MEDIUM
 - style outcome navigate buttons
 - Text flash for options updated
 - remove logos - will be provided by Wise & Hammer
+- seem to be several conditions where phone needs scrolling to top of page
 - order french country names
 - ensure carousel speed and summary transition speed are in-sync, then standardise slide speed values using global
+- v-mouse integration?
 
 LOW
 - only have useful log messages
