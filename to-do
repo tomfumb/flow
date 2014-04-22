@@ -5,7 +5,6 @@ QUESTIONS
 
 
 HIGH
-- UI bug - modals not wide enough for content when full screen
 - remaining mechanisms
 - Mobile issues:
 1) modals still too big for small screen (check Android, iOS seems fine now)
@@ -13,7 +12,8 @@ HIGH
 - check license and ownership
 - Completion email
 	- testing, what to look for
-	- availability & committment
+	- availability & committment, build a to-do list for me
+	- french version
 - Handover email
 	- mailchimp integration
 	- github
