@@ -5,7 +5,7 @@ QUESTIONS
 
 
 HIGH
-- remaining mechanisms
+- remaining mechanisms (*** Civil Canada in testing ***)
 - Mobile issues:
 1) modals still too big for small screen (check Android, iOS seems fine now)
 2) date picker isn't obvious in Android when presented with keyboard input beneath text input

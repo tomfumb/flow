@@ -56,9 +56,9 @@ define(['jquery'], function($) {
 			}
 			
 			// check if recent enough (within last 2 years unless a permanently relevant abuse such as rape or other sexual assault)
-			proceed = q6.hasAnswer(permanentRelevantAbuses);
+			proceed = (q6.isUnknownOrNotAnswered || q6.hasAnswer(permanentRelevantAbuses));
 			if(!proceed) {
-				proceed = q3.isWithinYearsAgo(2);
+				proceed = (q3.isNotAnswered() || q3.isWithinYearsAgo(2));
 			}
 			// exit if abuse too long ago
 			if(!proceed) {
