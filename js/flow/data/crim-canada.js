@@ -15,32 +15,30 @@ define(['jquery'], function($) {
 			
 			var scenario2RelevantAbusers = ["Soldier in government's army", 'Police officer', 'Other government official'];
 			
+			// determine jurisdiction based on war crimes, crimes against humanity or genocide by anyone except corporations or torture by state actors
+			// two possible routes to jurisdiction across the same questions, requires two scenarios
 			var scenario1Proceed = false, scenario2Proceed = false;
 			
 			scenario1Proceed = (q6.isNotAnswered() || q6.hasOneOfAnswers(scenario1RelevantAbuses));
-			
 			if(scenario1Proceed) {
 				// check if war crime, crime against humanity, or genocide
 				scenario1Proceed = !(q7.hasAnswer('No') && q8.hasAnswer('No') && q9.hasAnswer('No'));
 			}
-			
 			if(scenario1Proceed) {
 				scenario1Proceed = (q10.isUnknownOrNotAnswered() || q10.hasOneOfAnswers(scenario1RelevantAbusers));
 			}
 			
 			scenario2Proceed = (q6.isNotAnswered() || q6.hasOneOfAnswers(scenario2RelevantAbuses));
-			
 			if(scenario2Proceed) {
 				scenario2Proceed = (q10.isUnknownOrNotAnswered() || q10.hasOneOfAnswers(scenario2RelevantAbusers));
 			}
 			
-			// 
+			// exit if no jurisdiction for Canada
 			if(!(scenario1Proceed || scenario2Proceed)) {
 				return false;
 			}
 			
-			
-			
+			// check Canada is a relevant country - either abuse was by a Canadian, the abused was Canadian, or the abuser spends time in Canada
 			proceed = false;
 			if(q1.isNotAnswered() || q1.hasCountry(relevantCountries)) {
 				proceed = true;
@@ -65,10 +63,6 @@ define(['jquery'], function($) {
 			if(!proceed) {
 				return false;
 			}
-			
-			proceed = false;
-			
-			
 			
 			return true;
 		}
