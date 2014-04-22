@@ -33,7 +33,7 @@ MEDIUM
 - v-mouse integration?
 - undo auto-focus on email address in next steps
 - revert to 12 in bootstrap
-- possible to get firstVisibleIndex error, possibly due to animations in progress?
+- possible to get firstVisibleIndex error, replicated by disabling and re-enabling large number of mechanisms after a full right-scroll. Checked 'company / corporation' to eliminate most
 - see if the carousel can be stopped mid-transition for a new transition as this will happen to the question summary row
 - style outcome navigate buttons
 - seem to be several conditions where phone needs scrolling to top of page
