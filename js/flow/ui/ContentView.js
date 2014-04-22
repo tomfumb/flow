@@ -302,7 +302,7 @@ define(
 			var questionId = this.getQuestionIdFromContainerId(activeQuestionElId);
 			var summaryEl = this.$el.find('#' + this.getSummaryQuestionId(questionId));
 			
-			var previousPrimary = this.$el.find('button.btn-primary');
+			var previousPrimary = this.questionSummaryRow.find('button.btn-primary');
 			if(previousPrimary) {
 				previousPrimary.removeClass('btn-primary');
 				if(previousPrimary.data('answered')) {
