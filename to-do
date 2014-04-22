@@ -2,7 +2,6 @@ To Do
 
 HIGH
 - remaining mechanisms (Canada criminal court still ongoing)
-- text updates
 - Mobile issues:
 1) modals still too big for small screen (scrollable?)
 2) swiping has broken - jquery-mobile not referenced as a dependency
