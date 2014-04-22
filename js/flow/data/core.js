@@ -260,6 +260,8 @@ define(['jquery', 'data/ac-hpr', 'data/civil-canada', 'data/crim-canada', 'data/
 	{
 		id: '6',
 		answers: [
+			{english: "Abuse against a child under the age of 18", french: "Abus contre un enfant de moins de 18 ans"},
+			{english: "Abuse against a woman", french: "Abus contre une femme"},
 			{english: "Beating", french: "Battement"},
 			{english: "Bodily mutilation", french: "Mutilations"},
 			{english: "Burning", french: "Brûlant"},
