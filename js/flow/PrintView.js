@@ -3,8 +3,7 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'text!templates/print/qu
 	return Backbone.View.extend({
 		
 		initialize: function() {
-				
-			Log.debug('Initialising PrintView');
+		
 			this.questions = this.model.get('Questions');
 			this.outcomes = this.model.get('Outcomes');
 			

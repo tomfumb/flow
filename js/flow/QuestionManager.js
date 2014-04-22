@@ -64,8 +64,6 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'flow/Question'], functi
 		
 		checkAvailableQuestions: function() {
 			
-			Log.debug('QuestionManager.checkAvailableQuestions');
-			
 			var changedQuestions = [];
 		
 			_.each(this.models, function(question) {

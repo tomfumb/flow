@@ -2,6 +2,7 @@ To Do
 
 QUESTIONS
 - which version of IE does Matt have?
+- what is/are correct date/s for Bosnia?
 
 HIGH
 - add Stories links back in
@@ -26,7 +27,10 @@ HIGH
 	- deployment process (grunt tasks, testing, devices)
 
 MEDIUM
+- justify home page text
+- additional space between mechanism description and caveat(s)
 - figure out how to deploy with debug level change - necessary?
+- double-clicking an answer triggers two question answered events - should disable question answering during answer/advance delay
 - v-mouse integration?
 - undo auto-focus on email address in next steps
 - revert to 12 in bootstrap

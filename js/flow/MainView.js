@@ -4,8 +4,6 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'flow/Shared', 'ui/Conte
 	
 		initialize: function() {
 			
-			Log.debug('Initialising MainView');
-			
 			this.questions = this.model.get('Questions');
 			this.outcomes = this.model.get('Outcomes');
 			
@@ -17,8 +15,6 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'flow/Shared', 'ui/Conte
 		
 		render: function() {
 			
-			Log.debug('MainView.render');
-			
 			this.content = new contentView();
 			this.content.sharedData = new sharedData();
 			this.content.render();
@@ -27,8 +23,6 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'flow/Shared', 'ui/Conte
 		},
 		
 		onQuestionsReady: function() {
-			
-			Log.debug('MainView.onQuestionsReady');
 			
 			this.render();
 			this.content.addQuestions(this.questions.models);
