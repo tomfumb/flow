@@ -1,11 +1,21 @@
 To Do
 
+QUESTIONS
+- in Criminal Canada mechanism does Matt actually mean Q1 or Q2b or just Q1
+
+
 HIGH
 - remaining mechanisms (Canada criminal court still ongoing)
+- *** Canada CRIM requires useful comments
+
+
 - Mobile issues:
 1) modals still too big for small screen (check Android, iOS seems fine now)
 2) date picker isn't obvious in Android when presented with keyboard input beneath text input
 - check license and ownership
+- Completion email
+	- testing, what to look for
+	- availability & committment
 - Handover email
 	- mailchimp integration
 	- github
@@ -25,8 +35,10 @@ MEDIUM
 - style outcome navigate buttons
 - seem to be several conditions where phone needs scrolling to top of page
 - ensure carousel speed and summary transition speed are in-sync, then standardise slide speed values using global
+- update spreadsheet for any mechanism that had Disappearance added
 
 LOW
+- log info message on why a mechanism is eliminated
 - only have useful log messages
 - soften colours and make question text bigger - more engaging
 - should have more consistency in index.htm IDs

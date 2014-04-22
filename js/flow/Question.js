@@ -175,13 +175,17 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'flow/Util'], function($
 						selectedCountryData = countryData;
 					}
 					
-					var dateForCheck = (_.isArray(countryData.date) ? countryData.date : [countryData.date]);
-					_.each(dateForCheck, function(date) {
+					// not all mechanisms depend upon dates and therefore a date may not be provided
+					if(typeof countryData.date !== 'undefined') {
 						
-						if(!this.dateValid(date)) {
-							Log.error('country date supplied with bad format. Must be YYYY/MM/DD');
-						}
-					}, this);
+						var dateForCheck = (_.isArray(countryData.date) ? countryData.date : [countryData.date]);
+						_.each(dateForCheck, function(date) {
+							
+							if(!this.dateValid(date)) {
+								Log.error('country date supplied with bad format. Must be YYYY/MM/DD');
+							}
+						}, this);
+					}
 					
 				}, this);
 				
@@ -196,7 +200,16 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'flow/Util'], function($
 		},
 		
 		hasCountry: function(countriesData) {
-			return !!this.relevantDatesForSelectedCountry(countriesData);
+			
+			var hasDates = (typeof countriesData[0].date !== 'undefined');
+			if(hasDates) {
+				return !!this.relevantDatesForSelectedCountry(countriesData);
+			}
+			else {
+				return !!_.find(countriesData, function(countryData) {
+					return this.hasAnswer(countryData.country);
+				}, this);
+			}
 		}
 	});
 });

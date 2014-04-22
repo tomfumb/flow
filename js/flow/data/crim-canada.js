@@ -1,8 +1,11 @@
 define(['jquery'], function($) {
+	
 	return {
 		/* Criminal Prosecution in Canada */
 		selector: $('#ccij_outcome_crim_pro_can'),
-		condition: function(q6, q7, q8, q9, q10) {
+		condition: function(q1, q2a, q2b, q4, q5a, q5b, q6, q7, q8, q9, q10, q11, q12) {
+			
+			var relevantCountries = [{country: "Canada"}];
 			
 			var scenario1RelevantAbuses = ['Beating', 'Bodily mutilation', 'Burning', 'Burning of houses', 'Death threats', 'Denial of fair trial', 'Deprivation of medical care', 'Destruction or serious damage to property', 'Disappearance', 'Electric shock', 'Enslavement', 'Forced abortion', 'Forced displacement', 'Forced nudity', 'Forced sterilization', 'Forced stress positions', 'Forced to watch abuse of other prisoners', 'Forcing a prisoner to perform military service', 'Incommunicado detention', 'Kicking', 'Kidnapping/disappearance', 'Killing', 'Mock execution', 'Persecutions on political, racial, or religious grounds', 'Poisoning of water or food supplies', 'Prolonged exposure to extreme cold or heat', 'Prolonged food/water deprivation', 'Prolonged sleep deprivation', 'Punching', 'Rape or other sexual assault', 'Religious persecution', 'Serious mental harm to a person based on race, ethnicity, religion or nationality', 'Severe mental suffering', 'Solitary confinement', 'Stealing children', 'Suffocation', 'Waterboarding'];
 			
@@ -31,7 +34,43 @@ define(['jquery'], function($) {
 				scenario2Proceed = (q10.isUnknownOrNotAnswered() || q10.hasOneOfAnswers(scenario2RelevantAbusers));
 			}
 			
-			return (scenario1Proceed || scenario2Proceed);
+			// 
+			if(!(scenario1Proceed || scenario2Proceed)) {
+				return false;
+			}
+			
+			
+			
+			proceed = false;
+			if(q1.isNotAnswered() || q1.hasCountry(relevantCountries)) {
+				proceed = true;
+			}
+			if(q2a.hasAnswer('Yes') && (q2b.hasCountry(relevantCountries))) {
+				proceed = true;
+			}
+			if(q4.isNotAnswered() || q4.hasCountry(relevantCountries)) {
+				proceed = true;
+			}
+			if(q5a.hasAnswer('Yes') && (q5b.hasCountry(relevantCountries))) {
+				proceed = true;
+			}
+			if(q11.isUnknownOrNotAnswered() || q11.hasAnswer('Yes')) {
+				proceed = true;
+			}
+			if(q12.isUnknownOrNotAnswered() || q12.hasAnswer('Yes')) {
+				proceed = true;
+			}
+			
+			// exit if no connection to Canada
+			if(!proceed) {
+				return false;
+			}
+			
+			proceed = false;
+			
+			
+			
+			return true;
 		}
 	};
 });
