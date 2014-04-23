@@ -131,7 +131,9 @@ define(['jquery'], function($) {
 				return false;
 			}
 			
+			// check if mechanism has jurisdiction based on racial aspect of abuse
 			proceed = (q9.isUnknownOrNotAnswered() || (q9.hasAnswer('Yes') || (q9.doesNotHaveAnswer('Yes') && (q6.isNotAnswered() || q6.hasAnswer(primaryAbuse)))));
+			// exit if abuse not racially-motivated
 			if(!proceed) {
 				return false;
 			}
@@ -174,13 +176,14 @@ define(['jquery'], function($) {
 				reservationCountriesSelected++;
 			}
 			
+			// determine if reservations for select countries are relevant
 			if(countriesSelected > 0 && reservationCountriesSelected === countriesSelected) {
 				proceed = q15.doesNotHaveAnswer('Yes');
 			}
 			else {
 				proceed = true;
 			}
-			
+			// exit if reservations apply
 			if(!proceed) {
 				return false;
 			}
