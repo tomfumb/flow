@@ -5,8 +5,6 @@ QUESTIONS
 
 HIGH
 - cross-browser testing (IE, Firefox)
-- swipe fails on Android Chrome
-- why does selecting date make mechanisms unavailable?
 - check license and ownership
 - Completion email
 	- testing, what to look for (one person per mechanism ?)
@@ -24,7 +22,7 @@ HIGH
 	- deployment process (grunt tasks, testing, devices)
 
 MEDIUM
-- change q2a.hasAnswer('Yes') to q2b.isAvailable and remove q2a references
+- change q2a.hasAnswer('Yes') to q2b.isAvailable (keep q2a references)
 - justify home page text
 - clickable yes/no on question 6 for child / woman that auto-checks the relevant checkbox
 - additional space between mechanism description and caveat(s)

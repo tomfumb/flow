@@ -1,0 +1,1 @@
+- Swipe fails on Android for questions, question summary buttons, and outcome previews. Due to Android / JQuery-Mobile bug (https://code.google.com/p/android/issues/detail?id=19827)

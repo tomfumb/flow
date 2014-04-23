@@ -33,7 +33,7 @@ define(['jquery'], function($) {
 			proceed = false;
 			var q1Dates = q1.relevantDatesForSelectedCountry(relevantCountries), q2bDates = q2b.relevantDatesForSelectedCountry(relevantCountries);
 			if (
-				q3.isNotAnswered() ||
+				(q1.isNotAnswered() || (q2b.isAvailable() && q2b.isNotAnswered()) || q3.isNotAnswered()) ||
 				(q1.isAnswered() && q1Dates && q3.isAfterOrOnDate(q1Dates, 0)) ||
 				(q2b.isAnswered() && q2bDates && q3.isAfterOrOnDate(q2bDates, 0))) {
 				proceed = true;
