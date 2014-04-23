@@ -21,29 +21,23 @@ HIGH
 	- deployment process (grunt tasks, testing, devices)
 
 MEDIUM
-- clickable yes/no on question 6 for child / woman that auto-checks the relevant checkbox
+- style outcome navigate buttons
+- undo auto-focus on email address in next steps
+- seem to be several conditions where phone needs scrolling to top of page
+- double-clicking an answer triggers two question answered events - should disable question answering during answer/advance delay
+- ensure carousel speed and summary transition speed are in-sync, then standardise slide speed values using global
+- see if the carousel can be stopped mid-transition for a new transition as this will happen to the question summary row
 - additional space between mechanism description and caveat(s)
 - shared question condition logic for very common scenarios, DRY
-- figure out how to deploy with debug level change - necessary?
-- double-clicking an answer triggers two question answered events - should disable question answering during answer/advance delay
-- v-mouse integration?
-- undo auto-focus on email address in next steps
 - revert to 12 in bootstrap
+- v-mouse integration
 - possible to get firstVisibleIndex error, replicated by disabling and re-enabling large number of mechanisms after a full right-scroll. Checked 'company / corporation' to eliminate most
-- see if the carousel can be stopped mid-transition for a new transition as this will happen to the question summary row
-- style outcome navigate buttons
-- seem to be several conditions where phone needs scrolling to top of page
-- ensure carousel speed and summary transition speed are in-sync, then standardise slide speed values using global
 - update spreadsheet for any mechanism that had Disappearance added
 
 LOW
 - log info message on why a mechanism is eliminated
-- only have useful log messages
-- soften colours and make question text bigger - more engaging
 - should have more consistency in index.htm IDs
-- SEO (French?)
-- test case - slow download of resources, anything available before it will actually work?
-- http://getbootstrap.com/getting-started/#browsers
+- SEO
 
 VERY LOW
 - check necessity of shims in index.htm

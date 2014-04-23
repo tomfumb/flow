@@ -26,7 +26,7 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'text!templates/question
 				answers = _.sortBy(this.model.get('answers'), function(answer) { return answer.display; });
 			}
 			
-			var bodyTemplate, answerStyle;
+			var bodyTemplate, answerStyle, answerTriggers = null;
 			switch(this.model.get('answerType')) {
 				case 'single-select':
 					if(this.model.get('answers').length > this.singleAnswerThreshold) {

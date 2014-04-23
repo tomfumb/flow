@@ -338,3 +338,13 @@ input.hint-text {
 	font-size: small;
 	vertical-align: top;
 }
+
+#flow_intro {
+	text-align: justify;
+}
+
+.question-important-note {
+	padding: 10px;
+	background-color: #2D6CA2;
+	color: #fff;
+}
