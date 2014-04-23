@@ -55,12 +55,6 @@ define(['jquery', 'underscore', 'backbone', 'flow/Util', 'ui/OutcomeView', 'ui/R
 			this.sharedData.on('change:userEmail', function() {
 				this.email.val(this.sharedData.get('userEmail'));
 			}, this);
-			
-			this.$el.find('a[data-toggle="tab"]').on('shown.bs.tab', _.bind(function (e) {
-				if(e.target.href.match(/#flow_outcome_what_now/)) {
-					this.email.focus();
-				}
-			}, this));
 		},
 		
 		onEscapePressed: function() {
@@ -87,11 +81,6 @@ define(['jquery', 'underscore', 'backbone', 'flow/Util', 'ui/OutcomeView', 'ui/R
 				this.fullContentContainer.height('auto');
 				this.isShown = true;
 			}, this));
-			
-			var activeTabId = this.$el.find('li.active').attr('id');
-			if(activeTabId === 'flow_outcome_what_now_link') {
-				this.email.focus();
-			}
 		},
 		
 		hide: function() {

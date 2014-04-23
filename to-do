@@ -22,7 +22,6 @@ HIGH
 
 MEDIUM
 - style outcome navigate buttons
-- undo auto-focus on email address in next steps
 - seem to be several conditions where phone needs scrolling to top of page
 - double-clicking an answer triggers two question answered events - should disable question answering during answer/advance delay
 - ensure carousel speed and summary transition speed are in-sync, then standardise slide speed values using global
