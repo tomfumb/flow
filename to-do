@@ -30,6 +30,7 @@ MEDIUM
 - justify home page text
 - clickable yes/no on question 6 for child / woman that auto-checks the relevant checkbox
 - additional space between mechanism description and caveat(s)
+- shared question condition logic for very common scenarios, DRY
 - figure out how to deploy with debug level change - necessary?
 - double-clicking an answer triggers two question answered events - should disable question answering during answer/advance delay
 - v-mouse integration?

@@ -28,6 +28,23 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'flow/Question'], functi
 			
 			_.each(this.models, function(model) {
 				
+				// handle language setting
+				_.each(model.get('answers'), function(answer) {
+					
+					if(!(answer.hasOwnProperty('value') && answer.hasOwnProperty('display'))) {
+						
+						var value = answer.english, display = answer[window.CCIJ.language], key;
+						for(key in answer) {
+							if(answer.hasOwnProperty(key)) {
+								delete answer[key];
+							}
+						}
+						
+						answer.value = value;
+						answer.display = display;
+					}
+				});
+				
 				var selector = $('#flow_question_' + model.get('id'));
 				model.set('content', selector.find('.question-content').html());
 				
@@ -47,12 +64,6 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'flow/Question'], functi
 				else {
 					model.set('available', true);
 				}
-				
-				// handle language setting
-				_.each(model.get('answers'), function(answer) {
-					answer.value = answer.english;
-					answer.display = answer[window.CCIJ.language];
-				});
 			}, this);
 			
 			this.trigger('modelReady');

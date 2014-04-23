@@ -8,6 +8,14 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'flow/Util'], function($
 			B: 'before'
 		},
 		
+		isAvailable: function() {
+			return this.get('available');
+		},
+		
+		isNotAvailable: function() {
+			return !this.isAvailable();
+		},
+		
 		isAnswered: function() {
 			
 			// cannot let unavailable questions interfere with the outcome
@@ -31,7 +39,7 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'flow/Util'], function($
 		
 			// first check that the answer is actually available within the question. If not there is a problem
 			var found = !!_.find(this.get('answers'), function(answer) {
-				return requiredAnswer == answer.english;
+				return requiredAnswer == answer.value;
 			});
 			
 			if(!found) {
@@ -210,6 +218,10 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'flow/Util'], function($
 					return this.hasAnswer(countryData.country);
 				}, this);
 			}
+		},
+		
+		doesNotHaveCountry: function(countriesData) {
+			return !this.hasCountry(countriesData);
 		}
 	});
 });
