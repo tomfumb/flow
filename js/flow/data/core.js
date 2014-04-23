@@ -282,7 +282,7 @@ define(['jquery', 'data/ac-hpr', 'data/civil-canada', 'data/crim-canada', 'data/
 			{english: "Forcing a prisoner to perform military service", french: "Forcer un prisonnier d'accomplir le service militaire"},
 			{english: "Incommunicado detention", french: "La détention au secret"},
 			{english: "Kicking", french: "Kicking"},
-			{english: "Kidnapping/disappearance", french: "Enlèvement / disparition"},
+			{english: "Kidnapping", french: "Enlèvement"},
 			{english: "Killing", french: "Meurtre"},
 			{english: "Mock execution", french: "Simulacre d'exécution"},
 			{english: "Persecutions on political, racial, or religious grounds", french: "Persécutions pour des raisons politiques, raciales ou religieuses"},

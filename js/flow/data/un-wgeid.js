@@ -5,7 +5,7 @@ define(['jquery'], function($) {
 		selector: $('#ccij_outcome_un_wgeid'),
 		condition: function(q6, q10) {
 			
-			var relevantAbuses = ['Disappearance', 'Incommunicado detention'];
+			var relevantAbuses = ['Disappearance', 'Kidnapping', 'Incommunicado detention'];
 			
 			var relevantAbusers = ["Soldier in government's army", 'Police officer', 'Other government official'];
 			

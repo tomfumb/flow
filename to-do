@@ -2,11 +2,8 @@ To Do
 
 QUESTIONS
 - which version of IE does Matt have?
-- CRC has caveat about limitations period but then is eliminated if other remedies sought - shouldn't it permit if other remedies? 
-	 - other mechanisms like this?
 
 HIGH
-- change text of kidnapping/disappearance to kidnapping, add kidnapping to any mechanisms that depend on disappearance (wgeid and 1 other?)
 - add Stories links back in
 - cross-browser testing (IE, Firefox)
 - swipe fails on Android Chrome

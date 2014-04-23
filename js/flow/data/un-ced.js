@@ -24,7 +24,7 @@ define(['jquery'], function($) {
 				{country: "Uruguay", date: "2009/03/04"}
 			];
 			
-			var relevantAbuses = ['Disappearance', 'Incommunicado detention'];
+			var relevantAbuses = ['Disappearance', 'Kidnapping', 'Incommunicado detention'];
 			
 			var relevantAbusers = ["Soldier in government's army", 'Police officer', 'Other government official'];
 			

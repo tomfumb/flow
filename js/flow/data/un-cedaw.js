@@ -113,7 +113,7 @@ define(['jquery'], function($) {
 			];
 			
 			var primaryAbuse = 'Abuse against a woman';
-			var relevantAbuses = ['Enslavement', 'Forced nudity', 'Kidnapping/disappearance', 'Rape or other sexual assault'];
+			var relevantAbuses = ['Disappearance', 'Enslavement', 'Forced nudity', 'Kidnapping', 'Rape or other sexual assault'];
 			
 			var relevantAbusers = ["Soldier in government's army", 'Police officer', 'Other government official'];
 			
