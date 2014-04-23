@@ -4,7 +4,6 @@ QUESTIONS
 - which version of IE does Matt have?
 
 HIGH
-- add Stories links back in
 - cross-browser testing (IE, Firefox)
 - swipe fails on Android Chrome
 - why does selecting date make mechanisms unavailable?

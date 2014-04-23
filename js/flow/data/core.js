@@ -377,6 +377,10 @@ define(['jquery', 'data/ac-hpr', 'data/civil-canada', 'data/crim-canada', 'data/
 	
 	// order here determines the order of display beneath questions - should match ordering of the remedies / options tab
 	config.outcomes = [icc, un_cat, un_hrc, un_cerd, un_cedaw, un_ced, un_cescr, un_crc, un_wgeid, ia_chr, ac_hpr, echr, eccc, wcc_bosnia, crim_canada, civil_canada, imm_canada];
+	
+	config.url = {
+		stories: 'http://www.ccij.ca/stories/'
+	};
 
 	return config;
 });

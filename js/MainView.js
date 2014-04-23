@@ -11,12 +11,17 @@ define(
 			this.intro = this.$el.find('#ccij_intro');
 			this.focuses = this.$el.find('.main-focus');
 			
-			this.intro.find('.entry-point').addClass('clickable').on('click', _.bind(this.onEntryPointClicked, this));
+			this.intro.find('.entry-point').on('click', _.bind(this.onEntryPointClicked, this));
 			
 			$('#ccij_navbar .nav a').click(function() { 
 				if($('#ccij_navbar .navbar-toggle').is(':visible') && $('#ccij_navbar .navbar-collapse').is(':visible')) {
 					$('#ccij_navbar .navbar-toggle').click();
 				}
+			});
+			
+			$('#ccij_stories_entry,#ccij_stories_nav').click(function() {
+				window.open(config.url.stories, '_blank');
+				return false;
 			});
 		},
 		

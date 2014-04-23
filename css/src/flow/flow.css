@@ -333,3 +333,8 @@ input.hint-text {
 #flow_identity_thanks {
 	display: none;
 }
+
+.title-supplemental-top {
+	font-size: small;
+	vertical-align: top;
+}
