@@ -2,6 +2,8 @@ To Do
 
 QUESTIONS
 - which version of IE does Matt have?
+- CRC has caveat about limitations period but then is eliminated if other remedies sought - shouldn't it permit if other remedies? 
+	 - other mechanisms like this?
 
 HIGH
 - change text of kidnapping/disappearance to kidnapping, add kidnapping to any mechanisms that depend on disappearance (wgeid and 1 other?)
@@ -27,6 +29,7 @@ HIGH
 	- deployment process (grunt tasks, testing, devices)
 
 MEDIUM
+- change q2a.hasAnswer('Yes') to q2b.isAvailable and remove q2a references
 - justify home page text
 - clickable yes/no on question 6 for child / woman that auto-checks the relevant checkbox
 - additional space between mechanism description and caveat(s)
