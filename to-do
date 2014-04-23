@@ -4,6 +4,7 @@ QUESTIONS
 - which version of IE does Matt have?
 
 HIGH
+- change text of kidnapping/disappearance to kidnapping, add kidnapping to any mechanisms that depend on disappearance (wgeid and 1 other?)
 - add Stories links back in
 - remaining mechanisms (*** Civil Canada in testing ***)
 - cross-browser testing (IE, Firefox)
