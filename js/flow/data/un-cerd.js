@@ -3,7 +3,7 @@ define(['jquery'], function($) {
 	return {
 		/* U.N. Committee on the Elimination of Racial Discrimination (CERD) */
 		selector: $('#ccij_outcome_un_cerd'),
-		condition: function(q1) {
+		condition: function(q1, q2a, q2b, q3, q6, q9, q10, q14a, q14b, q14c, q15) {
 			
 			var relevantCountries = [
 				{country: "Algeria", date: "1989/09/12"},
@@ -157,9 +157,30 @@ define(['jquery'], function($) {
 				return false;
 			}
 			
-			// check relevant country(ies) selected
-			var reservationCountrySelected = !((q1.isNotAnswered() || q1.doesNotHaveCountry(reservationCountries)) && (q2b.isNotAvailable() || q2b.isNotAnswered() || q2b.doesNotHaveCountry(reservationCountries)));
-			proceed = (!reservationCountrySelected || (reservationCountrySelected && q15.doesNotHaveAnswer('Yes')));
+			// check if all selected countries are subject to reservations concerning other judicial bodies
+			var countriesSelected = 0;
+			if(q1.isAnswered()) {
+				countriesSelected++;
+			}
+			if(q2b.isAnswered()) {
+				countriesSelected++;
+			}
+			
+			var reservationCountriesSelected = 0;
+			if(q1.hasCountry(reservationCountries)) {
+				reservationCountriesSelected++;
+			}
+			if(q2b.hasCountry(reservationCountries)) {
+				reservationCountriesSelected++;
+			}
+			
+			if(countriesSelected > 0 && reservationCountriesSelected === countriesSelected) {
+				proceed = q15.doesNotHaveAnswer('Yes');
+			}
+			else {
+				proceed = true;
+			}
+			
 			if(!proceed) {
 				return false;
 			}
