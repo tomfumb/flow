@@ -285,7 +285,7 @@ define(['jquery', 'data/ac-hpr', 'data/civil-canada', 'data/crim-canada', 'data/
 			{english: "Kidnapping", french: "Enlèvement"},
 			{english: "Killing", french: "Meurtre"},
 			{english: "Mock execution", french: "Simulacre d'exécution"},
-			{english: "Persecutions on political, racial, or religious grounds", french: "Persécutions pour des raisons politiques, raciales ou religieuses"},
+			{english: "Persecution on political, racial, or religious grounds", french: "Persécution pour des raisons politiques, raciales ou religieuses"},
 			{english: "Poisoning of water or food supplies", french: "Empoisonnement des réserves d'eau ou de nourriture"},
 			{english: "Prolonged exposure to extreme cold or heat", french: "Une exposition prolongée à un froid extrême ou à la chaleur"},
 			{english: "Prolonged food/water deprivation", french: "Alimentaire prolongée / privation d'eau"},

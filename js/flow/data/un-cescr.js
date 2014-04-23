@@ -21,7 +21,7 @@ define(['jquery'], function($) {
 				{country: "Uruguay", date: "2013/02/05"}
 			];
 			
-			var relevantAbuses = ['Enslavement', 'Persecutions on political, racial, or religious grounds'];
+			var relevantAbuses = ['Enslavement', 'Persecution on political, racial, or religious grounds'];
 			
 			var relevantAbusers = ["Soldier in government's army", 'Police officer', 'Other government official'];
 			
