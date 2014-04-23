@@ -8,7 +8,6 @@ QUESTIONS
 HIGH
 - change text of kidnapping/disappearance to kidnapping, add kidnapping to any mechanisms that depend on disappearance (wgeid and 1 other?)
 - add Stories links back in
-- remaining mechanisms (*** Civil Canada in testing ***)
 - cross-browser testing (IE, Firefox)
 - swipe fails on Android Chrome
 - why does selecting date make mechanisms unavailable?
@@ -53,7 +52,6 @@ LOW
 - should have more consistency in index.htm IDs
 - SEO (French?)
 - test case - slow download of resources, anything available before it will actually work?
-- test case - remove all outcome previews, what happens to slide / visible logic?
 - http://getbootstrap.com/getting-started/#browsers
 
 VERY LOW
