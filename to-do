@@ -5,7 +5,6 @@ QUESTIONS
 
 HIGH
 - cross-browser testing (IE, Firefox)
-- check license and ownership
 - Completion email
 	- testing, what to look for (one person per mechanism ?)
 	- availability & committment, build a to-do list for me
@@ -22,8 +21,6 @@ HIGH
 	- deployment process (grunt tasks, testing, devices)
 
 MEDIUM
-- change q2a.hasAnswer('Yes') to q2b.isAvailable (keep q2a references)
-- justify home page text
 - clickable yes/no on question 6 for child / woman that auto-checks the relevant checkbox
 - additional space between mechanism description and caveat(s)
 - shared question condition logic for very common scenarios, DRY
