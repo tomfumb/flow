@@ -19,8 +19,6 @@ HIGH
 
 MEDIUM
 - seem to be several conditions where phone needs scrolling to top of page
-- ensure carousel speed and summary transition speed are in-sync, then standardise slide speed values using global
-- see if the carousel can be stopped mid-transition for a new transition as this will happen to the question summary row
 - additional space between mechanism description and caveat(s)
 - shared question condition logic for very common scenarios, DRY
 - revert to 12 in bootstrap

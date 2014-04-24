@@ -4,6 +4,7 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'text!templates/question
 	
 		singleAnswerThreshold: 5,
 		permitAnswers: true,
+		answerDelay: 300,
 		
 		answerDisplayTypes: {
 			EL_CLICK: 'el_click',
@@ -88,7 +89,7 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'text!templates/question
 							
 							this.onAnswersSelected([jqTarget.find('div.answer-value').html()]);
 							
-							window.setTimeout(_.bind(this.onQuestionAnswered, this), 300);
+							window.setTimeout(_.bind(this.onQuestionAnswered, this), this.answerDelay);
 						}
 						else {
 							Log.info('Not permitting additional answer');
@@ -103,7 +104,7 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'text!templates/question
 						
 							this.onAnswersSelected(event.target.value ? [event.target.value] : []);
 							
-							window.setTimeout(_.bind(this.onQuestionAnswered, this), 300);
+							window.setTimeout(_.bind(this.onQuestionAnswered, this), this.answerDelay);
 						}
 						else {
 							Log.info('Not permitting additional answer');
@@ -141,7 +142,7 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'text!templates/question
 						else {
 							this.onAnswersSelected([]);
 						}
-						window.setTimeout(_.bind(this.onQuestionAnswered, this), 300);
+						window.setTimeout(_.bind(this.onQuestionAnswered, this), this.answerDelay);
 					}, this)).on('focus', function() {
 						if($(this).hasClass('hint-text')) {
 							$(this).val('').removeClass('hint-text');
