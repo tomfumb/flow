@@ -3,6 +3,7 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'text!templates/question
 	return Backbone.View.extend({
 	
 		singleAnswerThreshold: 5,
+		permitAnswers: true,
 		
 		answerDisplayTypes: {
 			EL_CLICK: 'el_click',
@@ -72,25 +73,41 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'text!templates/question
 				
 					this.$el.find('#answers_' + this.model.get('id') + ' .answer').click(_.bind(function(event) {
 						
-						var jqTarget = $(event.target);
-						if(!jqTarget.hasClass('answer')) {
-							jqTarget = jqTarget.parents('div.answer');
-						}
+						if(this.permitAnswers) {
+						
+							// prevent multiple answering through multiple clicks before this.onQuestionAnswered. this.onQuestionAnswered re-enables answering
+							this.permitAnswers = false;
+						
+							var jqTarget = $(event.target);
+							if(!jqTarget.hasClass('answer')) {
+								jqTarget = jqTarget.parents('div.answer');
+							}
 
-						this.$el.find('img.tick').removeClass('tick').removeClass('sprites');
-						jqTarget.find('img').addClass('tick').addClass('sprites');
-						
-						this.onAnswersSelected([jqTarget.find('div.answer-value').html()]);
-						
-						window.setTimeout(_.bind(this.onQuestionAnswered, this), 300);
+							this.$el.find('img.tick').removeClass('tick').removeClass('sprites');
+							jqTarget.find('img').addClass('tick').addClass('sprites');
+							
+							this.onAnswersSelected([jqTarget.find('div.answer-value').html()]);
+							
+							window.setTimeout(_.bind(this.onQuestionAnswered, this), 300);
+						}
+						else {
+							Log.info('Not permitting additional answer');
+						}
 					}, this));
 					break;
 				case this.answerDisplayTypes.LIST_SELECT:
 				
 					this.$el.find('#answers_' + this.model.get('id') + ' .multi_answer_select').change(_.bind(function(event) {
-						this.onAnswersSelected(event.target.value ? [event.target.value] : []);
 						
-						window.setTimeout(_.bind(this.onQuestionAnswered, this), 300);
+						if(this.permitAnswers) {
+						
+							this.onAnswersSelected(event.target.value ? [event.target.value] : []);
+							
+							window.setTimeout(_.bind(this.onQuestionAnswered, this), 300);
+						}
+						else {
+							Log.info('Not permitting additional answer');
+						}
 					}, this));
 					break;
 				case this.answerDisplayTypes.CHECK_BUTTON_CLICK:
@@ -144,6 +161,8 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'text!templates/question
 		},
 		
 		onQuestionAnswered: function() {
+			
+			this.permitAnswers = true;
 			this.model.set('questionAnswered', (new Date()).getTime());
 		},
 		
@@ -172,11 +191,7 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'text!templates/question
 						dateFormat: 'yy/mm/dd',
 						changeMonth: true,
 						changeYear: true,
-						yearRange: '1950:' + (new Date()).getFullYear(),
-						// http://stackoverflow.com/a/1180538/519575
-						/*beforeShow: function(input, inst) {
-							inst.dpDiv.css({marginTop: -input.offsetHeight + 'px', marginLeft: input.offsetWidth + 'px'});
-						}*/
+						yearRange: '1950:' + (new Date()).getFullYear()
 					});
 				}
 				
