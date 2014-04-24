@@ -3,10 +3,12 @@ To Do
 HIGH
 - Git readme
 - Completion email
+	- updated mechanism text
 	- testing, what to look for (one person per mechanism ?)
 	- availability & committment, build a to-do list for me
 	- french version
 - Handover email
+	- php configuration and server requirements
 	- mailchimp integration
 	- github
 	- languages
@@ -19,7 +21,6 @@ HIGH
 
 MEDIUM
 - seem to be several conditions where phone needs scrolling to top of page
-- additional space between mechanism description and caveat(s)
 - shared question condition logic for very common scenarios, DRY
 - revert to 12 in bootstrap
 - v-mouse integration

@@ -2,6 +2,10 @@
 	display: none;
 }
 
+.question-important-note {
+	display: none;
+}
+
 #ccij_header {
 	display: none;
 }

@@ -17,7 +17,7 @@ define(['jquery', 'underscore', 'backbone', 'text!templates/outcome.html'], func
 			));
 			
 			if(!caveats) {
-				this.$el.find('.outcome-caveats').hide();
+				this.$el.find('.outcome-caveat').hide();
 			}
 		}
 	});

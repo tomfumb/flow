@@ -52,6 +52,10 @@ input[type='text'], textarea {font-size: 16px;}
 	clear: both;
 }
 
+.outcome-caveat {
+	padding: 10px 0 0 0;
+}
+
 #flow {
 
 }
