@@ -1,10 +1,6 @@
 To Do
 
-QUESTIONS
-- which version of IE does Matt have?
-
 HIGH
-- cross-browser testing (IE, Firefox)
 - Completion email
 	- testing, what to look for (one person per mechanism ?)
 	- availability & committment, build a to-do list for me
@@ -21,7 +17,6 @@ HIGH
 	- deployment process (grunt tasks, testing, devices)
 
 MEDIUM
-- style outcome navigate buttons
 - seem to be several conditions where phone needs scrolling to top of page
 - double-clicking an answer triggers two question answered events - should disable question answering during answer/advance delay
 - ensure carousel speed and summary transition speed are in-sync, then standardise slide speed values using global
