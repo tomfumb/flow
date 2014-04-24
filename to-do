@@ -1,13 +1,7 @@
 To Do
 
 HIGH
-- Git readme
-- Completion email
-	- new site and changes to links
-	- testing, what to look for (one person per mechanism ?)
-	- availability & committment, build a to-do list for me
-	- french version
-- Handover email
+- Technical handover email (awaiting completion of testing / refinements)
 	- php configuration and server requirements
 	- mailchimp integration
 	- github
@@ -16,11 +10,10 @@ HIGH
 	- contact info
 	- explanation of mechanism conditions
 	- server move considerations
-	- restrictions?
 	- deployment process (grunt tasks, testing, devices)
 
 MEDIUM
-- seem to be several conditions where phone needs scrolling to top of page
+- several conditions where page should be scrolled to the top so that smaller screens don't lose context due to previous section's scroll
 - shared question condition logic for very common scenarios, DRY
 - v-mouse integration
 - possible to get firstVisibleIndex error, replicated by disabling and re-enabling large number of mechanisms after a full right-scroll. Checked 'company / corporation' to eliminate most
