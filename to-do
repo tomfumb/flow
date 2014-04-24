@@ -1,9 +1,10 @@
 To Do
 
 HIGH
+- italics, other formatting
 - Git readme
 - Completion email
-	- updated mechanism text
+	- new site and changes to links
 	- testing, what to look for (one person per mechanism ?)
 	- availability & committment, build a to-do list for me
 	- french version
@@ -22,7 +23,6 @@ HIGH
 MEDIUM
 - seem to be several conditions where phone needs scrolling to top of page
 - shared question condition logic for very common scenarios, DRY
-- revert to 12 in bootstrap
 - v-mouse integration
 - possible to get firstVisibleIndex error, replicated by disabling and re-enabling large number of mechanisms after a full right-scroll. Checked 'company / corporation' to eliminate most
 - update spreadsheet for any mechanism that had Disappearance added
