@@ -20,7 +20,9 @@ module.exports = function(grunt) {
           mainConfigFile: "js/app-en.js",
           name: "app-en",
           out: "js/dist/<%= pkg.name %>-en.js",
-          optimize: "none"
+          uglify: {
+            no_mangle: true
+          }
         }
       },
       french: {
@@ -29,7 +31,9 @@ module.exports = function(grunt) {
           mainConfigFile: "js/app-fr.js",
           name: "app-fr",
           out: "js/dist/<%= pkg.name %>-fr.js",
-          optimize: "none"
+          uglify: {
+            no_mangle: true
+          }
         }
       },
       css: {
