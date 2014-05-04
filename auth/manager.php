@@ -1,5 +1,7 @@
 <?php
 
+    // Basic authentication approach implemented during testing and refinement, final product will not require authentication
+
     class Manager {
 	
 	var $usersFile = './users.json';

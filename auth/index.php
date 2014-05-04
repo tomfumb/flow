@@ -1,5 +1,7 @@
 <?php
 
+    // Basic authentication approach implemented during testing and refinement, final product will not require authentication
+
     require_once('manager.php');
 
     $manager = new Manager();
@@ -22,15 +24,18 @@
 	    @import url('../css/lib/bootstrap/css/bootstrap.min.css');
 	    @import url('../css/lib/bootstrap/css/bootstrap-theme.min.css');
 	</style>
-	<script type="text/javascript" src="../js/lib/jquery-1.10.2.min.js"></script>
 	<script type="text/javascript">
 	    
-	    $(function() {
-		$('#submitType').val($('#login').is(':visible') ? 'login' : 'add');
-	    });
+	    function onLoad() {
+		
+		var submitTypeEl = document.getElementById('submitType');
+		var loginEl = document.getElementById('login');
+		
+		submitTypeEl.value = (loginEl.style.display.toLowerCase() === 'none' ? 'add' : 'login');
+	    }
 	</script>
     </head>
-    <body>
+    <body onload="onLoad()">
 	<form method="POST" action="process.php">
 	    <div class="container">
 		<div class="row" style="margin-top: 20px;"></div>

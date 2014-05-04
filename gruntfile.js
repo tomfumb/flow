@@ -47,14 +47,14 @@ module.exports = function(grunt) {
     lint5: {
       dirPath: '.',
       templates: [
-        'index-en.htm',
-        'index-fr.htm'
+        'index-en.php',
+        'index-fr.php'
         /* ignoring template .html files as lint tool cannot handle snippets without body tag or underscore _.template variables e.g. <%= ...  %>  */
       ]
     },
     replace: {
       urlVersion: {
-        src: ['index-en.htm', 'index-fr.htm', 'css/**/*.css', '!css/lib/*'],
+        src: ['index-en.php', 'index-fr.php', 'css/**/*.css', '!css/lib/*'],
         overwrite: true,
         replacements: [{
           from: /flow\-v=\d+(\.\d+)?(\.\d+)?(\.\d+)?/ig,
@@ -62,7 +62,7 @@ module.exports = function(grunt) {
         }]
       },
       development: {
-        src: ['index-en.htm', 'index-fr.htm'],
+        src: ['index-en.php', 'index-fr.php'],
         overwrite: true,
         replacements: [{
           from: 'href="css/dist/<%= pkg.name %>.css',
@@ -74,7 +74,7 @@ module.exports = function(grunt) {
 		}]
       },
       live: {
-        src: ['index-en.htm', 'index-fr.htm'],
+        src: ['index-en.php', 'index-fr.php'],
         overwrite: true,
         replacements: [{
           from: 'href="css/src/ccij.css',
@@ -96,10 +96,13 @@ module.exports = function(grunt) {
           src: 'index.php',
           dest: 'dist/'
         },{
-          src: 'index-en.htm',
+          src: 'index-en.php',
           dest: 'dist/'
         },{
-          src: 'index-fr.htm',
+          src: 'index-fr.php',
+          dest: 'dist/'
+        },{
+          src: 'auth/*',
           dest: 'dist/'
         },{
           src: 'js/dist/*.js',
@@ -148,6 +151,12 @@ module.exports = function(grunt) {
           mode: '0755'
         },
         src: ['dist/**/*.php']
+      },
+      writeable: {
+	options: {
+	  mode: '0777'    
+	},
+	src: ['dist/auth/users.json']
       }
     },
     "ftp-deploy": {
@@ -174,10 +183,11 @@ module.exports = function(grunt) {
   grunt.registerTask('lint', ['jshint']);
   grunt.registerTask('r-en', ['requirejs:english', 'requirejs:css']);
   grunt.registerTask('r-fr', ['requirejs:french', 'requirejs:css']);
-  grunt.registerTask('html', ['lint5']);
+  //not happy with PHP tags within index files
+  //grunt.registerTask('html', ['lint5']);
   grunt.registerTask('version', ['replace:urlVersion']);
   grunt.registerTask('development', ['replace:development']);
-  grunt.registerTask('live', ['lint', 'html', 'requirejs', 'version', 'replace:live']);
+  grunt.registerTask('live', ['lint'/*, 'html'*/, 'requirejs', 'version', 'replace:live']);
   grunt.registerTask('dist', ['copy', 'chmod']);
   
   grunt.registerTask('deploy', ['dist', 'ftp-deploy', 'development']);
