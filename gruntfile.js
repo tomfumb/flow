@@ -92,7 +92,7 @@ module.exports = function(grunt) {
     },
     copy: {
       main: {
-		files: [{
+	files: [{
           src: 'index.php',
           dest: 'dist/'
         },{
@@ -102,7 +102,7 @@ module.exports = function(grunt) {
           src: 'index-fr.php',
           dest: 'dist/'
         },{
-          src: 'auth/*',
+          src: 'auth/*.php',
           dest: 'dist/'
         },{
           src: 'js/dist/*.js',
@@ -151,12 +151,6 @@ module.exports = function(grunt) {
           mode: '0755'
         },
         src: ['dist/**/*.php']
-      },
-      writeable: {
-	options: {
-	  mode: '0777'    
-	},
-	src: ['dist/auth/users.json']
       }
     },
     "ftp-deploy": {
@@ -190,7 +184,7 @@ module.exports = function(grunt) {
   grunt.registerTask('live', ['lint'/*, 'html'*/, 'requirejs', 'version', 'replace:live']);
   grunt.registerTask('dist', ['copy', 'chmod']);
   
-  grunt.registerTask('deploy', ['dist', 'ftp-deploy', 'development']);
+  grunt.registerTask('deploy', ['ftp-deploy', 'development']);
 
   grunt.registerTask('default', ['live']);
 };
