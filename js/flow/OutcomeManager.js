@@ -72,7 +72,7 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'flow/Util', 'flow/Outco
 					
 						if(relevantQuestions.length) {
 							
-							var available = condition.apply(this, relevantQuestions);
+							var available = condition.apply(outcome, relevantQuestions);
 							
 							if(available && !outcome.get('available')) {
 								changed.added.push(outcome);

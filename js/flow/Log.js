@@ -1,4 +1,4 @@
-define([], function() {
+define(['flow/Util'], function(Util) {
 	
 	return {
 	
@@ -16,7 +16,9 @@ define([], function() {
 		logGapInterval: 200,
 		
 		init: function() {
+			
 			window.console = (window.console || {log: function() {}, error: function() {}});
+			
 			return this;	
 		},
 		
@@ -55,20 +57,21 @@ define([], function() {
 					}
 				}
 					
-				var now = (new Date()).getTime();
-				var toLog = '[' + levelName + ' ' + now + ']: ' + message;
+				var now = new Date();
+				var nowTime = now.getTime();
+				var toLog = '[' + levelName + ' ' + Util.padZeros(now.getHours(), 2) + ':' + Util.padZeros(now.getMinutes(), 2) + ':' + Util.padZeros(now.getSeconds(), 2) + '.' + now.getMilliseconds() + ']: ' + message;
 				
 				if(level === this.logLevels.ERROR) {
 					console.error(toLog);
 				}
 				else {
-					if(this.lastLogTime && (now - this.lastLogTime) >= this.logGapInterval) {
+					if(this.lastLogTime && (nowTime - this.lastLogTime) >= this.logGapInterval) {
 						console.log('');
 					}
 					console.log(toLog);
 				}
 				
-				this.lastLogTime = now;
+				this.lastLogTime = nowTime;
 				
 				// option to submit message to server log at a later date if logToServer
 			}

@@ -13,8 +13,8 @@ HIGH
 	- deployment process (grunt tasks, testing, devices)
 
 MEDIUM
+- ** in progres ** shared question condition logic for very common scenarios, DRY
 - several conditions where page should be scrolled to the top so that smaller screens don't lose context due to previous section's scroll
-- shared question condition logic for very common scenarios, DRY
 - v-mouse integration
 - possible to get firstVisibleIndex error, replicated by disabling and re-enabling large number of mechanisms after a full right-scroll. Checked 'company / corporation' to eliminate most
 - update spreadsheet for any mechanism that had Disappearance added

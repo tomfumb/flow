@@ -1,4 +1,4 @@
-define(['jquery'], function($) {
+define(['jquery', 'data/outcome-common'], function($, Common) {
 
 	return {
 		/* U.N. Committee on Elimination of Discrimination against Women (CEDAW) */
@@ -122,16 +122,7 @@ define(['jquery'], function($) {
 			var proceed;
 			
 			// check relevant country(ies) selected
-			proceed = false;
-			if(q1.isNotAnswered() || q1.hasCountry(relevantCountries)) {
-				proceed = true;
-			}
-			if(q2a.hasAnswer('Yes') && (q2b.hasCountry(relevantCountries))) {
-				proceed = true;
-			}
-			
-			// exit if no relevant country(ies)
-			if(!proceed) {
+			if(!Common.location(q1, q2a, q2b, relevantCountries, this)) {
 				return false;
 			}
 			

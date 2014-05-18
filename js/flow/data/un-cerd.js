@@ -1,4 +1,4 @@
-define(['jquery'], function($) {
+define(['jquery', 'data/outcome-common'], function($, Common) {
 	
 	return {
 		/* U.N. Committee on the Elimination of Racial Discrimination (CERD) */
@@ -85,7 +85,7 @@ define(['jquery'], function($) {
 				{country: "Switzerland"}
 			];
 			
-			var primaryAbuse = 'Persecutions on political, racial, or religious grounds';
+			var primaryAbuse = 'Persecution on political, racial, or religious grounds';
 			
 			var relevantAbuses = ['Beating', 'Bodily mutilation', 'Burning', 'Burning of houses', 'Death threats', 'Denial of fair trial', 'Deprivation of medical care', 'Destruction or serious damage to property', 'Disappearance', 'Electric shock', 'Enslavement', 'Forced abortion', 'Forced displacement', 'Forced nudity', 'Forced sterilization', 'Forced stress positions', 'Forced to watch abuse of other prisoners', 'Forcing a prisoner to perform military service', 'Incommunicado detention', 'Kicking', 'Kidnapping', 'Killing', 'Mock execution', 'Persecution on political, racial, or religious grounds', 'Poisoning of water or food supplies', 'Prolonged exposure to extreme cold or heat', 'Prolonged food/water deprivation', 'Prolonged sleep deprivation', 'Punching', 'Rape or other sexual assault', 'Religious persecution', 'Serious mental harm to a person based on race, ethnicity, religion or nationality', 'Severe mental suffering', 'Solitary confinement', 'Stealing children', 'Suffocation', 'Waterboarding'];
 			
@@ -96,16 +96,7 @@ define(['jquery'], function($) {
 			var proceed;
 			
 			// check relevant country(ies) selected
-			proceed = false;
-			if(q1.isNotAnswered() || q1.hasCountry(relevantCountries)) {
-				proceed = true;
-			}
-			if(q2a.hasAnswer('Yes') && (q2b.hasCountry(relevantCountries))) {
-				proceed = true;
-			}
-			
-			// exit if no relevant country(ies)
-			if(!proceed) {
+			if(!Common.location(q1, q2a, q2b, relevantCountries, this)) {
 				return false;
 			}
 			
