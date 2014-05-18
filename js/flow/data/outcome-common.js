@@ -1,15 +1,6 @@
 define(['flow/Log'], function(Log) {
 
 	return {
-		
-		
-		// example usage
-		/*
-			// check relevant country(ies) selected
-			if(!Common.location(q1, q2a, q2b, relevantCountries, this)) {
-				return false;
-			}
-		*/
 
 		location: function(q1, q2a, q2b, relevantCountries, caller) {
 
