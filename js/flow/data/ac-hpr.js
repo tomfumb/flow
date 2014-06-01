@@ -74,17 +74,7 @@ define(['jquery', 'data/outcome-common'], function($, Common) {
 			}
 			
 			// check abuse date / end date against selected country(ies)
-			proceed = false;
-			var q1Dates = q1.relevantDatesForSelectedCountry(relevantCountries), q2bDates = q2b.relevantDatesForSelectedCountry(relevantCountries);
-			if (
-				(q1.isNotAnswered() || (q2b.isAvailable() && q2b.isNotAnswered()) || q3.isNotAnswered()) ||
-				(q1.isAnswered() && q1Dates && q3.isAfterOrOnDate(q1Dates)) ||
-				(q2b.isAnswered() && q2bDates && q3.isAfterOrOnDate(q2bDates))) {
-				proceed = true;
-			}
-			
-			// exit if country(ies) not covered by mechanism on the entered date
-			if(!proceed) {
+			if(!Common.singleDate(q1, q2b, q3, relevantCountries, this)) {
 				return false;
 			}
 			
