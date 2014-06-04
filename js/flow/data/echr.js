@@ -83,16 +83,7 @@ define(['jquery', 'data/outcome-common'], function($, Common) {
 			}
 			
 			// check whether domestic remedies exhausted
-			proceed = false;
-			if(
-				(q14a.isUnknownOrNotAnswered() || q14a.hasAnswer('No')) ||
-				(q14a.hasAnswer('Yes') && q14b.isUnknownOrNotAnswered()) ||
-				(q14a.hasAnswer('Yes') && q14b.hasAnswer('Yes') && q14c.isNotAnswered()) ||
-				(q14a.hasAnswer('Yes') && q14b.hasAnswer('Yes') && q14c.doesNotHaveOneOfAnswers(relevantActionOutcomes))) {
-				proceed = true;
-			}
-			// exit if domestic remedy reached a particular outcome	
-			if(!proceed) {
+			if(!Common.domesticExhausted(q14a, q14b, q14c, relevantActionOutcomes, this)) {
 				return false;
 			}
 			
