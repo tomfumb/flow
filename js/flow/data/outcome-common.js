@@ -12,7 +12,6 @@ define(['flow/Log'], function(Log) {
 				return true;
 			}
 
-			// no relevant country(ies)
 			Log.info(this.getOutcomeIdentifier(caller) + ' does not have relevant location (q1, q2a & q2b)');
 			return false;
 		},
@@ -28,7 +27,6 @@ define(['flow/Log'], function(Log) {
 				return true;
 			}
 			
-			// country(ies) not covered by mechanism on the entered date
 			Log.info(this.getOutcomeIdentifier(caller) + ' does not have relevant date (q1, q2b, q3)');
 			return false;
 		},
@@ -40,6 +38,16 @@ define(['flow/Log'], function(Log) {
 			}
 			
 			Log.info(this.getOutcomeIdentifier(caller) + ' does not have relevant abuses (q6)');
+			return false;
+		},
+		
+		abusers: function(q10, relevantAbusers, caller) {
+		
+			if(q10.isUnknownOrNotAnswered() || q10.hasOneOfAnswers(relevantAbusers)) {
+				return true;
+			}
+			
+			Log.info(this.getOutcomeIdentifier(caller) + ' does not have relevant abusers (q10)');
 			return false;
 		},
 

@@ -47,9 +47,7 @@ define(['jquery', 'data/outcome-common'], function($, Common) {
 			}
 			
 			// check for relevant abusers
-			proceed = (q10.isUnknownOrNotAnswered() || q10.hasOneOfAnswers(relevantAbusers));
-			// exit if no relevant abusers
-			if(!proceed) {
+			if(!Common.abusers(q10, relevantAbusers, this)) {
 				return false;
 			}
 			

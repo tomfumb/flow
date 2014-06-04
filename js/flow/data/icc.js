@@ -193,9 +193,7 @@ define(['jquery', 'underscore', 'data/outcome-common'], function($, _, Common) {
 			}
 
 			// check for covered abusers
-			proceed = (q10.isUnknownOrNotAnswered() || q10.hasOneOfAnswers(relevantAbusers));
-			// exit if no relevant abusers
-			if(!proceed) {
+			if(!Common.abusers(q10, relevantAbusers, this)) {
 				return false;
 			}
 			

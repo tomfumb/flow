@@ -92,14 +92,13 @@ define(['jquery', 'data/outcome-common'], function($, Common) {
 				return false;
 			}
 			
+			// check for covered abuses
 			if(!Common.abuses(q6, relevantAbuses, this)) {
 				return false;
 			}
 
 			// check for covered abusers
-			proceed = (q10.isUnknownOrNotAnswered() || q10.hasOneOfAnswers(relevantAbusers));
-			// exit if no relevant abusers
-			if(!proceed) {
+			if(!Common.abusers(q10, relevantAbusers, this)) {
 				return false;
 			}
 			
