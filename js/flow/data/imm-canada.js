@@ -1,4 +1,4 @@
-define(['jquery'], function($) {
+define(['jquery', 'data/outcome-common'], function($, Common) {
 	
 	return {
 		/* Immigration penalties in Canada */
@@ -12,9 +12,7 @@ define(['jquery'], function($) {
 			var proceed; 
 			
 			// check for covered abuses
-			proceed = (q6.isNotAnswered() || q6.hasOneOfAnswers(relevantAbuses));
-			// exit if no relevant abuses
-			if(!proceed) {
+			if(!Common.abuses(q6, relevantAbuses, this)) {
 				return false;
 			}
 			

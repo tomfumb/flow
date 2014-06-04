@@ -29,7 +29,17 @@ define(['flow/Log'], function(Log) {
 			}
 			
 			// country(ies) not covered by mechanism on the entered date
-			Log.info(this.getOutcomeIdentifier(caller) + ' does not have relevant date (q1, q2b, q3');
+			Log.info(this.getOutcomeIdentifier(caller) + ' does not have relevant date (q1, q2b, q3)');
+			return false;
+		},
+		
+		abuses: function(q6, relevantAbuses, caller) {
+			
+			if(q6.isNotAnswered() || q6.hasOneOfAnswers(relevantAbuses)) {
+				return true;
+			}
+			
+			Log.info(this.getOutcomeIdentifier(caller) + ' does not have relevant abuses (q6)');
 			return false;
 		},
 
