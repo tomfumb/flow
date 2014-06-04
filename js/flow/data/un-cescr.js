@@ -54,10 +54,8 @@ define(['jquery', 'data/outcome-common'], function($, Common) {
 				return false;
 			}
 			
-			// check whether other international remedies sought
-			proceed = q15.doesNotHaveAnswer('Yes');
 			// exit if another remedy sought
-			if(!proceed) {
+			if(q15.hasAnswer('Yes')) {
 				return false;
 			}
 			
