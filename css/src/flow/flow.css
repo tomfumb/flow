@@ -282,10 +282,16 @@
 	background-color: transparent;
 	background-image: none;
 	cursor: default;
+	color: #d0d0d0;
 }
 
 .btn-unavailable:focus {
 	outline: none;
+	color: #d0d0d0;
+}
+
+.btn-unavailable:hover {
+	color: #d0d0d0;
 }
 
 .outcome-view {
