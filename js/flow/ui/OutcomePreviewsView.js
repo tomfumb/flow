@@ -44,6 +44,7 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'ui/OutcomePreviewView',
 			this.handlePreviewClicks();
 			
 			this.outcomePreviewRow = this.$el.find('#flow_outcome_preview_row');
+			this.outcomePreviews = this.$el.find('.available-outcome-preview');
 			this.outcomePreviewMoveContainer = this.$el.find('#flow_available_outcome_previews');
 			this.originalLeftMovePos = this.getLeftHide();
 			this.moveRightPadWidth = this.$el.find('#flow_available_count_side_pad_right').outerWidth();
@@ -53,8 +54,8 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'ui/OutcomePreviewView',
 			this.slideRightCtrl = this.$el.find('#flow_available_outcome_preview_move_right');
 			this.slideLeftCtrl.click(_.bind(this.onMoveRightRequested, this));
 			this.slideRightCtrl.click(_.bind(this.onMoveLeftRequested, this));
-			this.outcomePreviewRow.on('swipeleft', _.bind(this.onMoveLeftRequested, this));
-			this.outcomePreviewRow.on('swiperight', _.bind(this.onMoveRightRequested, this));
+			this.outcomePreviews.on('swipeleft', _.bind(this.onMoveLeftRequested, this));
+			this.outcomePreviews.on('swiperight', _.bind(this.onMoveRightRequested, this));
 			
 			$(window).resize(_.bind(this.onWindowResize, this));
 		},
