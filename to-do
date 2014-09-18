@@ -1,5 +1,17 @@
 To Do
 
+
+
+Issues
+	* currently ongoing *
+		making titles of outcomes more obvious in preview images
+			image is now too short as abbreviation doesn't live at the bottom (but could do?)
+			preview areas can be bigger and should be a bit wider (check on 320px wide screen)
+			centre images within container divs (after working on width)
+			work seems to have broken swipe left / right on android (possible that swipe is set on the image and that's now covered?)
+
+
+
 HIGH
 - Technical handover email (awaiting completion of testing / refinements)
 	- php configuration and server requirements

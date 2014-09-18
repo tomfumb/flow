@@ -50,7 +50,7 @@
 		    <div class="col-24 col-xs-24 col-sm-24 col-md-24 col-lg-24">
 			<div class="input-group">
 			    <span class="input-group-addon">User</span>
-			    <input type="text" class="form-control" placeholder="Email Address" id="username" name="username" />
+			    <input type="email" class="form-control" placeholder="Email Address" id="username" name="username" />
 			</div>
 		    </div>
 		</div>

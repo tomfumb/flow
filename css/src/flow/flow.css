@@ -10,7 +10,6 @@
 	list-style-type: none;
 	overflow: hidden;
 	width: 10000px;
-	white-space: nowrap;
 }
 
 #flow_question_summary_container {
@@ -203,6 +202,7 @@
 	left: 130px;
 	z-index: 1;
 	height: 100px;
+	margin-bottom: 0;
 }
 
 #flow_content_right {
@@ -216,16 +216,34 @@
 .available-outcome-preview-container {
 	height: 100px;
 	float: left;
-	width: 80px;
+	width: 100px;
 }
 
 .outcome-preview-slider {
 	visibility: hidden;
 }
 
-.outcome-preview-abbreviation {
+.outcome-preview-title {
 	text-align: center;
 	font-size: smaller;
+	font-family: arial;
+	position: relative;
+	width: 100px;
+	height: 100px;
+	top: -87px;
+	background-color: #FFF;
+	color: #000;
+	opacity: 0.8;
+	border: 1px solid #fff;
+	padding: 0 2px;
+}
+
+.outcome-preview-title:hover {
+	border: 1px solid #d0d0d0;
+}
+
+img.outcome-preview-logo {
+	margin: 12px 0 0 12px;
 }
 
 #flow_outcome_details {

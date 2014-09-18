@@ -15,6 +15,8 @@ define(['jquery', 'underscore', 'backbone', 'text!templates/outcome-preview-imag
 				}
 			));
 			
+			this.$el.find('img').addClass('outcome-preview-logo');
+			
 			return this;
 		},
 		

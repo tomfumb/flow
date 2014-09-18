@@ -92,6 +92,10 @@ a {
 	margin: 5px 0 5px 0;
 }
 
+.outcome-title {
+	display: none;
+}
+
 .outcome-abbreviation {
 	display: none;
 }
