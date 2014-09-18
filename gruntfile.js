@@ -57,7 +57,7 @@ module.exports = function(grunt) {
         src: ['index-en.php', 'index-fr.php', 'css/**/*.css', '!css/lib/*'],
         overwrite: true,
         replacements: [{
-          from: /flow\-v=\d+(\.\d+)?(\.\d+)?(\.\d+)?/ig,
+          from: /flow\-v=\d((\.\d+)+)?/ig,
           to: 'flow-v=<%= pkg.version %>'
         }]
       },
