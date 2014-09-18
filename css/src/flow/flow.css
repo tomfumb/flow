@@ -97,6 +97,13 @@
 	margin: 0 0 10px 0;
 }
 
+.question-activity-indicator {
+	padding: 0 0 0 30px;
+	font-style: italic;
+	position: relative;
+	top: -10px;
+}
+
 .questions-progress-report {
 	font-size: small;
 	font-weight: normal;

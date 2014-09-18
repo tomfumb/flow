@@ -184,7 +184,7 @@ module.exports = function(grunt) {
   grunt.registerTask('live', ['lint'/*, 'html'*/, 'requirejs', 'version', 'replace:live']);
   grunt.registerTask('dist', ['copy', 'chmod']);
   
-  grunt.registerTask('deploy', ['ftp-deploy', 'development']);
+  grunt.registerTask('deploy', ['dist', 'ftp-deploy', 'development']);
 
   grunt.registerTask('default', ['live']);
 };

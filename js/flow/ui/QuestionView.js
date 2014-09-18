@@ -4,7 +4,7 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'text!templates/question
 	
 		singleAnswerThreshold: 5,
 		permitAnswers: true,
-		answerDelay: 300,
+		answerDelay: 1000,
 		
 		answerDisplayTypes: {
 			EL_CLICK: 'el_click',
@@ -67,6 +67,7 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'text!templates/question
 			));
 			
 			this.$el.find('div.question-explanation-header').click(_.bind(this.onQuestionExplanationHeaderClick, this));
+			this.activityIndicator = this.$el.find('.question-activity-indicator');
 			
 			switch(answerStyle) {
 				
@@ -90,6 +91,7 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'text!templates/question
 							this.onAnswersSelected([jqTarget.find('div.answer-value').html()]);
 							
 							window.setTimeout(_.bind(this.onQuestionAnswered, this), this.answerDelay);
+							this.showActivityIndicator();
 						}
 						else {
 							Log.info('Not permitting additional answer');
@@ -105,6 +107,7 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'text!templates/question
 							this.onAnswersSelected(event.target.value ? [event.target.value] : []);
 							
 							window.setTimeout(_.bind(this.onQuestionAnswered, this), this.answerDelay);
+							this.showActivityIndicator();
 						}
 						else {
 							Log.info('Not permitting additional answer');
@@ -143,6 +146,7 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'text!templates/question
 							this.onAnswersSelected([]);
 						}
 						window.setTimeout(_.bind(this.onQuestionAnswered, this), this.answerDelay);
+						this.showActivityIndicator();
 					}, this)).on('focus', function() {
 						if($(this).hasClass('hint-text')) {
 							$(this).val('').removeClass('hint-text');
@@ -174,6 +178,20 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'text!templates/question
 					this.container.onChildContentResize.apply(this.container, []);
 				}
 			}, this));
+		},
+		
+		showActivityIndicator: function() {
+		
+			this.activityIndicator.html('processing...');
+			
+			if(typeof this.activityIndicatorTimeout !== 'undefined') {
+				window.clearTimeout(this.activityIndicatorTimeout);
+				this.activityIndicatorTimeout = undefined;
+			}
+			
+			this.activityIndicatorTimeout = window.setTimeout(_.bind(function() {
+				this.activityIndicator.html('');
+			}, this), this.answerDelay);
 		},
 		
 		onBeforeShow: function() {
