@@ -84,7 +84,9 @@ define(
 				
 				var questionView = new QuestionView({el: '#' + questionElId, model: question});
 				questionView.render(!this.hadFirst, this, majorQuestionCount);
-				this.questions.push({id: questionId, view: questionView, active: !this.hadFirst});
+				questionView.on('restartRequested', _.bind(this.restartRequested, this));
+				
+				this.questions.push({id: questionId, view: questionView, active: !this.hadFirst, summaryEl: summaryQuestionEl});
 				
 				if(question.get('available')) {
 					availableCount++;
@@ -127,6 +129,43 @@ define(
 			
 			this.questions[0].view.onBeforeShow();
 			$(this.questionSummaryRowEntries[0]).prop('active', true);
+		},
+		
+		restartRequested: function() {
+			
+			this.restartDialog = $('#flow_restart_confirm').dialog({
+				resizable: false,
+				modal: true,
+				buttons: {
+					'Yes': _.bind(function(a, b, c) {
+						this.restartDialog.dialog('close');
+						this.restart();
+					}, this),
+					'No': function() {
+						$(this).dialog('close');
+					}
+				}
+			});
+		},
+		
+		restart: function() {
+			
+			_.each(this.questions, function(question) {
+				question.view.resetQuestion();
+				//question.summaryEl.find('button').data('answered', false);
+			}, this);
+			
+			var questionModels = _.map(this.questions, function(question) {
+				return question.view.model;
+			}, this);
+			
+			var answeredQuestions = this.countAnsweredQuestions(questionModels);
+			this.reportQuestionProgress(answeredQuestions.answered, answeredQuestions.available);
+			this.outcomeManager.unansweredQuestions = this.countUnansweredQuestions(questionModels);
+			
+			this.outcomePreviews.resetOutcomeHistory();
+			
+			this.moveToQuestion(0);
 		},
 		
 		onShow: function() {
@@ -354,21 +393,25 @@ define(
 				
 				var questionId = this.getQuestionIdFromSummaryElementId(summaryQuestionEl.attr('id'));
 				
-				var requestedIndex = -1, requestedView;
+				var requestedIndex = -1;
 				_.each(this.questions, function(entry, index) {
 					if(entry.id == questionId) {
 						requestedIndex = index;
-						requestedView = entry.view;
 					}
 				});
 				
-				if(requestedIndex > -1) {
-					this.updateActiveQuestion(requestedIndex);
-					requestedView.onBeforeShow();
-					this.showActiveQuestionSummary();
-					this.$carouselEl.carousel(requestedIndex);
-					this.checkNavigationOptions();
-				}
+				this.moveToQuestion(requestedIndex);
+			}
+		},
+		
+		moveToQuestion: function(index) {
+			
+			if(index > -1) {
+				this.updateActiveQuestion(index);
+				this.questions[index].view.onBeforeShow();
+				this.showActiveQuestionSummary();
+				this.$carouselEl.carousel(index);
+				this.checkNavigationOptions();
 			}
 		},
 		

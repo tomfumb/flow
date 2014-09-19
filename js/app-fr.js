@@ -5,7 +5,7 @@ requirejs.config({
 	paths: {
 		'text': './lib/require-text-2.0.10',
 		'jquery': './lib/jquery-1.10.2.min',
-		'jquery-ui': './lib/jquery-ui-1.10.4.custom.min',
+		'jquery-ui': './lib/jquery-ui.min',
 		'jquery-mobile': './lib/jquery.mobile.custom.min',
 		'underscore': './lib/underscore-1.5.2-min',
 		'backbone': './lib/backbone-1.1.0-min',

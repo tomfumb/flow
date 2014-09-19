@@ -97,11 +97,24 @@
 	margin: 0 0 10px 0;
 }
 
+.question-area-appends {
+	position: relative;
+	top: -10px;
+}
+
 .question-activity-indicator {
 	padding: 0 0 0 30px;
 	font-style: italic;
+}
+
+.start-again-control {
+	padding: 0 30px 0 0;
+	float: right;
 	position: relative;
-	top: -10px;
+}
+
+.start-again-button {
+	padding: 0 10px !important;
 }
 
 .questions-progress-report {
@@ -387,4 +400,8 @@ input.hint-text {
 	padding: 10px;
 	background-color: #2D6CA2;
 	color: #fff;
+}
+
+#flow_restart_confirm {
+	display: none;
 }

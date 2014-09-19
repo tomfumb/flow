@@ -69,6 +69,9 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'text!templates/question
 			this.$el.find('div.question-explanation-header').click(_.bind(this.onQuestionExplanationHeaderClick, this));
 			this.activityIndicator = this.$el.find('.question-activity-indicator');
 			
+			this.startAgainButton = this.$el.find('button.start-again-button');
+			this.startAgainButton.on('click', _.bind(this.resetRequested, this));
+			
 			switch(answerStyle) {
 				
 				case this.answerDisplayTypes.EL_CLICK:
@@ -159,6 +162,7 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'text!templates/question
 			}
 			
 			this.$el.find('.questions-progress-report-count').html(majorQuestionCount);
+			this.answerStyle = answerStyle;
 		},
 		
 		onAnswersSelected: function(answers) {
@@ -169,6 +173,33 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'text!templates/question
 			
 			this.permitAnswers = true;
 			this.model.set('questionAnswered', (new Date()).getTime());
+		},
+		
+		resetQuestion: function() {
+			
+			this.onAnswersSelected([]);
+			switch(this.answerStyle) {
+				
+				case this.answerDisplayTypes.EL_CLICK:
+					this.$el.find('.answer img.tick').removeClass('tick').removeClass('sprites');
+					break;
+				case this.answerDisplayTypes.LIST_SELECT:
+					this.$el.find('.multi_answer_select').val('');
+					break;
+				case this.answerDisplayTypes.CHECK_BUTTON_CLICK:
+					this.$el.find('.answers').find('input[type=checkbox]').each(function() {
+						if(this.checked) {
+							this.checked = false;
+						}
+					});
+					break;
+				case this.answerDisplayTypes.SINGLE_DATE:
+					this.$el.find('input.date-selector').val('');
+					break;
+				default:
+					Log.error('Unknown answerStyle provided: ' + answerStyle);
+					return;
+			}
 		},
 		
 		onQuestionExplanationHeaderClick: function() {
@@ -192,6 +223,10 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'text!templates/question
 			this.activityIndicatorTimeout = window.setTimeout(_.bind(function() {
 				this.activityIndicator.html('');
 			}, this), this.answerDelay);
+		},
+		
+		resetRequested: function() {
+			this.trigger('restartRequested');
 		},
 		
 		onBeforeShow: function() {

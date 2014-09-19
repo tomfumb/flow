@@ -7,7 +7,7 @@
 <html lang="en">
     <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link href="css/dist/ccij-flow.css?flow-v=0.9.0.1" rel="stylesheet" type="text/css" />
+	<link href="css/src/ccij.css?flow-v=0.9.0.1" rel="stylesheet" type="text/css" />
 	<link href="css/print.css?flow-v=0.9.0.1" rel="stylesheet" type="text/css" media="print" />
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!--[if lt IE 9]>
@@ -456,6 +456,6 @@
 	    var requirejs = {urlArgs: 'flow-v=0.9.0.1'};
 	    window.CCIJ = {language: 'french'};
 	</script>
-	<script type="text/javascript" data-main="js/dist/ccij-flow-fr" src="js/lib/require-2.1.11.js"></script>
+	<script type="text/javascript" data-main="js/app-fr" src="js/lib/require-2.1.11.js"></script>
     </body>
 </html>

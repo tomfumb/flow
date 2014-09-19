@@ -1,5 +1,18 @@
 To Do
 
+
+Start again button
+	unhighlight summaries - ongoing, complex
+	x reset models and options
+	x slide to question 1
+	x reset unanswered question count
+	x reset %complete
+	x unset all UI answers
+	reset outcome previews left-hide and navigation arrows
+		
+		contentView.onAnswersSelected can do some of this
+
+
 HIGH
 - Technical handover email (awaiting completion of testing / refinements)
 	- php configuration and server requirements

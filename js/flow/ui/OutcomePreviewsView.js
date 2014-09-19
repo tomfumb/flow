@@ -57,6 +57,13 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'ui/OutcomePreviewView',
 			this.outcomePreviews.on('swipeleft', _.bind(this.onMoveLeftRequested, this));
 			this.outcomePreviews.on('swiperight', _.bind(this.onMoveRightRequested, this));
 			
+			this.changesEl = this.$el.find('#flow_outcome_recent_changes');
+			this.changesContentEl = this.changesEl.find('#flow_outcome_recent_changes_content');
+			
+			this.historyNavBack = this.$el.find('#flow_outcome_history_back');
+			this.historyNavFwd = this.$el.find('#flow_outcome_history_fwd');
+			this.handleOutcomeHistoryNav();
+			
 			$(window).resize(_.bind(this.onWindowResize, this));
 		},
 		
@@ -229,28 +236,36 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'ui/OutcomePreviewView',
 				
 			}, this);
 			
-			var changesEl = this.$el.find('#flow_outcome_recent_changes');
-			var changesContentEl = changesEl.find('#flow_outcome_recent_changes_content');
-			
 			var hasAdded = !!addedLinks.length, hasRemoved = !!removedLinks.length;
 			var conjunctionText = (hasAdded && hasRemoved ? ' and' : '');
 			
-			if(!changesEl.is(':visible')) {
+			if(!this.changesEl.is(':visible')) {
 				
-				changesEl.stop();
-				changesEl.slideDown(fadeSpeed);
+				this.changesEl.stop();
+				this.changesEl.slideDown(fadeSpeed);
 			}
 			
 			this.changeHistory.push('Question ' + this.lastAnsweredQuestion.get('id') + (hasAdded ? ' added <ul>' + addedLinks.join('') + '</ul>' : '') + conjunctionText + (hasRemoved ? ' removed <ul>' + removedLinks.join('') + '</ul>' : ''));
 			
 			this.changeHistoryPosition = (this.changeHistory.length - 1);
 			
-			changesContentEl.html(this.changeHistory[this.changeHistoryPosition]);
-			changesContentEl.find('.outcome-text-link').click(_.bind(this.onOutcomeTextLinkClicked, this));
+			this.changesContentEl.html(this.changeHistory[this.changeHistoryPosition]);
+			this.changesContentEl.find('.outcome-text-link').click(_.bind(this.onOutcomeTextLinkClicked, this));
 			
 			this.checkOutcomeHistoryNav();
 			
 			this.availableOutcomePreviews = updatedAvailablePreviews;
+		},
+		
+		resetOutcomeHistory: function() {
+			
+			this.changesEl.stop().hide();
+			this.changesContentEl.html('');
+			
+			this.changeHistory = [];
+			this.changeHistoryPosition = -1;
+			
+			this.checkOutcomeHistoryNav();
 		},
 		
 		getPreviewElement: function(outcome) {
@@ -350,42 +365,32 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'ui/OutcomePreviewView',
 		
 		checkOutcomeHistoryNav: function() {
 			
-			var navBack = this.$el.find('#flow_outcome_history_back');
-			var navFwd = this.$el.find('#flow_outcome_history_fwd');
-			
 			if(this.changeHistoryPosition > 0 && this.changeHistoryPosition <= (this.changeHistory.length - 1)) {
-				navBack.css('visibility', 'visible');
+				this.historyNavBack.css('visibility', 'visible');
 			}
 			else {
-				navBack.css('visibility', 'hidden');
+				this.historyNavBack.css('visibility', 'hidden');
 			}
 			
 			if(this.changeHistoryPosition >= 0 && this.changeHistoryPosition < (this.changeHistory.length - 1)) {
-				navFwd.css('visibility', 'visible');
+				this.historyNavFwd.css('visibility', 'visible');
 			}
 			else {
-				navFwd.css('visibility', 'hidden');
-			}
-			
-			if(this.changeHistory.length === 1) {
-				// this is the first time any navigation controls have been shown, attach click handlers
-				this.handleOutcomeHistoryNav(navBack, navFwd);
+				this.historyNavFwd.css('visibility', 'hidden');
 			}
 		},
 		
-		handleOutcomeHistoryNav: function(navBack, navFwd) {
+		handleOutcomeHistoryNav: function() {
 			
-			var changesContentEl = this.$el.find('#flow_outcome_recent_changes_content');
-			
-			navBack.click(_.bind(function(event) {
+			this.historyNavBack.click(_.bind(function(event) {
 				this.changeHistoryPosition--;
-				changesContentEl.html(this.changeHistory[this.changeHistoryPosition]).find('.outcome-text-link').click(_.bind(this.onOutcomeTextLinkClicked, this));
+				this.changesContentEl.html(this.changeHistory[this.changeHistoryPosition]).find('.outcome-text-link').click(_.bind(this.onOutcomeTextLinkClicked, this));
 				this.checkOutcomeHistoryNav();
 			}, this));
 			
-			navFwd.click(_.bind(function(event) {
+			this.historyNavFwd.click(_.bind(function(event) {
 				this.changeHistoryPosition++;
-				changesContentEl.html(this.changeHistory[this.changeHistoryPosition]).find('.outcome-text-link').click(_.bind(this.onOutcomeTextLinkClicked, this));
+				this.changesContentEl.html(this.changeHistory[this.changeHistoryPosition]).find('.outcome-text-link').click(_.bind(this.onOutcomeTextLinkClicked, this));
 				this.checkOutcomeHistoryNav();
 			}, this));
 		},
