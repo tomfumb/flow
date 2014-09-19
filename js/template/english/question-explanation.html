@@ -1,0 +1,24 @@
+<div class="modal" id="flow_question_explanation_modal" tabindex="-1" role="dialog" aria-labelledby="flow_question_explanation_label" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title" id="flow_question_explanation_modal_label"><img src="images/0.png" class="sprites emblem-notice" width="20" height="20" title="Why this question?"> Why this question?</h4>
+			</div>
+			<div class="modal-body" id="flow_question_explanation_modal_body">
+				<div class="question-explanation-content">
+					<% _.each(explanations, function(explanation) { %> 
+						<div class="row">
+							<div class="col-24 col-xs-24 col-sm-24 col-md-24 col-lg-24">
+								<p><%= explanation %></p>
+							</div>
+						</div>
+					<% }) %>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,4 +1,4 @@
-define(['jquery', 'underscore', 'backbone', 'flow/Log', 'text!templates/question-base.html', 'text!templates/question-single-few.html', 'text!templates/question-single-many.html', 'text!templates/question-multi.html', 'text!templates/question-date.html', 'jquery-ui'], function($, _, Backbone, Log, questionTemplate, singleFewTemplate, singleManyTemplate, multiTemplate, dateTemplate) {
+define(['jquery', 'underscore', 'backbone', 'flow/Log', 'flow/ui/QuestionExplanationView', 'text!templates/question-base.html', 'text!templates/question-single-few.html', 'text!templates/question-single-many.html', 'text!templates/question-multi.html', 'text!templates/question-date.html', 'jquery-ui'], function($, _, Backbone, Log, explanationView, questionTemplate, singleFewTemplate, singleManyTemplate, multiTemplate, dateTemplate) {
 	
 	return Backbone.View.extend({
 	
@@ -204,11 +204,12 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'text!templates/question
 		
 		onQuestionExplanationHeaderClick: function() {
 			
-			this.$el.find('div.question-explanation-content').slideToggle(100, _.bind(function() {
-				if(this.container && typeof this.container.onChildContentResize === 'function') {
-					this.container.onChildContentResize.apply(this.container, []);
-				}
-			}, this));
+			if(!this.questionExplanationView) {
+				this.questionExplanationView = new explanationView();
+				this.questionExplanationView.setContent(this.model.get('explanations'));
+			}
+			
+			this.questionExplanationView.render();
 		},
 		
 		showActivityIndicator: function() {

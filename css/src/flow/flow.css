@@ -301,10 +301,7 @@ img.outcome-preview-logo {
 }
 
 .question-explanation-content {
-	display: none;
-	border: 1px dashed #2d6ca2;
-	margin: 5px 0 5px 0;
-	padding: 5px;
+
 }
 
 .question-explanation-content ul {
