@@ -164,6 +164,9 @@ define(
 			this.outcomeManager.unansweredQuestions = this.countUnansweredQuestions(questionModels);
 			
 			this.outcomePreviews.resetOutcomeHistory();
+			this.outcomePreviews.resetPreviews();
+			
+			this.refreshAllSummaryStates();
 			
 			this.moveToQuestion(0);
 		},
@@ -734,6 +737,34 @@ define(
 					this.summarySwipeEnabled = true;
 				}, this));
 			}
+		},
+	
+		refreshAllSummaryStates: function() {
+
+			var button;
+			_.each(this.questions, function(question) {
+				
+				button = question.summaryEl.find('button');
+				button.removeClass('btn-unavailable btn-default btn-success btn-primary');
+				
+				if(!question.view.model.get('available')) {
+					button.addClass('btn-unavailable');
+					return;
+				}
+				
+				if(question.active) {
+					button.addClass('btn-primary');
+					return;
+				}
+				
+				if(button.data('answered')) {
+					button.addClass('btn-success');
+					return;
+				}
+				
+				button.addClass('btn-default');
+				
+			}, this);
 		}
 	});
 });

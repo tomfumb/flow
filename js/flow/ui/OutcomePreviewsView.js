@@ -268,6 +268,11 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'ui/OutcomePreviewView',
 			this.checkOutcomeHistoryNav();
 		},
 		
+		resetPreviews: function() {
+			this.resetSlide();
+			this.checkSlideEnabled();
+		},
+		
 		getPreviewElement: function(outcome) {
 			var preview = this.previews[this.getPreviewIndex(outcome)];
 			return preview.$el;
