@@ -97,16 +97,6 @@ define(['jquery', 'data/outcome-common'], function($, Common) {
 			if(q15.hasAnswer('Yes')) {
 				return false;
 			}
-			
-			// check against statute of limitations
-			proceed = false;
-			if(q3.isNotAnswered() || q3.isWithinYearsAgo(10)) {
-				proceed = true;
-			}
-			// exit if abuse too long ago
-			if(!proceed) {
-				return false;
-			}
 
 			return true;
 		}

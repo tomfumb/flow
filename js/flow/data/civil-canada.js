@@ -9,8 +9,6 @@ define(['jquery', 'data/outcome-common'], function($, Common) {
 			
 			var relevantAbuses = ['Beating', 'Bodily mutilation', 'Burning', 'Burning of houses', 'Death threats', 'Denial of fair trial', 'Deprivation of medical care', 'Destruction or serious damage to property', 'Disappearance', 'Electric shock', 'Enslavement', 'Forced abortion', 'Forced displacement', 'Forced nudity', 'Forced sterilization', 'Forced stress positions', 'Forced to watch abuse of other prisoners', 'Forcing a prisoner to perform military service', 'Incommunicado detention', 'Kicking', 'Kidnapping', 'Killing', 'Mock execution', 'Persecution on political, racial, or religious grounds', 'Poisoning of water or food supplies', 'Prolonged exposure to extreme cold or heat', 'Prolonged food/water deprivation', 'Prolonged sleep deprivation', 'Punching', 'Rape or other sexual assault', 'Religious persecution', 'Serious mental harm to a person based on race, ethnicity, religion or nationality', 'Severe mental suffering', 'Solitary confinement', 'Stealing children', 'Suffocation', 'Waterboarding'];
 			
-			var permanentRelevantAbuses = ['Rape or other sexual assault'];
-			
 			var relevantAbusers = ['Company or corporation', 'Person in plainclothes', 'Soldier in rebel army'];
 			
 			var proceed;
@@ -48,16 +46,6 @@ define(['jquery', 'data/outcome-common'], function($, Common) {
 			
 			// check for relevant abusers
 			if(!Common.abusers(q10, relevantAbusers, this)) {
-				return false;
-			}
-			
-			// check if recent enough (within last 2 years unless a permanently relevant abuse such as rape or other sexual assault)
-			proceed = (q6.isNotAnswered() || q6.hasAnswer(permanentRelevantAbuses));
-			if(!proceed) {
-				proceed = (q3.isNotAnswered() || q3.isWithinYearsAgo(2));
-			}
-			// exit if abuse too long ago
-			if(!proceed) {
 				return false;
 			}
 			
