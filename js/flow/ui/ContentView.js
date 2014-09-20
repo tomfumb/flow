@@ -195,11 +195,11 @@ define(
 				// force display of available / unavailable outcomes now that the user has completed all questions, but only show after outcome display has been updated
 				if(this.outcomeDisplayUpdating) {
 					this.postOutcomeUpdateActions.push(_.bind(function() {
-						this.outcomeManager.showOutcomes(true);
+						this.outcomeManager.showOutcomes();
 					}, this));
 				}
 				else {
-					this.outcomeManager.showOutcomes(true);
+					this.outcomeManager.showOutcomes();
 				}
 			}
 		},

@@ -104,17 +104,10 @@ define(['jquery', 'underscore', 'backbone', 'flow/Util', 'ui/OutcomeView', 'ui/R
 			}
 		},
 		
-		showOutcomes: function(fromEnd) {
-			
-			fromEnd = (typeof fromEnd === 'undefined' ? false : !!fromEnd);
+		showOutcomes: function() {
 			
 			this.renderOutcomes();
-			if(fromEnd) {
-				this.$el.find('#flow_outcome_what_now_link a').tab('show');
-			}
-			else {
-				this.$el.find('#flow_outcome_available_link a').tab('show');
-			}
+			this.$el.find('#flow_outcome_available_link a').tab('show');
 			
 			this.show();
 		},
@@ -174,7 +167,7 @@ define(['jquery', 'underscore', 'backbone', 'flow/Util', 'ui/OutcomeView', 'ui/R
 				
 				var questionPluralPart = (this.unansweredQuestions > 1 ? 's are' : ' is');
 				
-				this.$el.find('#flow_outcome_unanswered_count').show().html(this.unansweredQuestions + ' question' + questionPluralPart + ' unanswered.');
+				this.$el.find('#flow_outcome_unanswered_count').show().html(this.unansweredQuestions + ' question' + questionPluralPart + ' unanswered which can cause inaccurate results.');
 			}
 			else {
 				this.$el.find('#flow_outcome_unanswered_count').hide();

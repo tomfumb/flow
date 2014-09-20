@@ -1,33 +1,67 @@
 <div class="row">
 	<div class="col-24 col-xs-24 col-sm-24 col-md-24 col-lg-24">
-		<h3>Check Your Possible Options</h3>
+		<div id="flow_outcome_unanswered_count" class="alert alert-warning"></div>
 		<p class="outcomes-hide clickable" style="float: left;"><span class="glyphicon glyphicon-arrow-left"></span> back to the test</p>
 		<div style="float: right;">
 			<span class="glyphicon glyphicon-send clickable feedback-send-link" title="provide feedback"></span> 
 			<span class="glyphicon glyphicon-envelope clickable results-send-link" title="email your results"></span>
 		</div>
 		<div class="clearer"></div>
-		<div id="flow_outcome_unanswered_count" class="alert alert-warning"></div>
 		<ul class="nav nav-tabs">
-			<li id="flow_outcome_available_link">
-				<a class="outcome-tab-link" href="#flow_outcome_available" data-toggle="tab">Available</a>
+			<li id="flow_outcome_available_link" style="width: 33%;">
+				<a class="outcome-tab-link" href="#flow_outcome_available" data-toggle="tab">Available Options</a>
 			</li>
-			<li>
-				<a class="outcome-tab-link" href="#flow_outcome_unavailable" data-toggle="tab">Unavailable</a>
+			<li style="width: 33%;">
+				<a class="outcome-tab-link" href="#flow_outcome_unavailable" data-toggle="tab">Unavailable Options</a>
 			</li>
-			<li id="flow_outcome_what_now_link">
+			<li id="flow_outcome_what_now_link" style="width: 33%;">
 				<a class="outcome-tab-link" href="#flow_outcome_what_now" data-toggle="tab">Next Steps</a>
-			</li>
-			<li style="display: none;" id="flow_outcome_detail_link">
-				<a class="outcome-tab-link" href="#flow_outcome_detail" data-toggle="tab">Detail</a>
 			</li>
 		</ul>
 		<div class="tab-content">
-			<div class="tab-pane active" id="flow_outcome_what_now">
+			<div class="tab-pane active" id="flow_outcome_available">
+				<div class="spacer-10"></div>
+				<p id="flow_available_options_note">Based on the questions you have answered the following options may be available to you. However, these results should be reviewed by CCIJ, another human rights organization or a lawyer. Please note that this site provides only information, not legal advice. A legal case cannot be based on the results of this questionnaire, as every case and every legal process is extremely unique and complex. This website is designed to help you understand what options might be available and is not designed to make a final conclusion about your case.</p>
+				<p>Click on any of the options for more information.</p>
+				<div id="flow_no_available_options_note_container">
+					<h4>No Available Options</h4>
+					<p>Based on the questions you have answered, it is possible there may not be any suitable options available. However, this questionnaire cannot provide a conclusive answer, since individual cases can be complex. If you want to explore other options, we recommend that you contact CCIJ. Contact details are provided at the bottom of this page and at the <a href="http://ccij.ca/about/contact/index.php" target="_blank">CCIJ site</a>.</p>
+				</div>
+				<div id="flow_outcome_available_outcomes"></div>
+			</div>
+			<div class="tab-pane" id="flow_outcome_unavailable">
+				<div class="spacer-10"></div>
+				<p id="flow_unavailable_options_note">Based on the questions you have answered the following options may not be available to you. However, these results should be reviewed by CCIJ, another human rights organization or a lawyer. Please note that this site provides only information, not legal advice. A legal case cannot be based on the results of this questionnaire, as every case and every legal process is extremely unique and complex. This website is designed to help you understand what options might be available and is not designed to make a final conclusion about your case.</p>
+				<p>Click on any of the options for more information.</p>
+				<div id="flow_outcome_unavailable_outcomes"></div>
+			</div>
+			<div class="tab-pane" id="flow_outcome_what_now">
 				<div class="row">
 					<div class="col-24 col-xs-24 col-sm-24 col-md-24 col-lg-24">
-						<h3>Next Steps</h3>
-						<p><span class="results-send-link clickable clickable-colour">Email</span> or <span class="results-print-link clickable clickable-colour">print</span> your results and contact CCIJ to discuss your case. Contact details are provided at the bottom of this page and at the <a href="http://www.ccij.ca/" target="_blank">CCIJ site</a>.</p>
+						<h3>What To Do Next?</h3>
+						<p>You can take any of the following steps or end your session.</p>
+						<ol id="flow_next_steps_list">
+							<li>
+								<strong>Learn more about your options.</strong> More information about your options can be found in the "Available Options" tab or the "Justice Institutions" section above. In addition to descriptions of the different tribunals and courts, these sections suggest links to find further information.
+							</li>
+							<li>
+								<strong>Read about what other survivors have done.</strong> Our "Stories" section has descriptions about current and past CCIJ cases and interviews with individuals who have sought justice. This section can give you a better sense of what occurs when a person tries to take action in different international or Canadian legal processes.
+							</li>
+							<li>
+								<strong>Contact CCIJ to discuss your case.</strong> Contact details are provided at the bottom of this page and at the <a href="http://www.ccij.ca/" target="_blank">CCIJ site</a>.
+								<div class="spacer-10"></div>
+								<ul>
+									<li>Email results...</li>
+									<li>Stay up to date...</li>
+								</ul>
+							</li>
+						</ol>
+					</div>
+				</div>
+				<div class="spacer-10"></div>
+				<div class="row">
+					<div class="col-24 col-xs-24 col-sm-24 col-md-24 col-lg-24">
+						<button type="button" class="btn btn-primary feedback-send-link">Provide Feedback</button>
 					</div>
 				</div>
 				<div class="row">
@@ -51,20 +85,6 @@
 						<span id="flow_identity_thanks">Thanks!</span>
 					</div>
 				</div>
-			</div>
-			<div class="tab-pane" id="flow_outcome_available">
-				<div class="spacer-10"></div>
-				<p id="flow_available_options_note">Based on the questions you have answered the following options may be available to you. However, these results should be reviewed by CCIJ, another human rights organization or a lawyer. Please note that this site provides only information, not legal advice. A legal case cannot be based on the results of this questionnaire, as every case and every legal process is extremely unique and complex. This website is designed to help you understand what options might be available and is not designed to make a final conclusion about your case.</p>
-				<div id="flow_no_available_options_note_container">
-					<h4>No Available Options</h4>
-					<p>Based on the questions you have answered, it is possible there may not be any suitable options available. However, this questionnaire cannot provide a conclusive answer, since individual cases can be complex. If you want to explore other options, we recommend that you contact CCIJ. Contact details are provided at the bottom of this page and at the <a href="http://ccij.ca/about/contact/index.php" target="_blank">CCIJ site</a>.</p>
-				</div>
-				<div id="flow_outcome_available_outcomes"></div>
-			</div>
-			<div class="tab-pane" id="flow_outcome_unavailable">
-				<div class="spacer-10"></div>
-				<p id="flow_unavailable_options_note">Based on the questions you have answered the following options may not be available to you. However, these results should be reviewed by CCIJ, another human rights organization or a lawyer. Please note that this site provides only information, not legal advice. A legal case cannot be based on the results of this questionnaire, as every case and every legal process is extremely unique and complex. This website is designed to help you understand what options might be available and is not designed to make a final conclusion about your case.</p>
-				<div id="flow_outcome_unavailable_outcomes"></div>
 			</div>
 		</div>
 		<br />

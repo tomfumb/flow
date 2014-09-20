@@ -360,6 +360,18 @@ img.outcome-preview-logo {
 	display: none;
 }
 
+.outcome-tab-link {
+	text-align: center;
+	line-height: 1 !important;
+	padding: 8px 10px !important;
+	font-weight: bold;
+	word-break: normal;
+}
+
+#flow_next_steps_list li {
+	margin-bottom: 10px;
+}
+
 .outcome-history-nav {
 	visibility: hidden;
 	float: left;
