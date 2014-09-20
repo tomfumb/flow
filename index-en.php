@@ -386,7 +386,8 @@
 		    </div>
 		    <div id="flow_question_6">
 			<div class="question-content">
-			    Describe the abuse(s) committed against the victim.
+				<p>Describe the abuse(s) committed against the victim.</p>
+			    <p>Select ALL that apply from the following options.</p>
 			    <div class="question-important-note">If the victim was under 18 please ensure you check "Abuse against a child under the age of 18" and any other relevant abuses. If the victim was female please ensure you check "Abuse against a woman" and any other relevant abuses.</div>
 			</div>
 			<div class="question-explanation">Different tribunals and justice processes have authority over different kinds of human rights abuses. Some, like the United Nations Human Rights Committee, can consider a wide range of abuses. Others, like the Committee Against Torture, can consider a smaller set of abuses. Selecting the relevant acts on this list will provide the information necessary to determine which abuses might have been committed and therefore which tribunals and justice processes might be available.</div>
@@ -404,7 +405,10 @@
 			<div class="question-explanation">Some tribunals have authority over the crime of genocide, which refers to certain acts that are committed with the intention to destroy a particular group. For example, the International Criminal Court may be able to prosecute the killing or forced displacement of people of a particular religion or race.</div>
 		    </div>
 		    <div id="flow_question_10">
-			<div class="question-content">Who committed the abuse(s)?</div>
+			<div class="question-content">
+				<p>Who committed the abuse(s)?</p>
+			    <p>Select ALL that apply from the following options.</p>
+			</div>
 			<div class="question-explanation">The authority of some tribunals and justice processes is limited to acts committed by government officials and does not extend to crimes committed by civilians. For example, "torture" is a human rights abuse that usually requires government involvement. If someone is beaten but there is no government involvement then it usually is not considered "torture" and falls outside the authority of international justice processes.</div>
 			<div class="question-explanation">Please answer 'unknown' if you are not completely sure who was responsible for the abuses. An answer of 'unknown' to this question will not eliminate any of the justice options.</div>
 		    </div>
