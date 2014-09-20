@@ -50,22 +50,22 @@
 	    <div id="ccij_intro" class="main-focus">
 		<div class="container">
 		    <div class="row">
-			<div class="justified col-24 col-xs-24 col-sm-24 col-md-24 col-lg-24">
+			<div class="col-24 col-xs-24 col-sm-24 col-md-24 col-lg-24">
 			    <h1>OPPORTUNITIES FOR JUSTICE</h1>
 			    <p>If you or your family members have suffered certain kinds of human rights abuses, you may be able to pursue justice in legal or other ways. Many processes exist around the world and in Canada to address violations of human rights but it can be very difficult to learn what opportunities for justice exist. This website can help you learn more.</p>
 			</div>
 		    </div>
 		    <div class="row">
-			<div id="ccij_assess_entry" class="entry-point app-navigator col-md-8 col-lg-8 clickable">
-			    <h2>Assess Your Options</h2>
+			<div id="ccij_assess_entry" class="entry-point app-navigator col-md-7 col-lg-7 clickable">
+			    <h3>Assess Your Options</h3>
 			    <p><img src="images/0.png" width="48" height="48" title="Assess your options" class="entry-point-img sprites test" />Our assessment tool will take you through a series of questions about the acts committed against you or your family, and suggest possible tribunals, international bodies or Canadian processes that might be available to address them.</p>
 			</div>
-			<div id="ccij_remedies_entry" class="entry-point app-navigator col-md-8 col-lg-8 clickable">
-			    <h2>Justice Institutions</h2>
+			<div id="ccij_remedies_entry" class="entry-point app-navigator col-md-7 col-lg-7 col-md-offset-1 col-lg-offset-1 clickable">
+			    <h3>Justice Institutions</h3>
 			    <p><img src="images/0.png" width="48" height="48" title="Descriptions" class="entry-point-img sprites gavel" />Learn about different bodies that address human rights abuses by reading short descriptions of international courts, United Nations committees, regional human rights commissions and Canadian processes.</p>
 			</div>
-			<div id="ccij_stories_entry" class="entry-point col-md-8 col-lg-8 clickable">
-			    <h2>Stories<span class="glyphicon glyphicon-new-window title-supplemental-top" title="External Link"></span></h2>
+			<div id="ccij_stories_entry" class="entry-point col-md-7 col-lg-7 col-md-offset-1 col-lg-offset-1 clickable">
+			    <h3>Stories<span class="glyphicon glyphicon-new-window title-supplemental-top" title="External Link"></span></h3>
 			    <p><img src="images/0.png" width="48" height="48" title="Stories" class="entry-point-img sprites book" />CCIJ has helped survivors and families pursue justice through many different processes. Read, hear and watch their stories to learn about their experiences and the successes and challenges they have faced in seeking justice.</p>
 			</div>
 		    </div>
