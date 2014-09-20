@@ -365,6 +365,7 @@
 		    <div id="flow_question_2a">
 			<div class="question-content">Did people who are citizens of any other country participate in the abuse(s)?</div>
 			<div class="question-explanation">Some tribunals and justice processes only have authority over abuses committed by people who are citizens of certain countries. For example, citizens of countries that agreed to the treaty of the International Criminal Court can be prosecuted by the Court, even if the crimes occurred in a different country.</div>
+			<div class="question-explanation">An answer of 'unknown' to this question assumes that there were not citizens of any other country who participated in the abuses. In other words, for this question an answer of 'unknown' will have the same result as 'no'.</div>
 		    </div>
 		    <div id="flow_question_2b">
 			<div class="question-content">What citizenship did they have?</div>
@@ -405,26 +406,32 @@
 		    <div id="flow_question_10">
 			<div class="question-content">Who committed the abuse(s)?</div>
 			<div class="question-explanation">The authority of some tribunals and justice processes is limited to acts committed by government officials and does not extend to crimes committed by civilians. For example, "torture" is a human rights abuse that usually requires government involvement. If someone is beaten but there is no government involvement then it usually is not considered "torture" and falls outside the authority of international justice processes.</div>
+			<div class="question-explanation">Please answer 'unknown' if you are not completely sure who was responsible for the abuses. An answer of 'unknown' to this question will not eliminate any of the justice options.</div>
 		    </div>
 		    <div id="flow_question_11">
 			<div class="question-content">Are any of the people responsible for the abuse(s) currently living in Canada?</div>
 			<div class="question-explanation">Certain legal processes in Canada are possible when the person responsible for abuses is living in Canada. For example, the Canadian government may be able to criminally prosecute, deport or revoke the citizenship of someone living in Canada who might have been involved in human rights abuses.</div>
+			<div class="question-explanation">An answer of 'unknown' to this question assumes that none of the people responsible for the abuses are currently living in Canada. In other words, for this question an answer of 'unknown' will have the same result as 'no'.</div>
 		    </div>
 		    <div id="flow_question_12">
 			<div class="question-content">Do any of the people responsible for the abuse(s) ever visit Canada?</div>
 			<div class="question-explanation">Canada has the authority to pursue justice against people who committed certain abuses in other countries. When such a person visits Canada or tries to visit Canada, it may be possible for the Canadian government to take action, most likely through immigration penalties like deportation or denial of a visa.</div>
+			<div class="question-explanation">An answer of 'unknown' to this question assumes that none of the people responsible for the abuses ever visit Canada. In other words, for this question an answer of 'unknown' will have the same result as 'no'.</div>
 		    </div>
 		    <div id="flow_question_13">
 			<div class="question-content">Do any of the people responsible for the abuse(s) ever travel outside the country where the abuse(s) happened?</div>
 			<div class="question-explanation">Many countries around the world have the authority to prosecute people present in their territory who committed certain abuses, no matter where the abuses happened. Although analysis of this option is too complicated for this website, the answer to this question could be useful to CCIJ if you decide to contact us about your justice options.</div>
+			<div class="question-explanation">An answer of 'unknown' to this question assumes that none of the people responsible for the abuses travel outside the country. In other words, for this question an answer of 'unknown' will have the same result as 'no'.</div>
 		    </div>
 		    <div id="flow_question_14a">
 			<div class="question-content">In your opinion, in the country where the abuse(s) occurred, are the courts fair and independent, such that justice can be achieved there?</div>
 			<div class="question-explanation">Many tribunals and justice processes assume that governments have the primary responsibility to investigate and punish abuses in the place where they happened. For this reason, their authority may be limited to situations in which the responsible government is unwilling or unable to take action or the courts are not fair and independent.</div>
+			<div class="question-explanation">An answer of 'unknown' to this question assumes that the courts are not fair and independent. In other words, for this question an answer of 'unknown' will have the same result as 'no'.</div>
 		    </div>
 		    <div id="flow_question_14b">
 			<div class="question-content">Did the victim or the victim's family try to bring a case or a complaint before the courts, the police or other authorities in the country where the abuses occurred?</div>
 			<div class="question-explanation">If the survivor or victim's family has tried to bring a case in the country where the abuses occurred but that case failed for certain reasons, this might make it more likely that an international justice process might look into the case.</div>
+			<div class="question-explanation">An answer of 'unknown' to this question assumes that the victim or the victim's family did <u>not</u> try to bring a case or a complaint. In other words, for this question an answer of 'unknown' will have the same result as 'no'.</div>
 		    </div>
 		    <div id="flow_question_14c">
 			<div class="question-content">What was the result?</div>
@@ -433,6 +440,7 @@
 		    <div id="flow_question_15">
 			<div class="question-content">Has the victim or the victim's family submitted a complaint to any other international court or body?</div>
 			<div class="question-explanation">Some tribunals and justice processes want to avoid duplicating the work of other justice processes. As a result, many will decline to accept a case if another tribunal or justice process is already reviewing the case.</div>
+			<div class="question-explanation">An answer of 'unknown' to this question assumes that the victim or the victim's family did <u>not</u> submit a complaint to any other international court or body. In other words, for this question an answer of 'unknown' will have the same result as 'no'.</div>
 		    </div>
 		</div>
 	    </div>
