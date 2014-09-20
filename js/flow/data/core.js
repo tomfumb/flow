@@ -308,15 +308,15 @@ define(['jquery', 'data/ac-hpr', 'data/civil-canada', 'data/crim-canada', 'data/
 		answerType: 'multi-select'
 	},{
 		id: '7',
-		answers: config.lists.yesnounknown,
+		answers: config.lists.yesno,
 		answerType: 'single-select'
 	},{
 		id: '8',
-		answers: config.lists.yesnounknown,
+		answers: config.lists.yesno,
 		answerType: 'single-select'
 	},{
 		id: '9',
-		answers: config.lists.yesnounknown,
+		answers: config.lists.yesno,
 		answerType: 'single-select'
 	},{
 		id: '10',

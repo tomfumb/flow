@@ -111,7 +111,7 @@ define(['jquery', 'data/outcome-common'], function($, Common) {
 			}
 			
 			// check if mechanism has jurisdiction based on racial aspect of abuse
-			proceed = (q9.isUnknownOrNotAnswered() || (q9.hasAnswer('Yes') || (q9.doesNotHaveAnswer('Yes') && (q6.isNotAnswered() || q6.hasAnswer(primaryAbuse)))));
+			proceed = (q9.isNotAnswered() || (q9.hasAnswer('Yes') || (q9.doesNotHaveAnswer('Yes') && (q6.isNotAnswered() || q6.hasAnswer(primaryAbuse)))));
 			// exit if abuse not racially-motivated
 			if(!proceed) {
 				return false;

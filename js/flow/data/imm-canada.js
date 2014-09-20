@@ -19,9 +19,9 @@ define(['jquery', 'data/outcome-common'], function($, Common) {
 			// check if war crime, crime against humanity, or genocide
 			proceed = false;
 			if(
-				(q7.isUnknownOrNotAnswered() || q7.hasAnswer('Yes')) ||
-				(q8.isUnknownOrNotAnswered() || q8.hasAnswer('Yes')) ||
-				(q9.isUnknownOrNotAnswered() || q9.hasAnswer('Yes'))) {
+				(q7.isNotAnswered() || q7.hasAnswer('Yes')) ||
+				(q8.isNotAnswered() || q8.hasAnswer('Yes')) ||
+				(q9.isNotAnswered() || q9.hasAnswer('Yes'))) {
 				proceed = true;
 			}
 			// exit if not war crime, crime against humanity, or genocide
