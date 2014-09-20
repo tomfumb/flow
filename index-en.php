@@ -37,8 +37,8 @@
 		<div class="collapse navbar-collapse">
 		    <ul class="nav navbar-nav">
 			<li><a href="#" id="ccij_home_nav">Home</a></li>
-			<li><a href="#assess" id="ccij_assess_nav">Assess</a></li>
-			<li><a href="#remedies" id="ccij_remedies_nav">Justice Options</a></li>
+			<li><a href="#assess" id="ccij_assess_nav">Assess Your Options</a></li>
+			<li><a href="#remedies" id="ccij_remedies_nav">Justice Institutions</a></li>
 			<li><a href="index-fr.php">Francais</a></li>
 			<li>&nbsp;&nbsp;&nbsp;</li>
 			<li><a href="#stories" id="ccij_stories_nav">Stories <span class="glyphicon glyphicon-new-window title-supplemental-top" title="External Link"></span></a></li>
@@ -57,15 +57,15 @@
 		    </div>
 		    <div class="row">
 			<div id="ccij_assess_entry" class="entry-point app-navigator col-md-8 col-lg-8 clickable">
-			    <h2>Assess your options</h2>
+			    <h2>Assess Your Options</h2>
 			    <p><img src="images/0.png" width="48" height="48" title="Assess your options" class="entry-point-img sprites test" />Our assessment tool will take you through a series of questions about the acts committed against you or your family, and suggest possible tribunals, international bodies or Canadian processes that might be available to address them.</p>
 			</div>
 			<div id="ccij_remedies_entry" class="entry-point app-navigator col-md-8 col-lg-8 clickable">
-			    <h2>Justice Options</h2>
+			    <h2>Justice Institutions</h2>
 			    <p><img src="images/0.png" width="48" height="48" title="Descriptions" class="entry-point-img sprites gavel" />Learn about different bodies that address human rights abuses by reading short descriptions of international courts, United Nations committees, regional human rights commissions and Canadian processes.</p>
 			</div>
 			<div id="ccij_stories_entry" class="entry-point col-md-8 col-lg-8 clickable">
-			    <h2>Stories <span class="glyphicon glyphicon-new-window title-supplemental-top" title="External Link"></span></h2>
+			    <h2>Stories<span class="glyphicon glyphicon-new-window title-supplemental-top" title="External Link"></span></h2>
 			    <p><img src="images/0.png" width="48" height="48" title="Stories" class="entry-point-img sprites book" />CCIJ has helped survivors and families pursue justice through many different processes. Read, hear and watch their stories to learn about their experiences and the successes and challenges they have faced in seeking justice.</p>
 			</div>
 		    </div>
