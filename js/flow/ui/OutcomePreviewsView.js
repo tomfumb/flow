@@ -232,7 +232,7 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'ui/OutcomePreviewView',
 					this.checkSlideEnabled();
 				}, this));
 				
-				removedLinks.push('<li class="clickable clickable-colour outcome-text-link" id="' + this.getTextLinkIdFromOutcome(outcome) + '">' + outcome.get('title') + '</li>');
+				removedLinks.push('<li class="clickable clickable-colour outcome-text-link" id="' + this.getTextLinkIdFromOutcome(outcome) + '" title="Click to view full description">' + outcome.get('title') + '</li>');
 				
 			}, this);
 			

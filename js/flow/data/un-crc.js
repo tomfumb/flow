@@ -6,6 +6,7 @@ define(['jquery', 'data/outcome-common'], function($, Common) {
 			
 			var relevantCountries = [
 				{country: "Albania", date: "2014/04/14"},
+				{country: "Belgium", date: "2014/05/30"},
 				{country: "Bolivia", date: "2014/04/14"},
 				{country: "Costa Rica", date: "2014/04/14"},
 				{country: "Gabon", date: "2014/04/14"},

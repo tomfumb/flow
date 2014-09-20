@@ -3,15 +3,15 @@ define(['jquery', 'data/outcome-common'], function($, Common) {
 	return {
 		/* War Crimes Chamber of the Court of Bosnia and Herzegovina */
 		selector: $('#ccij_outcome_bosnia'),
-		condition: function(q1, q2a, q2b, q3, q6, q7, q10) {
+		condition: function(q1, q2a, q2b, q3, q6, q7, q8, q9, q10) {
 			
 			var relevantCountries = [
-				{country: "Bosnia and Herzegovina"}
+				{country: "Bosnia and Herzegovina", date: "2002/07/03"}
 			];
 			
 			var relevantAbuses = ['Beating', 'Bodily mutilation', 'Burning', 'Burning of houses', 'Death threats', 'Denial of fair trial', 'Deprivation of medical care', 'Destruction or serious damage to property', 'Disappearance', 'Electric shock', 'Enslavement', 'Forced abortion', 'Forced displacement', 'Forced nudity', 'Forced sterilization', 'Forced stress positions', 'Forced to watch abuse of other prisoners', 'Forcing a prisoner to perform military service', 'Incommunicado detention', 'Kicking', 'Kidnapping', 'Killing', 'Mock execution', 'Persecution on political, racial, or religious grounds', 'Poisoning of water or food supplies', 'Prolonged exposure to extreme cold or heat', 'Prolonged food/water deprivation', 'Prolonged sleep deprivation', 'Punching', 'Rape or other sexual assault', 'Religious persecution', 'Serious mental harm to a person based on race, ethnicity, religion or nationality', 'Severe mental suffering', 'Solitary confinement', 'Stealing children', 'Suffocation', 'Waterboarding'];
 			
-			var relevantAbusers = ["Soldier in government's army", 'Police officer', 'Other government official', 'Soldier in rebel army', 'Person in plainclothes'];
+			var relevantAbusers = ["Soldier in government's army", 'Police officer', 'Other government official', 'Soldier in rebel army', 'Person in plainclothes', 'Unknown'];
 			
 			var proceed;
 			
@@ -40,15 +40,12 @@ define(['jquery', 'data/outcome-common'], function($, Common) {
 				return false;
 			}
 			
-			// check if war crime, crime against humanity, or genocide
+			// check if war crime
 			proceed = false;
-			if(
-				(q7.isUnknownOrNotAnswered() || q7.hasAnswer('Yes')) ||
-				(q8.isUnknownOrNotAnswered() || q8.hasAnswer('Yes')) ||
-				(q9.isUnknownOrNotAnswered() || q9.hasAnswer('Yes'))) {
+			if(q7.isUnknownOrNotAnswered() || q7.hasAnswer('Yes')) {
 				proceed = true;
 			}
-			// exit if not war crime, crime against humanity, or genocide
+			// exit if not war crime
 			if(!proceed) {
 				return false;
 			}

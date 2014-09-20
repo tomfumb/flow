@@ -215,10 +215,15 @@ define(['jquery', 'data/ac-hpr', 'data/civil-canada', 'data/crim-canada', 'data/
 				{english: "No", french: "Non"},
 				{english: "Unknown", french: "Inconnu"}
 			],
+			yesno: [
+				{english: "Yes", french: "Oui"},
+				{english: "No", french: "Non"}
+			]
 		}
 	};
 	
 	config.lists.yesnounknown.preventSort = true;
+	config.lists.yesno.preventSort = true;
 
 	config.questions = [{
 		id: '1',
@@ -247,7 +252,7 @@ define(['jquery', 'data/ac-hpr', 'data/civil-canada', 'data/crim-canada', 'data/
 		answerType: 'single-select'
 	},{
 		id: '5a',
-		answers: config.lists.yesnounknown,
+		answers: config.lists.yesno,
 		answerType: 'single-select'
 	},{
 		id: '5b',
