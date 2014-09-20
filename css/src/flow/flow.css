@@ -244,6 +244,7 @@
 }
 
 .outcome-preview-title {
+	display: table;
 	text-align: center;
 	font-size: smaller;
 	font-family: arial;
@@ -253,13 +254,17 @@
 	top: -87px;
 	background-color: #FFF;
 	color: #000;
-	opacity: 0.8;
-	border: 1px solid #fff;
+	opacity: 0.85;
 	padding: 0 2px;
 }
 
+.outcome-preview-title-vertical-pos {
+	display: table-cell;
+	vertical-align: middle;
+}
+
 .outcome-preview-title:hover {
-	border: 1px solid #d0d0d0;
+	background-color: #f3f3f3;
 }
 
 img.outcome-preview-logo {
