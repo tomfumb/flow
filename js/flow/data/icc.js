@@ -2,7 +2,7 @@ define(['jquery', 'underscore', 'data/outcome-common'], function($, _, Common) {
 	
 	return {
 		selector: $('#ccij_outcome_icc'),
-		condition: function(q1, q2a, q2b, q3, q6, q7, q8, q9, q10, q14a, q14b, q14c, q15) {
+		condition: function(q1, q2a, q2b, q3, q6, q7, q8, q9, q10, q14a, q14b, q14c) {
 			
 			var relevantCountries = [
 				{country: "Afghanistan", date: "2003/05/01"},
@@ -199,11 +199,6 @@ define(['jquery', 'underscore', 'data/outcome-common'], function($, _, Common) {
 			
 			// check whether domestic remedies exhausted
 			if(!Common.domesticExhausted(q14a, q14b, q14c, relevantActionOutcomes, this)) {
-				return false;
-			}
-			
-			// exit if another remedy sought
-			if(q15.hasAnswer('Yes')) {
 				return false;
 			}
 			
