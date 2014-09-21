@@ -27,7 +27,7 @@ define(['jquery', 'data/outcome-common'], function($, Common) {
 			if(q5a.hasAnswer('Yes') && (q5b.hasCountry(relevantCountries))) {
 				proceed = true;
 			}
-			if(q11.isUnknownOrNotAnswered() || q11.hasAnswer('Yes')) {
+			if(q11.isNotAnswered() || q11.hasAnswer('Yes')) {
 				proceed = true;
 			}
 			if(q14a.isUnknownOrNotAnswered() || q14a.hasAnswer('No')) {

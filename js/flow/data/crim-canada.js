@@ -49,10 +49,10 @@ define(['jquery'], function($) {
 			if(q5a.hasAnswer('Yes') && (q5b.hasCountry(relevantCountries))) {
 				proceed = true;
 			}
-			if(q11.isUnknownOrNotAnswered() || q11.hasAnswer('Yes')) {
+			if(q11.isNotAnswered() || q11.hasAnswer('Yes')) {
 				proceed = true;
 			}
-			if(q12.isUnknownOrNotAnswered() || q12.hasAnswer('Yes')) {
+			if(q12.isNotAnswered() || q12.hasAnswer('Yes')) {
 				proceed = true;
 			}
 			

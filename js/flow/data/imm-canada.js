@@ -36,10 +36,10 @@ define(['jquery', 'data/outcome-common'], function($, Common) {
 			
 			// check if in or attempting to enter Canada
 			proceed = false;
-			if(q11.isUnknownOrNotAnswered() || q11.hasAnswer('Yes')) {
+			if(q11.isNotAnswered() || q11.hasAnswer('Yes')) {
 				proceed = true;
 			}
-			if(q12.isUnknownOrNotAnswered() || q12.hasAnswer('Yes')) {
+			if(q12.isNotAnswered() || q12.hasAnswer('Yes')) {
 				proceed = true;
 			}
 			// exit if not in or attempting to enter Canada
