@@ -182,9 +182,9 @@ module.exports = function(grunt) {
   grunt.registerTask('version', ['replace:urlVersion']);
   grunt.registerTask('development', ['replace:development']);
   grunt.registerTask('live', ['lint'/*, 'html'*/, 'requirejs', 'version', 'replace:live']);
-  grunt.registerTask('dist', ['copy', 'chmod']);
-  
-  grunt.registerTask('deploy', ['dist', 'ftp-deploy', 'development']);
+  grunt.registerTask('dist', ['live', 'copy', 'chmod']);
+
+  grunt.registerTask('deploy', ['dist', 'ftp-deploy']);
 
   grunt.registerTask('default', ['live']);
 };

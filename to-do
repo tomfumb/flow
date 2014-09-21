@@ -9,8 +9,6 @@ should all mechanisms include 'Unknown' for abusers?
 
 will Pam's translation include text changes after testing?
 
-consolidate grunt tasks to be more meaningful - e.g. lint, version, development, live, deploy
-
 
 HIGH
 - Technical handover email (awaiting completion of testing / refinements)
