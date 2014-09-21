@@ -327,7 +327,7 @@ define(['jquery', 'data/ac-hpr', 'data/civil-canada', 'data/crim-canada', 'data/
 				{english: "Police officer", french: "L'officier de police"},
 				{english: "Other government official", french: "Autre représentant du gouvernement"},
 				{english: "Soldier in rebel army", french: "Soldat dans l'armée rebelle"},
-				{english: "Person in plainclothes", french: "Personne en civil"},
+				{english: "None of the above", french: "Aucune de ces réponses"},
 				{english: "Company or corporation", french: "Société"},
 				{english: "Unknown", french: "Inconnu"}
 			];
