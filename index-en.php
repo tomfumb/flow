@@ -7,8 +7,8 @@
 <html lang="en">
     <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link href="css/dist/ccij-flow.css?flow-v=0.9.0.3" rel="stylesheet" type="text/css" />
-	<link href="css/print.css?flow-v=0.9.0.3" rel="stylesheet" type="text/css" media="print" />
+	<link href="css/src/ccij.css?flow-v=0.9.0" rel="stylesheet" type="text/css" />
+	<link href="css/print.css?flow-v=0.9.0" rel="stylesheet" type="text/css" media="print" />
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!--[if lt IE 9]>
 	  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -84,6 +84,7 @@
 				    <p>Located in The Hague in the Netherlands, the ICC is the first permanent international criminal tribunal. It was established to prosecute individuals accused of committing the gravest international crimes, including war crimes, crimes against humanity, genocide and aggression. In addition to determining criminal guilt or innocence, the ICC can order reparations to victims, and can provide assistance to some victims in countries where it operates through its Trust Fund for Victims.</p> 
 				    <p>The ICC is governed by an international treaty called the <span class="italic">Rome Statute</span>. Over 120 countries have ratified the treaty, which means that they contribute to the ICC's budget and accept its jurisdiction over their citizens and over acts that happen on their territory. The ICC can also receive the legal authority to investigate any situation when authorized by the UN Security Council (as happened in the cases of Sudan and Libya, which are not parties to the <span class="italic">Rome Statute</span>). Most European, Latin American and African countries have joined the ICC, as well as Canada and Japan. Non-members include the United States, China, Russia, India and most Middle Eastern countries.</p> 
 				    <p>The ICC's Prosecutor can launch investigations at the behest of state parties, the UN Security Council, or on her own initiative. For that reason, people can submit information to the Prosecutor about possible crimes. The ICC is intended to be a court of last resort, meaning that it will not act on cases that are already subject to genuine judicial proceedings at the national level. The ICC is also limited to crimes that occurred after July 1, 2002, the day the <span class="italic">Rome Statute</span> entered into force. Since it was created, the ICC has opened investigations concerning alleged crimes in eight countries, all of them in Africa.</p>
+				    <p>The ICC can also receive the legal authority to investigate any situation when authorized by the UN Security Council (as happened in the cases of Sudan and Libya, which are not parties to the Rome Statute). Non-members can also request the ICC to have jurisdiction, as happened in the case of Cote d'Ivoire. (Note: Our "Assess your options" questionnaire is unable to include situations in with the UN Security Council or a non-member state decides to retroacivitely give jurisdiction to the ICC. As a result, it may in the future become possible for the ICC to prosecute crimes that happened in countries in the past, including Syria and Palestine for instance.)</p>
 				    <p>For more information on the ICC and on current cases, see: <a href="http://www.icc-cpi.int/EN_Menus/ICC/Pages/default.aspx" target="_blank">http://www.icc-cpi.int/EN_Menus/ICC/Pages/default.aspx</a> and <a href="http://www.iccnow.org" target="_blank">http://www.iccnow.org</a>.</p>
 				    <p>For information about submitting a complaint to the Prosecutor, see <a href="http://www.icc-cpi.int/en_menus/icc/structure%20of%20the%20court/office%20of%20the%20prosecutor/siac/Pages/default.aspx" target="_blank">http://www.icc-cpi.int/en_menus/icc/structure%20of%20the%20court/office%20of%20the%20prosecutor/siac/Pages/default.aspx</a>.</p>
 				</div>
@@ -468,9 +469,9 @@
 	    </div>
 	</footer>
 	<script type="text/javascript">
-	    var requirejs = {urlArgs: 'flow-v=0.9.0.3'};
+	    var requirejs = {urlArgs: 'flow-v=0.9.0'};
 	    window.CCIJ = {language: 'english'};
 	</script>
-	<script type="text/javascript" data-main="js/dist/ccij-flow-en" src="js/lib/require-2.1.11.js"></script>
+	<script type="text/javascript" data-main="js/app-en" src="js/lib/require-2.1.11.js"></script>
     </body>
 </html>
