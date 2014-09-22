@@ -7,7 +7,7 @@
 <html lang="en">
     <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link href="css/src/ccij.css?flow-v=0.9.0" rel="stylesheet" type="text/css" />
+	<link href="css/dist/ccij-flow.css?flow-v=0.9.0" rel="stylesheet" type="text/css" />
 	<link href="css/print.css?flow-v=0.9.0" rel="stylesheet" type="text/css" media="print" />
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!--[if lt IE 9]>
@@ -58,7 +58,7 @@
 		    <div class="row">
 			<div id="ccij_assess_entry" class="entry-point app-navigator col-md-7 col-lg-7 clickable">
 			    <h3>Assess Your Options</h3>
-			    <p><img src="images/0.png" width="48" height="48" title="Assess your options" class="entry-point-img sprites test" />Our assessment tool will take you through a series of questions about the acts committed against you or your family, and suggest possible tribunals, international bodies or Canadian processes that might be available to address them.</p>
+			    <p><img src="images/0.png" width="48" height="48" title="Assess your options" class="entry-point-img sprites test" />Our assessment tool will take you through a series of questions about the acts committed against you or your family members and suggest possible options for pursuing justice.</p>
 			</div>
 			<div id="ccij_remedies_entry" class="entry-point app-navigator col-md-7 col-lg-7 col-md-offset-1 col-lg-offset-1 clickable">
 			    <h3>Justice Institutions</h3>
@@ -104,6 +104,7 @@
 				    <p><a href="http://www.ohchr.org/en/hrbodies/cat/pages/catindex.aspx" target="_blank">http://www.ohchr.org/en/hrbodies/cat/pages/catindex.aspx</a></p>
 				    <p><a href="http://www.ohchr.org/Documents/Publications/FactSheet17en.pdf" target="_blank">http://www.ohchr.org/Documents/Publications/FactSheet17en.pdf</a></p>
 				</div>
+				<div class="outcome-caveat"><span class="caveat">*</span> The United Nations Committee Against Torture has a strict limitations period. If you have tried to file a case in your country and it was unsuccessful, you have to file a complaint with the United Nations Committee Against Torture within a "reasonable time", unless you can demonstrate that it had not been possible to submit the complaint within that time limit.</div>
 			    </div>
 			</div>
 		    </div>
@@ -255,6 +256,7 @@
 				    <p>The Communications procedure: <a href="http://www.achpr.org/communications/procedure/" target="_blank">http://www.achpr.org/communications/procedure/</a></p>
 				    <p>Information on the African regional human rights system from the International Justice Resource Center: <a href="http://www.ijrcenter.org/regional/african/" target="_blank">http://www.ijrcenter.org/regional/african/</a></p>
 				</div>
+				<div class="outcome-caveat"><span class="caveat">*</span> The African Commission has a strict limitations period. If you have tried to file a case in your country and it was unsuccessful, you have to file a case at the African Commission within a "reasonable time", unless you can demonstrate that it had not been possible to submit the complaint within that time limit.</div>
 			    </div>
 			</div>
 		    </div>
@@ -333,6 +335,7 @@
 				    <p>For basic information on criminal and civil suits in Canada, see <a href="http://www.justice.gc.ca/eng/csj-sjc/just/08.html" target="_blank">http://www.justice.gc.ca/eng/csj-sjc/just/08.html</a>.</p>
 				    <p>For examples of civil suits that CCIJ has been involved with, see suits against the government of Iran on behalf of <a href="http://www.ccij.ca/programs/cases/index.php?WEBYEP_DI=10" target="_blank">Zahra Kazemi</a> and <a href="http://www.ccij.ca/programs/cases/index.php?WEBYEP_DI=5" target="_blank">Houshang Bouzari</a>, and against <a href="http://www.ccij.ca/programs/cases/index.php?WEBYEP_DI=14" target="_blank">Anvil Mining on behalf of the Canadian Association against Impunity</a>.</p>
 				</div>
+				<div class="outcome-caveat"><span class="caveat">*</span> There is usually a limitations period for filing a civil lawsuit in Canada. Some cases must be filed within two years of when the abuse(s) occurred though sometimes this period is longer.</div>
 			    </div>
 			</div>
 		    </div>
@@ -361,19 +364,19 @@
 		<div id="flow_questions">
 		    <div id="flow_question_1">
 			<div class="question-content">In what country did the abuse(s) occur?</div>
-			<div class="question-explanation">Most tribunals and justice processes only have authority over abuses that occur in some countries but not others. For example, the United Nations Committee Against Torture can only examine possible cases of torture when the country responsible has agreed that the Committee can examine cases involving that country.</div>
+			<div class="question-explanation">Most justice institutions only have authority over abuses that occur in some countries but not others. For example, the United Nations Committee Against Torture can only examine possible cases of torture when the country responsible has agreed that the Committee can examine cases involving that country.</div>
 		    </div>
 		    <div id="flow_question_2a">
-			<div class="question-content">Did people who are citizens of any other country participate in the abuse(s)?</div>
-			<div class="question-explanation">Some tribunals and justice processes only have authority over abuses committed by people who are citizens of certain countries. For example, citizens of countries that agreed to the treaty of the International Criminal Court can be prosecuted by the Court, even if the crimes occurred in a different country.</div>
+			<div class="question-content">Did people who are citizens of any other country participate in committing the abuse(s)?</div>
+			<div class="question-explanation">Some justice institutions only have authority over abuses committed by people who are citizens of certain countries. For example, citizens of countries that agreed to the treaty of the International Criminal Court can be prosecuted by the Court, even if the crimes occurred in a different country.</div>
 			<div class="question-explanation">An answer of 'unknown' to this question assumes that there were not citizens of any other country who participated in the abuses. In other words, for this question an answer of 'unknown' will have the same result as 'no'.</div>
 		    </div>
 		    <div id="flow_question_2b">
-			<div class="question-content">What citizenship did they have?</div>
+			<div class="question-content">What other citizenship did they have?</div>
 		    </div>
 		    <div id="flow_question_3">
-			<div class="question-content">What is the date on which the abuse(s) happened? (If the abuses included detention or torture, when did the detention or torture end?)</div>
-			<div class="question-explanation">The authority of some tribunals or justice processes is restricted to abuses committed before or after certain dates. Often, this is the date when a country agreed to a particular treaty.  For example, the International Criminal Court can only investigate abuses that occurred after July 1, 2002, when the Court's treaty came into force. Also, some tribunals and justice processes require survivors or families to file their cases within a certain amount of time after the abuses occurred. This is known as "prescription" or a "limitations period."</div>
+			<div class="question-content"><p>What is the date on which the abuse(s) happened? (If the abuse lasted for more than one day, select the most recent date on which the abuse occurred).</p><p>Select a date using the calendar below.</p></div>
+			<div class="question-explanation">The authority of some justice institutions is restricted to abuses committed before or after certain dates. Often, this is the date when a country agreed to a particular treaty.  For example, the International Criminal Court can only investigate abuses that occurred after July 1, 2002, when the Court's treaty came into force. Also, some justice institutions require survivors or families to file their cases within a certain amount of time after the abuses occurred. This is known as "prescription" or a "limitations period."</div>
 		    </div>
 		    <div id="flow_question_4">
 			<div class="question-content">At the time of the abuse(s), what country was the victim a citizen of?</div>
@@ -391,26 +394,26 @@
 			    <p>Select ALL that apply from the following options.</p>
 			    <div class="question-important-note">If the victim was under 18 please ensure you check "Abuse against a child under the age of 18" and any other relevant abuses. If the victim was female please ensure you check "Abuse against a woman" and any other relevant abuses.</div>
 			</div>
-			<div class="question-explanation">Different tribunals and justice processes have authority over different kinds of human rights abuses. Some, like the United Nations Human Rights Committee, can consider a wide range of abuses. Others, like the Committee Against Torture, can consider a smaller set of abuses. Selecting the relevant acts on this list will provide the information necessary to determine which abuses might have been committed and therefore which tribunals and justice processes might be available.</div>
+			<div class="question-explanation">Different justice institutions have authority over different kinds of human rights abuses. Some, like the United Nations Human Rights Committee, can consider a wide range of abuses. Others, like the Committee Against Torture, can consider a smaller set of abuses. Selecting the relevant acts on this list will provide the information necessary to determine which abuses might have been committed and therefore which justice institutions might be available.</div>
 		    </div>
 		    <div id="flow_question_7">
 			<div class="question-content">Did the abuse(s) take place during a war?</div>
-			<div class="question-explanation">Some tribunals have authority over crimes that occur as a part of an international or civil war. These are known as "war crimes." Other tribunals have authority over crimes that did not happen during a war. For example, the International Criminal Court may be able to prosecute the murder of a civilian as a "war crime" if soldiers committed that murder during a war.</div>
+			<div class="question-explanation">Some justice institutions have authority over crimes that occur as a part of an international or civil war. These are known as "war crimes." Other institutions have authority over crimes that did not happen during a war. For example, the International Criminal Court may be able to prosecute the murder of a civilian as a "war crime" if soldiers committed that murder during a war.</div>
 		    </div>
 		    <div id="flow_question_8">
 			<div class="question-content">Were these kinds of abuses committed against many other people in the country at that time?</div>
-			<div class="question-explanation">Some tribunals have authority over crimes that are widespread or systematic in nature. These are known as "crimes against humanity." For example, the International Criminal Court can prosecute murder as a "crime against humanity" if that murder was part of widespread violence against civilians.</div>
+			<div class="question-explanation">Some justice institutions have authority over crimes that are widespread or systematic in nature. These are known as "crimes against humanity." For example, the International Criminal Court can prosecute murder as a "crime against humanity" if that murder was part of widespread violence against civilians.</div>
 		    </div>
 		    <div id="flow_question_9">
 			<div class="question-content">Was the victim targeted because of her/his race, ethnicity, religion or nationality?</div>
-			<div class="question-explanation">Some tribunals have authority over the crime of genocide, which refers to certain acts that are committed with the intention to destroy a particular group. For example, the International Criminal Court may be able to prosecute the killing or forced displacement of people of a particular religion or race.</div>
+			<div class="question-explanation">Some justice institutions have authority over the crime of genocide, which refers to certain acts that are committed with the intention to destroy a particular group. For example, the International Criminal Court may be able to prosecute the killing or forced displacement of people of a particular religion or race.</div>
 		    </div>
 		    <div id="flow_question_10">
 			<div class="question-content">
 				<p>Who committed the abuse(s)?</p>
 			    <p>Select ALL that apply from the following options.</p>
 			</div>
-			<div class="question-explanation">The authority of some tribunals and justice processes is limited to acts committed by government officials and does not extend to crimes committed by civilians. For example, "torture" is a human rights abuse that usually requires government involvement. If someone is beaten but there is no government involvement then it usually is not considered "torture" and falls outside the authority of international justice processes.</div>
+			<div class="question-explanation">The authority of some justice institutions is limited to acts committed by government officials and does not extend to crimes committed by civilians. For example, "torture" is a human rights abuse that usually requires government involvement. If someone is beaten but there is no government involvement then it usually is not considered "torture" and falls outside the authority of international justice institutions.</div>
 			<div class="question-explanation">Please answer 'unknown' if you are not completely sure who was responsible for the abuses. An answer of 'unknown' to this question will not eliminate any of the justice options.</div>
 		    </div>
 		    <div id="flow_question_11">
@@ -425,26 +428,26 @@
 		    </div>
 		    <div id="flow_question_13">
 			<div class="question-content">Do any of the people responsible for the abuse(s) ever travel outside the country where the abuse(s) happened?</div>
-			<div class="question-explanation">Many countries around the world have the authority to prosecute people present in their territory who committed certain abuses, no matter where the abuses happened. Although analysis of this option is too complicated for this website, the answer to this question could be useful to CCIJ if you decide to contact us about your justice options.</div>
+			<div class="question-explanation">Many countries around the world have the authority to prosecute people present in their territory who committed certain abuses, no matter where the abuses happened. Although analysis of this option is beyond the scope of this website, the answer to this question could be useful to CCIJ if you decide to contact us about your justice options.</div>
 			<div class="question-explanation">An answer of 'unknown' to this question assumes that none of the people responsible for the abuses travel outside the country. In other words, for this question an answer of 'unknown' will have the same result as 'no'.</div>
 		    </div>
 		    <div id="flow_question_14a">
 			<div class="question-content">In your opinion, in the country where the abuse(s) occurred, are the courts fair and independent, such that justice can be achieved there?</div>
-			<div class="question-explanation">Many tribunals and justice processes assume that governments have the primary responsibility to investigate and punish abuses in the place where they happened. For this reason, their authority may be limited to situations in which the responsible government is unwilling or unable to take action or the courts are not fair and independent.</div>
+			<div class="question-explanation">Many justice institutions assume that governments have the primary responsibility to investigate and punish abuses in the place where they happened. For this reason, their authority may be limited to situations in which the responsible government is unwilling or unable to take action or the courts are not fair and independent.</div>
 			<div class="question-explanation">An answer of 'unknown' to this question assumes that the courts are not fair and independent. In other words, for this question an answer of 'unknown' will have the same result as 'no'.</div>
 		    </div>
 		    <div id="flow_question_14b">
 			<div class="question-content">Did the victim or the victim's family try to bring a case or a complaint before the courts, the police or other authorities in the country where the abuses occurred?</div>
-			<div class="question-explanation">If the survivor or victim's family has tried to bring a case in the country where the abuses occurred but that case failed for certain reasons, this might make it more likely that an international justice process might look into the case.</div>
+			<div class="question-explanation">If the survivor or victim's family has tried to bring a case in the country where the abuses occurred but that case failed for certain reasons, this may make it more likely that an international justice institution may look into the case.</div>
 			<div class="question-explanation">An answer of 'unknown' to this question assumes that the victim or the victim's family did <u>not</u> try to bring a case or a complaint. In other words, for this question an answer of 'unknown' will have the same result as 'no'.</div>
 		    </div>
 		    <div id="flow_question_14c">
 			<div class="question-content">What was the result?</div>
-			<div class="question-explanation">If the survivor or victim's family has tried to bring a case in the country where the abuses occurred but that case failed for certain reasons, this might make it more likely that an international justice process might look into the case.</div>
+			<div class="question-explanation">If the survivor or victim's family has tried to bring a case in the country where the abuses occurred but that case failed for certain reasons, this may make it more likely that an international justice institution may look into the case.</div>
 		    </div>
 		    <div id="flow_question_15">
 			<div class="question-content">Has the victim or the victim's family submitted a complaint to any other international court or body?</div>
-			<div class="question-explanation">Some tribunals and justice processes want to avoid duplicating the work of other justice processes. As a result, many will decline to accept a case if another tribunal or justice process is already reviewing the case.</div>
+			<div class="question-explanation">Some justice institutions want to avoid duplicating the work of other institutions. As a result, many will decline to accept a case if another tribunal or international body is already reviewing the case.</div>
 			<div class="question-explanation">An answer of 'unknown' to this question assumes that the victim or the victim's family did <u>not</u> submit a complaint to any other international court or body. In other words, for this question an answer of 'unknown' will have the same result as 'no'.</div>
 		    </div>
 		</div>
@@ -465,13 +468,13 @@
 	<hr id="ccij_footer_hr" />
 	<footer>
 	    <div class="container">
-		<p>Ottawa office: 613-230-6114,&nbsp;&nbsp;Vancouver office: 604-569-1778,&nbsp;&nbsp;Fax: 613-746-2411,&nbsp;&nbsp;meisenbrandt@ccij.ca</p>
+		<p>Ottawa office: 613-230-6114,&nbsp;&nbsp;Vancouver office: 604-569-1778,&nbsp;&nbsp;Fax: 613-746-2411,&nbsp;&nbsp;Email: meisenbrandt@ccij.ca</p>
 	    </div>
 	</footer>
 	<script type="text/javascript">
 	    var requirejs = {urlArgs: 'flow-v=0.9.0'};
 	    window.CCIJ = {language: 'english'};
 	</script>
-	<script type="text/javascript" data-main="js/app-en" src="js/lib/require-2.1.11.js"></script>
+	<script type="text/javascript" data-main="js/dist/ccij-flow-en" src="js/lib/require-2.1.11.js"></script>
     </body>
 </html>
