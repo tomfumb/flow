@@ -7,6 +7,8 @@ should all mechanisms include 'Unknown' for abusers?
 
 will Pam's translation include text changes after testing?
 
+update ccijEmail var
+
 
 HIGH
 - Technical handover email (awaiting completion of testing / refinements)

@@ -38,7 +38,9 @@
 			<div class="tab-pane" id="flow_outcome_what_now">
 				<div class="row">
 					<div class="col-24 col-xs-24 col-sm-24 col-md-24 col-lg-24">
-						<h3>What To Do Next?</h3>
+						<h3 class="pull-left">What To Do Next?</h3>
+                        <button type="button" class="btn btn-primary feedback-send-link pull-right" style="margin-top: 15px;">Feedback</button>
+                        <div class="clearer"></div>
 						<p>You can take any of the following steps or end your session.</p>
 						<ol id="flow_next_steps_list">
 							<li>
@@ -63,18 +65,12 @@
 						<input id="flow_identity_email" type="text" class="form-control" placeholder="Your Email Address">
 						<input type="checkbox" id="flow_identity_news" style="display: none;" checked="checked" />
 					</div>
+                    <div class="spacer-10"></div>
 				</div>
-				<div class="spacer-10"></div>
 				<div class="row">
 					<div class="col-16 col-xs-16 col-sm-16 col-md-16 col-lg-16 col-xs-offset-2 col-sm-offset-2 col-md-offset-2 col-lg-offset-2">
 						<button type="button" id="flow_identity_send" disabled="disabled" class="btn btn-primary">Send</button>
 						<span id="flow_identity_thanks">Thanks!</span>
-					</div>
-				</div>
-				<div class="spacer-20"></div>
-				<div class="row">
-					<div class="col-24 col-xs-24 col-sm-24 col-md-24 col-lg-24">
-						<button type="button" class="btn btn-primary feedback-send-link">Provide Feedback</button>
 					</div>
 				</div>
 			</div>
