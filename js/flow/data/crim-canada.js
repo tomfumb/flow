@@ -40,7 +40,7 @@ define(['jquery'], function($) {
 			
 			// check Canada is a relevant country - either abuse was by a Canadian, the abused was Canadian, or the abuser spends time in Canada
 			proceed = false;
-			if(q1.isNotAnswered() || q1.hasCountry(relevantCountries)) {
+			if((q1.isNotAnswered() || q1.hasCountry(relevantCountries)) || (q2a.hasAnswer('Yes') && q2b.hasCountry(relevantCountries))) {
 				proceed = true;
 			}
 			if(q4.isNotAnswered() || q4.hasCountry(relevantCountries)) {

@@ -336,6 +336,7 @@ define(
 		
 		onSlideStart: function() {
 			this.$el.find('div.flow-carousel-navigation').prop('disabled', true);
+			this.$el.find('.start-again-button').css('visibility', 'hidden');
 		},
 		
 		onSlideStop: function(event) {
@@ -358,6 +359,7 @@ define(
 			summaryEl.removeClass('btn-default btn-success').addClass('btn-primary');
 			
 			this.$el.find('div.flow-carousel-navigation').prop('disabled', false);
+			this.$el.find('.start-again-button').css('visibility', 'visible');
 			
 			this.resizeQuestionContainers(true);
 		},
