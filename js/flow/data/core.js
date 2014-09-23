@@ -321,16 +321,17 @@ define(['jquery', 'data/ac-hpr', 'data/civil-canada', 'data/crim-canada', 'data/
 		answers: function() {
 			
 			var answers = [
-				{english: "Soldier in government's army", french: "Soldat dans l'armée de gouvernement"},
+				{ english: "Soldier in government's army", french: "Soldat dans l'armée de gouvernement" },
+				{ english: "Police officer", french: "L'officier de police" },
+				{ english: "Other government official", french: "Autre représentant du gouvernement" },
+				{english: "Company or corporation", french: "Société"},
 				{english: "Soldier in rebel army", french: "Soldat dans l'armée rebelle"},
-				{english: "Police officer", french: "L'officier de police"},
 				{english: "None of the above", french: "Aucune de ces réponses"},
-				{english: "Other government official", french: "Autre représentant du gouvernement"},
-				{english: "Unknown", french: "Inconnu"},
-				{english: "Company or corporation", french: "Société"}
+				{english: "Unknown", french: "Inconnu"}
 			];
 			
 			answers.preventSort = true;
+			answers.preventMultipleCols = true;
 			return answers;
 		}(),
 		answerType: 'multi-select'

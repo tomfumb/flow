@@ -7,8 +7,8 @@
 <html lang="en">
     <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link href="css/src/ccij.css?flow-v=0.9.26" rel="stylesheet" type="text/css" />
-	<link href="css/print.css?flow-v=0.9.26" rel="stylesheet" type="text/css" media="print" />
+	<link href="css/src/ccij.css?flow-v=0.9.27" rel="stylesheet" type="text/css" />
+	<link href="css/print.css?flow-v=0.9.27" rel="stylesheet" type="text/css" media="print" />
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!--[if lt IE 9]>
 	  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -480,7 +480,7 @@
 		<div id="flow_size_lg" class="size-check device-lg visible-lg"></div>
 	</div>
 	<script type="text/javascript">
-	    var requirejs = {urlArgs: 'flow-v=0.9.26'};
+	    var requirejs = {urlArgs: 'flow-v=0.9.27'};
 	    window.CCIJ = {language: 'english'};
 	</script>
 	<script type="text/javascript" data-main="js/app-en" src="js/lib/require-2.1.11.js"></script>
