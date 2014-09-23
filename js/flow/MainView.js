@@ -13,13 +13,18 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'flow/Shared', 'ui/Conte
 			this.questions.on('change:questionAnswered', _.bind(this.onQuestionAnswered, this));
 		},
 		
-		render: function() {
+		render: function () {
+
+			this.sizeChecks = $('#flow_size_check .size-check');
+			this.updateCurrentSize();
 			
 			this.content = new contentView();
 			this.content.sharedData = new sharedData();
-			this.content.render();
+			this.content.render(this.currentSize);
 			
 			this.content.addOutcomes(this.outcomes);
+
+			$(window).resize(_.bind(this.onWindowResize, this));
 		},
 		
 		onQuestionsReady: function() {
@@ -49,6 +54,28 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'flow/Shared', 'ui/Conte
 		
 		onQuestionAnswered: function(answeredQuestion) {
 			this.content.showNextQuestion();
+		},
+
+		onWindowResize: function () {
+			
+			var previousSize = this.currentSize;
+			this.updateCurrentSize();
+
+			if (previousSize !== this.currentSize) {
+				this.content.sizeChanged(this.currentSize);
+			}
+		},
+
+		updateCurrentSize: function () {
+
+			this.currentSize = 'unknown';
+			_.each(this.sizeChecks, function (element) {
+				var jqEl = $(element);
+				if (jqEl.is(':visible')) {
+					this.currentSize = jqEl.attr('id').replace(/^flow_size_/, '');
+					return false;
+				}
+			}, this);
 		}
 	});
 });

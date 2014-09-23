@@ -7,8 +7,8 @@
 <html lang="en">
     <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link href="css/src/ccij.css?flow-v=0.9.13" rel="stylesheet" type="text/css" />
-	<link href="css/print.css?flow-v=0.9.13" rel="stylesheet" type="text/css" media="print" />
+	<link href="css/src/ccij.css?flow-v=0.9.21" rel="stylesheet" type="text/css" />
+	<link href="css/print.css?flow-v=0.9.21" rel="stylesheet" type="text/css" media="print" />
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!--[if lt IE 9]>
 	  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -472,8 +472,15 @@
 	<footer id="ccij_footer">
 	    <div>Ottawa office: 613-230-6114,&nbsp;&nbsp;Vancouver office: 604-569-1778,&nbsp;&nbsp;Fax: 613-746-2411,&nbsp;&nbsp;Email: <a href="mailto:meisenbrandt@ccij.ca">meisenbrandt@ccij.ca</a></div>
 	</footer>
+	<!-- breakpoint check adapted from http://stackoverflow.com/a/22885503/519575 -->
+	<div id="flow_size_check">
+		<div id="flow_size_xs" class="size-check device-xs visible-xs"></div>
+		<div id="flow_size_sm" class="size-check device-sm visible-sm"></div>
+		<div id="flow_size_md" class="size-check device-md visible-md"></div>
+		<div id="flow_size_lg" class="size-check device-lg visible-lg"></div>
+	</div>
 	<script type="text/javascript">
-	    var requirejs = {urlArgs: 'flow-v=0.9.13'};
+	    var requirejs = {urlArgs: 'flow-v=0.9.21'};
 	    window.CCIJ = {language: 'english'};
 	</script>
 	<script type="text/javascript" data-main="js/app-en" src="js/lib/require-2.1.11.js"></script>

@@ -13,7 +13,9 @@ define(
 		
 		postOutcomeUpdateActions: [],
 		
-		render: function() {
+		render: function (currentSize) {
+
+			Log.debug(currentSize);
 			
 			this.$el.append(contentTemplate);
 			
@@ -33,6 +35,21 @@ define(
 			this.questionSummaryContainer.on('swiperight', _.bind(this.onSummarySlideRightRequested, this));
 			
 			$(window).resize(_.bind(this.onWindowResize, this));
+		},
+
+		sizeChanged: function(newSize) {
+			
+			switch (newSize) {
+
+				case 'xs':
+
+					break;
+				case 'sm':
+				case 'md':
+				case 'lg':
+
+					break;
+			}
 		},
 		
 		addQuestions: function(questions) {
