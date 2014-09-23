@@ -297,8 +297,6 @@ define(['jquery', 'data/ac-hpr', 'data/civil-canada', 'data/crim-canada', 'data/
 			{english: "Prolonged sleep deprivation", french: "Privation prolongée de sommeil"},
 			{english: "Punching", french: "Poinçonnage"},
 			{english: "Rape or other sexual assault", french: "Viol ou autre agression sexuelle"},
-			{english: "Religious persecution", french: "La persécution religieuse"},
-			{english: "Serious mental harm to a person based on race, ethnicity, religion or nationality", french: "Mentale grave à une personne fondée sur la race, l'origine ethnique, la religion ou la nationalité"},
 			{english: "Severe mental suffering", french: "Souffrance mentale grave"},
 			{english: "Solitary confinement", french: "Régime cellulaire"},
 			{english: "Stealing children", french: "Voler les enfants"},
