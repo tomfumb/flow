@@ -15,7 +15,7 @@ define(
 		
 		render: function (currentSize) {
 
-			Log.debug(currentSize);
+			this.currentSize = currentSize;
 			
 			this.$el.append(contentTemplate);
 			
@@ -37,18 +37,11 @@ define(
 			$(window).resize(_.bind(this.onWindowResize, this));
 		},
 
-		sizeChanged: function(newSize) {
-			
-			switch (newSize) {
+		sizeChanged: function (newSize) {
 
-				case 'xs':
-
-					break;
-				case 'sm':
-				case 'md':
-				case 'lg':
-
-					break;
+			this.currentSize = newSize;
+			if (this.outcomePreviews) {
+				this.outcomePreviews.sizeChanged(this.currentSize);
 			}
 		},
 		
@@ -497,7 +490,7 @@ define(
 			this.outcomeManager = new OutcomeManagerView({model: outcomes});
 			this.outcomeManager.sharedData = this.sharedData;
 			this.outcomeManager.render(this.$el.find('#flow_content_container_row'));
-			this.outcomePreviews.render(_.bind(this.outcomeShowRequested, this));
+			this.outcomePreviews.render(_.bind(this.outcomeShowRequested, this), this.currentSize);
 		},
 		
 		outcomeShowRequested: function(outcome) {

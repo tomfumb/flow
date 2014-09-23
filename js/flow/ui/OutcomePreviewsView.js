@@ -13,7 +13,7 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'ui/OutcomePreviewView',
 		slideLeftEnabled: false,
 		slideRightEnabled: false,
 		
-		render: function(previewClickHandler) {
+		render: function(previewClickHandler, currentSize) {
 			
 			this.onPreviewClicked = previewClickHandler;
 			
@@ -45,10 +45,16 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'ui/OutcomePreviewView',
 			
 			this.outcomePreviewRow = this.$el.find('#flow_outcome_preview_row');
 			this.outcomePreviews = this.$el.find('.available-outcome-preview');
+			this.outcomePreviewsRowWrap = this.$el.find('#flow_outcome_preview_row_wrap');
 			this.outcomePreviewMoveContainer = this.$el.find('#flow_available_outcome_previews');
 			this.originalLeftMovePos = this.getLeftHide();
 			this.moveRightPadWidth = this.$el.find('#flow_available_count_side_pad_right').outerWidth();
 			this.availableOutcomeCountEl = this.$el.find('#flow_available_count_main');
+
+			this.outcomePreviewsStrip = this.outcomePreviewMoveContainer;
+			this.outcomePreviewsGrid = this.$el.find('#flow_available_outcome_previews_grid');
+			this.previewStripParts = this.$el.find('.preview-strip');
+			this.previewGridParts = this.$el.find('.preview-grid');
 			
 			this.slideLeftCtrl = this.$el.find('#flow_available_outcome_preview_move_left');
 			this.slideRightCtrl = this.$el.find('#flow_available_outcome_preview_move_right');
@@ -63,12 +69,55 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'ui/OutcomePreviewView',
 			this.historyNavBack = this.$el.find('#flow_outcome_history_back');
 			this.historyNavFwd = this.$el.find('#flow_outcome_history_fwd');
 			this.handleOutcomeHistoryNav();
+
+			this.accommodateSize(currentSize);
 			
 			$(window).resize(_.bind(this.onWindowResize, this));
 		},
 		
 		onShow: function() {
 			this.checkSlideEnabled();
+		},
+
+		sizeChanged: function (newSize) {
+			this.accommodateSize(newSize);
+		},
+
+		accommodateSize: function(size) {
+			
+			var previews;
+			switch (size) {
+
+				case 'xs':
+
+					previews = this.outcomePreviewsGrid.find('li');
+					if (previews) {
+						previews.appendTo(this.outcomePreviewsStrip);
+					}
+
+					this.outcomePreviewsRowWrap.css('margin-bottom', 0);
+
+					this.previewGridParts.hide();
+					this.previewStripParts.show();
+
+					break;
+
+				case 'sm':
+				case 'md':
+				case 'lg':
+
+					previews = this.outcomePreviewsStrip.find('li');
+					if (previews) {
+						previews.appendTo(this.outcomePreviewsGrid);
+					}
+
+					this.outcomePreviewsRowWrap.css('margin-bottom', '-70px');
+
+					this.previewGridParts.show();
+					this.previewStripParts.hide();
+
+					break;
+			}
 		},
 		
 		getAvailablePreviewsHtml: function() {
