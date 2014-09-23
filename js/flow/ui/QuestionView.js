@@ -246,7 +246,8 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'flow/ui/QuestionExplana
 						dateFormat: 'yy/mm/dd',
 						changeMonth: true,
 						changeYear: true,
-						yearRange: '1900:' + (new Date()).getFullYear()
+						yearRange: '1900:' + (new Date()).getFullYear(),
+						showAnim: ''
 					});
 				}
 				
