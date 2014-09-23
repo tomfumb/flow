@@ -3,6 +3,10 @@
 @import url('../lib/jquery-ui/flick/jquery-ui.min.css');
 @import url('./flow/flow.css');
 
+html, body {
+	height: 100%;
+}
+
 body {
 	font-family: sans-serif;
 }
@@ -11,6 +15,14 @@ input[type='text'], textarea {font-size: 16px;}
 
 a {
 	word-break: break-all;
+}
+
+#ccij_pre_header_wrap_outer {
+	min-height: 100%;
+}
+
+#ccij_pre_header_wrap {
+	padding-bottom: 50px;
 }
 
 #ccij_header {
@@ -116,8 +128,23 @@ a {
 	font-style: italic;
 }
 
-#ccij_footer_hr {
-	margin: 10px 0 10px 0;
+#ccij_footer {
+	border-top: 1px solid #d0d0d0;
+	height: 40px;
+	position: relative;
+	margin-top: -40px;
+	clear:both;
+	display: table;
+	width: 100%;
+	padding: 0 10px 0 10px;
+	font-size: small;
+	color: gray;
+	text-align: center;
+}
+
+#ccij_footer div {
+	display: table-cell;
+	vertical-align: middle;
 }
 
 img.sprites { background: url(../../images/sprites.png?flow-v=0.9.13) no-repeat; }
