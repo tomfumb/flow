@@ -1,15 +1,5 @@
 To Do:
 
-
-ensure French versions of all views and templates are updated after changes are complete
-
-should all mechanisms include 'Unknown' for abusers?
-
-will Pam's translation include text changes after testing?
-
-update ccijEmail var
-
-
 HIGH
 - Technical handover email (awaiting completion of testing / refinements)
 	- php configuration and server requirements
