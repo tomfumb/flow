@@ -9,18 +9,6 @@
 				<img src="images/0.png" class="sprites emblem-notice" width="24" height="24" title="Why this question?" />
 				Why this question?
 			</div>
-			<div class="question-explanation-content">
-				<% if(explanations.length > 1) { %>
-					<ul>
-					<% _.each(explanations, function(explanation) { %> 
-						<li><%= explanation %></li>
-					<% }) %>
-					</ul>
-				<% }
-				else { %>
-					<p><%= explanations[0] %></p>
-				<% } %>
-			</div>
 		</div>
 		<% } %>
 	</div>
@@ -29,3 +17,7 @@
 	</div>
 	<hr />
 </div>
+<span class="question-area-appends">
+	<span class="question-activity-indicator"></span>
+	<span class="start-again-control"><button type="button" class="btn btn-primary start-again-button">Start Again</button></span>
+</span>

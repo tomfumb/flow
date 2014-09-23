@@ -1,16 +1,16 @@
 <div class="container" style="width: 100%">
 	<div class="row">
-		<div class="col-xs-24 col-sm-24 col-md-24 col-lg-24 minor-info">Select all that apply from the following options:</div>
-	</div>
-	<div class="row">
+		<%
+			var mdLgClasses = 'col-md-12 col-lg-12';
+			if(answers.preventMultipleCols) {
+				mdLgClasses = 'col-md-24 col-lg-24';
+			}
+		%>
 		<% _.each(answers, function(answer, index) { %>
-			<div class="col-xs-24 col-sm-24 col-md-12 col-lg-12">
-				<input type="checkbox"
-					id="q<%= question.get("id") %>_a_<%= index %>"
-					value="<%= answer.value %>"
-				/>
-				<span class="answer-checkbox-text clickable"><%= answer.display %></span>
-			</div>
+		<div class="col-xs-24 col-sm-24 <%= mdLgClasses %>">
+			<input type="checkbox" id="q<%= question.get(" id") %>_a_<%= index %>" value="<%= answer.value %>" />
+			<span class="answer-checkbox-text clickable"><%= answer.display %></span>
+		</div>
 		<% }); %>
 	</div>
 	<div class="row spacer-10">
