@@ -7,8 +7,8 @@
 <html lang="en">
     <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link href="css/src/ccij.css?flow-v=0.9.3" rel="stylesheet" type="text/css" />
-	<link href="css/print.css?flow-v=0.9.3" rel="stylesheet" type="text/css" media="print" />
+	<link href="css/src/ccij.css?flow-v=0.9.32" rel="stylesheet" type="text/css" />
+	<link href="css/print.css?flow-v=0.9.32" rel="stylesheet" type="text/css" media="print" />
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!--[if lt IE 9]>
 	  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -371,7 +371,7 @@
 				<div id="flow_question_2a">
 				<div class="question-content">Did people who are citizens of any other country participate in committing the abuse(s)?</div>
 				<div class="question-explanation">Some justice institutions only have authority over abuses committed by people who are citizens of certain countries. For example, citizens of countries that agreed to the treaty of the International Criminal Court can be prosecuted by the Court, even if the crimes occurred in a different country.</div>
-				<div class="question-explanation">An answer of 'unknown' to this question assumes that there were not citizens of any other country who participated in the abuses. In other words, for this question an answer of 'unknown' will have the same result as 'no'.</div>
+				<div class="question-explanation">An answer of 'unknown' to this question assumes that there were <u>not</u> citizens of any other country who participated in the abuses. In other words, for this question an answer of 'unknown' will have the same result as 'no'.</div>
 				</div>
 				<div id="flow_question_2b">
 				<div class="question-content">What other citizenship did they have?</div>
@@ -436,7 +436,7 @@
 				<div id="flow_question_14a">
 				<div class="question-content">In your opinion, in the country where the abuse(s) occurred, are the courts fair and independent, such that justice can be achieved there?</div>
 				<div class="question-explanation">Many justice institutions assume that governments have the primary responsibility to investigate and punish abuses in the place where they happened. For this reason, their authority may be limited to situations in which the responsible government is unwilling or unable to take action or the courts are not fair and independent.</div>
-				<div class="question-explanation">An answer of 'unknown' to this question assumes that the courts are not fair and independent. In other words, for this question an answer of 'unknown' will have the same result as 'no'.</div>
+				<div class="question-explanation">An answer of 'unknown' to this question assumes that the courts are <u>not</u> fair and independent. In other words, for this question an answer of 'unknown' will have the same result as 'no'.</div>
 				</div>
 				<div id="flow_question_14b">
 				<div class="question-content">Did the victim or the victim's family try to bring a case or a complaint before the courts, the police or other authorities in the country where the abuses occurred?</div>
@@ -480,7 +480,7 @@
 		<div id="flow_size_lg" class="size-check device-lg visible-lg"></div>
 	</div>
 	<script type="text/javascript">
-	    var requirejs = {urlArgs: 'flow-v=0.9.3'};
+	    var requirejs = {urlArgs: 'flow-v=0.9.32'};
 	    window.CCIJ = {language: 'english'};
 	</script>
 	<script type="text/javascript" data-main="js/app-en" src="js/lib/require-2.1.11.js"></script>

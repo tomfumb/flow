@@ -8,7 +8,7 @@ define(['flow/Log'], function(Log) {
 				return true;
 			}
 			
-			if(q2a.hasAnswer('Yes') && (q2b.hasCountry(relevantCountries))) {
+			if(q2b.isAvailable() && (q2b.hasCountry(relevantCountries))) {
 				return true;
 			}
 
@@ -20,7 +20,7 @@ define(['flow/Log'], function(Log) {
 			
 			var q1Dates = q1.relevantDatesForSelectedCountry(relevantCountries), q2bDates = q2b.relevantDatesForSelectedCountry(relevantCountries);
 			if (
-				(q1.isNotAnswered() || (q2b.isAvailable() && q2b.isNotAnswered()) || q3.isNotAnswered()) ||
+				(q1.isNotAnswered() || q3.isNotAnswered()) ||
 				(q1.isAnswered() && q1Dates && q3.isAfterOrOnDate(q1Dates)) ||
 				(q2b.isAnswered() && q2bDates && q3.isAfterOrOnDate(q2bDates))) {
 					

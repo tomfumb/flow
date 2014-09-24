@@ -20,17 +20,6 @@ define(['jquery', 'data/outcome-common'], function($, Common) {
 				return false;
 			}
 			
-			// check abuse date / end date against selected country(ies)
-			proceed = false;
-			if((q1.isNotAnswered() || q1.hasCountry(relevantCountries)) || (q2a.hasAnswer('Yes') && q2b.hasCountry(relevantCountries))) {
-				proceed = true;
-			}
-			
-			// exit if country(ies) not covered by mechanism on the entered date
-			if(!proceed) {
-				return false;
-			}
-			
 			// check for covered abuses
 			if(!Common.abuses(q6, relevantAbuses, this)) {
 				return false;
