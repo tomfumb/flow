@@ -84,13 +84,13 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'ui/OutcomePreviewView',
 		},
 
 		accommodateSize: function(size) {
-			
+
 			var previews;
 			switch (size) {
 
 				case 'xs':
 
-					previews = this.outcomePreviewsGrid.find('li');
+					previews = this.outcomePreviewsGrid.find('li').not('#flow_preview_grid_space_preserver');
 					if (previews) {
 						previews.appendTo(this.outcomePreviewsStrip);
 					}
