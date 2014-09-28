@@ -7,8 +7,8 @@
 <html lang="en">
     <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link href="css/src/ccij.css?flow-v=0.9.32" rel="stylesheet" type="text/css" />
-	<link href="css/print.css?flow-v=0.9.32" rel="stylesheet" type="text/css" media="print" />
+	<link href="css/src/ccij.css?flow-v=0.9.43" rel="stylesheet" type="text/css" />
+	<link href="css/print.css?flow-v=0.9.43" rel="stylesheet" type="text/css" media="print" />
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!--[if lt IE 9]>
 	  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -19,13 +19,6 @@
     <body>
 	<div id="ccij_pre_header_wrap_outer">
 	<div id="ccij_pre_header_wrap">
-		<!--
-		<div id="ccij_header" class="hidden-xs">
-			<a href="http://ccij.ca/index-e.php"><img src="images/0.png" class="sprites ccij-logo-e" alt="CCIJ English Logo" width="175" height="64" /></a>
-			<a href="http://ccij.ca/"><img src="images/0.png" class="sprites ccij-name" alt="CCIJ Name Image" width="249" height="64" /></a>
-			<a href="http://ccij.ca/f/index.php"><img src="images/0.png" class="sprites ccij-logo-f" alt="CCIJ French Logo" width="175" height="64" /></a>
-		</div>
-		-->
 		<div id="ccij_navbar" class="navbar navbar-inverse navbar-static-top" role="navigation">
 			<div class="container">
 			<div class="navbar-header">
@@ -43,7 +36,9 @@
 				<li><a href="#remedies" id="ccij_remedies_nav">Justice Institutions</a></li>
 				<li><a href="index-fr.php">Francais</a></li>
 				<li>&nbsp;&nbsp;&nbsp;</li>
+				<!--
 				<li><a href="#stories" id="ccij_stories_nav">Stories <span class="glyphicon glyphicon-new-window title-supplemental-top" title="External Link"></span></a></li>
+				-->
 				</ul>
 			</div>
 			</div>
@@ -58,18 +53,20 @@
 				</div>
 				</div>
 				<div class="row">
-				<div id="ccij_assess_entry" class="entry-point app-navigator col-md-7 col-lg-7 clickable">
+				<div id="ccij_assess_entry" class="entry-point app-navigator col-md-11 col-lg-11 clickable">
 					<h3>Assess Your Options</h3>
 					<p><img src="images/0.png" width="48" height="48" title="Assess your options" class="entry-point-img sprites test" />Our assessment tool will take you through a series of questions about the acts committed against you or your family members and suggest possible options for pursuing justice.</p>
 				</div>
-				<div id="ccij_remedies_entry" class="entry-point app-navigator col-md-7 col-lg-7 col-md-offset-1 col-lg-offset-1 clickable">
+				<div id="ccij_remedies_entry" class="entry-point app-navigator col-md-11 col-lg-11 col-md-offset-2 col-lg-offset-2 clickable">
 					<h3>Justice Institutions</h3>
 					<p><img src="images/0.png" width="48" height="48" title="Descriptions" class="entry-point-img sprites gavel" />Learn about different bodies that address human rights abuses by reading short descriptions of international courts, United Nations committees, regional human rights commissions and Canadian processes.</p>
 				</div>
+				<!--
 				<div id="ccij_stories_entry" class="entry-point col-md-7 col-lg-7 col-md-offset-1 col-lg-offset-1 clickable">
 					<h3>Stories<span class="glyphicon glyphicon-new-window title-supplemental-top" title="External Link"></span></h3>
 					<p><img src="images/0.png" width="48" height="48" title="Stories" class="entry-point-img sprites book" />CCIJ has helped survivors and families pursue justice through many different processes. Read, hear and watch their stories to learn about their experiences and the successes and challenges they have faced in seeking justice.</p>
 				</div>
+				-->
 				</div>
 			</div>
 			</div>
@@ -480,7 +477,7 @@
 		<div id="flow_size_lg" class="size-check device-lg visible-lg"></div>
 	</div>
 	<script type="text/javascript">
-	    var requirejs = {urlArgs: 'flow-v=0.9.32'};
+	    var requirejs = {urlArgs: 'flow-v=0.9.43'};
 	    window.CCIJ = {language: 'english'};
 	</script>
 	<script type="text/javascript" data-main="js/app-en" src="js/lib/require-2.1.11.js"></script>
