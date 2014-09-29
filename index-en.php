@@ -7,8 +7,8 @@
 <html lang="en">
     <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link href="css/src/ccij.css?flow-v=0.9.45" rel="stylesheet" type="text/css" />
-	<link href="css/print.css?flow-v=0.9.45" rel="stylesheet" type="text/css" media="print" />
+	<link href="css/src/ccij.css?flow-v=0.9.48" rel="stylesheet" type="text/css" />
+	<link href="css/print.css?flow-v=0.9.48" rel="stylesheet" type="text/css" media="print" />
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!--[if lt IE 9]>
 	  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -389,8 +389,23 @@
 				</div>
 				<div id="flow_question_6">
 				<div class="question-content">
-					<p>Describe the abuse(s) committed against the victim.</p>
-					<p>Select ALL that apply from the following options.</p>
+					<div class="question-answerer-check-yes-no-radio">
+						<form>
+							<p>Was the abuse committed against a woman?
+								<input type="radio" id="q6_woman_yes" name="Abuse against a woman" value="yes" /><label for="q6_woman_yes">Yes</label>
+								<input type="radio" id="q6_woman_no" name="Abuse against a woman" value="no" checked="checked" /><label for="q6_woman_no">No</label>
+							</p>
+						</form>
+					</div>
+					<div class="question-answerer-check-yes-no-radio">
+						<form>
+							<p>Was the abuse committed against a child under the age of 18?
+								<input type="radio" id="q6_child_yes" name="Abuse against a child under the age of 18" value="yes" /><label for="q6_child_yes">Yes</label>
+								<input type="radio" id="q6_child_no" name="Abuse against a child under the age of 18" value="no" checked="checked" /><label for="q6_child_no">No</label>
+							</p>
+						</form>
+					</div>
+					<p>Describe the abuse(s) committed against the victim. Select ALL that apply from the following options.</p>
 					<div class="question-important-note">If the victim was under 18 please ensure you check "Abuse against a child under the age of 18" and any other relevant abuses. If the victim was female please ensure you check "Abuse against a woman" and any other relevant abuses.</div>
 				</div>
 				<div class="question-explanation">Different justice institutions have authority over different kinds of human rights abuses. Some, like the United Nations Human Rights Committee, can consider a wide range of abuses. Others, like the Committee Against Torture, can consider a smaller set of abuses. Selecting the relevant acts on this list will provide the information necessary to determine which abuses might have been committed and therefore which justice institutions might be available.</div>
@@ -477,7 +492,7 @@
 		<div id="flow_size_lg" class="size-check device-lg visible-lg"></div>
 	</div>
 	<script type="text/javascript">
-	    var requirejs = {urlArgs: 'flow-v=0.9.45'};
+	    var requirejs = {urlArgs: 'flow-v=0.9.48'};
 	    window.CCIJ = {language: 'english'};
 	</script>
 	<script type="text/javascript" data-main="js/app-en" src="js/lib/require-2.1.11.js"></script>

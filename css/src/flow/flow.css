@@ -428,6 +428,10 @@ input.hint-text {
 	color: #fff;
 }
 
+.question-answerer-check-yes-no-radio input {
+	margin-left: 10px;
+}
+
 #flow_restart_confirm {
 	display: none;
 }

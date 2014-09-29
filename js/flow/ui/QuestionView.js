@@ -234,25 +234,86 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'flow/ui/QuestionExplana
 			
 			if(!this.hadFirstShow) {
 				
-				var select = this.$el.find('select.multi_answer_select');
-				if(select.length && !select.hasClass('form-control')) {
-					select.addClass('form-control');
-				}
-				
-				var datePicker = this.$el.find('input.date-selector');
-				if(datePicker.length) {
-					datePicker.datepicker({
-						showOn: 'both',
-						dateFormat: 'yy/mm/dd',
-						changeMonth: true,
-						changeYear: true,
-						yearRange: '1900:' + (new Date()).getFullYear(),
-						showAnim: ''
-					});
-				}
-				
+				this.prepareSelects();
+				this.prepareDatePickers();
+				this.prepareQuestionAnswerers();
+			
 				this.hadFirstShow = true;
 			}
+		},
+
+		prepareSelects: function () {
+
+			var select = this.$el.find('select.multi_answer_select');
+			if (select.length && !select.hasClass('form-control')) {
+				select.addClass('form-control');
+			}
+		},
+
+		prepareDatePickers: function () {
+
+			var datePicker = this.$el.find('input.date-selector');
+			if (datePicker.length) {
+				datePicker.datepicker({
+					showOn: 'both',
+					dateFormat: 'yy/mm/dd',
+					changeMonth: true,
+					changeYear: true,
+					yearRange: '1900:' + (new Date()).getFullYear(),
+					showAnim: ''
+				});
+			}
+		},
+
+		prepareQuestionAnswerers: function () {
+
+			this.questionAnswererPairs = [];
+			var radioAnswerers = this.$el.find('.question-answerer-check-yes-no-radio input[type="radio"]');
+
+			if (radioAnswerers.length) {
+
+				_.each(radioAnswerers, function (answerer) {
+
+					var answerPart = this.$el.find('.answers input[value="' + answerer.name + '"]');
+					if(answerPart) {
+						this.questionAnswererPairs.push({
+							type: 'yesnoradio',
+							name: answerer.name,
+							questionPart: answerer,
+							answerPart: answerPart
+						});
+					}
+				}, this);
+			}
+
+			_.each(this.questionAnswererPairs, function (pair) {
+
+				switch (pair.type) {
+
+					case 'yesnoradio':
+
+						$(pair.questionPart).on('change', _.bind(function () {
+							if (pair.questionPart.checked) {
+								pair.answerPart.prop('checked', (pair.questionPart.value === 'yes')).trigger('change');
+							}
+						}, this));
+
+						pair.answerPart.on('click', function () {
+							if (pair.answerPart.prop('checked')) {
+								if (pair.questionPart.value === 'yes') {
+									pair.questionPart.checked = true;
+								}
+							}
+							else {
+								if (pair.questionPart.value === 'no') {
+									pair.questionPart.checked = true;
+								}
+							}
+						});
+
+						break;
+				}
+			}, this);
 		}
 	});
 });
