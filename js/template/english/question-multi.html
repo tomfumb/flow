@@ -7,7 +7,7 @@
 			}
 		%>
 		<% _.each(answers, function(answer, index) { %>
-		<div class="col-xs-24 col-sm-24 <%= mdLgClasses %>">
+		<div class="checkbox-text-wrapper col-xs-24 col-sm-24 <%= mdLgClasses %>">
 			<input type="checkbox" id="q<%= question.get("id") %>_a_<%= index %>" value="<%= answer.value %>" />
 			<span class="answer-checkbox-text clickable"><%= answer.display %></span>
 		</div>

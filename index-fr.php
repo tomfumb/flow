@@ -7,8 +7,8 @@
 <html lang="fr">
     <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link href="css/src/ccij.css?flow-v=0.9.48" rel="stylesheet" type="text/css" />
-	<link href="css/print.css?flow-v=0.9.48" rel="stylesheet" type="text/css" media="print" />
+	<link href="css/src/ccij.css?flow-v=0.9.49" rel="stylesheet" type="text/css" />
+	<link href="css/print.css?flow-v=0.9.49" rel="stylesheet" type="text/css" media="print" />
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!--[if lt IE 9]>
 	  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -406,7 +406,6 @@
 						</form>
 					</div>
 					<p>Describe the abuse(s) committed against the victim. Select ALL that apply from the following options.</p>
-					<div class="question-important-note">If the victim was under 18 please ensure you check "Abuse against a child under the age of 18" and any other relevant abuses. If the victim was female please ensure you check "Abuse against a woman" and any other relevant abuses.</div>
 				</div>
 				<div class="question-explanation">Different justice institutions have authority over different kinds of human rights abuses. Some, like the United Nations Human Rights Committee, can consider a wide range of abuses. Others, like the Committee Against Torture, can consider a smaller set of abuses. Selecting the relevant acts on this list will provide the information necessary to determine which abuses might have been committed and therefore which justice institutions might be available.</div>
 				</div>
@@ -492,7 +491,7 @@
 		<div id="flow_size_lg" class="size-check device-lg visible-lg"></div>
 	</div>
 	<script type="text/javascript">
-	    var requirejs = {urlArgs: 'flow-v=0.9.48'};
+	    var requirejs = {urlArgs: 'flow-v=0.9.49'};
 	    window.CCIJ = {language: 'french'};
 	</script>
 	<script type="text/javascript" data-main="js/app-fr" src="js/lib/require-2.1.11.js"></script>

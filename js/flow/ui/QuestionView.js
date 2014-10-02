@@ -309,7 +309,7 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'flow/ui/QuestionExplana
 									pair.questionPart.checked = true;
 								}
 							}
-						});
+						}).parents('.checkbox-text-wrapper').hide();
 
 						break;
 				}
