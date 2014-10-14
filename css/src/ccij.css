@@ -28,7 +28,7 @@ input[type='text'], textarea {font-size: 16px;}
 #ccij_header {
 	height: 64px;
 	text-align: center;
-	background: url('../../images/ccij-header-bg.png?flow-v=0.9.49');
+	background: url('../../images/ccij-header-bg.png?flow-v=0.9.5');
 	background-repeat: repeat-x;
 	overflow: hidden;
 }
@@ -151,7 +151,7 @@ input[type='text'], textarea {font-size: 16px;}
 	word-break: normal;
 }
 
-img.sprites { background: url(../../images/sprites.png?flow-v=0.9.49) no-repeat; }
+img.sprites { background: url(../../images/sprites.png?flow-v=0.9.5) no-repeat; }
 img.achpr { width: 75px; height: 75px; background-position: 0 0; }
 img.africancourt { width: 75px; height: 75px; background-position: -76px 0; }
 img.book { width: 48px; height: 48px; background-position: -152px -141px; }
@@ -174,4 +174,4 @@ img.tick { width: 20px; height: 20px; background-position: -304px 0; }
 img.un-hr { width: 75px; height: 75px; background-position: 0 -228px; }
 img.un-women { width: 75px; height: 75px; background-position: -252px -293px; }
 
-div.white-gradient-right-15 { background: url(../../images/white-gradient-right-15.png?flow-v=0.9.49) repeat-y; }
+div.white-gradient-right-15 { background: url(../../images/white-gradient-right-15.png?flow-v=0.9.5) repeat-y; }

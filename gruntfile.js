@@ -138,6 +138,28 @@ module.exports = function(grunt) {
           dest: 'dist/'
         }]
       },
+      bootstrap: {
+      	files: [
+		  {
+		  	cwd: '/var/www/html/bootstrap-3.2.0/dist/css',
+		  	expand: true,
+		  	src: '**',
+		  	dest: 'css/lib/bootstrap/css'
+		  },
+		  {
+		  	cwd: '/var/www/html/bootstrap-3.2.0/dist/fonts',
+		  	expand: true,
+		  	src: '**',
+		  	dest: 'css/lib/bootstrap/fonts'
+		  },
+		  {
+		  	cwd: '/var/www/html/bootstrap-3.2.0/dist/js',
+			expand: true,
+			src: '*.js',
+			dest: 'js/lib'
+		  }
+      	]
+      }
     },
     chmod: {
       static: {
@@ -182,7 +204,8 @@ module.exports = function(grunt) {
   grunt.registerTask('version', ['replace:urlVersion']);
   grunt.registerTask('development', ['replace:development']);
   grunt.registerTask('live', ['lint'/*, 'html'*/, 'requirejs', 'version', 'replace:live']);
-  grunt.registerTask('dist', ['live', 'copy', 'chmod']);
+  grunt.registerTask('dist', ['live', 'copy:main', 'chmod']);
+  grunt.registerTask('bootstrap', ['copy:bootstrap']);
 
   grunt.registerTask('deploy', ['dist', 'ftp-deploy']);
 

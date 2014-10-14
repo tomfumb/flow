@@ -29,7 +29,7 @@
 
 #flow_question_summary_side_pad_left {
 	position: relative;
-	left: -7px;
+	left: -15px;
 	width: 7px;
 	height: 35px;
 	z-index: 2;
@@ -38,7 +38,7 @@
 
 #flow_question_summary_side_pad_right {
 	position: absolute;
-	right: -7px;
+	right: -15px;
 	top: 0;
 	width: 15px;
 	height: 35px;
