@@ -1,16 +1,4 @@
-#ccij_main {
-	display: none;
-}
-
-.question-important-note {
-	display: none;
-}
-
-#ccij_header {
-	display: none;
-}
-
-#ccij_navbar {
+#ccij_main,#flow_size_check,.wise-toolbar,.wise-header,.wise-nav-container,.wise-footer,.wise-foot,.question-important-note {
 	display: none;
 }
 

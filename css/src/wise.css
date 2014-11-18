@@ -1,0 +1,213 @@
+html {
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: #3498db;
+}
+
+a:hover {
+  color: #3498db;
+}
+
+/*
+.container {
+  width: 1170px !important;
+  max-width: none !important;
+}
+*/
+
+.col-sm-8 {
+  float: left !important;
+}
+
+/*
+.btn.btn-primary {
+  background-color: #D6211F;
+  border-color: #D6211F;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  text-transform: uppercase;
+}
+
+.btn.btn-primary:hover {
+  background-color: #b8060a;
+  border-color: #b8060a;
+}
+*/
+
+.wise-toolbar {
+  background-color: #3C4550;
+  color: #FFFFFF;
+  text-transform: uppercase;
+}
+
+.wise-toolbar ul {
+  margin: 0;
+}
+
+.wise-toolbar ul.pull-right {
+  border-left: 1px solid #313841;
+  -webkit-box-shadow: inset 1px 0 0 #47525F;
+  -moz-box-shadow: inset 1px 0 0 #47525F;
+  box-shadow: inset 1px 0 0 #47525F;
+}
+
+.wise-toolbar ul.pull-right li a {
+  padding-left: 20px;
+}
+
+.wise-toolbar a {
+  color: inherit;
+  display: inline-block;
+  padding: 10px 0;
+}
+
+.wise-header {
+  padding: 10px 0;
+  position: relative;
+}
+
+.wise-header ul {
+  margin-top: 88px;
+}
+
+.wise-logo {
+  background: transparent url('../../images/wise-logo.png') center center no-repeat;
+  width: 408px;
+  height: 97px;
+  text-indent: -9999em;
+  overflow: hidden;
+  margin-bottom: 0;
+  margin-left: -30px;
+}
+
+.wise-subtitle {
+  position: absolute;
+  left: 410px;
+  bottom: 15px;
+
+  border-left: 1px solid #3C4550;
+  color: #3C4550;
+  font-size: 19px;
+  font-weight: 300;
+  padding-left: 10px;
+}
+
+.wise-subtitle h3 {
+  font-size: 19px;
+  font-weight: 300;
+  line-height: 1em;
+  margin-bottom: 0;
+}
+
+.wise-sprite-social {
+  background: transparent url('../../images/wise-social.png') top left no-repeat;
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  text-indent: -9999em;
+  overflow: hidden;
+}
+
+.wise-sprite-social-facebook {
+  background-position: -4px -3px;
+}
+
+.wise-sprite-social-facebook:hover {
+  background-position: -4px -40px;
+}
+
+.wise-sprite-social-twitter {
+  background-position: -41px -3px;
+}
+
+.wise-sprite-social-twitter:hover {
+  background-position: -41px -40px;
+}
+
+.wise-sprite-social-linkedin {
+  background-position: -78px -3px;
+}
+
+.wise-sprite-social-linkedin:hover {
+  background-position: -78px -40px;
+}
+
+.wise-sprite-social-vimeo {
+  background-position: -116px -3px;
+}
+
+.wise-sprite-social-vimeo:hover {
+  background-position: -116 -40px;
+}
+
+.wise-sprite-social-rss {
+  background-position: -153px -3px;
+}
+
+.wise-sprite-social-rss:hover {
+  background-position: -153px -40px;
+}
+
+.wise-nav {
+  background-color: #3C4550;
+  color: #FFFFFF;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.wise-nav ul {
+  margin: 0;
+
+}
+
+.wise-nav li {
+  display: block;
+  float: left;
+  padding: 0;
+}
+
+.wise-nav a {
+  color: inherit;
+  display: inline-block;
+  padding: 10px 20px;
+  border-left: 1px solid #313841;
+  -webkit-box-shadow: inset 1px 0 0 #47525F;
+  -moz-box-shadow: inset 1px 0 0 #47525F;
+  box-shadow: inset 1px 0 0 #47525F;
+}
+
+.wise-nav a:hover {
+  background-color: #2F85C0;
+  border-left-color: #2F85C0;
+  -webkit-box-shadow: inset 1px 0 0 #2F85C0;
+  -moz-box-shadow: inset 1px 0 0 #2F85C0;
+  box-shadow: inset 1px 0 0 #2F85C0;
+  text-decoration: none;
+}
+
+.wise-main {
+  padding: 20px 0;
+}
+
+.wise-footer {
+  background-color: #3C4550;
+  color: #FFFFFF;
+  padding: 30px 0;
+}
+
+.wise-foot {
+  padding: 20px 0;
+  text-align: center;
+}
+
+.wise-foot ul,
+.wise-foot p {
+  margin-bottom: 0;
+}
+
+.wise-foot li:last-child {
+  border-left: 1px solid #3498db;
+}

@@ -1,19 +1,13 @@
 To Do:
 
 HIGH
-- Technical handover email (awaiting completion of testing / refinements)
-	- php configuration and server requirements
-	- mailchimp integration
-	- github
-	- languages & french language version
-	- my availability
-	- contact info
-	- explanation of mechanism conditions
-	- server move considerations
-	- deployment process (grunt tasks, testing, devices)
+- Styling issues
+	- container width and question nav spill-over
+		- also remedy containers
+	- start again button and z-index type issue
+- Mailchimp integration
 
 MEDIUM
-- ** in progress ** shared question condition logic for very common scenarios, DRY
 - several conditions where page should be scrolled to the top so that smaller screens don't lose context due to previous section's scroll
 - v-mouse integration
 - possible to get firstVisibleIndex error, replicated by disabling and re-enabling large number of mechanisms after a full right-scroll. Checked 'company / corporation' to eliminate most
@@ -21,8 +15,3 @@ MEDIUM
 
 LOW
 - log info message on why a mechanism is eliminated
-- should have more consistency in index.htm IDs
-- SEO
-
-VERY LOW
-- check necessity of shims in index.htm
