@@ -2,9 +2,7 @@ To Do:
 
 HIGH
 - Styling issues
-	- container width and question nav spill-over
-		- also remedy containers
-	- start again button and z-index type issue
+	- title crashing into social icons
 - Mailchimp integration
 
 MEDIUM

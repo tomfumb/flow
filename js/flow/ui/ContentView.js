@@ -566,8 +566,8 @@ define(
 				elHeight += 1;
 			}
 			
-			var elHeightProperty = (elHeight + 20) + 'px';
-			var navPaddingProperty = (elHeight > 0 ? Math.round(elHeight / 2) : 0) + 'px';
+			var elHeightProperty = (elHeight + 30) + 'px';
+			var navPaddingProperty = (elHeight > 0 ? Math.round((elHeight + 10) / 2) : 0) + 'px';
 			
 			if(animate) {
 				animateSpeed = (isNaN(animateSpeed) ? 180 : animateSpeed);
