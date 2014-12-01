@@ -4,10 +4,11 @@ HIGH
 - Styling issues
 	- title crashing into social icons
 - Mailchimp integration
+- French language version
+- Menu as collapsible to button-controlled?
 
 MEDIUM
 - several conditions where page should be scrolled to the top so that smaller screens don't lose context due to previous section's scroll
-- v-mouse integration
 - possible to get firstVisibleIndex error, replicated by disabling and re-enabling large number of mechanisms after a full right-scroll. Checked 'company / corporation' to eliminate most
 - update spreadsheet for any mechanism that had Disappearance added
 

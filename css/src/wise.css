@@ -154,8 +154,10 @@ a:hover {
 .wise-nav {
   background-color: #3C4550;
   color: #FFFFFF;
-  font-weight: 700;
-  text-transform: uppercase;
+  border-radius: 0;
+  background-image: none;
+  /*font-weight: 700;
+  text-transform: uppercase;*/
 }
 
 .wise-nav ul {
@@ -180,7 +182,8 @@ a:hover {
 }
 
 .wise-nav a:hover {
-  background-color: #2F85C0;
+  background-color: #2F85C0 !important;
+  border-color: #2F85C0;
   border-left-color: #2F85C0;
   -webkit-box-shadow: inset 1px 0 0 #2F85C0;
   -moz-box-shadow: inset 1px 0 0 #2F85C0;

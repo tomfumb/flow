@@ -13,11 +13,11 @@ define(
 			
 			this.intro.find('.app-navigator').on('click', _.bind(this.onAppNavigatorClicked, this));
 			
-			//$('#ccij_navbar .nav a').click(function() { 
-			//	if($('#ccij_navbar .navbar-toggle').is(':visible') && $('#ccij_navbar .navbar-collapse').is(':visible')) {
-			//		$('#ccij_navbar .navbar-toggle').click();
-			//	}
-			//});
+			$('#ccij_navbar .nav a').click(function() { 
+				if($('#ccij_navbar .navbar-toggle').is(':visible') && $('#ccij_navbar .navbar-collapse').is(':visible')) {
+					$('#ccij_navbar .navbar-toggle').click();
+				}
+			});
 			
 			//$('#ccij_stories_entry,#ccij_stories_nav').click(function() {
 			//	window.open(config.url.stories, '_blank');
