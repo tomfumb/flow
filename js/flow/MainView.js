@@ -1,4 +1,4 @@
-define(['jquery', 'underscore', 'backbone', 'flow/Log', 'flow/Shared', 'ui/ContentView'], function($, _, Backbone, Log, sharedData, contentView) {
+define(['jquery', 'underscore', 'backbone', 'flow/Util', 'flow/Log', 'flow/Shared', 'ui/ContentView'], function($, _, Backbone, Util, Log, sharedData, contentView) {
 
 	return Backbone.View.extend({
 	
@@ -15,8 +15,7 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'flow/Shared', 'ui/Conte
 		
 		render: function () {
 
-			this.sizeChecks = $('#flow_size_check .size-check');
-			this.updateCurrentSize();
+		    this.currentSize = Util.getCurrentSizeBreak();
 			
 			this.content = new contentView();
 			this.content.sharedData = new sharedData();
@@ -59,23 +58,11 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'flow/Shared', 'ui/Conte
 		onWindowResize: function () {
 			
 			var previousSize = this.currentSize;
-			this.updateCurrentSize();
+			this.currentSize = Util.getCurrentSizeBreak();
 
 			if (previousSize !== this.currentSize) {
 				this.content.sizeChanged(this.currentSize);
 			}
 		},
-
-		updateCurrentSize: function () {
-
-			this.currentSize = 'unknown';
-			_.each(this.sizeChecks, function (element) {
-				var jqEl = $(element);
-				if (jqEl.is(':visible')) {
-					this.currentSize = jqEl.attr('id').replace(/^flow_size_/, '');
-					return false;
-				}
-			}, this);
-		}
 	});
 });

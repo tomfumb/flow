@@ -29,33 +29,37 @@
 			</div>
 		</div>
 	</div>
-	<header class="wise-header">
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-24">
-					<h1 class="wise-logo pull-left">Canadian Centre for International Justice</h1>
-					<div class="wise-subtitle"><h3>Opportunities for Justice</h3></div>
-					<ul class="list-inline pull-right">
-						<li>
-							<a href="https://www.facebook.com/pages/Canadian-Centre-for-International-Justice-CCIJ/27176895148" title="Follow us on Facebook" class="wise-sprite-social wise-sprite-social-facebook">Follow us on Facebook</a>
-						</li>
-						<li>
-							<a href="http://twitter.com/CCIJ_CCJI" title="Follow us on Twitter" class="wise-sprite-social wise-sprite-social-twitter">Follow us on Twitter</a>
-						</li>
-						<li>
-							<a href="https://www.linkedin.com/company/canadian-centre-for-international-justice" title="Follow us on LinkedIn" class="wise-sprite-social wise-sprite-social-linkedin">Follow us on LinkedIn</a>
-						</li>
-						<li>
-							<a href="http://vimeo.com/user18059102" title="Follow us on Vimeo" class="wise-sprite-social wise-sprite-social-vimeo">Follow us on Vimeo</a>
-						</li>
-						<li>
-							<a href="http://ccij.wiseworkbench.com/?feed=rss2" title="Subscribe to our RSS Feed" class="wise-sprite-social wise-sprite-social-rss">Subscribe to our RSS Feed</a>
-						</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</header>
+    <header id="ccij_ofj_header" class="wise-header wise-header-lg">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-24 col-sm-24 col-md-17 col-lg-17">
+                    <h1 class="wise-logo">Canadian Centre for International Justice</h1>
+                    <h3 class="wise-subtitle">Opportunities for Justice</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-24 col-sm-24 col-md-7 col-lg-7 col-md-offset-17 col-lg-offset-17">
+                    <ul class="list-inline pull-right">
+                        <li>
+                            <a href="https://www.facebook.com/pages/Canadian-Centre-for-International-Justice-CCIJ/27176895148" title="Follow us on Facebook" class="wise-sprite-social wise-sprite-social-facebook">Follow us on Facebook</a>
+                        </li>
+                        <li>
+                            <a href="http://twitter.com/CCIJ_CCJI" title="Follow us on Twitter" class="wise-sprite-social wise-sprite-social-twitter">Follow us on Twitter</a>
+                        </li>
+                        <li>
+                            <a href="https://www.linkedin.com/company/canadian-centre-for-international-justice" title="Follow us on LinkedIn" class="wise-sprite-social wise-sprite-social-linkedin">Follow us on LinkedIn</a>
+                        </li>
+                        <li>
+                            <a href="http://vimeo.com/user18059102" title="Follow us on Vimeo" class="wise-sprite-social wise-sprite-social-vimeo">Follow us on Vimeo</a>
+                        </li>
+                        <li>
+                            <a href="http://ccij.wiseworkbench.com/?feed=rss2" title="Subscribe to our RSS Feed" class="wise-sprite-social wise-sprite-social-rss">Subscribe to our RSS Feed</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
 	<div class="container wise-nav-container">
 		<div class="row">
 			<div class="col-sm-24">

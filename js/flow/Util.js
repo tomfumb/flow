@@ -39,6 +39,24 @@ define([], function() {
 		
 		emailValid: function(input) {
 			return !!input.match(/[a-z0-9!#$%&'*+\/=?^_{|}~-]+(?:\.[a-z0-9!#$%&'*+\/=?^_{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/i);
+		},
+
+		getCurrentSizeBreak: function () {
+
+		    if (typeof this.sizeChecks === 'undefined') {
+		        this.sizeChecks = $('#flow_size_check .size-check');
+		    }
+
+		    var currentSize = 'unknown';
+		    _.each(this.sizeChecks, function (element) {
+		        var jqEl = $(element);
+		        if (jqEl.is(':visible')) {
+		            currentSize = jqEl.attr('id').replace(/^flow_size_/, '');
+		            return false;
+		        }
+		    }, this);
+
+		    return currentSize;
 		}
 	};
 });
