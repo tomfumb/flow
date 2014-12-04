@@ -27,6 +27,8 @@ a {
     border-radius: 0 !important;
     background-image: none !important;
     background-color: transparent !important;
+    text-transform: uppercase;
+    padding: 10px 35px !important;
 }
 
 .navbar-nav-override a:hover {

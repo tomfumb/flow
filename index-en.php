@@ -1,4 +1,4 @@
-﻿<?php
+<?php
     // Basic authentication approach implemented during testing and refinement, final product will not require authentication
     require_once('auth/gateway.php');
 ?>
@@ -34,9 +34,10 @@
             <div class="row">
                 <div class="col-xs-24 col-sm-24 col-md-17 col-lg-17">
                     <h1 class="wise-logo">Canadian Centre for International Justice</h1>
-                    <h3 class="wise-subtitle">Opportunities for Justice</h3>
+                    <h3 class="wise-subtitle" id="ccij_ofj_subtitle">Opportunities for Justice</h3>
                 </div>
             </div>
+            <div class="spacer-10"></div>
             <div class="row">
                 <div class="col-xs-24 col-sm-24 col-md-7 col-lg-7 col-md-offset-17 col-lg-offset-17">
                     <ul class="list-inline pull-right">

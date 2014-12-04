@@ -75,7 +75,8 @@ a:hover {
 }
 
 .wise-header-lg ul {
-  top: -40px;
+  top: -50px;
+  margin-bottom: -40px;
 }
 
 .wise-logo {
@@ -165,8 +166,8 @@ a:hover {
   color: #FFFFFF;
   border-radius: 0;
   background-image: none;
-  /*font-weight: 700;
-  text-transform: uppercase;*/
+  font-weight: 500;
+  text-transform: uppercase;
 }
 
 .wise-nav ul {
