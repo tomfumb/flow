@@ -34,7 +34,7 @@
             <div class="row">
                 <div class="col-xs-24 col-sm-24 col-md-17 col-lg-17">
                     <h1 class="wise-logo">Canadian Centre for International Justice</h1>
-                    <h3 class="wise-subtitle" id="ccij_ofj_subtitle">Opportunities for Justice</h3>
+                    <h3 class="wise-subtitle hidden-xs" id="ccij_ofj_subtitle">Opportunities for Justice</h3>
                 </div>
             </div>
             <div class="spacer-10"></div>
