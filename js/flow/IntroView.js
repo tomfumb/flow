@@ -11,7 +11,7 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'text!templates/intro.ht
 		},
 		
 		onQuestionsReset: function() {
-			this.$el.find('#flow_start').removeAttr('disabled').on('click', _.bind(this.onStartRequested, this)).focus();
+			this.$el.find('#flow_start').removeAttr('disabled').on('click', _.bind(this.onStartRequested, this));
 		},
 		
 		onStartRequested: function(event) {
