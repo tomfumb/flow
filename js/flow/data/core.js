@@ -265,43 +265,43 @@ define(['jquery', 'data/ac-hpr', 'data/civil-canada', 'data/crim-canada', 'data/
 	{
 		id: '6',
 		answers: [
-			{english: "Abuse against a child under the age of 18", french: "Abus contre un enfant de moins de 18 ans"},
-			{english: "Abuse against a woman", french: "Abus contre une femme"},
-			{english: "Beating", french: "Battement"},
-			{english: "Bodily mutilation", french: "Mutilations"},
-			{english: "Burning", french: "Brûlant"},
-			{english: "Burning of houses", french: "Incendies de maisons"},
-			{english: "Death threats", french: "Les menaces de mort"},
-			{english: "Denial of fair trial", french: "Déni de procès équitable"},
-			{english: "Deprivation of medical care", french: "La privation de soins médicaux"},
-			{english: "Destruction or serious damage to property", french: "La destruction ou la détérioration grave de biens"},
-			{english: "Disappearance", french: "Disparition"},
-			{english: "Electric shock", french: "Choc électrique"},
-			{english: "Enslavement", french: "Asservissement"},
-			{english: "Forced abortion", french: "Avortement forcé"},
-			{english: "Forced displacement", french: "Le déplacement forcé"},
-			{english: "Forced nudity", french: "La nudité forcée"},
-			{english: "Forced sterilization", french: "La stérilisation forcée"},
-			{english: "Forced stress positions", french: "Des positions de stress forcés"},
-			{english: "Forced to watch abuse of other prisoners", french: "Forcé à regarder l'abus d'autres prisonniers"},
-			{english: "Forcing a prisoner to perform military service", french: "Forcer un prisonnier d'accomplir le service militaire"},
-			{english: "Incommunicado detention", french: "La détention au secret"},
-			{english: "Kicking", french: "Kicking"},
-			{english: "Kidnapping", french: "Enlèvement"},
-			{english: "Killing", french: "Meurtre"},
-			{english: "Mock execution", french: "Simulacre d'exécution"},
-			{english: "Persecution on political, racial, or religious grounds", french: "Persécution pour des raisons politiques, raciales ou religieuses"},
-			{english: "Poisoning of water or food supplies", french: "Empoisonnement des réserves d'eau ou de nourriture"},
-			{english: "Prolonged exposure to extreme cold or heat", french: "Une exposition prolongée à un froid extrême ou à la chaleur"},
-			{english: "Prolonged food/water deprivation", french: "Alimentaire prolongée / privation d'eau"},
-			{english: "Prolonged sleep deprivation", french: "Privation prolongée de sommeil"},
-			{english: "Punching", french: "Poinçonnage"},
-			{english: "Rape or other sexual assault", french: "Viol ou autre agression sexuelle"},
-			{english: "Severe mental suffering", french: "Souffrance mentale grave"},
-			{english: "Solitary confinement", french: "Régime cellulaire"},
-			{english: "Stealing children", french: "Voler les enfants"},
-			{english: "Suffocation", french: "Suffocation"},
-			{english: "Waterboarding", french: "Waterboarding"}
+			{ english: "Abuse against a child under the age of 18", french: "Mauvais traitements contre un enfant âgé de moins de 18 ans"},
+			{ english: "Abuse against a woman", french: "Mauvais traitements contre les femmes" },
+			{ english: "Beating", french: "Tabassage" },
+			{ english: "Bodily mutilation", french: "Mutilation corporelle" },
+			{ english: "Burning", french: "Brûlure" },
+			{ english: "Burning of houses", french: "Maisons incendiées" },
+			{ english: "Death threats", french: "Menaces de mort" },
+			{ english: "Denial of fair trial", french: "Déni de procès équitable" },
+			{ english: "Deprivation of medical care", french: "Privation de soins médicaux" },
+			{ english: "Destruction or serious damage to property", french: "Destruction ou des dommages graves à la propriété" },
+			{ english: "Disappearance", french: "Disparition" },
+			{ english: "Electric shock", french: "Choc électrique" },
+			{ english: "Enslavement", french: "Asservissement" },
+			{ english: "Forced abortion", french: "Avortement forcé" },
+			{ english: "Forced displacement", french: "Déplacement forcé" },
+			{ english: "Forced nudity", french: "Nudité forcée" },
+			{ english: "Forced sterilization", french: "Stérilisation forcée" },
+			{ english: "Forced stress positions", french: "Situations de stress forcées" },
+			{ english: "Forced to watch abuse of other prisoners", french: "Obligation de regarder la violence subie par d’autres prisonniers" },
+			{ english: "Forcing a prisoner to perform military service", french: "Obliger un prisonnier à accomplir un service militaire" },
+			{ english: "Incommunicado detention", french: "Détention tenue secrète" },
+			{ english: "Kicking", french: "Frappé avec des coups de pieds" },
+			{ english: "Kidnapping", french: "Enlèvement " },
+			{ english: "Killing", french: "Assassinat" },
+			{ english: "Mock execution", french: "Simulation d’exécution" },
+			{ english: "Persecution on political, racial, or religious grounds", french: "Persécution pour des motifs politiques, raciaux ou religieux" },
+			{ english: "Poisoning of water or food supplies", french: "Empoisonnement de l’approvisionnement alimentaire ou de l’eau" },
+			{ english: "Prolonged exposure to extreme cold or heat", french: "Exposition prolongée à des températures extrêmes (froid ou chaud)" },
+			{ english: "Prolonged food/water deprivation", french: "Privation prolongée de nourriture et/ou d’eau" },
+			{ english: "Prolonged sleep deprivation", french: "Privation prolongée de sommeil" },
+			{ english: "Punching", french: "Coups de poing" },
+			{ english: "Rape or other sexual assault", french: "Viol et/ou autres formes d’agression sexuelle" },
+			{ english: "Severe mental suffering", french: "Souffrance mentale grave" },
+			{ english: "Solitary confinement", french: "Isolement" },
+			{ english: "Stealing children", french: "Enlèvement/ vol d’enfants" },
+			{ english: "Suffocation", french: "Suffocation" },
+			{ english: "Waterboarding", french: "Bains forcés (waterboarding)" }
 		],
 		answerType: 'multi-select'
 	},{
@@ -321,13 +321,13 @@ define(['jquery', 'data/ac-hpr', 'data/civil-canada', 'data/crim-canada', 'data/
 		answers: function() {
 			
 			var answers = [
-				{ english: "Soldier in government's army", french: "Soldat dans l'armée de gouvernement" },
-				{ english: "Police officer", french: "L'officier de police" },
+				{ english: "Soldier in government's army", french: "Soldat de l’armée du gouvernement" },
+				{ english: "Police officer", french: "Officier de police" },
 				{ english: "Other government official", french: "Autre représentant du gouvernement" },
-				{english: "Company or corporation", french: "Société"},
-				{english: "Soldier in rebel army", french: "Soldat dans l'armée rebelle"},
-				{english: "None of the above", french: "Aucune de ces réponses"},
-				{english: "Unknown", french: "Inconnu"}
+				{ english: "Company or corporation", french: "Compagnie ou société" },
+				{ english: "Soldier in rebel army", french: "Soldat dans l'armée rebelle" },
+				{ english: "None of the above", french: "Aucune de ces réponses" },
+				{ english: "Unknown", french: "Inconnu"}
 			];
 			
 			answers.preventSort = true;
@@ -359,11 +359,11 @@ define(['jquery', 'data/ac-hpr', 'data/civil-canada', 'data/crim-canada', 'data/
 		id: '14c',
 		answers: function() {
 			var answers = [
-				{english: "Investigation or prosecution still ongoing", french: "Enquête ou des poursuites toujours en cours"},
-				{english: "No investigation", french: "Aucune enquête"},
-				{english: "Inadequate investigation", french: "Enquête insuffisante"},
-				{english: "A court held someone responsible", french: "Un tribunal a jugé un responsable"},
-				{english: "Someone was put on trial but was found not guilty", french: "Quelqu'un a été mis à l'essai, mais a été déclaré non coupable"}
+				{ english: "Investigation or prosecution still ongoing", french: "Enquête ou poursuites toujours en cours" },
+				{ english: "No investigation", french: "Aucune enquête" },
+				{ english: "Inadequate investigation", french: "Enquête inappropriée" },
+				{ english: "A court held someone responsible", french: "Un tribunal a tenu quelqu’un responsable" },
+				{ english: "Someone was put on trial but was found not guilty", french: "Quelqu'un a été traduit en justice, mais il a été reconnu innocent" }
 			];
 			
 			answers.preventSort = true;

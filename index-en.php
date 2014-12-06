@@ -540,9 +540,9 @@
 				<div class="col-sm-8">
 					<h3>The Canadian Centre for International Justice</h3>
 					<ul class="list-unstyled">
-						<li>Ottawa Office: 613-744-7667</li>
-						<li>Vancouver Office: 613-744-7667</li>
-						<li>Fax: 613-744-7667</li>
+						<li>Ottawa Office: 613-230-6114</li>
+						<li>Vancouver Office: 604-569-1778</li>
+						<li>Fax: 613-746-2411</li>
 					</ul>
 					<p>
 						Inquiries: <a href="mailto:info@ccij.ca">info@ccij.ca</a>
