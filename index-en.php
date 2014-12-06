@@ -37,9 +37,8 @@
                     <h3 class="wise-subtitle hidden-xs" id="ccij_ofj_subtitle">Opportunities for Justice</h3>
                 </div>
             </div>
-            <div class="spacer-10"></div>
-            <div class="row">
-                <div class="col-xs-24 col-sm-24 col-md-7 col-lg-7 col-md-offset-17 col-lg-offset-17">
+            <div class="row hidden-xs hidden-sm">
+                <div class="col-md-24 col-lg-24">
                     <ul class="list-inline pull-right">
                         <li>
                             <a href="https://www.facebook.com/pages/Canadian-Centre-for-International-Justice-CCIJ/27176895148" title="Follow us on Facebook" class="wise-sprite-social wise-sprite-social-facebook">Follow us on Facebook</a>
@@ -64,17 +63,17 @@
 	<div class="container wise-nav-container">
 		<div class="row">
 			<div class="col-sm-24">
-                <nav class="navbar navbar-default wise-nav-override" role="navigation" id="ccij_navbar">
-                    <div class="navbar-header navbar-header-override">
-                        <button type="button" class="navbar-toggle navbar-toggle-override collapsed" data-toggle="collapse" data-target="#ccij_navbar_collapse">
+                <nav class="navbar navbar-default" role="navigation" id="ccij_navbar">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#ccij_navbar_collapse">
                             <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar icon-bar-override"></span>
-                            <span class="icon-bar icon-bar-override"></span>
-                            <span class="icon-bar icon-bar-override"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
                         </button>
                     </div>
                     <div class="collapse navbar-collapse" id="ccij_navbar_collapse">
-                        <ul class="nav navbar-nav navbar-nav-override">
+                        <ul class="nav navbar-nav">
                             <li><a href="#" id="ccij_home_nav">Home</a></li>
                             <li><a href="#assess" id="ccij_assess_nav">Assess Your Options</a></li>
                             <li><a href="#remedies" id="ccij_remedies_nav">Justice Institutions</a></li>

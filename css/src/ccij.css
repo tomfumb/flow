@@ -8,57 +8,13 @@ html, body {
 	height: 100%;
 }
 
+h1,h2,h3,h4,h5,h6,a {
+    word-wrap: break-word;
+}
+
 body {
 	font-family: sans-serif;
 }
-
-a {
-	word-break: break-all;
-}
-
-/* override undesirable bootstrap styles whose class names are required for proper nav-bar functionality */
-.navbar-nav-override {
-    margin: 0 !important;
-
-}
-
-.navbar-nav-override a {
-    color: #FFFFFF !important;
-    border-radius: 0 !important;
-    background-image: none !important;
-    background-color: transparent !important;
-    text-transform: uppercase;
-    padding: 10px 35px !important;
-}
-
-.navbar-nav-override a:hover {
-  background-color: #2F85C0 !important;
-}
-
-.navbar-header-override {
-    background-color: #3C4550 !important;
-    border-radius: 0 !important;
-}
-
-.icon-bar-override {
-    background-color: #fff !important;
-}
-
-.navbar-toggle-override {
-    border: 0;
-}
-
-.navbar-toggle-override:focus,.navbar-toggle-override:hover {
-    background-color: transparent !important;
-}
-
-#ccij_navbar_collapse {
-    padding-left: 0;
-    padding-right: 0;
-    background-color: #3C4550 !important;
-    border: 0;
-}
-
 
 input[type='text'], textarea {font-size: 16px;}
 

@@ -1,11 +1,10 @@
 To Do:
 
 HIGH
-- Styling issues
-	- title crashing into social icons
+- navigation menu bar border / background
+- print version and yes/no questions
 - Mailchimp integration
 - French language version
-- Menu as collapsible to button-controlled?
 
 MEDIUM
 - several conditions where page should be scrolled to the top so that smaller screens don't lose context due to previous section's scroll

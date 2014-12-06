@@ -122,13 +122,13 @@ define(
 
 		    var showSocialOffset = _.bind(function (show) {
 
-		        if (this.headerEl.hasClass(className) && !show) {
-		            this.headerEl.removeClass(className);
-		        }
+		        //if (this.headerEl.hasClass(className) && !show) {
+		        //    this.headerEl.removeClass(className);
+		        //}
 
-		        if (!this.headerEl.hasClass(className) && show) {
-		            this.headerEl.addClass(className);
-		        }
+		        //if (!this.headerEl.hasClass(className) && show) {
+		        //    this.headerEl.addClass(className);
+		        //}
 		    }, this);
 
 		    var previousSize = this.currentSize;
