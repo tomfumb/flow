@@ -176,3 +176,39 @@ img.un-hr { width: 75px; height: 75px; background-position: 0 -228px; }
 img.un-women { width: 75px; height: 75px; background-position: -252px -293px; }
 
 div.white-gradient-right-15 { background: url(../../images/white-gradient-right-15.png?flow-v=0.9.6) repeat-y; }
+
+/* Begin Bootstrap CSS overrides - not customisable through LESS compilation variables */
+.navbar-default-override {
+    border: 0;
+    text-transform: uppercase;
+}
+
+.navbar-default-override a {
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+    text-shadow: none !important;
+    background-color: #3c4550;
+}
+
+.navbar-default-override .icon-bar {
+    background-color: #fff !important;
+}
+
+.navbar-default-override .navbar-nav {
+    margin: 0;
+}
+
+.navbar-default-override,.navbar-default-override .active a {
+    background-image: none !important;
+    box-shadow: none !important;
+}
+
+.navbar-default-override .navbar-collapse {
+    padding: 0;
+}
+
+.navbar-default-override .active a:hover {
+    background-color: #2f85c0 !important;
+}
+
+/* End Bootstrap CSS overrides */

@@ -63,7 +63,7 @@
 	<div class="container wise-nav-container">
 		<div class="row">
 			<div class="col-sm-24">
-                <nav class="navbar navbar-default" role="navigation" id="ccij_navbar">
+                <nav class="navbar navbar-default navbar-default-override" role="navigation" id="ccij_navbar">
                     <div class="navbar-header">
                         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#ccij_navbar_collapse">
                             <span class="sr-only">Toggle navigation</span>
