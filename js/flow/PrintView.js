@@ -39,7 +39,7 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'text!templates/print/qu
 		onAnswersSelected: function(answeredQuestion, answers) {
 			
 			this.$el.find('#' + this.getElementIdFromQuestion(answeredQuestion) + ' .question-answers').html(
-				(answers.length ? answers.join(', ') : '(none)')
+				(answers.length ? answers.join(', ') : '[none]')
 			);
 		},
 		
