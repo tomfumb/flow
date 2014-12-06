@@ -235,7 +235,7 @@
 	padding-left: 0;
 	position: relative;
 	top: -200px;
-	left: 130px;
+	left: 138px;
 	z-index: 1;
 	height: 100px;
 	margin-bottom: 0;
@@ -278,7 +278,7 @@
 .outcome-preview-title {
 	display: table;
 	text-align: center;
-	font-size: smaller;
+	font-size: 12px;
 	font-family: arial;
 	position: relative;
 	width: 100px;
@@ -287,7 +287,7 @@
 	background-color: #FFF;
 	color: #000;
 	opacity: 0.85;
-	padding: 0 2px;
+	padding: 0 4px;
 }
 
 .outcome-preview-title-vertical-pos {
