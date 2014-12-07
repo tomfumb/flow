@@ -15,14 +15,9 @@ define(
 			
 			$('#ccij_navbar .nav a').click(function() { 
 				if($('#ccij_navbar .navbar-toggle').is(':visible') && $('#ccij_navbar .navbar-collapse').is(':visible')) {
-					$('#ccij_navbar .navbar-toggle').click();
+                    $('#ccij_navbar .navbar-toggle').click();
 				}
 			});
-
-			$(window).resize(_.bind(this.onWindowResize, this));
-			$(document).ready(_.bind(function () {
-			    this.adjustHeaderForSize();
-			}, this));
 			
 			//$('#ccij_stories_entry,#ccij_stories_nav').click(function() {
 			//	window.open(config.url.stories, '_blank');
@@ -106,46 +101,6 @@ define(
 				var printView = new PrintView({model: combinedModel, el: '#flow_print'});
 				printView.render();
 			}, this), 0);
-		},
-
-		onWindowResize: function () {
-		    this.adjustHeaderForSize();
-		},
-
-		adjustHeaderForSize: function () {
-
-		    if (typeof this.headerEl === 'undefined') {
-		        this.headerEl = $('#ccij_ofj_header');
-		    }
-
-		    var className = 'wise-header-lg';
-
-		    var showSocialOffset = _.bind(function (show) {
-
-		        //if (this.headerEl.hasClass(className) && !show) {
-		        //    this.headerEl.removeClass(className);
-		        //}
-
-		        //if (!this.headerEl.hasClass(className) && show) {
-		        //    this.headerEl.addClass(className);
-		        //}
-		    }, this);
-
-		    var previousSize = this.currentSize;
-		    this.currentSize = Util.getCurrentSizeBreak();
-
-            // missing 'break's intentional
-		    switch (this.currentSize) {
-
-		        case 'xs':
-		        case 'sm':
-		            showSocialOffset(false);
-		            break;
-		        case 'md':
-		        case 'lg':
-		            showSocialOffset(true);
-		            break;
-		    }
 		}
 	});
 });

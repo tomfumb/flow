@@ -214,20 +214,20 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'flow/ui/QuestionExplana
 		
 		showActivityIndicator: function() {
 		
-		    var hideClass = 'question-activity-indicator-hidden';
-		    if (this.activityIndicator.hasClass(hideClass)) {
-		        this.activityIndicator.removeClass(hideClass);
-		    }
-			
-			if(typeof this.activityIndicatorTimeout !== 'undefined') {
-				window.clearTimeout(this.activityIndicatorTimeout);
+            var hideClass = 'question-activity-indicator-hidden';
+            if (this.activityIndicator.hasClass(hideClass)) {
+                this.activityIndicator.removeClass(hideClass);
+            }
+
+            if(typeof this.activityIndicatorTimeout !== 'undefined') {
+                window.clearTimeout(this.activityIndicatorTimeout);
 				this.activityIndicatorTimeout = undefined;
 			}
 			
 			this.activityIndicatorTimeout = window.setTimeout(_.bind(function () {
-			    if (!this.activityIndicator.hasClass(hideClass)) {
-			        this.activityIndicator.addClass(hideClass);
-			    }
+                if (!this.activityIndicator.hasClass(hideClass)) {
+                    this.activityIndicator.addClass(hideClass);
+                }
 			}, this), this.answerDelay);
 		},
 		

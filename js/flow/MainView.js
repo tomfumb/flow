@@ -15,7 +15,7 @@ define(['jquery', 'underscore', 'backbone', 'flow/Util', 'flow/Log', 'flow/Share
 		
 		render: function () {
 
-		    this.currentSize = Util.getCurrentSizeBreak();
+            this.currentSize = Util.getCurrentSizeBreak();
 			
 			this.content = new contentView();
 			this.content.sharedData = new sharedData();

@@ -43,20 +43,20 @@ define([], function() {
 
 		getCurrentSizeBreak: function () {
 
-		    if (typeof this.sizeChecks === 'undefined') {
-		        this.sizeChecks = $('#flow_size_check .size-check');
-		    }
+            if (typeof this.sizeChecks === 'undefined') {
+                this.sizeChecks = $('#flow_size_check .size-check');
+            }
 
-		    var currentSize = 'unknown';
-		    _.each(this.sizeChecks, function (element) {
-		        var jqEl = $(element);
-		        if (jqEl.is(':visible')) {
-		            currentSize = jqEl.attr('id').replace(/^flow_size_/, '');
-		            return false;
-		        }
-		    }, this);
+            var currentSize = 'unknown';
+            _.each(this.sizeChecks, function (element) {
+                var jqEl = $(element);
+                if (jqEl.is(':visible')) {
+                    currentSize = jqEl.attr('id').replace(/^flow_size_/, '');
+                    return false;
+                }
+            }, this);
 
-		    return currentSize;
+            return currentSize;
 		}
 	};
 });
