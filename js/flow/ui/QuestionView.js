@@ -214,15 +214,20 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'flow/ui/QuestionExplana
 		
 		showActivityIndicator: function() {
 		
-			this.activityIndicator.html('processing...');
+		    var hideClass = 'question-activity-indicator-hidden';
+		    if (this.activityIndicator.hasClass(hideClass)) {
+		        this.activityIndicator.removeClass(hideClass);
+		    }
 			
 			if(typeof this.activityIndicatorTimeout !== 'undefined') {
 				window.clearTimeout(this.activityIndicatorTimeout);
 				this.activityIndicatorTimeout = undefined;
 			}
 			
-			this.activityIndicatorTimeout = window.setTimeout(_.bind(function() {
-				this.activityIndicator.html('');
+			this.activityIndicatorTimeout = window.setTimeout(_.bind(function () {
+			    if (!this.activityIndicator.hasClass(hideClass)) {
+			        this.activityIndicator.addClass(hideClass);
+			    }
 			}, this), this.answerDelay);
 		},
 		

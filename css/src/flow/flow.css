@@ -114,6 +114,10 @@
 	font-style: italic;
 }
 
+.question-activity-indicator-hidden {
+    display: none;
+}
+
 .start-again-control {
 	padding: 10px 30px 0 0;
 	float: right;
@@ -393,6 +397,7 @@ img.outcome-preview-logo {
 }
 
 .outcome-tab-link {
+    font-size: 13px;
 	text-align: center;
 	line-height: 1 !important;
 	padding: 8px 2px !important;

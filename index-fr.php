@@ -99,11 +99,11 @@
 							<div class="row">
 								<div id="ccij_assess_entry" class="entry-point app-navigator col-md-11 col-lg-11 clickable">
 									<h3>Évaluez Vos Options</h3>
-									<p><img src="images/0.png" width="48" height="48" title="Assess your options" class="entry-point-img sprites test" />Notre outil d’évaluation vous guidera à travers une série de questions concernant les actes commis contre vous ou les membres de votre famille et vous suggèrera des options possibles pour votre recherche de justice.</p>
+									<p><img src="images/0.png" width="48" height="48" title="Évaluez vos options" class="entry-point-img sprites test" />Notre outil d’évaluation vous guidera à travers une série de questions concernant les actes commis contre vous ou les membres de votre famille et vous suggèrera des options possibles pour votre recherche de justice.</p>
 								</div>
 								<div id="ccij_remedies_entry" class="entry-point app-navigator col-md-11 col-lg-11 col-md-offset-2 col-lg-offset-2 clickable">
 									<h3>Institutions Judiciaires</h3>
-									<p><img src="images/0.png" width="48" height="48" title="Descriptions" class="entry-point-img sprites gavel" />Découvrez les différents organismes qui surveillent les violations des droits de l’Homme en lisant une brève description des tribunaux internationaux, des Comité des Nations Unies, des commissions régionales des droits de l’homme et sur les processus canadiens.</p>
+									<p><img src="images/0.png" width="48" height="48" title="Institutions Judiciaires" class="entry-point-img sprites gavel" />Découvrez les différents organismes qui surveillent les violations des droits de l’Homme en lisant une brève description des tribunaux internationaux, des Comité des Nations Unies, des commissions régionales des droits de l’homme et sur les processus canadiens.</p>
 								</div>
 								<!--
 								<div id="ccij_stories_entry" class="entry-point col-md-7 col-lg-7 col-md-offset-1 col-lg-offset-1 clickable">
@@ -434,8 +434,8 @@
 											<form>
 												<p>
 													Was the abuse committed against a woman?
-													<input type="radio" id="q6_woman_yes" name="Abuse against a woman" value="yes" /><label for="q6_woman_yes">Yes</label>
-													<input type="radio" id="q6_woman_no" name="Abuse against a woman" value="no" checked="checked" /><label for="q6_woman_no">No</label>
+													<input type="radio" id="q6_woman_yes" name="Abuse against a woman" value="yes" /><label for="q6_woman_yes">Oui</label>
+													<input type="radio" id="q6_woman_no" name="Abuse against a woman" value="no" checked="checked" /><label for="q6_woman_no">Non</label>
 												</p>
 											</form>
 										</div>
@@ -443,8 +443,8 @@
 											<form>
 												<p>
 													Was the abuse committed against a child under the age of 18?
-													<input type="radio" id="q6_child_yes" name="Abuse against a child under the age of 18" value="yes" /><label for="q6_child_yes">Yes</label>
-													<input type="radio" id="q6_child_no" name="Abuse against a child under the age of 18" value="no" checked="checked" /><label for="q6_child_no">No</label>
+													<input type="radio" id="q6_child_yes" name="Abuse against a child under the age of 18" value="yes" /><label for="q6_child_yes">Oui</label>
+													<input type="radio" id="q6_child_no" name="Abuse against a child under the age of 18" value="no" checked="checked" /><label for="q6_child_no">Non</label>
 												</p>
 											</form>
 										</div>

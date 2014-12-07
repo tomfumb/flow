@@ -1,12 +1,12 @@
 <div class="carousel-caption">
 	<div id="question_<%= question.get("id") %>" class="question">
-		<h3 class="question-title">Question <%= question.get("id") %><span class="questions-progress-report"> (of <span class="questions-progress-report-count"></span>)</span></h3>
+		<h3 class="question-title">Question <%= question.get("id") %><span class="questions-progress-report"> (de <span class="questions-progress-report-count"></span>)</span></h3>
 		<hr />
 		<p><%= question.get("content") %></p>
 		<% if(explanations && explanations.length) { %>
 		<div class="question-explanation">
 			<div class="question-explanation-header clickable clickable-colour">
-				<img src="images/0.png" class="sprites emblem-notice" width="24" height="24" title="Why this question?" />
+				<img src="images/0.png" class="sprites emblem-notice" width="24" height="24" title="Pourquoi cette question?" />
 				Pourquoi cette question?
 			</div>
 		</div>
@@ -18,6 +18,6 @@
 	<hr />
 </div>
 <span class="question-area-appends">
-	<span class="question-activity-indicator"></span>
-	<span class="start-again-control"><button type="button" class="btn btn-primary start-again-button">Start Again</button></span>
+	<span class="question-activity-indicator question-activity-indicator-hidden">traitement...</span>
+	<span class="start-again-control"><button type="button" class="btn btn-primary start-again-button">Recommencer</button></span>
 </span>
