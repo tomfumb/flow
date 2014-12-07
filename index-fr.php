@@ -8,8 +8,8 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link href="css/src/ccij.css?flow-v=0.9.62" rel="stylesheet" type="text/css" />
-	<link href="css/print.css?flow-v=0.9.62" rel="stylesheet" type="text/css" media="print" />
+	<link href="css/src/ccij.css?flow-v=0.9.63" rel="stylesheet" type="text/css" />
+	<link href="css/print.css?flow-v=0.9.63" rel="stylesheet" type="text/css" media="print" />
 	<title>CCJI - Possibilités de Justice</title>
 </head>
 <body>
@@ -189,7 +189,7 @@
 										<h4 class="outcome-title">Le Comité des O.N.U. pour l’élimination de la discrimination contre les femmes (CEDCF)</h4>
 										<div class="outcome-abbreviation">CEDCF</div>
 										<div class="outcome-description">
-											<p>Créé en 1982, le CEDCF est un organisme des Nations Unies qui comprend des experts en droit des femmes du monde entier. Il surveille la mise en œuvre de la <span class="italic">Convention pour l’élimination de la discrimination contre les femmes</span>, un accord international qui se penche sur les droits fondamentaux de la femme et qui est entré en vigueur le 3 septembre 1981. En 1999, l’Assemblée générale des Nations Unies a adopté un Protocole optionnel à la Convention qui permet aux particuliers de déposer une plainte au CEDCF.</p>
+											<p>Créé en 1982, le CEDCF est un organisme des Nations Unies qui comprend des experts en droit des femmes du monde entier. Il surveille la mise en œuvre de la <span class="italic">Convention pour l’élimination de la discrimination contre les femmes</span>, un accord international qui se penche sur les droits fondamentaux de la femme et qui est entré en vigueur le 3 septembre 1981. En 1999, l’Assemblée générale des Nations Unies a adopté un Protocole optionnel à la Convention qui permet aux particuliers de déposer une plainte au CEDCF. Les plaintes contre les pays qui ont ratifié ce Protocole optionnel doivent être soumises par écrit et ne doivent pas être anonymes. Afin que les plaintes individuelles soient considérées, les particuliers ou des groupes doivent en premier demander justice dans le pays où l’abus a eu lieu, à moins que ce processus soit déraisonnablement prolongé ou qu’il soit peu probable qu’il puisse apporter un dédommagement efficace. Il n’y a pas de prescription pour déposer des plaintes.</p>
 											<p>Liens:</p>
 											<p>Le Comité des Nations Unies pour l’élimination de la discrimination contre les femmes <a href="http://www.ohchr.org/EN/HRBodies/CEDAW/Pages/Introduction.aspx" target="_blank">http://www.ohchr.org/EN/HRBodies/CEDAW/Pages/Introduction.aspx</a></p>
 											<p>Un exemple de formulaire pour la soumission des communications au Comité pour l’élimination de la discrimination contre les femmes: <a href="http://www.un.org/womenwatch/daw/cedaw/opmodelform.html" target="_blank">http://www.un.org/womenwatch/daw/cedaw/opmodelform.html</a></p>
@@ -221,7 +221,7 @@
 										<h4 class="outcome-title">Le Comité des O.N.U. sur les droits économiques, sociaux et culturels (CEDSC)</h4>
 										<div class="outcome-abbreviation">CEDSC</div>
 										<div class="outcome-description">
-											<p>Le CEDSC peut entendre des plaintes concernant les violations des droits énoncés dans la <span class="italic">Convention internationale sur les droits économiques, sociaux et culturels</span>, un traité international qui est entré en vigueur le 3 janvier 1976. Les plaintes peuvent être déposées par des particuliers, ou des groupes de personnes, ou par un tiers au nom des particuliers, pourvu que le pays en cause ait ratifié le protocole facultatif de cette Convention. Les plaignants doivent avoir en premier intenté un recours judiciaire dans le pays où la présumée violation a eu lieu, et la communication devrait être enregistrée dans l’année suivant la décision finale d’une cour nationale ou d’un tribunal.</p>
+											<p>Le CEDSC peut entendre des plaintes concernant les violations des droits énoncés dans la <span class="italic">Convention internationale sur les droits économiques, sociaux et culturels</span>, un traité international qui est entré en vigueur le 3 janvier 1976. Les plaintes peuvent être déposées par des particuliers, ou des groupes de personnes, ou par un tiers au nom des particuliers, pourvu que le pays en cause ait ratifié le protocole facultatif de cette Convention. Les plaignants doivent avoir en premier intenté un recours judiciaire dans le pays où la présumée violation a eu lieu, et la communication devrait être enregistrée dans l’année suivant la décision finale d’une cour nationale ou d’un tribunal. En examinant les plaintes, le CEDSC prendra en considération les dispositions raisonnables prises par le gouvernement en question pour surveiller les droits énoncés dans la Convention. En agissant ainsi, le CEDSC tiendra compte qu’il y a un éventail de politiques que le gouvernement doit adopter pour mettre en œuvre ces droits.</p>
 											<p>Links:</p>
 											<p><a href="http://www.ohchr.org/en/hrbodies/cescr/pages/cescrindex.aspx" target="_blank">http://www.ohchr.org/en/hrbodies/cescr/pages/cescrindex.aspx</a></p>
 											<p><a href="http://www.ohchr.org/Documents/Publications/FactSheet16rev.1en.pdf" target="_blank">http://www.ohchr.org/Documents/Publications/FactSheet16rev.1en.pdf</a></p>
@@ -238,7 +238,7 @@
 										<h4 class="outcome-title">Le Comité des O.N.U. pour les droits des Enfants (CDE)</h4>
 										<div class="outcome-abbreviation">CDE</div>
 										<div class="outcome-description">
-											<p>Le CDE est un organisme des Nations Unies composé d’experts qui surveille la mise en œuvre de la <span class="italic">Convention de droits des enfants</span>, un accord international qui est entré en vigueur le 2 septembre 1990. Le CDE surveille aussi la mise en œuvre des deux Protocoles facultatifs de la Convention, l’un d’eux concernant l’implication du conflit des enfants armés et l’autre concernant la vente d’enfants, la prostitution et la pornographie d’enfant. Le Protocole optionnel du CDE concernant les plaintes des particuliers est entré en vigueur le 14 avril 2014. Les enfants de moins de 18 ans peuvent maintenant déposer par écrit des plaintes au Comité des Nations Unies s’ils ont été victimes d’abus ou de mauvais traitement de la part des pays qui ont ratifié ce Protocole.</p>
+											<p>Le CDE est un organisme des Nations Unies composé d’experts qui surveille la mise en œuvre de la <span class="italic">Convention de droits des enfants</span>, un accord international qui est entré en vigueur le 2 septembre 1990. Le CDE surveille aussi la mise en œuvre des deux Protocoles facultatifs de la Convention, l’un d’eux concernant l’implication du conflit des enfants armés et l’autre concernant la vente d’enfants, la prostitution et la pornographie d’enfant. Le Protocole optionnel du CDE concernant les plaintes des particuliers est entré en vigueur le 14 avril 2014. Les enfants de moins de 18 ans peuvent maintenant déposer par écrit des plaintes au Comité des Nations Unies s’ils ont été victimes d’abus ou de mauvais traitement de la part des pays qui ont ratifié ce Protocole. Les plaintes des particuliers peuvent seulement être déposées après une demande qui aurait échoué dans l’obtention de réparation de la part du gouvernement responsable. Les particuliers doivent déposer leur plainte dans l’année qui suit une décision d’un tribunal national. Si le CDE décide qu’il va considérer la plainte, le gouvernement responsable aura la responsabilité de répondre aux allégations. Le CDE émettra par la suite ses opinions et ses recommandations.</p>
 											<p>Liens:</p>
 											<p><a href="http://www.ohchr.org/EN/HRBodies/CRC/Pages/CRCIntro.aspx" target="_blank">http://www.ohchr.org/EN/HRBodies/CRC/Pages/CRCIntro.aspx</a></p>
 											<p><a href="https://treaties.un.org/doc/source/signature/2012/CTC_4-11d.pdf" target="_blank">https://treaties.un.org/doc/source/signature/2012/CTC_4-11d.pdf</a></p>
@@ -593,7 +593,7 @@
 	</div>
 	<!-- End W&H footer -->
 	<script type="text/javascript">
-	    var requirejs = { urlArgs: 'flow-v=0.9.62' };
+	    var requirejs = { urlArgs: 'flow-v=0.9.63' };
 	    window.CCIJ = { language: 'french' };
 	</script>
 	<script type="text/javascript" data-main="js/app-fr" src="js/lib/require-2.1.11.js"></script>
