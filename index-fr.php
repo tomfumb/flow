@@ -509,7 +509,7 @@
 							</div>
 						</div>
 						<div id="flow_restart_confirm" title="Confirm restart">
-							<p>Are you sure you want to start again?</p>
+							<p>Êtes-vous sûr de vouloir recommencer?</p>
 						</div>
 					</div>
 					<div id="flow_print">
