@@ -1,4 +1,4 @@
-define(['jquery', 'underscore', 'backbone', 'flow/Util', 'ui/OutcomeView', 'ui/ResultsSenderView', 'ui/FeedbackView', 'text!templates/outcome-manager.html', 'text!templates/outcome-manager-outcome.html'], function($, _, Backbone, Util, OutcomeView, ResultsSenderView, FeedbackView, managerTemplate, outcomeTemplate) {
+define(['jquery', 'underscore', 'backbone', 'flow/Util', 'ui/OutcomeView', 'ui/ResultsSenderView', 'ui/FeedbackView', 'text!templates/outcome-manager.html', 'text!templates/outcome-manager-outcome.html', 'text!templates/outcome-manager-unanswered-count.html'], function($, _, Backbone, Util, OutcomeView, ResultsSenderView, FeedbackView, managerTemplate, outcomeTemplate, unansweredTemplate) {
 	
 	return Backbone.View.extend({
 	
@@ -164,10 +164,10 @@ define(['jquery', 'underscore', 'backbone', 'flow/Util', 'ui/OutcomeView', 'ui/R
 			}, this));
 			
 			if(this.unansweredQuestions > 0) {
-				
-				var questionPluralPart = (this.unansweredQuestions > 1 ? 's are' : ' is');
-				
-				this.$el.find('#flow_outcome_unanswered_count').show().html(this.unansweredQuestions + ' question' + questionPluralPart + ' unanswered which can cause inaccurate results.');
+
+			    this.$el.find('#flow_outcome_unanswered_count').show().html(_.template(unansweredTemplate, {
+			        count: this.unansweredQuestions
+			    }));
 			}
 			else {
 				this.$el.find('#flow_outcome_unanswered_count').hide();
