@@ -2,13 +2,11 @@ To Do:
 
 HIGH
 - not sure if there's a translation for 'N question(s) unanswered...'
+- <<>> are actual characters :(
 - Mailchimp integration
 - issue with question buttons and right side padding overlapping q15 and left-most button sometimes disappearing a little on window resize
 - Inconsistent capitalisation and quoting / >> in Why This Question
 - Check last word of institution descriptions in case a non-split paragraph missed
-- French language version
-	- Unanswered question count needs templating
-	- require translations for all words / phrases identified in email
 
 MEDIUM
 - several conditions where page should be scrolled to the top so that smaller screens don't lose context due to previous section's scroll

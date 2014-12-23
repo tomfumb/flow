@@ -19,7 +19,7 @@
 			<div class="row">
 				<div class="col-sm-24">
 					<ul class="list-inline pull-left">
-						<li><a href="http://www.ccij.ca">< Return to CCIJ</a></li>
+						<li><a href="http://www.ccij.ca">&lt; Return to CCIJ</a></li>
 					</ul>
 					<ul class="list-inline pull-right">
 						<li><a href="index-fr.php">Français</a></li>
@@ -192,7 +192,7 @@
 											<p>Established in 1982, CEDAW is a United Nations body that consists of experts on women's rights from around the world. It monitors implementation of the <span class="italic">Convention on the Elimination of Discrimination against Women</span>, an international treaty which addresses the basic human rights of women that entered into force on 3 September 1981. In 1999, the General Assembly of the United Nations adopted an Optional Protocol to the Convention that allows individuals to make complaints to the CEDAW. Complaints against countries that have ratified this Optional Protocol must be submitted in writing and cannot be anonymous. In order for the individual complaints to be considered, the individual or group must first seek justice within the country where the abuse occurred, unless that process is unreasonably prolonged or unlikely to bring effective relief. There is no time limitation for bringing claims.</p>
 											<p>Links:</p>
 											<p>Committee on the Elimination of Discrimination against Women <a href="http://www.ohchr.org/EN/HRBodies/CEDAW/Pages/Introduction.aspx" target="_blank">http://www.ohchr.org/EN/HRBodies/CEDAW/Pages/Introduction.aspx</a></p>
-											<p>A model form for the submission of communications to the Committee on the Elimination of Discrimination against Women: <a href="http://www.un.org/womenwatch/daw/cedaw/opmodelform.html" target="_blank">http://www.un.org/womenwatch/daw/cedaw/opmodelform.html</a></p>
+											<p>A model form for the submission of communications to the Committee on the Elimination of Discrimination against Women: <a href="http://www.un.org/womenwatch/daw/cedaw/protocol/modelform-E.PDF" target="_blank">http://www.un.org/womenwatch/daw/cedaw/protocol/modelform-E.PDF</a></p>
 										</div>
 									</div>
 								</div>
