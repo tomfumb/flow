@@ -25,9 +25,9 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'flow/ui/QuestionExplana
 			
 			var answers = this.model.get('answers');
 			if(answers && !answers.preventSort) {
-			    answers.sort(function (a, b) {
-			        return a.display.toLowerCase().localeCompare(b.display.toLowerCase());
-			    });
+                answers.sort(function (a, b) {
+                    return a.display.toLowerCase().localeCompare(b.display.toLowerCase());
+                });
 			}
 			
 			var bodyTemplate, answerStyle, answerTriggers = null;

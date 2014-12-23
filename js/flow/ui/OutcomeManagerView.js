@@ -165,9 +165,9 @@ define(['jquery', 'underscore', 'backbone', 'flow/Util', 'ui/OutcomeView', 'ui/R
 			
 			if(this.unansweredQuestions > 0) {
 
-			    this.$el.find('#flow_outcome_unanswered_count').show().html(_.template(unansweredTemplate, {
-			        count: this.unansweredQuestions
-			    }));
+                this.$el.find('#flow_outcome_unanswered_count').show().html(_.template(unansweredTemplate, {
+                    count: this.unansweredQuestions
+                }));
 			}
 			else {
 				this.$el.find('#flow_outcome_unanswered_count').hide();
