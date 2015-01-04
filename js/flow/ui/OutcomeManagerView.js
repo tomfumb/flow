@@ -47,14 +47,15 @@ define(['jquery', 'underscore', 'backbone', 'flow/Util', 'ui/OutcomeView', 'ui/R
 				}
 			}, this));
 			
-			this.email = this.$el.find('#flow_identity_email').on('keyup', _.bind(this.onIdentityChanged, this));
+			this.email = this.$el.find('#mce-EMAIL').on('keyup', _.bind(this.onIdentityChanged, this));
 			this.emailNews = this.$el.find('#flow_identity_news');
 			this.emailNews.parent().find('.clickable').on('click', _.bind(function() {this.emailNews.get(0).click();}, this));
 			this.emailSend = this.$el.find('#flow_identity_send').on('click', _.bind(this.onSendIdentityClicked, this));
+			this.emailThanks = this.$el.find('#flow_identity_thanks');
+
+			this.mailChimpForm = this.$el.find('#mc-embedded-subscribe-form');
 			
-			this.sharedData.on('change:userEmail', function() {
-				this.email.val(this.sharedData.get('userEmail'));
-			}, this);
+			this.sharedData.on('change:userEmail', this.onSharedEmailChanged, this);
 		},
 		
 		onEscapePressed: function() {
@@ -193,8 +194,15 @@ define(['jquery', 'underscore', 'backbone', 'flow/Util', 'ui/OutcomeView', 'ui/R
 			
 			this.feedbackView.render();
 		},
+
+		onSharedEmailChanged: function() {
+		    this.email.val(this.sharedData.get('userEmail'));
+		    this.onIdentityChanged(true);
+        },
 		
-		onIdentityChanged: function() {
+		onIdentityChanged: function (indirect) {
+
+		    indirect = (typeof indirect === 'undefined' ? false : !!indirect);
 						
 			if(this.identityValid()) {
 				this.email.removeClass('input-attention');
@@ -204,21 +212,17 @@ define(['jquery', 'underscore', 'backbone', 'flow/Util', 'ui/OutcomeView', 'ui/R
 				this.emailSend.attr('disabled', 'disabled');
 			}
 			
-			this.sharedData.set('userEmail', this.email.val());
+			this.emailThanks.hide();
+
+			if (!indirect) {
+			    this.sharedData.set('userEmail', this.email.val());
+			}
 		},
 		
-		onSendIdentityClicked: function() {
-			
-			this.$el.find('#flow_identity_thanks').show();
+		onSendIdentityClicked: function () {
+		    this.mailChimpForm.submit();
+		    this.emailThanks.show();
 			this.emailSend.attr('disabled', 'disabled');
-			
-			$.ajax('identity/', {
-				type: 'POST',
-				data: {
-					email: this.email.val(),
-					news: this.emailNews.is(':checked')
-				}
-			});
 		},
 		
 		identityValid: function() {
