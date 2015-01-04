@@ -41,9 +41,9 @@ define(['jquery', 'underscore', 'backbone', 'flow/Util', 'ui/OutcomeView', 'ui/R
 				this.hideClicked();
 			}, this));
 			
-			$(document).keyup(_.bind(function(e) {
+			$(document).keydown(_.bind(function(e) {
 				if(e.keyCode === 27) {
-					this.onEscapePressed();
+					this.onEscapePressed(e);
 				}
 			}, this));
 			
@@ -58,7 +58,7 @@ define(['jquery', 'underscore', 'backbone', 'flow/Util', 'ui/OutcomeView', 'ui/R
 			this.sharedData.on('change:userEmail', this.onSharedEmailChanged, this);
 		},
 		
-		onEscapePressed: function() {
+		onEscapePressed: function(e) {
 			
 			if(
 				!this.detailsModal.isShown &&
