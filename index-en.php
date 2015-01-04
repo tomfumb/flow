@@ -510,6 +510,8 @@
 						</div>
 						<div id="flow_restart_confirm" title="Confirm restart">
 							<p>Are you sure you want to start again?</p>
+                            <div id="flow_restart_yes" class="hidden">Yes</div>
+                            <div id="flow_restart_no" class="hidden">No</div>
 						</div>
 					</div>
 					<div id="flow_print">

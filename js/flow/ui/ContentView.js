@@ -143,18 +143,24 @@ define(
 		
 		restartRequested: function() {
 			
+		    var text = [
+                $('#flow_restart_yes').text(),
+                $('#flow_restart_no').text()
+		    ];
+
+		    var buttons = {};
+		    buttons[text[0]] = _.bind(function (a, b, c) {
+		        this.restartDialog.dialog('close');
+		        this.restart();
+		    }, this);
+		    buttons[text[1]] = function () {
+		        $(this).dialog('close');
+		    };
+
 			this.restartDialog = $('#flow_restart_confirm').dialog({
 				resizable: false,
 				modal: true,
-				buttons: {
-					'Yes': _.bind(function(a, b, c) {
-						this.restartDialog.dialog('close');
-						this.restart();
-					}, this),
-					'No': function() {
-						$(this).dialog('close');
-					}
-				}
+			    buttons: buttons
 			});
 		},
 		
