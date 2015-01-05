@@ -137,28 +137,6 @@ module.exports = function(grunt) {
           src: 'identity/*.php',
           dest: 'dist/'
         }]
-      },
-      bootstrap: {
-      	files: [
-		  {
-		  	cwd: '/var/www/html/bootstrap-3.2.0/dist/css',
-		  	expand: true,
-		  	src: '**',
-		  	dest: 'css/lib/bootstrap/css'
-		  },
-		  {
-		  	cwd: '/var/www/html/bootstrap-3.2.0/dist/fonts',
-		  	expand: true,
-		  	src: '**',
-		  	dest: 'css/lib/bootstrap/fonts'
-		  },
-		  {
-		  	cwd: '/var/www/html/bootstrap-3.2.0/dist/js',
-			expand: true,
-			src: '*.js',
-			dest: 'js/lib'
-		  }
-      	]
       }
     },
     chmod: {
@@ -183,7 +161,7 @@ module.exports = function(grunt) {
           authKey: 'ccij'
         },
         src: 'dist',
-        dest: '/public_html/test'
+        dest: '/public_html/ofj'
       }
     }
   });
@@ -203,7 +181,7 @@ module.exports = function(grunt) {
   //grunt.registerTask('html', ['lint5']);
   grunt.registerTask('version', ['replace:urlVersion']);
   grunt.registerTask('development', ['replace:development']);
-  grunt.registerTask('live', ['lint'/*, 'html'*/, 'requirejs', 'version', 'replace:live']);
+  grunt.registerTask('live', ['lint'/*, 'html'*/, 'version', 'requirejs', 'replace:live']);
   grunt.registerTask('dist', ['live', 'copy:main', 'chmod']);
   grunt.registerTask('bootstrap', ['copy:bootstrap']);
 

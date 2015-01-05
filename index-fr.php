@@ -8,8 +8,8 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link href="css/src/ccij.css?flow-v=0.9.64" rel="stylesheet" type="text/css" />
-	<link href="css/print.css?flow-v=0.9.64" rel="stylesheet" type="text/css" media="print" />
+	<link href="css/src/ccij.css?flow-v=0.9.72" rel="stylesheet" type="text/css" />
+	<link href="css/print.css?flow-v=0.9.72" rel="stylesheet" type="text/css" media="print" />
 	<title>CCJI - Possibilités de Justice</title>
 </head>
 <body>
@@ -53,7 +53,7 @@
                             <a href="http://vimeo.com/user18059102" title="Suivez-nous sur Vimeo" class="wise-sprite-social wise-sprite-social-vimeo">Suivez-nous sur Vimeo</a>
                         </li>
                         <li>
-                            <a href="http://ccij.wiseworkbench.com/?feed=rss2" title="Abonnez-vous à notre flux RSS" class="wise-sprite-social wise-sprite-social-rss">Abonnez-vous à notre flux RSS</a>
+                            <a href="/?feed=rss2" title="Abonnez-vous à notre flux RSS" class="wise-sprite-social wise-sprite-social-rss">Abonnez-vous à notre flux RSS</a>
                         </li>
                     </ul>
                 </div>
@@ -123,9 +123,9 @@
 										<div class="outcome-abbreviation">CPI</div>
 										<div class="outcome-description">
 											<p>Située à La Haye en Pays-Bas, la CPI est le premier tribunal pénal international permanent. Elle a été créée pour poursuivre en justice les personnes accusées d’avoir commis des crimes internationaux parmi les plus graves, incluant les crimes de guerre, les crimes contre l’humanité, le génocide et les agressions. En plus de déterminer la culpabilité ou l’innocence, le Cour pénale internationale peut faire des recommandations sur les dédommagements pour les torts causés aux victimes, et peut fournir l’assistance à certaines victimes dans les pays où elle exerce des activités par le Fonds d’affectation spéciale pour les victimes.</p>
-											<p>Le Cour pénale internationale est régie par un accord international appelé le <span class="italic">Statut de Rome</span>. Plus de 120 pays ont ratifié l’accord, ce qui signifie qu’ils contribuent au budget de la Cour pénale internationale et acceptent sa juridiction pénale sur leurs ressortissants et sur les actes qui se produisent sur leurs territoires. La CPI peut aussi avoir l’autorité légale pour examiner toute situation lorsqu’elle est autorisée par le Conseil de sécurité des Nations Unies (comme cela s’est passé dans les causes du Soudan et de la Libye qui ne sont pas parties intégrantes du <span class="italic">Statut de Rome</span>). La plupart des pays d’Europe, de l’Amérique latine et de l’Afrique ainsi que le Canada et le Japon se sont joints à la CPI. Les non-membres incluent les États-Unis, la Chine, La Russie, l’Inde et la plupart des pays du Moyen-Orient.</p>
-											<p>Le procureur de la Cour pénale internationale peut ouvrir des enquêtes à la demande des États parties, du Conseil de sécurité des Nations Unies ou de sa propre initiative. Par conséquent, les gens peuvent fournir de l’information au procureur concernant de possibles crimes. La Cour pénale internationale a pour objectif d’être un tribunal de dernière instance, ce qui signifie qu’elle n’interviendra pas dans des causes qui font déjà l’objet de véritables procédures judiciaires au niveau international. La Cour pénale internationale est aussi limitée aux crimes qui ont eu lieu après le 1er juillet 2002, le jour où le <span class="italic">Statut de Rome</span> est entré en vigueur. Depuis qu’elle a été créée, la CPI a ouvert des enquêtes concernant des crimes allégués dans huit pays, tous africains.</p>
-											<p>La Cour pénale internationale peut aussi avoir l’autorité légale pour enquêter sur toute situation lorsqu’elle est autorisée par le Conseil de sécurité des Nations Unies (comme cela s’est passé dans les causes du Soudan et de la Libye, lesquels ne font pas partie du <span class="italic">Statut de Rome</span>). Les non-membres peuvent aussi demander à ce que la Cour pénale internationale ait juridictions, comme cela s’est produit dans la cause de la Côte d’Ivoire. (À noter : notre questionnaire "Analysez vos options" est dans l’incapacité d’inclure des situations concernant le Conseil de la sécurité des Nations Unies ou la situation où un pays non-membre décide de donner la juridiction à la Cour pénale internationale. Par conséquent, il peut à l’avenir devenir possible pour la CPI de poursuivre des crimes qui ont été commis dans le passé dans les pays, incluant la Syrie et la Palestine entre autres.)</p>
+											<p>Le Cour pénale internationale est régie par un accord international appelé le <span class="italic">« Statut de Rome »</span>. Plus de 120 pays ont ratifié l’accord, ce qui signifie qu’ils contribuent au budget de la Cour pénale internationale et acceptent sa juridiction pénale sur leurs ressortissants et sur les actes qui se produisent sur leurs territoires. La CPI peut aussi avoir l’autorité légale pour examiner toute situation lorsqu’elle est autorisée par le Conseil de sécurité des Nations Unies (comme cela s’est passé dans les causes du Soudan et de la Libye qui ne sont pas parties intégrantes du <span class="italic">« Statut de Rome »</span>). La plupart des pays d’Europe, de l’Amérique latine et de l’Afrique ainsi que le Canada et le Japon se sont joints à la CPI. Les non-membres incluent les États-Unis, la Chine, La Russie, l’Inde et la plupart des pays du Moyen-Orient.</p>
+											<p>Le procureur de la Cour pénale internationale peut ouvrir des enquêtes à la demande des États parties, du Conseil de sécurité des Nations Unies ou de sa propre initiative. Par conséquent, les gens peuvent fournir de l’information au procureur concernant de possibles crimes. La Cour pénale internationale a pour objectif d’être un tribunal de dernière instance, ce qui signifie qu’elle n’interviendra pas dans des causes qui font déjà l’objet de véritables procédures judiciaires au niveau international. La Cour pénale internationale est aussi limitée aux crimes qui ont eu lieu après le 1er juillet 2002, le jour où le <span class="italic">« Statut de Rome »</span> est entré en vigueur. Depuis qu’elle a été créée, la CPI a ouvert des enquêtes concernant des crimes allégués dans huit pays, tous africains.</p>
+											<p>La Cour pénale internationale peut aussi avoir l’autorité légale pour enquêter sur toute situation lorsqu’elle est autorisée par le Conseil de sécurité des Nations Unies (comme cela s’est passé dans les causes du Soudan et de la Libye, lesquels ne font pas partie du <span class="italic">« Statut de Rome »</span>). Les non-membres peuvent aussi demander à ce que la Cour pénale internationale ait juridictions, comme cela s’est produit dans la cause de la Côte d’Ivoire. (À noter : notre questionnaire « Analysez vos options » est dans l’incapacité d’inclure des situations concernant le Conseil de la sécurité des Nations Unies ou la situation où un pays non-membre décide de donner la juridiction à la Cour pénale internationale. Par conséquent, il peut à l’avenir devenir possible pour la CPI de poursuivre des crimes qui ont été commis dans le passé dans les pays, incluant la Syrie et la Palestine entre autres.)</p>
 											<p>Pour plus de renseignements sur la CPI et les causes en instance, voir: <a href="http://www.icc-cpi.int/FR_Menus/icc/pages/default.aspx" target="_blank">http://www.icc-cpi.int/FR_Menus/icc/pages/default.aspx</a> et <a href="http://www.iccnow.org/?lang=fr" target="_blank">http://www.iccnow.org/?lang=fr</a>.</p>
 											<p>Pour des renseignements concernant la présentation d’une plainte au procureur, voir: <a href="http://www.icc-cpi.int/FR_Menus/icc/structure%20of%20the%20court/office%20of%20the%20prosecutor/siac/pages/default.aspx" target="_blank">http://www.icc-cpi.int/FR_Menus/icc/structure%20of%20the%20court/office%20of%20the%20prosecutor/siac/pages/default.aspx</a>.</p>
 										</div>
@@ -141,7 +141,7 @@
 										<div class="outcome-description">
 											<p>Le CCT est un organisme des Nations Unies qui peut considérer des allégations de violations des droits définis dans la <span class="italic">Convention contre la torture et autres peines ou traitements cruels, inhumains ou dégradants</span>, un accord international qui est entré en vigueur le 20 juin 1987.</p>
 											<p>Les plaintes peuvent être déposées par des particuliers ou par des tiers au nom de particuliers, contre 67 pays qui ont ratifié la Convention (depuis avril 2014) et accepté que l’autorité du CCT entende de telles plaintes. Les victimes doivent en premier exercer des recours judiciaires dans le pays présumé être responsable pour la violation des droits de l’homme, bien qu’une exception à cette règle existe où les mesures nationales sont déraisonnablement prolongées ou ayant peu de chances d’apporter un résultat efficace à la victime. Les plaintes des particuliers sont référées au Groupe de travail sur les plaintes, qui est composé de trois ou cinq membres du comité. S’ils décident que la plainte mérite d’être étudiée par le CCT, elle sera ensuite examinée en profondeur lors d’une réunion à huis clos. Le plaignant ainsi qu’un représentant du pays mis en cause peuvent être autorisé à assister aux délibérations et à apporter des précisions à cette étape. Les délibérations se termineront avec le Comité qui fera suivre ses opinions sur la cause, par écrit, aux parties concernées.</p>
-											<p>Liens: &lt;&lt; en anglais &gt;&gt;</p>
+											<p>Liens: « en anglais »</p>
 											<p><a href="http://www.ohchr.org/en/hrbodies/cat/pages/catindex.aspx" target="_blank">http://www.ohchr.org/en/hrbodies/cat/pages/catindex.aspx</a></p>
 											<p><a href="http://www.ohchr.org/Documents/Publications/FactSheet17en.pdf" target="_blank">http://www.ohchr.org/Documents/Publications/FactSheet17en.pdf</a></p>
 										</div>
@@ -157,7 +157,7 @@
 										<div class="outcome-description">
 											<p>Le CDH est un organisme des Nations Unies créé pour assurer le respect du <span class="italic">Pacte international relatif aux droits civils et politiques</span> (PIRDCP), un accord international qui est entré en vigueur le 23 mars 1976. Le PIRDCP couvre un large éventail de droits civils et politiques et interdit certaines actions de 168 pays qui en font partie (en date d’avril 2014). Ceux-ci comprennent, entre autres, l’interdiction de crimes graves comme les arrestations arbitraires par les forces de l’ordre, le génocide, l’esclavage et la torture.</p>
 											<p>Les particuliers peuvent déposer des plaintes contre les États pour avoir violé leurs droits, pourvu que le pays ait ratifié le premier Protocole additionnel du PIRDCP. En date d’avril 2014, le Protocole a été ratifié par 117 pays. Les victimes doivent tout d’abord essayer d’obtenir justice dans le pays où la violation des droits a eu lieu, mais il y a des exceptions à cette règle où un redressement judiciaire dans les tribunaux nationaux n’est pas possible, est ineffectif ou indûment prolongé.</p>
-											<p>Les plaintes des particuliers sont initialement évaluées par le président du Groupe de travail des communications. Seules les plaintes qui atteignent les normes d’admissibilité sont transmises au gouvernement accusé de violation afin d’obtenir sa réponse. En second lieu, la plainte est acheminée au Groupe de travail des communications, un comité de cinq experts en droits de l’Homme qui prennent connaissance des requêtes lors de deux sessions annuellement. Le Groupe de travail des communications peut rejeter une plainte, demander plus de renseignements ou faire des recommandations au Groupe de travail sur les situations pour un examen plus approfondi.</p>
+											<p>Les plaintes des particuliers sont initialement évaluées par le président du Groupe de travail des communications. Seules les plaintes qui atteignent les normes d’admissibilité sont transmises au gouvernement accusé de violation afin d’obtenir sa réponse. En second lieu, la plainte est acheminée au Groupe de travail des communications, un comité de cinq experts en droits de l’Homme qui prennent connaissance des requêtes lors de deux sessions annuellement. Le Groupe de travail des communications peut rejeter une plainte, demander plus de renseignements ou faire des recommandations au Groupe de travail sur les situations pour un examen plus approfondi. Enfin, la Commission fera part de ses opinions et ses recommandations sur la situation au particulier et le pays concerné.</p>
 											<p>Liens:</p>
 											<p>Site officiel du CDH: <a href="http://www.ohchr.org/FR/HRBodies/CCPR/Pages/CCPRIndex.aspx" target="_blank">http://www.ohchr.org/FR/HRBodies/CCPR/Pages/CCPRIndex.aspx</a></p>
 											<p>FAQs: <a href="http://www2.ohchr.org/french/bodies/chr/complaints.htm" target="_blank">http://www2.ohchr.org/french/bodies/chr/complaints.htm</a></p>
@@ -174,7 +174,7 @@
 										<div class="outcome-abbreviation">CEDR</div>
 										<div class="outcome-description">
 											<p>Le CEDR est un organisme des Nations Unies créé pour surveiller la mise en œuvre de la <span class="italic">Convention internationale de l’élimination de toutes les formes de discrimination raciale</span>, un accord international qui est entré en vigueur le 4 janvier 1969. Le CEDR peut prendre en considération les plaintes des particuliers ou des groupes de particuliers qui prétendant être victimes de l’un ou de plusieurs droits énoncés dans la Convention. Afin que les plaintes des particuliers soient considérées, le particulier ou le groupe de particuliers doit en premier ester en justice dans le pays où l’abus a eu lieu. Cependant, il y a une exception à cette règle lorsque l’application des mesures nationales est déraisonnablement prolongée ou qu’il est peu probable qu’elles soient en mesure d’apporter un soulagement efficace. La plainte doit être soumise dans les six mois après que toutes les mesures nationales aient été épuisées.</p>
-											<p>Liens: &lt;&lt; en anglais &gt;&gt;</p>
+											<p>Liens: « en anglais »</p>
 											<p>Site officiel du CEDR <a href="http://www.ohchr.org/en/hrbodies/cerd/pages/cerdindex.aspx" target="_blank">http://www.ohchr.org/en/hrbodies/cerd/pages/cerdindex.aspx</a></p>
 											<p>Exemple de formulaire de plainte d’un particulier selon la convention <a href="http://www2.ohchr.org/english/bodies/docs/annex1.pdf" target="_blank">http://www2.ohchr.org/english/bodies/docs/annex1.pdf</a></p>
 										</div>
@@ -191,7 +191,7 @@
 										<div class="outcome-description">
 											<p>Créé en 1982, le CEDCF est un organisme des Nations Unies qui comprend des experts en droit des femmes du monde entier. Il surveille la mise en œuvre de la <span class="italic">Convention pour l’élimination de la discrimination contre les femmes</span>, un accord international qui se penche sur les droits fondamentaux de la femme et qui est entré en vigueur le 3 septembre 1981. En 1999, l’Assemblée générale des Nations Unies a adopté un Protocole optionnel à la Convention qui permet aux particuliers de déposer une plainte au CEDCF. Les plaintes contre les pays qui ont ratifié ce Protocole optionnel doivent être soumises par écrit et ne doivent pas être anonymes. Afin que les plaintes individuelles soient considérées, les particuliers ou des groupes doivent en premier demander justice dans le pays où l’abus a eu lieu, à moins que ce processus soit déraisonnablement prolongé ou qu’il soit peu probable qu’il puisse apporter un dédommagement efficace. Il n’y a pas de prescription pour déposer des plaintes.</p>
 											<p>Liens:</p>
-											<p>Le Comité des Nations Unies pour l’élimination de la discrimination contre les femmes <a href="http://www.ohchr.org/EN/HRBodies/CEDAW/Pages/Introduction.aspx" target="_blank">http://www.ohchr.org/EN/HRBodies/CEDAW/Pages/Introduction.aspx</a> &lt;&lt; en anglais &gt;&gt;</p>
+											<p>Le Comité des Nations Unies pour l’élimination de la discrimination contre les femmes <a href="http://www.ohchr.org/EN/HRBodies/CEDAW/Pages/Introduction.aspx" target="_blank">http://www.ohchr.org/EN/HRBodies/CEDAW/Pages/Introduction.aspx</a> « en anglais »</p>
 											<p>Un exemple de formulaire pour la soumission des communications au Comité pour l’élimination de la discrimination contre les femmes: <a href="http://www.un.org/womenwatch/daw/cedaw/protocol/modelform-F.PDF" target="_blank">http://www.un.org/womenwatch/daw/cedaw/protocol/modelform-F.PDF</a></p>
 										</div>
 									</div>
@@ -206,7 +206,7 @@
 										<div class="outcome-description">
 											<p>Le CDF est un organisme composé d’experts indépendants qui surveille la mise en œuvre de la <span class="italic">Convention internationale pour la protection de toutes les personnes contre les disparitions forcées</span>, un accord international qui est entré en vigueur le 23 décembre 2010. Le CDF prend en considération les plaintes des particuliers concernant les violations présumées de la Convention, pourvu que le pays prétendument responsable pour ces violations ait reconnu la compétence du CDF pour le faire. En date d’avril 2014, seulement 17 pays avaient accepté l’autorité légale du CDF. Les plaintes doivent être soumises par écrit et doivent faire référence à la disparition qui a eu lieu après l’entrée en vigueur de la Convention. En outre, la victime doit avoir essayé d’obtenir justice dans le pays responsable de la disparition présumée.</p>
 											<p>Une fois que le CDF a reçu la plainte qui atteint les critères d’admissibilité, il entrera en contact avec le gouvernement du pays concerné et demandera que ce dernier examine la situation. Toute plainte reçue par le pays concernant l’endroit où se trouve la personne disparue sera communiquée à la personne qui a déposé la plainte. Les causes seront closes une fois que la localisation exacte d’une personne disparue aura été déterminée. À cette étape, la plainte peut être portée devant un autre mécanisme des Nations Unies, si d’autres violations des droits de la personne disparue ont été dévoilées.</p>
-											<p>Liens: &lt;&lt; en anglais &gt;&gt;</p>
+											<p>Liens: « en anglais »</p>
 											<p>Site officiel du CDF <a href="http://www.ohchr.org/EN/HRBodies/CED/Pages/CEDIndex.aspx" target="_blank">http://www.ohchr.org/EN/HRBodies/CED/Pages/CEDIndex.aspx</a></p>
 											<p>Exemple de formulaire de plainte <a href="http://tbinternet.ohchr.org/_layouts/treatybodyexternal/Download.aspx?symbolno=INT%2fCED%2fBRD%2f7147&amp;Lang=en" target="_blank">http://tbinternet.ohchr.org/_layouts/treatybodyexternal/Download.aspx?symbolno=INT%2fCED%2fBRD%2f7147&amp;Lang=en</a></p>
 											<p>Feuillet de renseignements <a href="http://www.ohchr.org/Documents/Publications/FactSheet6Rev3.pdf" target="_blank">http://www.ohchr.org/Documents/Publications/FactSheet6Rev3.pdf</a></p>
@@ -222,7 +222,7 @@
 										<div class="outcome-abbreviation">CEDSC</div>
 										<div class="outcome-description">
 											<p>Le CEDSC peut entendre des plaintes concernant les violations des droits énoncés dans la <span class="italic">Convention internationale sur les droits économiques, sociaux et culturels</span>, un traité international qui est entré en vigueur le 3 janvier 1976. Les plaintes peuvent être déposées par des particuliers, ou des groupes de personnes, ou par un tiers au nom des particuliers, pourvu que le pays en cause ait ratifié le protocole facultatif de cette Convention. Les plaignants doivent avoir en premier intenté un recours judiciaire dans le pays où la présumée violation a eu lieu, et la communication devrait être enregistrée dans l’année suivant la décision finale d’une cour nationale ou d’un tribunal. En examinant les plaintes, le CEDSC prendra en considération les dispositions raisonnables prises par le gouvernement en question pour surveiller les droits énoncés dans la Convention. En agissant ainsi, le CEDSC tiendra compte qu’il y a un éventail de politiques que le gouvernement doit adopter pour mettre en œuvre ces droits.</p>
-											<p>Links: &lt;&lt; en anglais &gt;&gt;</p>
+											<p>Links: « en anglais »</p>
 											<p><a href="http://www.ohchr.org/en/hrbodies/cescr/pages/cescrindex.aspx" target="_blank">http://www.ohchr.org/en/hrbodies/cescr/pages/cescrindex.aspx</a></p>
 											<p><a href="http://www.ohchr.org/Documents/Publications/FactSheet16rev.1en.pdf" target="_blank">http://www.ohchr.org/Documents/Publications/FactSheet16rev.1en.pdf</a></p>
 											<p><a href="http://www.ohchr.org/EN/HRBodies/TBPetitions/Pages/IndividualCommunications.aspx#ICESCR" target="_blank">http://www.ohchr.org/EN/HRBodies/TBPetitions/Pages/IndividualCommunications.aspx#ICESCR</a></p>
@@ -240,7 +240,7 @@
 										<div class="outcome-description">
 											<p>Le CDE est un organisme des Nations Unies composé d’experts qui surveille la mise en œuvre de la <span class="italic">Convention de droits des enfants</span>, un accord international qui est entré en vigueur le 2 septembre 1990. Le CDE surveille aussi la mise en œuvre des deux Protocoles facultatifs de la Convention, l’un d’eux concernant l’implication du conflit des enfants armés et l’autre concernant la vente d’enfants, la prostitution et la pornographie d’enfant. Le Protocole optionnel du CDE concernant les plaintes des particuliers est entré en vigueur le 14 avril 2014. Les enfants de moins de 18 ans peuvent maintenant déposer par écrit des plaintes au Comité des Nations Unies s’ils ont été victimes d’abus ou de mauvais traitement de la part des pays qui ont ratifié ce Protocole. Les plaintes des particuliers peuvent seulement être déposées après une demande qui aurait échoué dans l’obtention de réparation de la part du gouvernement responsable. Les particuliers doivent déposer leur plainte dans l’année qui suit une décision d’un tribunal national. Si le CDE décide qu’il va considérer la plainte, le gouvernement responsable aura la responsabilité de répondre aux allégations. Le CDE émettra par la suite ses opinions et ses recommandations.</p>
 											<p>Liens:</p>
-											<p><a href="http://www.ohchr.org/EN/HRBodies/CRC/Pages/CRCIntro.aspx" target="_blank">http://www.ohchr.org/EN/HRBodies/CRC/Pages/CRCIntro.aspx</a> &lt;&lt; en anglais &gt;&gt;</p>
+											<p><a href="http://www.ohchr.org/EN/HRBodies/CRC/Pages/CRCIntro.aspx" target="_blank">http://www.ohchr.org/EN/HRBodies/CRC/Pages/CRCIntro.aspx</a> « en anglais »</p>
 											<p><a href="https://treaties.un.org/doc/source/signature/2012/CTC_4-11d.pdf" target="_blank">https://treaties.un.org/doc/source/signature/2012/CTC_4-11d.pdf</a></p>
 										</div>
 										<div class="outcome-caveat"><span class="caveat">*</span> Le Comité des Nations Unies pour les droits des enfants a un délai strict de prescription. Si vous avez essayé de déposer une plainte dans votre pays sans succès, vous disposez seulement d’un an pour déposer une plainte aux Comité des Nations Unis pour les droits des enfants, à moins que vous puissiez démontrer qu’il n’a pas été possible de déposer une plainte dans le délai fixé.</div>
@@ -254,11 +254,11 @@
 										<h4 class="outcome-title">Le Groupe de travail sur les disparitions involontaires ou forcées (GTDIF)</h4>
 										<div class="outcome-abbreviation">GTDIF</div>
 										<div class="outcome-description">
-											<p>Le GTDIF des Nations Unies a été créé le 29 février 1980 ayant comme mandat d’ " [e]xaminer les questions concernant les disparitions forcées ou involontaires de personnes." Le GTDIF peut examiner des plaintes à savoir si le gouvernement qui est supposément responsable a ratifié un accord particulier, et peut même envisager d’examiner les causes où aucune cause nationale n’a été entreprise. Afin d’être examiné par le GTDIF, un rapport de disparition doit être soumis par écrit. Les cas de disparitions peuvent être soumis par des parents des disparus, ou par des organisations agissant en leur nom (avec un consentement préalable de parents).</p>
+											<p>Le GTDIF des Nations Unies a été créé le 29 février 1980 ayant comme mandat d’« [e]xaminer les questions concernant les disparitions forcées ou involontaires de personnes». Le GTDIF peut examiner des plaintes à savoir si le gouvernement qui est supposément responsable a ratifié un accord particulier, et peut même envisager d’examiner les causes où aucune cause nationale n’a été entreprise. Afin d’être examiné par le GTDIF, un rapport de disparition doit être soumis par écrit. Les cas de disparitions peuvent être soumis par des parents des disparus, ou par des organisations agissant en leur nom (avec un consentement préalable de parents).</p>
 											<p>Le GTDIF a aussi le pouvoir de prendre certaines actions dans des circonstances précises, comme lorsque des personnes ont été récemment arrêtées ou détenues et l’on croit qu’il y a un risque de disparition. En pareil cas, le ministère des Affaires étrangères du pays concerné est contacté par le GTDIF par le moyen le plus rapide disponible.</p>
 											<p>Liens:</p>
-											<p>Site officiel <a href="http://www.ohchr.org/EN/Issues/Disappearances/Pages/DisappearancesIndex.aspx" target="_blank">http://www.ohchr.org/EN/Issues/Disappearances/Pages/DisappearancesIndex.aspx</a> &lt;&lt; en anglais &gt;&gt;</p>
-											<p>Comment utiliser le GTDIF <a href="http://www.ohchr.org/Documents/Issues/Disappearances/how_to_use_the_WGEID.pdf" target="_blank">http://www.ohchr.org/Documents/Issues/Disappearances/how_to_use_the_WGEID.pdf</a> &lt;&lt; en anglais &gt;&gt;</p>
+											<p>Site officiel <a href="http://www.ohchr.org/EN/Issues/Disappearances/Pages/DisappearancesIndex.aspx" target="_blank">http://www.ohchr.org/EN/Issues/Disappearances/Pages/DisappearancesIndex.aspx</a> « en anglais »</p>
+											<p>Comment utiliser le GTDIF <a href="http://www.ohchr.org/Documents/Issues/Disappearances/how_to_use_the_WGEID.pdf" target="_blank">http://www.ohchr.org/Documents/Issues/Disappearances/how_to_use_the_WGEID.pdf</a> « en anglais »</p>
 											<p>Le formulaire pour soumettre une communication d’une victime de disparition forcée <a href="http://www.ohchr.org/Documents/issues/Disappearances/Communication_form_F.doc" target="_blank">http://www.ohchr.org/Documents/issues/Disappearances/Communication_form_F.doc</a></p>
 										</div>
 									</div>
@@ -274,11 +274,11 @@
 										<div class="outcome-abbreviation">CIDH</div>
 										<div class="outcome-description">
 											<p>Toute personne, groupe de personnes ou organisation peut porter plainte à la Commission interaméricaine des droits de l’Homme pour les violations de <span class="italic">La Convention interaméricaine des droits de l’Homme et de la Déclaration interaméricaine des droits et des devoirs de l’Homme</span>, ainsi que d’autres Conventions interaméricaines des droits de l’Homme. Les violations alléguées doivent avoir été commises par un gouvernement qui a ratifié la convention concernée, et tous les États membres de l’Organisation des États Américains (OÉA) sont responsables de faire respecter les droits de la Déclaration interaméricaine des droits et des devoirs de l’Homme.</p>
-											<p>Les plaintes déposées à la Commission sont appelées "requêtes". Lorsqu’une requête est reçue, une évaluation préliminaire est effectuée. Cette évaluation se termine par un de trois résultats : soit une décision pour ouvrir le traitement de la requête, une décision de demander des informations supplémentaires ou enfin une décision de ne pas traiter. Si une requête est acceptée pour être traitée, la Commission analyse les allégations des parties et rédige un rapport. Le rapport peut inclure les recommandations à un gouvernement de rétablir les droits qui ont été violés, dans le but d’empêcher que les mêmes violations se reproduisent ou d’assurer la réparation des torts causés aux victimes. La Commission interaméricaine des droits de l’Homme peut aussi demander au gouvernement de prendre des mesures de précaution pour prévenir un dommage irréparable à un individu ou à un groupe des personnes. Si l’État ne parvient pas à se conformer aux recommandations de la Commission, celle-ci peut référer la cause à la Cour interaméricaine des droits de l’Homme, un organisme distinct qui peut rendre juridiquement des décisions exécutoires.</p>
+											<p>Les plaintes déposées à la Commission sont appelées « requêtes». Lorsqu’une requête est reçue, une évaluation préliminaire est effectuée. Cette évaluation se termine par un de trois résultats : soit une décision pour ouvrir le traitement de la requête, une décision de demander des informations supplémentaires ou enfin une décision de ne pas traiter. Si une requête est acceptée pour être traitée, la Commission analyse les allégations des parties et rédige un rapport. Le rapport peut inclure les recommandations à un gouvernement de rétablir les droits qui ont été violés, dans le but d’empêcher que les mêmes violations se reproduisent ou d’assurer la réparation des torts causés aux victimes. La Commission interaméricaine des droits de l’Homme peut aussi demander au gouvernement de prendre des mesures de précaution pour prévenir un dommage irréparable à un individu ou à un groupe des personnes. Si l’État ne parvient pas à se conformer aux recommandations de la Commission, celle-ci peut référer la cause à la Cour interaméricaine des droits de l’Homme, un organisme distinct qui peut rendre juridiquement des décisions exécutoires.</p>
 											<p>Liens:</p>
 											<p>Le site de la Commission: <a href="http://cidh.oas.org/french.htm" target="_blank">http://cidh.oas.org/french.htm</a></p>
-											<p>Livret d’information pour la présentation de plaintes: <a href="http://www.oas.org/en/iachr/docs/pdf/HowTo.pdf" target="_blank">http://www.oas.org/en/iachr/docs/pdf/HowTo.pdf</a> &lt;&lt; en anglais &gt;&gt;</p>
-											<p>Renseignements sur le système interaméricain des droits de l’Homme de la part du Centre des Ressources de la justice internationale: <a href="http://www.ijrcenter.org/regional/inter-american-system/" target="_blank">http://www.ijrcenter.org/regional/inter-american-system/</a> &lt;&lt; en anglais &gt;&gt;</p>
+											<p>Livret d’information pour la présentation de plaintes: <a href="http://www.oas.org/en/iachr/docs/pdf/HowTo.pdf" target="_blank">http://www.oas.org/en/iachr/docs/pdf/HowTo.pdf</a> « en anglais »</p>
+											<p>Renseignements sur le système interaméricain des droits de l’Homme de la part du Centre des Ressources de la justice internationale: <a href="http://www.ijrcenter.org/regional/inter-american-system/" target="_blank">http://www.ijrcenter.org/regional/inter-american-system/</a> « en anglais »</p>
 										</div>
 										<div class="outcome-caveat"><span class="caveat">*</span> La Commission interaméricaine des droits de l’Homme a un délai très strict de prescription. Si vous avez essayé de déposer une cause dans votre pays sans succès, vous disposez seulement de six mois pour déposer une requête à la Commission interaméricaine des droits de l’Homme.</div>
 									</div>
@@ -295,9 +295,9 @@
 											<p>Les recommandations ne sont pas en elles-mêmes juridiquement contraignantes. Toutefois, elles sont soumises à l’Assemblée des Chefs d’État et de Gouvernement de l’Union Africaine. Si elles sont adoptées, elles auront force de loi. Malgré que la Charte ne prévoie pas spécifiquement un mandat à la CADHP pour accorder une réparation, la CADHP a assumé ce pouvoir. Auparavant, elle a accordé des jugements déclaratifs (affirmant qu’un droit a été violé), incluant des dommages pécuniaires et autres formes de réparation non pécuniaires (comme les amendements proposés dans les lois des droits transgressés).</p>
 											<p>Le site de la CADHP: <a href="http://www.achpr.org/fr/" target="_blank">http://www.achpr.org/fr/</a></p>
 											<p>La procédure des communications: <a href="http://www.achpr.org/fr/communications/procedure/" target="_blank">http://www.achpr.org/fr/communications/procedure/</a></p>
-											<p>Informations sur le Système régional africain des droits de l’Homme par le Centre des ressources de la Justice internationale: <a href="http://www.ijrcenter.org/regional/african/" target="_blank">http://www.ijrcenter.org/regional/african/</a> &lt;&lt; en anglais &gt;&gt;</p>
+											<p>Informations sur le Système régional africain des droits de l’Homme par le Centre des ressources de la Justice internationale: <a href="http://www.ijrcenter.org/regional/african/" target="_blank">http://www.ijrcenter.org/regional/african/</a> « en anglais »</p>
 										</div>
-										<div class="outcome-caveat"><span class="caveat">*</span> La Commission africaine a un délai strict de prescription. Si vous avez essayé de déposer une plainte dans votre pays sans succès, vous devez déposer une plainte à la Commission africaine dans un "délai raisonnable", à moins que vous puissiez démontrer qu’il n’a pas été possible de déposer la plainte dans un délai fixé.</div>
+										<div class="outcome-caveat"><span class="caveat">*</span> La Commission africaine a un délai strict de prescription. Si vous avez essayé de déposer une plainte dans votre pays sans succès, vous devez déposer une plainte à la Commission africaine dans un « délai raisonnable », à moins que vous puissiez démontrer qu’il n’a pas été possible de déposer la plainte dans un délai fixé.</div>
 									</div>
 								</div>
 							</div>
@@ -329,7 +329,7 @@
 										<div class="outcome-description">
 											<p>Les CETC, aussi connu comme le tribunal des Khmers Rouge, est une initiative du gouvernement Cambodgien et des Nations Unies. Les CETC ont un mandat légal de poursuivre les hauts dirigeants et ceux qui sont principalement responsables des atrocités commises durant le régime des Khmers Rouge entre le 17 avril 1975 et le 7 janvier 1979. À ce jour, la CETC a complété le procès de Kaing Guek Eav (alias Duch) et le procès de Nuon Chea et Khieu Samphan. Un second procès de Nuon Chea et Khieu Samphan est en cours. Bien qu’ils aient des plans pour poursuivre les deux autres causes, les identités des accusés dans ces situations n’ont pas été rendues publiques, et il y a certaines questions à savoir si les causes seront jugées. Les CETC acceptent actuellement les appels des victimes pour participer à ces deux dernières causes.</p>
 											<p>Les CETC ont un nouveau mandat pour la participation d’une victime, en permettant aux particuliers d’enregistrer des plaintes devant les CETC, ainsi que demander de participer comme parties civiles dans les procédures. Comme il n’y a pas de mandat pour les particuliers, les parties civiles peuvent demander réparations collectives et morales dans le cas où le défendeur est déclaré coupable. Celles-ci incluent des excuses publiques et des programmes d’éducation.</p>
-											<p>Pour des informations sur le CETC, veuillez consulter le site du Tribunal (<a href="http://www.eccc.gov.kh/fr" target="_blank">http://www.eccc.gov.kh/fr</a>) et l’Observateur du tribunal Cambodgien (<a href="http://www.cambodiatribunal.org" target="_blank">http://www.cambodiatribunal.org</a> &lt;&lt; en anglais &gt;&gt;).</p>
+											<p>Pour des informations sur le CETC, veuillez consulter le site du Tribunal (<a href="http://www.eccc.gov.kh/fr" target="_blank">http://www.eccc.gov.kh/fr</a>) et l’Observateur du tribunal Cambodgien (<a href="http://www.cambodiatribunal.org" target="_blank">http://www.cambodiatribunal.org</a> « en anglais »).</p>
 											<p>Pour de plus amples information concernant la participation de victime à la CETC, voir: <a href="http://www.eccc.gov.kh/fr/victims-support" target="_blank">http://www.eccc.gov.kh/fr/victims-support</a></p>
 										</div>
 									</div>
@@ -344,7 +344,7 @@
 											<p>La Chambre des crimes de guerre de la Bosnie-Herzégovine a été créée en 2002 et a débuté ses opérations le 9 mars 2005. La CCG a été créée dans le cadre d’une initiative pour transférer les causes du Tribunal pénal international de l’ex-Yougoslavie (TPIY) à la juridiction nationale et ainsi réduire le retard des causes au TPIY, tout en aidant à reconstruire un système juridique en Bosnie Herzégovine et en faisant la promotion de la réconciliation en imposant la responsabilité des crimes de guerre. Contrairement au TPIY, la CCG n’est pas un tribunal international ad hoc et n’a pas une existence limitée. Elle opère conformément au Code criminel et au Code de procédure pénale de la Bosnie Herzégovine.</p>
 											<p>La CCG tient actuellement des procès de suspects de niveau faible à intermédiaire de crimes de guerre commis sur le territoire de l’ex-Yougoslavie depuis 1991. Les cas peuvent être initiés par le TPIY puis transférés à la CCH ou bien passer directement par une investigation entamée par le Procureur général de la Bosnie Herzégovine.</p>
 											<p>Liens:</p>
-											<p><a href="http://www.sudbih.gov.ba/?jezik=e" target="_blank">http://www.sudbih.gov.ba/?jezik=e</a> &lt;&lt; en anglais &gt;&gt;</p>
+											<p><a href="http://www.sudbih.gov.ba/?jezik=e" target="_blank">http://www.sudbih.gov.ba/?jezik=e</a> « en anglais »</p>
 											<p><a href="http://www.trial-ch.org/fr/ressources/tribunaux/tribunaux-hybrides/chambre-pour-les-crimes-de-guerre-en-bosnie-herzegovine.html" target="_blank">http://www.trial-ch.org/fr/ressources/tribunaux/tribunaux-hybrides/chambre-pour-les-crimes-de-guerre-en-bosnie-herzegovine.html</a></p>
 										</div>
 									</div>
@@ -409,14 +409,14 @@
 								<div id="flow_question_2a">
 									<div class="question-content">Est-ce que des gens qui sont citoyens de tout autre pays ont participé dans les évènements ayant mené aux mauvais traitements?</div>
 									<div class="question-explanation">Certaines institutions juridiques ont seulement autorité concernant les abus qui sont commis par des gens qui sont citoyens de certains pays. Par exemple, les citoyens des pays qui ont accepté le traité de la Cour pénale internationale peuvent être poursuivis par la Cour, même si les crimes ont été commis dans un pays différent.</div>
-									<div class="question-explanation">Une réponse 'inconnu' à cette question suppose qu’il n’y a pas de citoyens d’un autre pays qui auraient pris part à ces abus. Autrement dit, pour cette question une réponse 'inconnu' aura le même résultat qu’un 'non'.</div>
+									<div class="question-explanation">Une réponse « inconnu » à cette question suppose qu’il n’y a pas de citoyens d’un autre pays qui auraient pris part à ces abus. Autrement dit, pour cette question une réponse « inconnu » aura le même résultat qu’un « non ».</div>
 								</div>
 								<div id="flow_question_2b">
 									<div class="question-content">Quelle autre citoyenneté avaient-ils?</div>
 								</div>
 								<div id="flow_question_3">
 									<div class="question-content"><p>À quelle date le ou les abus se sont-ils produits? (Si la violence s’est poursuivie pendant plus d’une journée, choisissez la date la plus récente à laquelle cet abus s’est produit.)</p><p>Choisir une date en utilisant le calendrier ci-dessous.</p></div>
-									<div class="question-explanation">L’autorité de certaines institutions judiciaires est limitée aux abus commis avant et après certaines dates. Souvent, il s’agit de la date à laquelle un pays accepte un accord particulier. Par exemple, la Cour pénale internationale enquête sur les abus commis après le l<sup>er</sup> juillet 2002, lorsque l’accord de la Cour est entré en vigueur. Il y a aussi des instances où certaines institutions judiciaires demandent aux survivants ou à leurs familles de porter plainte à l’intérieur d’un certain délai après que l’abus ait été commis. Ce concept est plus communément connu sous le terme "prescription" ou "délai de prescription".</div>
+									<div class="question-explanation">L’autorité de certaines institutions judiciaires est limitée aux abus commis avant et après certaines dates. Souvent, il s’agit de la date à laquelle un pays accepte un accord particulier. Par exemple, la Cour pénale internationale enquête sur les abus commis après le l<sup>er</sup> juillet 2002, lorsque l’accord de la Cour est entré en vigueur. Il y a aussi des instances où certaines institutions judiciaires demandent aux survivants ou à leurs familles de porter plainte à l’intérieur d’un certain délai après que l’abus ait été commis. Ce concept est plus communément connu sous le terme « prescription » ou « délai de prescription ».</div>
 								</div>
 								<div id="flow_question_4">
 									<div class="question-content">Au moment des abus, quelle citoyenneté avait la victime?</div>
@@ -433,7 +433,7 @@
 										<div class="question-answerer-check-yes-no-radio">
 											<form>
 												<p>
-													Was the abuse committed against a woman?
+													Est-ce que l’abus a été commis à l’endroit d’une femme?
 													<input type="radio" id="q6_woman_yes" name="Abuse against a woman" value="yes" /><label for="q6_woman_yes">Oui</label>
 													<input type="radio" id="q6_woman_no" name="Abuse against a woman" value="no" checked="checked" /><label for="q6_woman_no">Non</label>
 												</p>
@@ -442,7 +442,7 @@
 										<div class="question-answerer-check-yes-no-radio">
 											<form>
 												<p>
-													Was the abuse committed against a child under the age of 18?
+													Est-ce que l’abus a été commis à l’endroit d’un enfant de moins de 18 ans?
 													<input type="radio" id="q6_child_yes" name="Abuse against a child under the age of 18" value="yes" /><label for="q6_child_yes">Oui</label>
 													<input type="radio" id="q6_child_no" name="Abuse against a child under the age of 18" value="no" checked="checked" /><label for="q6_child_no">Non</label>
 												</p>
@@ -454,7 +454,7 @@
 								</div>
 								<div id="flow_question_7">
 									<div class="question-content">Est-ce que les mauvais traitements ont été commis pendant une guerre?</div>
-									<div class="question-explanation">Certains tribunaux ont l’autorité sur des crimes commis dans le cadre d’une guerre internationale ou civile. Ces crimes sont appelés "crimes de guerre". D’autre institutions judiciaires ont l’autorité sur des crimes qui n’ont pas été commis pendant une guerre. Par exemple, la Cour pénale internationale peut être capable de poursuivre le meurtre ou l’assassinat de civils comme "crime de guerre" si les soldats ont commis ces actes pendant une guerre.</div>
+									<div class="question-explanation">Certains tribunaux ont l’autorité sur des crimes commis dans le cadre d’une guerre internationale ou civile. Ces crimes sont appelés « crimes de guerre ». D’autre institutions judiciaires ont l’autorité sur des crimes qui n’ont pas été commis pendant une guerre. Par exemple, la Cour pénale internationale peut être capable de poursuivre le meurtre ou l’assassinat de civils comme « crime de guerre » si les soldats ont commis ces actes pendant une guerre.</div>
 								</div>
 								<div id="flow_question_8">
 									<div class="question-content">Est-ce que ces abus ont été commis contre plusieurs autres personnes à ce moment-là?</div>
@@ -469,33 +469,33 @@
 										<p>Qui a commis ces abus?</p>
 										<p>Sélectionnez tout ce qui s'applique parmi les options suivantes.</p>
 									</div>
-									<div class="question-explanation">L’autorité de certaines institutions judiciaires est limitée aux actes commis par les représentants gouvernementaux et ne s’étend pas aux crimes commis par des civils. Par exemple, "la torture" est un abus des droits de l’Homme qui nécessite habituellement l’implication du gouvernement. Si quelqu’un est battu mais qu’il n’y a pas d’implication gouvernementale, ce n’est pas considéré comme de "la torture" et tombe à l’extérieur de la juridiction des processus de justice internationale.</div>
-									<div class="question-explanation">Veuillez s’il vous plaît répondre "Inconnu" si vous n’êtes entièrement certain de savoir qui est responsable de ces abus. Une réponse "Inconnu" à cette question n’éliminera pas l’une des options judiciaires.</div>
+									<div class="question-explanation">L’autorité de certaines institutions judiciaires est limitée aux actes commis par les représentants gouvernementaux et ne s’étend pas aux crimes commis par des civils. Par exemple, « la torture » est un abus des droits de l’Homme qui nécessite habituellement l’implication du gouvernement. Si quelqu’un est battu mais qu’il n’y a pas d’implication gouvernementale, ce n’est pas considéré comme de la « torture » et tombe à l’extérieur de la juridiction des processus de justice internationale.</div>
+									<div class="question-explanation">Veuillez s’il vous plaît répondre « Inconnu » si vous n’êtes entièrement certain de savoir qui est responsable de ces abus. Une réponse « Inconnu » à cette question n’éliminera pas l’une des options judiciaires.</div>
 								</div>
 								<div id="flow_question_11">
 									<div class="question-content">Est-ce que l’une ou l’autre de ces personnes responsables de ces abus vit actuellement au Canada?</div>
 									<div class="question-explanation">Certaines procédures juridiques au Canada sont possibles lorsque la personne responsable des abus demeure au Canada. Par exemple, le gouvernement canadien peut être en mesure de poursuivre criminellement, déporter ou retirer la citoyenneté de quelqu’un qui demeure au Canada et qui pourrait avoir été impliqué dans des violations des droits de l’Homme.</div>
-									<div class="question-explanation">Une réponse "inconnu" à cette question suppose qu’aucune des personnes responsables pour ces violations n’habite au Canada. En d’autres termes, pour cette question une réponse "inconnu" donnera le même effet qu’un "non".</div>
+									<div class="question-explanation">Une réponse « inconnu » à cette question suppose qu’aucune des personnes responsables pour ces violations n’habite au Canada. En d’autres termes, pour cette question une réponse « inconnu » donnera le même effet qu’un « non ».</div>
 								</div>
 								<div id="flow_question_12">
 									<div class="question-content">Est-ce que l’une ou l’autre de ces personnes responsables de ces abus a déjà visité le Canada ou compte le faire prochainement?</div>
 									<div class="question-explanation">Le Canada a l’autorité de demander justice contre les personnes qui ont commis certains abus dans d’autres pays. Lorsqu’une telle personne visite le Canada ou essaye d’entrer au Canada, il peut être possible pour le gouvernement canadien de prendre action, fort probablement par des sanctions par le systèmes d’immigration comme la déportation ou le refus d’accorder un visa.</div>
-									<div class="question-explanation">Une réponse "inconnu" à cette question suppose qu’aucune des personnes responsables pour ces violations n’a visité le Canada. En d’autres termes, pour cette question une réponse "inconnu" donnera le même résultat qu’un "non".</div>
+									<div class="question-explanation">Une réponse « inconnu » à cette question suppose qu’aucune des personnes responsables pour ces violations n’a visité le Canada. En d’autres termes, pour cette question une réponse « inconnu » donnera le même résultat qu’un « non ».</div>
 								</div>
 								<div id="flow_question_13">
 									<div class="question-content">Est-ce que l’une ou l’autre des personnes responsables de(s) abus a déjà voyagé à l’extérieur du pays où ces abus ont été commis?</div>
 									<div class="question-explanation">Plusieurs pays à travers le monde ont l’autorité de poursuivre les personnes présentes sur leur territoire qui commettent certains abus, peu importe où l’abus a été commis. Malgré le fait que l’analyse de cette option dépasse la portée de ce site Web, la réponse à cette question pourrait être utile au CCJI si vous décidez de nous contacter concernant des solutions judiciaires.</div>
-									<div class="question-explanation">Une réponse "inconnu" à cette question suppose qu’aucune des personnes responsables pour ces violations ne voyage à l’extérieur du pays. En d’autres termes, pour cette question une réponse "inconnu" donnera le même résultat qu’un "Non".</div>
+									<div class="question-explanation">Une réponse « inconnu » à cette question suppose qu’aucune des personnes responsables pour ces violations ne voyage à l’extérieur du pays. En d’autres termes, pour cette question une réponse « inconnu » donnera le même résultat qu’un « Non ».</div>
 								</div>
 								<div id="flow_question_14a">
 									<div class="question-content">À votre avis, dans le pays où les abus ont été commis, est-ce que les tribunaux sont équitables et indépendant, de manière à ce que  justice puisse y être rendue?</div>
 									<div class="question-explanation">Plusieurs institutions judiciaires supposent que le gouvernement a comme responsabilité première de pénaliser les abus au lieu où ils ont été commis. Par conséquent, leur autorité peut être limitée à des situations auxquelles le gouvernement responsable est réticent ou incapable de prendre des mesures ou les tribunaux ne sont pas équitables ou indépendants.</div>
-									<div class="question-explanation">Une réponse "Inconnu" à cette question suppose que les tribunaux ne sont pas équitables et indépendants. En d’autres termes, pour cette question une réponse "inconnu" aura le même résultat qu’un "Non".</div>
+									<div class="question-explanation">Une réponse « Inconnu » à cette question suppose que les tribunaux ne sont pas équitables et indépendants. En d’autres termes, pour cette question une réponse « inconnu » aura le même résultat qu’un « Non ».</div>
 								</div>
 								<div id="flow_question_14b">
 									<div class="question-content">Est-ce que la victime ou la famille de la victime a essayé d’entamer des procédures ou une plainte devant les tribunaux, la police ou devant d’autres autorités dans le pays où les abus ont été commis?</div>
 									<div class="question-explanation">Si le survivant ou la famille de la victime a essayé d’engager des procédures dans le pays où les abus ont été commis, mais la cause a échoué pour certaines raisons, ceci peut augmenter la possibilité qu’une institution judiciaire internationale puisse se pencher sur la cause.</div>
-									<div class="question-explanation">Une réponse "inconnu" à cette question suppose que la victime ou la famille de la victime n’a pas tenté de déposer une plainte ou d’entamer des procédures judiciaires. En d’autres termes, pour cette question une réponse "inconnu" aura le même résultat qu’un "Non".</div>
+									<div class="question-explanation">Une réponse « inconnu » à cette question suppose que la victime ou la famille de la victime n’a pas tenté de déposer une plainte ou d’entamer des procédures judiciaires. En d’autres termes, pour cette question une réponse « inconnu » aura le même résultat qu’un « Non ».</div>
 								</div>
 								<div id="flow_question_14c">
 									<div class="question-content">Quel en était le résultat?</div>
@@ -504,7 +504,7 @@
 								<div id="flow_question_15">
 									<div class="question-content">Est-ce que la victime ou la famille de la victime a déposé une plainte à une autre Cour ou à un organisme international?</div>
 									<div class="question-explanation">Quelques institutions judiciaires désirent éviter de dédoubler le travail des autres institutions. Ainsi, plusieurs vont refuser d’accepter une cause si un autre tribunal ou organisme international a déjà révisé la cause.</div>
-									<div class="question-explanation">Une réponse "inconnu" à cette question suppose que la victime ou la famille de la victime n’a déposé de plainte à aucune Cour internationale ou organisme. En d’autres termes, pour cette question une réponse "inconnu" aura le même résultat qu’un "non".</div>
+									<div class="question-explanation">Une réponse « inconnu » à cette question suppose que la victime ou la famille de la victime n’a déposé de plainte à aucune Cour internationale ou organisme. En d’autres termes, pour cette question une réponse « inconnu » aura le même résultat qu’un « non ».</div>
 								</div>
 							</div>
 						</div>
@@ -515,11 +515,11 @@
 						</div>
 					</div>
 					<div id="flow_print">
-						<h3>CCIJ - Opportunities for Justice</h3>
+						<h3>CCJI - Possibilités de justice</h3>
 						<p>
-							Please note that this site provides only information, not legal advice. A legal case cannot be based on the results of this questionnaire, as every case and every legal process is extremely unique and complex. This website is designed to help you understand what options might be available and is not designed to make a final conclusion about your case.
+							Veuillez s’il vous plaît noter que ce site ne fournit que des informations, et non pas un avis juridique. Étant donné que chaque cas et chaque processus juridique est unique et complexe, un dossier juridique ne peut utiliser comme support les résultats de ce questionnaire. Ce site Web est conçu pour vous aider à comprendre quelles options peuvent t s’offrir à vous mais n’est pas conçu pour tirer une conclusion définitive concernant votre cas.
 						</p>
-						<div id="flow_questions_print"><p>You have not yet answered any questions</p></div>
+						<div id="flow_questions_print"></div>
 						<div id="flow_outcomes_print"></div>
 					</div>
 					<div id="flow_scratch"></div>
@@ -542,9 +542,9 @@
 				<div class="col-sm-8">
 					<h3>Centre canadien pour la justice internationale</h3>
 					<ul class="list-unstyled">
-						<li>Bureau d'Ottawa: 613-744-7667</li>
-						<li>Bureau de Vancouver: 613-744-7667</li>
-						<li>t-c: 613-744-7667</li>
+						<li>Bureau d'Ottawa: 613-230-6114</li>
+						<li>Bureau de Vancouver: 604-569-1778</li>
+						<li>t-c: 613-746-2411</li>
 					</ul>
 					<p>
 						Enquêtes: <a href="mailto:info@ccij.ca">info@ccij.ca</a>
@@ -574,7 +574,7 @@
 							<a href="http://vimeo.com/user18059102" title="Suivez-nous sur Vimeo" class="wise-sprite-social wise-sprite-social-vimeo">Suivez-nous sur Vimeo</a>
 						</li>
 						<li>
-							<a href="http://ccij.wiseworkbench.com/?feed=rss2" title="Abonnez-vous à notre flux RSS" class="wise-sprite-social wise-sprite-social-rss">Abonnez-vous à notre flux RSS</a>
+							<a href="/?feed=rss2" title="Abonnez-vous à notre flux RSS" class="wise-sprite-social wise-sprite-social-rss">Abonnez-vous à notre flux RSS</a>
 						</li>
 					</ul>
 				</div>
@@ -583,7 +583,7 @@
 	</footer>
 	<div class="wise-foot">
 		<ul class="list-inline">
-			<li><a href="http://ccij.wiseworkbench.com/fr/conditions-generales-de-vente">Conditions générales de vente</a></li>
+			<li><a href="/fr/conditions-generales-de-vente">Conditions générales de vente</a></li>
 		</ul>
 		<p>
 			Charitable Registration Number: 87346 1040 RR0001
@@ -594,7 +594,7 @@
 	</div>
 	<!-- End W&H footer -->
 	<script type="text/javascript">
-	    var requirejs = { urlArgs: 'flow-v=0.9.64' };
+	    var requirejs = { urlArgs: 'flow-v=0.9.72' };
 	    window.CCIJ = { language: 'french' };
 	</script>
 	<script type="text/javascript" data-main="js/app-fr" src="js/lib/require-2.1.11.js"></script>

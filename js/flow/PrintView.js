@@ -22,7 +22,6 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'text!templates/print/qu
 				
 				questionEl = _.template(questionTemplate, {
 					questionId: question.get('id'),
-					questionAvailability: (question.get('available') ? 'available' : 'unavailable'),
 					questionElementId: this.getElementIdFromQuestion(question),
 					questionText: question.get('content')
 				});

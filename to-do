@@ -1,10 +1,7 @@
 To Do:
 
 HIGH
-- not sure if there's a translation for 'N question(s) unanswered...'
-- <<>> are actual characters :(
-- Inconsistent capitalisation and quoting / >> in Why This Question
-- Check last word of institution descriptions in case a non-split paragraph missed
+- issue with i18n datepicker in deployment - not in gruntfile?
 
 MEDIUM
 - several conditions where page should be scrolled to the top so that smaller screens don't lose context due to previous section's scroll

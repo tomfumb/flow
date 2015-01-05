@@ -196,13 +196,13 @@ define(['jquery', 'underscore', 'backbone', 'flow/Util', 'ui/OutcomeView', 'ui/R
 		},
 
 		onSharedEmailChanged: function() {
-		    this.email.val(this.sharedData.get('userEmail'));
-		    this.onIdentityChanged(true);
+            this.email.val(this.sharedData.get('userEmail'));
+            this.onIdentityChanged(true);
         },
 		
 		onIdentityChanged: function (indirect) {
 
-		    indirect = (typeof indirect === 'undefined' ? false : !!indirect);
+            indirect = (typeof indirect === 'undefined' ? false : !!indirect);
 						
 			if(this.identityValid()) {
 				this.email.removeClass('input-attention');
@@ -215,13 +215,13 @@ define(['jquery', 'underscore', 'backbone', 'flow/Util', 'ui/OutcomeView', 'ui/R
 			this.emailThanks.hide();
 
 			if (!indirect) {
-			    this.sharedData.set('userEmail', this.email.val());
+                this.sharedData.set('userEmail', this.email.val());
 			}
 		},
 		
 		onSendIdentityClicked: function () {
-		    this.mailChimpForm.submit();
-		    this.emailThanks.show();
+            this.mailChimpForm.submit();
+            this.emailThanks.show();
 			this.emailSend.attr('disabled', 'disabled');
 		},
 		

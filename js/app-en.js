@@ -17,10 +17,7 @@ requirejs.config({
 	},
 
     shim: {
-        'jquery-ui': {
-            exports: '$',
-            deps: ['jquery']
-        },
+        'jquery-ui': ['jquery'],
         'jquery-mobile': {
             exports: '$',
             deps: ['jquery']

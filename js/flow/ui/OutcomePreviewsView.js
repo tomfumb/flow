@@ -1,4 +1,4 @@
-define(['jquery', 'underscore', 'backbone', 'flow/Log', 'ui/OutcomePreviewView', 'text!templates/outcome-preview.html', 'text!templates/outcome-preview-outcome.html', 'jquery-mobile'], function($, _, Backbone, Log, OutcomePreviewView, previewTemplate, outcomeTemplate) {
+define(['jquery', 'underscore', 'backbone', 'flow/Log', 'ui/OutcomePreviewView', 'text!templates/outcome-preview.html', 'text!templates/outcome-preview-outcome.html', 'text!templates/outcome-preview-change.html', 'jquery-mobile'], function($, _, Backbone, Log, OutcomePreviewView, previewTemplate, outcomeTemplate, outcomeChangeTemplate) {
 
 	return Backbone.View.extend({
 		
@@ -293,8 +293,17 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'ui/OutcomePreviewView',
 				this.changesEl.stop();
 				this.changesEl.slideDown(fadeSpeed);
 			}
+
+			var changeText = _.template(outcomeChangeTemplate, {
+                questionId: this.lastAnsweredQuestion.get('id'),
+                addDisplay: (hasAdded ? 'inline' : 'none'),
+                addedLinks: addedLinks.join(''),
+                andDisplay: (hasAdded && hasRemoved ? 'inline' : 'none'),
+                removeDisplay: (hasRemoved ? 'inline' : 'none'),
+                removedLinks: removedLinks.join('')
+			});
 			
-			this.changeHistory.push('Question ' + this.lastAnsweredQuestion.get('id') + (hasAdded ? ' added <ul>' + addedLinks.join('') + '</ul>' : '') + conjunctionText + (hasRemoved ? ' removed <ul>' + removedLinks.join('') + '</ul>' : ''));
+			this.changeHistory.push(changeText);
 			
 			this.changeHistoryPosition = (this.changeHistory.length - 1);
 			

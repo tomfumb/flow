@@ -8,8 +8,8 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link href="css/src/ccij.css?flow-v=0.9.64" rel="stylesheet" type="text/css" />
-	<link href="css/print.css?flow-v=0.9.64" rel="stylesheet" type="text/css" media="print" />
+	<link href="css/src/ccij.css?flow-v=0.9.72" rel="stylesheet" type="text/css" />
+	<link href="css/print.css?flow-v=0.9.72" rel="stylesheet" type="text/css" media="print" />
 	<title>CCIJ - Opportunities for Justice</title>
 </head>
 <body>
@@ -53,7 +53,7 @@
                             <a href="http://vimeo.com/user18059102" title="Follow us on Vimeo" class="wise-sprite-social wise-sprite-social-vimeo">Follow us on Vimeo</a>
                         </li>
                         <li>
-                            <a href="http://ccij.wiseworkbench.com/?feed=rss2" title="Subscribe to our RSS Feed" class="wise-sprite-social wise-sprite-social-rss">Subscribe to our RSS Feed</a>
+                            <a href="/?feed=rss2" title="Subscribe to our RSS Feed" class="wise-sprite-social wise-sprite-social-rss">Subscribe to our RSS Feed</a>
                         </li>
                     </ul>
                 </div>
@@ -519,7 +519,7 @@
 						<p>
 							Please note that this site provides only information, not legal advice. A legal case cannot be based on the results of this questionnaire, as every case and every legal process is extremely unique and complex. This website is designed to help you understand what options might be available and is not designed to make a final conclusion about your case.
 						</p>
-						<div id="flow_questions_print"><p>You have not yet answered any questions</p></div>
+						<div id="flow_questions_print"></div>
 						<div id="flow_outcomes_print"></div>
 					</div>
 					<div id="flow_scratch"></div>
@@ -574,7 +574,7 @@
 							<a href="http://vimeo.com/user18059102" title="Follow us on Vimeo" class="wise-sprite-social wise-sprite-social-vimeo">Follow us on Vimeo</a>
 						</li>
 						<li>
-							<a href="http://ccij.wiseworkbench.com/?feed=rss2" title="Subscribe to our RSS Feed" class="wise-sprite-social wise-sprite-social-rss">Subscribe to our RSS Feed</a>
+							<a href="/?feed=rss2" title="Subscribe to our RSS Feed" class="wise-sprite-social wise-sprite-social-rss">Subscribe to our RSS Feed</a>
 						</li>
 					</ul>
 				</div>
@@ -583,7 +583,7 @@
 	</footer>
 	<div class="wise-foot">
 		<ul class="list-inline">
-			<li><a href="http://ccij.wiseworkbench.com/terms-conditions/">Terms &amp; Conditions</a></li>
+			<li><a href="/terms-conditions/">Terms &amp; Conditions</a></li>
 		</ul>
 		<p>
 			Charitable Registration Number: 87346 1040 RR0001
@@ -594,7 +594,7 @@
 	</div>
 	<!-- End W&H footer -->
 	<script type="text/javascript">
-		var requirejs = { urlArgs: 'flow-v=0.9.64' };
+		var requirejs = { urlArgs: 'flow-v=0.9.72' };
 		window.CCIJ = { language: 'english' };
 	</script>
 	<script type="text/javascript" data-main="js/app-en" src="js/lib/require-2.1.11.js"></script>

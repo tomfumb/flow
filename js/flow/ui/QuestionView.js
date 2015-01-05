@@ -1,4 +1,4 @@
-define(['jquery', 'underscore', 'backbone', 'flow/Log', 'flow/ui/QuestionExplanationView', 'text!templates/question-base.html', 'text!templates/question-single-few.html', 'text!templates/question-single-many.html', 'text!templates/question-multi.html', 'text!templates/question-date.html', 'jquery-ui'], function($, _, Backbone, Log, explanationView, questionTemplate, singleFewTemplate, singleManyTemplate, multiTemplate, dateTemplate) {
+define(['jquery', 'underscore', 'backbone', 'flow/Log', 'flow/ui/QuestionExplanationView', 'text!templates/question-base.html', 'text!templates/question-single-few.html', 'text!templates/question-single-many.html', 'text!templates/question-multi.html', 'text!templates/question-date.html', 'jquery-ui'], function ($, _, Backbone, Log, explanationView, questionTemplate, singleFewTemplate, singleManyTemplate, multiTemplate, dateTemplate) {
 	
 	return Backbone.View.extend({
 	
@@ -261,6 +261,11 @@ define(['jquery', 'underscore', 'backbone', 'flow/Log', 'flow/ui/QuestionExplana
 
 			var datePicker = this.$el.find('input.date-selector');
 			if (datePicker.length) {
+
+                if ($.datepicker.regional && $.datepicker.regional[window.CCIJ.language]) {
+                    $.datepicker.setDefaults($.datepicker.regional[window.CCIJ.language]);
+                }
+
 				datePicker.datepicker({
 					showOn: 'both',
 					dateFormat: 'yy/mm/dd',
