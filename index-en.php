@@ -556,7 +556,7 @@
 						The Canadian Centre for International Justice needs your support.
 					</p>
 					<p>
-						<a href="#" class="btn btn-primary btn-lg">Donate Now</a>
+						<a href="https://www.gifttool.com/donations/Donate?ID=1564&AID=574" class="btn btn-primary btn-lg">Donate Now</a>
 					</p>
 				</div>
 				<div class="col-sm-8">
@@ -583,8 +583,7 @@
 	</footer>
 	<div class="wise-foot">
 		<ul class="list-inline">
-			<li><a href="#">Accessibility</a></li>
-			<li><a href="#">Terms &amp; Conditions</a></li>
+			<li><a href="http://ccij.wiseworkbench.com/terms-conditions/">Terms &amp; Conditions</a></li>
 		</ul>
 		<p>
 			Charitable Registration Number: 87346 1040 RR0001

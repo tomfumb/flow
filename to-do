@@ -3,7 +3,6 @@ To Do:
 HIGH
 - not sure if there's a translation for 'N question(s) unanswered...'
 - <<>> are actual characters :(
-- issue with question buttons and right side padding overlapping q15 and left-most button sometimes disappearing a little on window resize
 - Inconsistent capitalisation and quoting / >> in Why This Question
 - Check last word of institution descriptions in case a non-split paragraph missed
 

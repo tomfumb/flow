@@ -33,7 +33,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-xs-24 col-sm-24 col-md-17 col-lg-17">
-                    <h1 class="wise-logo">Canadian Centre for International Justice</h1>
+                    <h1 class="wise-logo">Centre canadien pour la justice internationale</h1>
                     <h3 class="wise-subtitle hidden-xs" id="ccij_ofj_subtitle">Possibilités de justice</h3>
                 </div>
             </div>
@@ -41,19 +41,19 @@
                 <div class="col-md-24 col-lg-24">
                     <ul class="list-inline pull-right">
                         <li>
-                            <a href="https://www.facebook.com/pages/Canadian-Centre-for-International-Justice-CCIJ/27176895148" title="Follow us on Facebook" class="wise-sprite-social wise-sprite-social-facebook">Follow us on Facebook</a>
+                            <a href="https://www.facebook.com/pages/Canadian-Centre-for-International-Justice-CCIJ/27176895148" title="Suivez-nous sur Facebook" class="wise-sprite-social wise-sprite-social-facebook">Suivez-nous sur Facebook</a>
                         </li>
                         <li>
-                            <a href="http://twitter.com/CCIJ_CCJI" title="Follow us on Twitter" class="wise-sprite-social wise-sprite-social-twitter">Follow us on Twitter</a>
+                            <a href="http://twitter.com/CCIJ_CCJI" title="Suivez-nous sur Twitter" class="wise-sprite-social wise-sprite-social-twitter">Suivez-nous sur Twitter</a>
                         </li>
                         <li>
-                            <a href="https://www.linkedin.com/company/canadian-centre-for-international-justice" title="Follow us on LinkedIn" class="wise-sprite-social wise-sprite-social-linkedin">Follow us on LinkedIn</a>
+                            <a href="https://www.linkedin.com/company/canadian-centre-for-international-justice" title="Suivez-nous sur LinkedIn" class="wise-sprite-social wise-sprite-social-linkedin">Suivez-nous sur LinkedIn</a>
                         </li>
                         <li>
-                            <a href="http://vimeo.com/user18059102" title="Follow us on Vimeo" class="wise-sprite-social wise-sprite-social-vimeo">Follow us on Vimeo</a>
+                            <a href="http://vimeo.com/user18059102" title="Suivez-nous sur Vimeo" class="wise-sprite-social wise-sprite-social-vimeo">Suivez-nous sur Vimeo</a>
                         </li>
                         <li>
-                            <a href="http://ccij.wiseworkbench.com/?feed=rss2" title="Subscribe to our RSS Feed" class="wise-sprite-social wise-sprite-social-rss">Subscribe to our RSS Feed</a>
+                            <a href="http://ccij.wiseworkbench.com/?feed=rss2" title="Abonnez-vous à notre flux RSS" class="wise-sprite-social wise-sprite-social-rss">Abonnez-vous à notre flux RSS</a>
                         </li>
                     </ul>
                 </div>
@@ -540,41 +540,41 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-8">
-					<h3>The Canadian Centre for International Justice</h3>
+					<h3>Centre canadien pour la justice internationale</h3>
 					<ul class="list-unstyled">
-						<li>Ottawa Office: 613-744-7667</li>
-						<li>Vancouver Office: 613-744-7667</li>
-						<li>Fax: 613-744-7667</li>
+						<li>Bureau d'Ottawa: 613-744-7667</li>
+						<li>Bureau de Vancouver: 613-744-7667</li>
+						<li>t-c: 613-744-7667</li>
 					</ul>
 					<p>
-						Inquiries: <a href="mailto:info@ccij.ca">info@ccij.ca</a>
+						Enquêtes: <a href="mailto:info@ccij.ca">info@ccij.ca</a>
 					</p>
 				</div>
 				<div class="col-sm-8">
-					<h3>Support the Centre</h3>
+					<h3>Aidez le Centre</h3>
 					<p>
-						The Canadian Centre for International Justice needs your support.
+						Le Centre canadien pour la justice internationale a besoin de votre soutien.
 					</p>
 					<p>
-						<a href="#" class="btn btn-primary btn-lg">Donate Now</a>
+						<a href="https://www.gifttool.com/donations/Donate?ID=1564&AID=574" class="btn btn-primary btn-lg">Faire un don maintenant</a>
 					</p>
 				</div>
 				<div class="col-sm-8">
 					<ul class="list-inline">
 						<li>
-							<a href="https://www.facebook.com/pages/Canadian-Centre-for-International-Justice-CCIJ/27176895148" title="Follow us on Facebook" class="wise-sprite-social wise-sprite-social-facebook">Follow us on Facebook</a>
+							<a href="https://www.facebook.com/pages/Canadian-Centre-for-International-Justice-CCIJ/27176895148" title="Suivez-nous sur Facebook" class="wise-sprite-social wise-sprite-social-facebook">Suivez-nous sur Facebook</a>
 						</li>
 						<li>
-							<a href="http://twitter.com/CCIJ_CCJI" title="Follow us on Twitter" class="wise-sprite-social wise-sprite-social-twitter">Follow us on Twitter</a>
+							<a href="http://twitter.com/CCIJ_CCJI" title="Suivez-nous sur Twitter" class="wise-sprite-social wise-sprite-social-twitter">Suivez-nous sur Twitter</a>
 						</li>
 						<li>
-							<a href="https://www.linkedin.com/company/canadian-centre-for-international-justice" title="Follow us on LinkedIn" class="wise-sprite-social wise-sprite-social-linkedin">Follow us on LinkedIn</a>
+							<a href="https://www.linkedin.com/company/canadian-centre-for-international-justice" title="Suivez-nous sur LinkedIn" class="wise-sprite-social wise-sprite-social-linkedin">Suivez-nous sur LinkedIn</a>
 						</li>
 						<li>
-							<a href="http://vimeo.com/user18059102" title="Follow us on Vimeo" class="wise-sprite-social wise-sprite-social-vimeo">Follow us on Vimeo</a>
+							<a href="http://vimeo.com/user18059102" title="Suivez-nous sur Vimeo" class="wise-sprite-social wise-sprite-social-vimeo">Suivez-nous sur Vimeo</a>
 						</li>
 						<li>
-							<a href="http://ccij.wiseworkbench.com/?feed=rss2" title="Subscribe to our RSS Feed" class="wise-sprite-social wise-sprite-social-rss">Subscribe to our RSS Feed</a>
+							<a href="http://ccij.wiseworkbench.com/?feed=rss2" title="Abonnez-vous à notre flux RSS" class="wise-sprite-social wise-sprite-social-rss">Abonnez-vous à notre flux RSS</a>
 						</li>
 					</ul>
 				</div>
@@ -583,8 +583,7 @@
 	</footer>
 	<div class="wise-foot">
 		<ul class="list-inline">
-			<li><a href="#">Accessibility</a></li>
-			<li><a href="#">Terms &amp; Conditions</a></li>
+			<li><a href="http://ccij.wiseworkbench.com/fr/conditions-generales-de-vente">Conditions générales de vente</a></li>
 		</ul>
 		<p>
 			Charitable Registration Number: 87346 1040 RR0001
