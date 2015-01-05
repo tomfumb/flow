@@ -1,7 +1,10 @@
 To Do:
 
 HIGH
-- issue with i18n datepicker in deployment - not in gruntfile?
+- be wary of in final deployment:
+	- RSS feed location
+	- logo image for French
+	- Donate Now location
 
 MEDIUM
 - several conditions where page should be scrolled to the top so that smaller screens don't lose context due to previous section's scroll
