@@ -8,8 +8,8 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link href="css/src/ccij.css?flow-v=0.9.72" rel="stylesheet" type="text/css" />
-	<link href="css/print.css?flow-v=0.9.72" rel="stylesheet" type="text/css" media="print" />
+	<link href="css/src/ccij.css?flow-v=0.9.73" rel="stylesheet" type="text/css" />
+	<link href="css/print.css?flow-v=0.9.73" rel="stylesheet" type="text/css" media="print" />
 	<title>CCJI - Possibilités de Justice</title>
 </head>
 <body>
@@ -594,7 +594,7 @@
 	</div>
 	<!-- End W&H footer -->
 	<script type="text/javascript">
-	    var requirejs = { urlArgs: 'flow-v=0.9.72' };
+	    var requirejs = { urlArgs: 'flow-v=0.9.73' };
 	    window.CCIJ = { language: 'french' };
 	</script>
 	<script type="text/javascript" data-main="js/app-fr" src="js/lib/require-2.1.11.js"></script>

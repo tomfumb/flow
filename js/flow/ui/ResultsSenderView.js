@@ -73,12 +73,15 @@ define(['jquery', 'underscore', 'backbone', 'flow/Util', 'text!templates/results
 			this.failImg.hide();
 			
 			this.sendButton.attr('disabled', 'disabled');
-			
+
+			var content = $('#flow_print').clone();
+			content.find('.question-answerer-check-yes-no-radio').remove();
+
 			$.ajax('results/', {
 				type: 'POST',
 				data: {
 					to: this.to.val(),
-					message: $('#flow_print').html(),
+					message: content.html(),
 					cc: this.cc.is(':checked')
 				},
 				success: _.bind(this.onSendSuccess, this),
