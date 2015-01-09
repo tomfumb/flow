@@ -586,10 +586,10 @@
 			<li><a href="/fr/conditions-generales-de-vente">Conditions générales de vente</a></li>
 		</ul>
 		<p>
-			Charitable Registration Number: 87346 1040 RR0001
+			Numéro d’enregistrement d’OSBL: 87346 1040 RR0001
 		</p>
 		<small>
-			All Material Copyright © 2014 Canadian Centre for International Justice
+			Tous droits réservés © 2014 Le Centre canadien pour la justice internationale
 		</small>
 	</div>
 	<!-- End W&H footer -->
