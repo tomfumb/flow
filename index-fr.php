@@ -3,8 +3,8 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link href="css/src/ccij.css?flow-v=1.0.0" rel="stylesheet" type="text/css" />
-	<link href="css/print.css?flow-v=1.0.0" rel="stylesheet" type="text/css" media="print" />
+	<link href="css/dist/ccij-flow.css?flow-v=1.0.1" rel="stylesheet" type="text/css" />
+	<link href="css/print.css?flow-v=1.0.1" rel="stylesheet" type="text/css" media="print" />
 	<title>CCJI - Possibilités de Justice</title>
 </head>
 <body>
@@ -28,7 +28,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-xs-24 col-sm-24 col-md-17 col-lg-17">
-                    <h1 class="wise-logo">Centre canadien pour la justice internationale</h1>
+                    <h1 class="wise-logo wise-logo-fr">Centre canadien pour la justice internationale</h1>
                     <h3 class="wise-subtitle hidden-xs" id="ccij_ofj_subtitle">Possibilités de justice</h3>
                 </div>
             </div>
@@ -551,7 +551,7 @@
 						Le Centre canadien pour la justice internationale a besoin de votre soutien.
 					</p>
 					<p>
-						<a href="https://www.gifttool.com/donations/Donate?ID=1564&AID=574" class="btn btn-primary btn-lg">Faire un don maintenant</a>
+						<a href="https://www.gifttool.com/donations/Donate?ID=1564&AID=574" class="btn btn-primary btn-lg" id="ccij_donate">Faire un don maintenant</a>
 					</p>
 				</div>
 				<div class="col-sm-8">
@@ -589,9 +589,9 @@
 	</div>
 	<!-- End W&H footer -->
 	<script type="text/javascript">
-	    var requirejs = { urlArgs: 'flow-v=1.0.0' };
+	    var requirejs = { urlArgs: 'flow-v=1.0.1' };
 	    window.CCIJ = { language: 'french' };
 	</script>
-	<script type="text/javascript" data-main="js/app-fr" src="js/lib/require-2.1.11.js"></script>
+	<script type="text/javascript" data-main="js/dist/ccij-flow-fr" src="js/lib/require-2.1.11.js"></script>
 </body>
 </html>

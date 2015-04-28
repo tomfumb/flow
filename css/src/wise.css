@@ -80,7 +80,6 @@ a:hover {
 }
 
 .wise-logo {
-  background: transparent url('../../images/wise-logo.png') center center no-repeat;
   width: 408px;
   height: 97px;
   text-indent: -9999em;
@@ -90,15 +89,30 @@ a:hover {
   display: inline-block;
 }
 
+.wise-logo-en {
+    background: transparent url('../../images/wise-logo.png') center center no-repeat;
+}
+
+.wise-logo-fr {
+    background: transparent url('../../images/wise-logo-fr.png') center center no-repeat;
+}
+
 @media (max-width: 480px) {
   .wise-logo {
-    background-image: url("../../images/wise-logo-mobile.png");
     -webkit-background-size: 280px 67px;
     -moz-background-size: 280px 67px;
     -o-background-size: 280px 67px;
     background-size: 280px 67px;
     height: 67px;
     width: 280px;
+  }
+
+  .wise-logo-en {
+      background-image: url("../../images/wise-logo-mobile.png");
+  }
+
+  .wise-logo-fr {
+      background-image: url("../../images/wise-logo-fr-mobile.png");
   }
 }
 

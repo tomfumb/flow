@@ -1,12 +1,5 @@
 To Do:
 
-HIGH
-- be wary of in final deployment:
-	- remove authentication!
-	- RSS feed location
-	- logo image for French
-	- Donate Now location
-
 MEDIUM
 - several conditions where page should be scrolled to the top so that smaller screens don't lose context due to previous section's scroll
 - possible to get firstVisibleIndex error, replicated by disabling and re-enabling large number of mechanisms after a full right-scroll. Checked 'company / corporation' to eliminate most
