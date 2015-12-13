@@ -3,8 +3,8 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link href="css/dist/ccij-flow.css?flow-v=1.0.2" rel="stylesheet" type="text/css" />
-	<link href="css/print.css?flow-v=1.0.2" rel="stylesheet" type="text/css" media="print" />
+	<link href="css/dist/ccij-flow.css?flow-v=1.1.1" rel="stylesheet" type="text/css" />
+	<link href="css/print.css?flow-v=1.1.1" rel="stylesheet" type="text/css" media="print" />
 	<title>CCJI - Possibilités de Justice</title>
 </head>
 <body>
@@ -93,17 +93,26 @@
 							</div>
 							<div class="row">
 								<div id="ccij_assess_entry" class="entry-point app-navigator col-md-11 col-lg-11 clickable">
-									<h3>Évaluer Vos Options</h3>
-									<p><img src="images/0.png" width="48" height="48" title="Évaluer vos options" class="entry-point-img sprites test" />Notre outil d’évaluation vous guidera à travers une série de questions concernant les actes commis contre vous ou les membres de votre famille et vous suggèrera des options possibles pour votre recherche de justice.</p>
+                                    <div class="entry-point-inner">
+									    <h3 class="clickable-colour">Évaluer Vos Options</h3>
+                                        <img src="images/0.png" width="48" height="48" title="Évaluer vos options" class="entry-point-img sprites test" />
+									    <p>Notre outil d’évaluation vous guidera à travers une série de questions concernant les actes commis contre vous ou les membres de votre famille et vous suggèrera des options possibles pour votre recherche de justice.</p>
+                                    </div>
 								</div>
 								<div id="ccij_remedies_entry" class="entry-point app-navigator col-md-11 col-lg-11 col-md-offset-2 col-lg-offset-2 clickable">
-									<h3>Institutions judiciaires</h3>
-									<p><img src="images/0.png" width="48" height="48" title="Institutions judiciaires" class="entry-point-img sprites gavel" />Découvrez les différents organismes qui surveillent les violations des droits de l’Homme en lisant une brève description des tribunaux internationaux, des Comité des Nations Unies, des commissions régionales des droits de l’homme et sur les processus canadiens.</p>
+                                    <div class="entry-point-inner">
+									    <h3 class="clickable-colour">Institutions judiciaires</h3>
+                                        <img src="images/0.png" width="48" height="48" title="Institutions judiciaires" class="entry-point-img sprites gavel" />
+									    <p>Découvrez les différents organismes qui surveillent les violations des droits de l’Homme en lisant une brève description des tribunaux internationaux, des Comité des Nations Unies, des commissions régionales des droits de l’homme et sur les processus canadiens.</p>
+                                    </div>
 								</div>
 								<!--
 								<div id="ccij_stories_entry" class="entry-point col-md-7 col-lg-7 col-md-offset-1 col-lg-offset-1 clickable">
-									<h3>Histoires<span class="glyphicon glyphicon-new-window title-supplemental-top" title="External Link"></span></h3>
-									<p><img src="images/0.png" width="48" height="48" title="Stories" class="entry-point-img sprites book" />Le CCJI a aidé des survivants et des familles à chercher justice par plusieurs processus différents. Vous pouvez lire, entendre et visionner leurs histoires pour apprendre de leurs expériences, de leurs succès et leurs défis auxquels ils ont eu à faire face.</p>
+                                    <div class="entry-point-inner">
+									    <h3 class="clickable-colour">Histoires<span class="glyphicon glyphicon-new-window title-supplemental-top" title="External Link"></span></h3>
+                                        <img src="images/0.png" width="48" height="48" title="Stories" class="entry-point-img sprites book" />
+									    <p>Le CCJI a aidé des survivants et des familles à chercher justice par plusieurs processus différents. Vous pouvez lire, entendre et visionner leurs histoires pour apprendre de leurs expériences, de leurs succès et leurs défis auxquels ils ont eu à faire face.</p>
+                                    </div>
 								</div>
 								-->
 							</div>
@@ -531,6 +540,7 @@
 			</div>
 		</div>
 	</div>
+    <div id="flow_foot_spacer" class="visible-lg visible-md"></div>
 	<footer class="wise-footer">
 		<div class="container">
 			<div class="row">
@@ -589,7 +599,7 @@
 	</div>
 	<!-- End W&H footer -->
 	<script type="text/javascript">
-	    var requirejs = { urlArgs: 'flow-v=1.0.2' };
+	    var requirejs = { urlArgs: 'flow-v=1.1.1' };
 	    window.CCIJ = { language: 'french' };
 	</script>
 	<script type="text/javascript" data-main="js/dist/ccij-flow-fr" src="js/lib/require-2.1.11.js"></script>

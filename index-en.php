@@ -3,8 +3,8 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link href="css/dist/ccij-flow.css?flow-v=1.0.2" rel="stylesheet" type="text/css" />
-	<link href="css/print.css?flow-v=1.0.2" rel="stylesheet" type="text/css" media="print" />
+	<link href="css/dist/ccij-flow.css?flow-v=1.1.1" rel="stylesheet" type="text/css" />
+	<link href="css/print.css?flow-v=1.1.1" rel="stylesheet" type="text/css" media="print" />
 	<title>CCIJ - Opportunities for Justice</title>
 </head>
 <body>
@@ -93,17 +93,26 @@
 							</div>
 							<div class="row">
 								<div id="ccij_assess_entry" class="entry-point app-navigator col-md-11 col-lg-11 clickable">
-									<h3>Assess Your Options</h3>
-									<p><img src="images/0.png" width="48" height="48" title="Assess your options" class="entry-point-img sprites test" />Our assessment tool will take you through a series of questions about the acts committed against you or your family members and suggest possible options for pursuing justice.</p>
+                                    <div class="entry-point-inner">
+									    <h3 class="clickable-colour">Assess Your Options</h3>
+                                        <img src="images/0.png" width="48" height="48" title="Assess your options" class="entry-point-img sprites test" />
+									    <p>Our assessment tool will take you through a series of questions about the acts committed against you or your family members and suggest possible options for pursuing justice.</p>
+                                    </div>
 								</div>
 								<div id="ccij_remedies_entry" class="entry-point app-navigator col-md-11 col-lg-11 col-md-offset-2 col-lg-offset-2 clickable">
-									<h3>Justice Institutions</h3>
-									<p><img src="images/0.png" width="48" height="48" title="Descriptions" class="entry-point-img sprites gavel" />Learn about different bodies that address human rights abuses by reading short descriptions of international courts, United Nations committees, regional human rights commissions and Canadian processes.</p>
+                                    <div class="entry-point-inner">
+									    <h3 class="clickable-colour">Justice Institutions</h3>
+                                        <img src="images/0.png" width="48" height="48" title="Descriptions" class="entry-point-img sprites gavel" />
+									    <p>Learn about different bodies that address human rights abuses by reading short descriptions of international courts, United Nations committees, regional human rights commissions and Canadian processes.</p>
+                                    </div>
 								</div>
 								<!--
 								<div id="ccij_stories_entry" class="entry-point col-md-7 col-lg-7 col-md-offset-1 col-lg-offset-1 clickable">
-									<h3>Stories<span class="glyphicon glyphicon-new-window title-supplemental-top" title="External Link"></span></h3>
-									<p><img src="images/0.png" width="48" height="48" title="Stories" class="entry-point-img sprites book" />CCIJ has helped survivors and families pursue justice through many different processes. Read, hear and watch their stories to learn about their experiences and the successes and challenges they have faced in seeking justice.</p>
+                                    <div class="entry-point-inner">
+									    <h3 class="clickable-colour">Stories<span class="glyphicon glyphicon-new-window title-supplemental-top" title="External Link"></span></h3>
+                                        <img src="images/0.png" width="48" height="48" title="Stories" class="entry-point-img sprites book" />
+									    <p>CCIJ has helped survivors and families pursue justice through many different processes. Read, hear and watch their stories to learn about their experiences and the successes and challenges they have faced in seeking justice.</p>
+                                    </div>
 								</div>
 								-->
 							</div>
@@ -531,6 +540,7 @@
 			</div>
 		</div>
 	</div>
+    <div id="flow_foot_spacer" class="visible-lg visible-md"></div>
 	<footer class="wise-footer">
 		<div class="container">
 			<div class="row">
@@ -589,7 +599,7 @@
 	</div>
 	<!-- End W&H footer -->
 	<script type="text/javascript">
-		var requirejs = { urlArgs: 'flow-v=1.0.2' };
+		var requirejs = { urlArgs: 'flow-v=1.1.1' };
 		window.CCIJ = { language: 'english' };
 	</script>
 	<script type="text/javascript" data-main="js/dist/ccij-flow-en" src="js/lib/require-2.1.11.js"></script>
