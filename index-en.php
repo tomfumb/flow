@@ -165,7 +165,7 @@
 											<p>Links:</p>
 											<p>Official Site of the HRC: <a href="http://www.ohchr.org/EN/HRBodies/CCPR/Pages/CCPRIntro.aspx" target="_blank">http://www.ohchr.org/EN/HRBodies/CCPR/Pages/CCPRIntro.aspx</a></p>
 											<p>FAQs: <a href="http://www2.ohchr.org/english/bodies/petitions/individual.htm" target="_blank">http://www2.ohchr.org/english/bodies/petitions/individual.htm</a></p>
-											<p>For an example of a complaint that CCIJ assisted to file before the HRC, see: <a href="http://www.ccij.ca/programs/cases/index.php?DOC_INST=23" target="_blank">http://www.ccij.ca/programs/cases/index.php?DOC_INST=23</a></p>
+											<p>For an example of a complaint that CCIJ assisted to file before the HRC, see: <a href="http://www.ccij.ca/cases/samathanam/" target="_blank">http://www.ccij.ca/cases/samathanam/</a></p>
 										</div>
 									</div>
 								</div>
@@ -363,8 +363,8 @@
 											<p>Individuals present in Canada who are alleged to have committed international crimes may be prosecuted in Canadian courts. Criminal prosecutions are undertaken by Canada's Department of Justice, which includes a specialized War Crimes Program. International crimes, including genocide, crimes against humanity and war crimes, are all crimes in Canada regardless of where they were committed. Prosecutions of international crimes are rare in Canada, however. Only two prosecutions have been brought under the <span class="italic">Crimes Against Humanity and War Crimes Act</span> since its enactment in 2000, both for people accused of involvement in the 1994 genocide in Rwanda. Desire Munyaneza was convicted of genocide, war crimes and crimes against humanity, and Jacques Mungwarere was acquitted of the charges against him for genocide and crimes against humanity.</p>
 											<p>War Crimes Program: <a href="http://justice.gc.ca/eng/cj-jp/wc-cdg/succ-real.html" target="_blank">http://justice.gc.ca/eng/cj-jp/wc-cdg/succ-real.html</a></p>
 											<p>For more information on the Crimes Against Humanity and War Crimes Act: <a href="http://www.international.gc.ca/court-cour/war-crimes-guerres.aspx?lang=eng" target="_blank">http://www.international.gc.ca/court-cour/war-crimes-guerres.aspx?lang=eng</a></p>
-											<p>For information about the criminal prosecution of Jacques Mungwarere, see: <a href="http://www.ccij.ca/programs/index.php?DOC_INST=2" target="_blank">http://www.ccij.ca/programs/index.php?DOC_INST=2</a></p>
-											<p>For information about the criminal prosecution of Désiré Munyaneza, see: <a href="http://www.ccij.ca/programs/cases/index.php?WEBYEP_DI=12" target="_blank">http://www.ccij.ca/programs/cases/index.php?WEBYEP_DI=12</a></p>
+											<p>For information about the criminal prosecution of Jacques Mungwarere, see: <a href="http://www.ccij.ca/cases/mungwarere/" target="_blank">http://www.ccij.ca/cases/mungwarere/</a></p>
+                                            <p>For information about the criminal prosecution of Désiré Munyaneza, see: <a href="http://www.ccij.ca/cases/munyaneza-2/" target="_blank">http://www.ccij.ca/cases/munyaneza-2/</a></p>
 										</div>
 									</div>
 								</div>
@@ -378,7 +378,7 @@
 											<p>Individuals may be able to file a civil lawsuit in a Canadian court under certain circumstances. Civil lawsuits are different from criminal proceedings. A civil lawsuit addresses a dispute between two private parties, whereas in a criminal trial the government acts as a prosecutor to hold an individual or organization to account for breaking the law. In a civil lawsuit, there is no possibility of a criminal sentence. A civil lawsuit is generally brought to seek monetary compensation for wrongdoing. The victim can sue a person, government or company that she or he believes is responsible for the wrongdoing. If the victim wins the case, the losing party may be required to pay financial damages to compensate the victim for lost income or property, to account for suffering that has been caused, or to act as a financial penalty to deter such behaviour in the future.</p>
 											<p>To initiate a civil lawsuit, a person whose rights have been violated must submit a pleading to a Canadian court that has the legal authority to settle the dispute with the person or organization accused of causing a harm. There are restrictions on who can have legal standing as a complainant, and limitations on who can be sued. There have been very few civil lawsuits in Canada having to do with torture, war crimes and other international human rights violations. One reason is because foreign governments and individual government officials usually have legal immunity in Canadian courts and thus lawsuits against them are often dismissed. Unless the Supreme Court of Canada changes this situation in an upcoming ruling, or Parliament changes the law, the option of a civil lawsuit may only be available against individuals who had no connection to a government or against corporations.</p>
 											<p>For basic information on criminal and civil suits in Canada, see <a href="http://www.justice.gc.ca/eng/csj-sjc/just/08.html" target="_blank">http://www.justice.gc.ca/eng/csj-sjc/just/08.html</a>.</p>
-											<p>For examples of civil suits that CCIJ has been involved with, see suits against the government of Iran on behalf of <a href="http://www.ccij.ca/programs/cases/index.php?WEBYEP_DI=10" target="_blank">Zahra Kazemi</a> and <a href="http://www.ccij.ca/programs/cases/index.php?WEBYEP_DI=5" target="_blank">Houshang Bouzari</a>, and against <a href="http://www.ccij.ca/programs/cases/index.php?WEBYEP_DI=14" target="_blank">Anvil Mining on behalf of the Canadian Association against Impunity</a>.</p>
+											<p>For examples of civil suits that CCIJ has been involved with, see suits against the government of Iran on behalf of <a href="http://www.ccij.ca/cases/kazemi/" target="_blank">Zahra Kazemi</a> and <a href="http://www.ccij.ca/cases/bouzari/" target="_blank">Houshang Bouzari</a>, and against <a href="http://www.ccij.ca/cases/anvil-mining/" target="_blank">Anvil Mining on behalf of the Canadian Association against Impunity</a>.</p>
 										</div>
 										<div class="outcome-caveat"><span class="caveat">*</span> There is usually a limitations period for filing a civil lawsuit in Canada. Some cases must be filed within two years of when the abuse(s) occurred though sometimes this period is longer.</div>
 									</div>
@@ -394,7 +394,7 @@
 											<p>Links:</p>
 											<p><a href="http://www.justice.gc.ca/eng/cj-jp/wc-cdg/part.html" target="_blank">http://www.justice.gc.ca/eng/cj-jp/wc-cdg/part.html</a></p>
 											<p>For information on these issues and the Immigration and Refugee Protection Act see <a href="http://cbsa.gc.ca/security-securite/wc-cg/wc-cg2011-eng.html" target="_blank">http://cbsa.gc.ca/security-securite/wc-cg/wc-cg2011-eng.html</a></p>
-											<p>For an example of a case CCIJ was involved with resulting in exclusion from refugee protection, see: <a href="http://www.ccij.ca/programs/cases/index.php?DOC_INST=9" target="_blank">http://www.ccij.ca/programs/cases/index.php?DOC_INST=9</a></p>
+											<p>For an example of a case CCIJ was involved with resulting in exclusion from refugee protection, see: <a href="http://www.ccij.ca/cases/demirovic/" target="_blank">http://www.ccij.ca/cases/demirovic/</a></p>
 										</div>
 									</div>
 								</div>
@@ -548,7 +548,7 @@
 					<h3>The Canadian Centre for International Justice</h3>
 					<ul class="list-unstyled">
 						<li>Ottawa Office: 613-230-6114</li>
-						<li>Vancouver Office: 604-569-1778</li>
+						<li>BC Office: 604-569-1778</li>
 						<li>Fax: 613-746-2411</li>
 					</ul>
 					<p>
@@ -594,7 +594,7 @@
 			Charitable Registration Number: 87346 1040 RR0001
 		</p>
 		<small>
-			All Material Copyright © 2014 Canadian Centre for International Justice
+			All Material Copyright ©<?php echo date('Y');?> Canadian Centre for International Justice
 		</small>
 	</div>
 	<!-- End W&H footer -->

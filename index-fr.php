@@ -18,7 +18,7 @@
 					</ul>
 					<ul class="list-inline pull-right">
 						<li><a href="index-en.php">English</a></li>
-						<li><a href="mailto:meisenbrandt@ccij.ca">Nous joindre</a></li>
+						<li><a href="mailto:meisenbrandt@ccij.ca">Contactez-nous</a></li>
 					</ul>
 				</div>
 			</div>
@@ -165,7 +165,7 @@
 											<p>Liens:</p>
 											<p>Site officiel du CDH: <a href="http://www.ohchr.org/FR/HRBodies/CCPR/Pages/CCPRIndex.aspx" target="_blank">http://www.ohchr.org/FR/HRBodies/CCPR/Pages/CCPRIndex.aspx</a></p>
 											<p>FAQs: <a href="http://www2.ohchr.org/french/bodies/chr/complaints.htm" target="_blank">http://www2.ohchr.org/french/bodies/chr/complaints.htm</a></p>
-											<p>Pour un exemple de plainte que le CCJI a aidé à déposer au CDH: <a href="http://www.ccij.ca/f/programmes/dossiers/index.php?DOC_INST=19" target="_blank">http://www.ccij.ca/f/programmes/dossiers/index.php?DOC_INST=19</a></p>
+											<p>Pour un exemple de plainte que le CCJI a aidé à déposer au CDH: <a href="http://www.ccij.ca/fr/cases/samathanam-2/" target="_blank">http://www.ccij.ca/fr/cases/samathanam-2/</a></p>
 										</div>
 									</div>
 								</div>
@@ -363,8 +363,8 @@
 											<p>Les personnes présentes au Canada qui sont présumées avoir commis des crimes internationaux peuvent être poursuivies devant les tribunaux canadiens. Les poursuites criminelles sont entamées par le ministère de la Justice du Canada, qui a un programme canadien spécialisé dans le domaine des crimes de guerre. Les crimes internationaux, comprennent le génocide, les crimes contre l’humanité et les crimes de guerres qui sont tous des crimes au Canada peu importe où ils ont été commis. Les poursuites des crimes internationaux sont rares au Canada. Seules deux poursuites ont été entreprises sous la <span class="italic">Loi sur les crimes contre l’humanité et les crimes de guerre</span> depuis son entrée en vigueur en 2000. Dans les deux cas, c’était pour des personnes accusées pour une implication en 1994 dans le génocide au Rwanda. Désiré Munyaneza a été condamné pour génocide, pour crimes de guerre et pour crimes contre l’humanité, et Jacques Mungwarere a été acquitté de charges contre lui pour génocide et crimes contre l’humanité.</p>
 											<p>Programme sur les crimes de guerre: <a href="http://justice.gc.ca/fra/jp-cj/cdg-wc/real-succ.html" target="_blank">http://justice.gc.ca/fra/jp-cj/cdg-wc/real-succ.html</a></p>
 											<p>Pour plus d’informations sur les Crimes contre l’humanité et les Crimes de guerre: <a href="http://www.international.gc.ca/court-cour/war-crimes-guerres.aspx?lang=fra" target="_blank">http://www.international.gc.ca/court-cour/war-crimes-guerres.aspx?lang=fra</a></p>
-											<p>Pour des informations concernant la poursuite criminelle de Jacques Mungwarere, voir: <a href="http://www.ccji.ca/f/programmes/dossiers/index.php?DOC_INST=15" target="_blank">http://www.ccji.ca/f/programmes/dossiers/index.php?DOC_INST=15</a></p>
-											<p>Pour des informations concernant la poursuite criminelle de Désiré Munyaneza, voir: <a href="http://www.ccji.ca/f/programmes/dossiers/index.php?WEBYEP_DI=1" target="_blank">http://www.ccji.ca/f/programmes/dossiers/index.php?WEBYEP_DI=1</a></p>
+											<p>Pour des informations concernant la poursuite criminelle de Jacques Mungwarere, voir: <a href="http://www.ccij.ca/fr/cases/mungwarere-2/" target="_blank">http://www.ccij.ca/fr/cases/mungwarere-2/</a></p>
+                                            <p>Pour des informations concernant la poursuite criminelle de Désiré Munyaneza, voir: <a href="http://www.ccij.ca/fr/cases/munyaneza/" target="_blank">http://www.ccij.ca/fr/cases/munyaneza/</a></p>
 										</div>
 									</div>
 								</div>
@@ -378,7 +378,7 @@
 											<p>Les particuliers peuvent être en mesure de poursuivre au civil devant un tribunal canadien dans certaines circonstances. Les poursuites civiles sont différentes des procédures criminelles. Une poursuite civile porte sur un différend entre deux parties privées, alors que dans un procès criminel le gouvernement agit comme procureur pour obliger une personne ou un organisme à respecter la loi. Dan une poursuite civile, il n’y a pas de possibilité de sentence criminelle. Une poursuite civile est généralement déposée pour demander une compensation financière pour méfait. La victime peut poursuivre une personne, le gouvernement ou une entreprise si elle croit qu’elle ou lui est responsable pour un dommage. Si la victime gagne la cause, il se peut que l’on demande à la partie perdante de payer des dommages financiers pour dédommager la victime pour perte de revenus ou de propriété, pour tenir compte de la souffrance qui lui a été infligée, ou agir à titre de peine punitive pour décourager une telle conduite à l’avenir.</p>
 											<p>Pour présenter une poursuite civile, une personne dont les droits ont été violés doit soumettre une plainte à un tribunal canadien qui a une autorité légale pour régler le différend avec la personne ou l’organisation accusée d’avoir causé un préjudice. Il y a des restrictions sur qui peut bénéficier d’une capacité juridique en tant que plaignant, et des limites sur qui peut être poursuivi. Il n’y a eu que très peu de poursuites civiles au Canada ayant trait à la torture, aux crimes de guerre et les autres violations de droits internationaux. Une des raisons est parce que les gouvernements étrangers et leurs fonctionnaires ont habituellement une immunité légale devant les tribunaux canadiens et ainsi les poursuites civiles contre eux sont souvent écartées. À moins que la Cour suprême du Canada ne change cette situation dans une décision à venir, ou le Parlement ne change la loi, l’option d’une poursuite civile peut seulement être disponible contre les individus qui n’ont pas de lien avec le gouvernement ou contre des sociétés.</p>
 											<p>Pour des informations de base sur les poursuites criminelles ou civiles au Canada, voir <a href="http://www.justice.gc.ca/fra/sjc-csj/just/08.html" target="_blank">http://www.justice.gc.ca/fra/sjc-csj/just/08.html</a>.</p>
-											<p>Pour des exemples de poursuites civiles où le CCJI a été impliqué, voir les dossiers contre le gouvernement iranien dans <a href="http://www.ccji.ca/f/programmes/dossiers/index.php?WEBYEP_DI=4" target="_blank">Zahra Kazemi</a> et <a href="http://www.ccji.ca/f/programmes/dossiers/index.php?WEBYEP_DI=7" target="_blank">Houshang Bouzari</a>, ainsi que le dossier contre <a href="http://www.ccij.ca/f/programmes/dossiers/index.php?WEBYEP_DI=11" target="_blank">Anvil Mining</a> au nom de l’Association canadienne contre l’impunité.</p>
+											<p>Pour des exemples de poursuites civiles où le CCJI a été impliqué, voir les dossiers contre le gouvernement iranien dans <a href="http://www.ccij.ca/fr/cases/kazemi-2/" target="_blank">Zahra Kazemi</a> et <a href="http://www.ccij.ca/fr/cases/bouzari-2/" target="_blank">Houshang Bouzari</a>, ainsi que le dossier contre <a href="http://www.ccij.ca/fr/cases/anvil-mining-2/" target="_blank">Anvil Mining</a> au nom de l’Association canadienne contre l’impunité.</p>
 										</div>
 										<div class="outcome-caveat"><span class="caveat">*</span> Il y a généralement une période de prescription (limite) qui s’applique aux dossiers soumis au Canada. Certains dossiers doivent être soumis à l’intérieur d’une période de deux ans à partir du moment où l’abus a été perpétré. Dans certains cas cette période peut être plus longue.</div>
 									</div>
@@ -394,7 +394,7 @@
 											<p>Liens:</p>
 											<p><a href="http://www.justice.gc.ca/fra/jp-cj/cdg-wc/part.html" target="_blank">http://www.justice.gc.ca/fra/jp-cj/cdg-wc/part.html</a></p>
 											<p>Pour plus d’informations sur ces questions et sur l’immigration et la Loi sur la protection des réfugiés, voir <a href="http://cbsa.gc.ca/security-securite/wc-cg/wc-cg2011-fra.html" target="_blank">http://cbsa.gc.ca/security-securite/wc-cg/wc-cg2011-fra.html</a></p>
-											<p>Pour un exemple de cause où le CCJI a été impliqué avec dans le but d’exclure la protection de réfugié, voir: <a href="http://www.ccji.ca/f/programmes/dossiers/index.php?WEBYEP_DI=8" target="_blank">http://www.ccji.ca/f/programmes/dossiers/index.php?WEBYEP_DI=8</a></p>
+											<p>Pour un exemple de cause où le CCJI a été impliqué avec dans le but d’exclure la protection de réfugié, voir: <a href="http://www.ccij.ca/fr/cases/demirovic-2/" target="_blank">http://www.ccij.ca/fr/cases/demirovic-2/</a></p>
 										</div>
 									</div>
 								</div>
@@ -548,11 +548,11 @@
 					<h3>Centre canadien pour la justice internationale</h3>
 					<ul class="list-unstyled">
 						<li>Bureau d'Ottawa: 613-230-6114</li>
-						<li>Bureau de Vancouver: 604-569-1778</li>
-						<li>t-c: 613-746-2411</li>
+                        <li>Bureau de C-B: 604-569-1778</li>
+                        <li>fax: 613-746-2411</li>
 					</ul>
 					<p>
-						Enquêtes: <a href="mailto:info@ccij.ca">info@ccij.ca</a>
+						Communications: <a href="mailto:info@ccij.ca">info@ccij.ca</a>
 					</p>
 				</div>
 				<div class="col-sm-8">
@@ -594,7 +594,7 @@
 			Numéro d’enregistrement d’OSBL: 87346 1040 RR0001
 		</p>
 		<small>
-			Tous droits réservés © 2014 Le Centre canadien pour la justice internationale
+			Tous droits réservés ©<?php echo date('Y');?> Le Centre canadien pour la justice internationale
 		</small>
 	</div>
 	<!-- End W&H footer -->
